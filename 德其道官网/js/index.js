@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
 	//轮播图
 	var url = "https://www.imcare.top/"
@@ -12,9 +14,9 @@ $(document).ready(function () {
 		//其他设置
 		nextButton: '.swiper-button-next',
 		prevButton: '.swiper-button-prev',
-
-
 	})
+  
+	 
 	
 	//锚点链接
 	var anchor = ["#About_us", "#gs_addss", "#yspdy", "#ysp_ht"]
@@ -82,15 +84,56 @@ $(document).ready(function () {
 			$(".zwjs").append("<h2>" + dataList.two.other.big_btitle + "</h2><p class='About'>" + dataList.two.other.small_btitle + "</p>" + dataList.two.other.details)
 			for (var j = 0; j < dataList.two.module.length; j++) {
 				$(".yx_cont ul").append("<li class='yx_item'> <div class='item_info '><h3>" + dataList.two.module[j].title + "</h3><p>" + dataList.two.module[j].content + "</p></div></li>")
+				
 			}
-			//关于我们那三个选项鼠标移上
-			$(".yx_item").mouseenter(function () {
-				$(".item_info").removeClass("current_item")
-				$(this).children(".item_info").addClass(" current_item")
+		
+		//	关于我们那三个选项鼠标移上
+			$(".item_info").css({
+				"background":"url("+dataList.two.other.background_gray+") no-repeat",
+				"filter":"progid:DXImageTransform.Microsoft.AlphaImageLoader(src="+dataList.two.other.background_gray+", sizingMethod='scale');",
+				"background-size":" 100% 100%"
 			})
-			//jquery行不通换成原生
-			//	$(".yx_cont ul").eq(0).children(".yx_item").children(".item_info").addClass(current_item) 
-			$(".yx_cont ul")[0].children[0].children[0].className = "item_info current_item"
+			$(".yx_item").mouseenter(function () {
+				$(".item_info").css({
+					"background":"url("+dataList.two.other.background_gray+") no-repeat",
+					"filter":"progid:DXImageTransform.Microsoft.AlphaImageLoader(src="+dataList.two.other.background_gray+", sizingMethod='scale');",
+					"background-size":" 100% 100%"
+				})
+				for(var i = 0; i < $(".item_info").length;i++){
+					$(".item_info").eq(i).children("h3").css({
+						"color":"#090909"
+					})
+	
+					$(".item_info").eq(i).children("p").css({
+						"color":"#a4a4a4 "
+					})
+				}
+			
+				var index = $(this).index()
+              
+				$(this).children(".item_info").css({
+					"background":"url("+dataList.two.other.background_red+") no-repeat",
+				backgroundSize:"100% 100%",
+				"filter":"progid:DXImageTransform.Microsoft.AlphaImageLoader(src="+dataList.two.other.background_red+", sizingMethod='scale');",
+				})
+				$(this).children(".item_info").children("h3").css({
+					"color":"#fff"
+				})
+				$(this).children(" .item_info").children("p").css({
+					"color":"#fff "
+				})
+		
+			})
+			
+			$(".yx_list .yx_item").eq(0).children(".item_info").css({
+				"background":"url("+dataList.two.other.background_red+") no-repeat",
+				backgroundSize:"100% 100%",
+				"filter":"progid:DXImageTransform.Microsoft.AlphaImageLoader(src="+dataList.two.other.background_red+", sizingMethod='scale');",
+			})
+			$(".yx_list .yx_item").eq(0).children(".item_info").children().css({
+				"color":"#fff"
+			})
+
 			//渲染公司地址模块
 			$(".gs_addss").css({
 				background: "url(" + dataList.three.other.background + ") no-repeat",
@@ -98,11 +141,10 @@ $(document).ready(function () {
 			})
 			$(".gsdz_cont").append("<h2>" + dataList.three.other.big_title + "</h2><span>" + dataList.three.other.small_title + "</span>")
 			for (var n = 0; n < dataList.three.module.length; n++) {
-				$(".gsjs_info").append("<div><div><img src=" + dataList.three.module[n].img + " alt=''></div><div><h2>" + dataList.three.module[n].title + "</h2><p>" + dataList.three.module[n].addr + "</p><p>" + dataList.three.module[n].details + "</p></div></div>")
-				$(".gsjs_info").eq(0).children("div").addClass("top_cont").eq(0).children("div").addClass("gstp_left")
-				$(".gsjs_info").eq(0).children(".top_cont").eq(1).children("div").addClass("right_js")
-				$(".gsjs_info").eq(1).children("div").addClass("bottom_cont").eq(0).children("div").addClass("left_js")
-				$(".gsjs_info").eq(1).children(".bottom_cont").eq(1).children("div").addClass("gstp_right")
+				$(".gsjs_info").append("<div ><div ><img src="+dataList.three.module[n].img+" alt=''></div><div ><h2>"+dataList.three.module[n].title+"</h2><p>"+dataList.three.module[n].addr+"</p><p>"+dataList.three.module[n].details+"</p></div></div>")
+				$(".gsjs_info").children("div").eq(0).addClass("top_cont").children("div").eq(0).addClass("gstp_left").parent().children("div").eq(1).addClass("right_js")
+				$(".gsjs_info").children("div").eq(1).addClass("bottom_cont").children("div").eq(0).addClass("gstp_right").parent().children("div").eq(1).addClass(" left_js")
+			 
 			}
 			//渲染艺术品档案模块
 			$(".view_more").css({
@@ -116,7 +158,6 @@ $(document).ready(function () {
 			// 灰色图片鼠标移上效果
 			$(".classify_item").mouseenter(function () {
 				var index = $(this).index()
-				console.log(b)
 				$(this).children("a").children("img").attr("src", dataList.four.img[index].img_yes)
 			})
 			$(".classify_item").mouseleave(function () {

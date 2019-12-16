@@ -51,29 +51,27 @@ page {
 
 .list_item {
   width: 25%;
-  height: 100rpx;
   display: flex;
   align-items: center;
   flex-direction: column;
   margin-bottom: 34rpx;
 }
-.list_item:nth-child(1) > image{
+/* .list_item:nth-child(1) > image{
   width: 89rpx;
 	height: 83rpx;
 }
 .list_item:nth-child(2) > image{
-  width: 90rpx;
-	height: 90rpx;
+  width: 83rpx;
+	height: 83rpx;
 }
 .list_item:nth-child(3) > image{
 	width: 81rpx;
 	height: 79rpx;
-}
+} */
 .list_item:nth-child(4) > image{
 	width: 108rpx;
-	height: 72rpx;
 }
-.list_item:nth-child(5) > image{
+/* .list_item:nth-child(5) > image{
   width: 81rpx;
 	height: 83rpx;
 }
@@ -88,15 +86,16 @@ page {
 .list_item:nth-child(8) > image{
   width: 78rpx;
 	height: 78rpx;
-}
-/* .list_item image {
-    width: 78rpx;
-	height: 78rpx;
-  margin-bottom: 16rpx;
 } */
+.list_item  image{
+  width: 83rpx;
+	height: 83rpx;
+   padding-bottom: 16rpx;
+}
 .list_item text{
   font-size: 23rpx;
-	color: #29292a;
+  color: #29292a;
+
 }
 .class_title {
   box-sizing: border-box;

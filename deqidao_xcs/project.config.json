@@ -71,6 +71,20 @@
 					"id": -1,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/tunnel/tunnel",
+					"pathName": "pages/tunnel/tunnel",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/art/art",
+					"pathName": "pages/art/art",
 					"scene": null
 				}
 			]

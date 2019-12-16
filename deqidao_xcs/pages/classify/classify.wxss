@@ -1,0 +1,63 @@
+Page{
+    box-sizing: border-box;
+    background: #f6f6f6;
+}
+image{
+    width: 100%;
+    height: 100%;
+}
+.zp_tuijian{
+    padding: 24rpx 38rpx;
+}
+.zp_title{
+    font-size: 29rpx;
+	letter-spacing: 1rpx;
+    color: #29292a;
+    font-weight: 700;
+    padding-bottom: 16rpx;
+     text-align: center;
+     background: #f6f6f6;
+}
+.zp_list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.tj_item{
+    width: 50%;
+     box-sizing: border-box;
+     margin-bottom: 30rpx;
+     background: #ffffff;
+}
+.tj_item image{
+    width: 100%;
+    height: 244rpx;
+}
+.ysp_info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  
+}
+.tj_item:nth-child(2n+1){
+    padding-right: 16rpx;
+}
+.tj_item:nth-child(2n){
+    padding-left: 16rpx;
+}
+.ysp_name{
+    padding: 0 0  24rpx 6rpx;
+    font-size: 17rpx;
+	color: #29292a;
+}
+.price_cont{
+    display: flex;
+    justify-content: space-between;
+    font-size: 17rpx;
+    color: #29292a;
+    padding: 0 6rpx 8rpx 6rpx; 
+}
+.price_cont{
+	
+}

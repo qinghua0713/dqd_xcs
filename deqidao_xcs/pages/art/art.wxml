@@ -1,4 +1,24 @@
 <view>
-    111
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
+    <block wx:for="{{imageUrl}}" wx:key="{{index}}">
+      <swiper-item>
+        <image src="{{item}}" class="swiper-item"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="tab_title">
+    <view class="tab_option" bindtap="showACS">
+      <image src="{{tabShow == true ? '/assets/image/acstz_red.png':'/assets/image/asctz_gray.png '}}"></image>
+      <text class=" {{tabShow == true ? 'current_tab':''}}">ACS投资</text>
+    </view>
+    <view class="tab_option" bindtap="showArtis">
+      <image src="{{tabShow == false ? '/assets/image/qyysj_red.png':'/assets/image/qyysj_gray.png'}} "></image>
+      <text class="{{tabShow == false ? 'current_tab':''}}">签约艺术家</text>
+    </view>
+  </view>
+  <view class="tab_content">
+    <view class="content_item">
+      <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+    </view>
+  </view>
 </view>
-  

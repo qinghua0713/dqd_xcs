@@ -1,63 +1,118 @@
 Page{
     box-sizing: border-box;
-    background: #f6f6f6;
-}
-image{
+  }
+  image{
     width: 100%;
     height: 100%;
-}
-.zp_tuijian{
-    padding: 24rpx 38rpx;
-}
-.zp_title{
-    font-size: 29rpx;
-	letter-spacing: 1rpx;
-    color: #29292a;
-    font-weight: 700;
-    padding-bottom: 16rpx;
-     text-align: center;
-     background: #f6f6f6;
-}
-.zp_list{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.tj_item{
-    width: 50%;
-     box-sizing: border-box;
-     margin-bottom: 30rpx;
-     background: #ffffff;
-}
-.tj_item image{
-    width: 100%;
-    height: 244rpx;
-}
-.ysp_info{
-    width: 100%;
+    
+  }
+
+    .swiper-item{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    overflow:unset;  
+    }  
+    .slide-image{ 
+height: 280rpx;
+    width: 90%;
+ 	border-radius: 14rpx;
+    margin: 0rpx 30rpx; 
+    z-index: 1;
+    
+    }
+    .active{
+    transform: scale(1.18);
+    transition:all .2s ease-in 0s;
+    z-index: 20;  
+    }
+    .swiper-block{ 
+    height: 350rpx; 
+    width: 100%;
+    }
+    
+.ys_tabBar{
+    display: flex;
+    height: 55rpx;
+    justify-content: space-around;
+    border-bottom: 3rpx solid #f6f6f6;
+    align-items: center;
+}
+.tab_item{
+    font-size: 23rpx;
+    color: #686868;
+    padding-bottom: 6rpx;
+
+}
+
+.menu_container{
+    display: flex;
+    transition: all 1s;
+}
+.left_menu{
+    width: 139rpx;
+    display: flex;
+    flex-direction: column;
+    background: #f6f6f6;
+}
+.menu_item{
+    width: 100%;
+    /* height: 69rpx; */
+    font-size: 23rpx;
+    color: #090909;
+    letter-spacing: 3rpx;
+}
+.yiji_menu{
+    height: 69rpx;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.erji_menu{
+    height: 69rpx;
+    width: 100%;
+    background: #ffffff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23rpx;
+    color: #080808;
+}
+.block{
+    display:block;
   
 }
-.tj_item:nth-child(2n+1){
-    padding-right: 16rpx;
-}
-.tj_item:nth-child(2n){
-    padding-left: 16rpx;
-}
-.ysp_name{
-    padding: 0 0  24rpx 6rpx;
-    font-size: 17rpx;
-	color: #29292a;
-}
-.price_cont{
+.right_content{
+    width: calc( 100% - 69rpx);
     display: flex;
-    justify-content: space-between;
-    font-size: 17rpx;
-    color: #29292a;
-    padding: 0 6rpx 8rpx 6rpx; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20rpx 0 92rpx 0 ;
 }
-.price_cont{
-	
+.list_item{
+    width: 542rpx;
+  
+    position: relative;
+   padding-bottom: 14rpx;
+}
+.list_item text{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%,-50%,0);
+    font-size: 29rpx;
+	letter-spacing: 3rpx;
+	color: #fefefe;
+
+}
+.list_item image{
+    width: 100%;
+    height: 139rpx;
 }

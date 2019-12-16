@@ -1,0 +1,65 @@
+<view class="details-page">
+    <view class="banner">
+        <view class="tab_option">
+            <view class="image_btn">视 频</view>
+            <view class="video_btn">图 片</view>
+        </view>
+        <view class="image_num">2 / 5</view>
+    </view>
+    <view class="zp_container">
+        <view class="cp_info">
+            <text class="cp_title">藏品名称</text>
+            <text class="cp_weight" decode="{{true}}">
+                长&nbsp;20cm&nbsp;&nbsp;&nbsp;宽&nbsp;40cm&nbsp;&nbsp;&nbsp;高60cm
+            </text>
+            <view class="cp_describe">
+                藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述
+            </view>
+        </view>
+        <view class="buy_of_like">
+            <view class="like_btn">
+                <image src="/assets/image/dianzan.png" />
+                <text>962人赞过</text>
+            </view>
+            <view class="buy_btn">立即订购</view>
+        </view>
+        <view class="share_btn">
+            <image src="/assets/image/share.png" />
+            <text>分享</text>
+        </view>
+    </view>
+    <view class="art_remark">
+        <text class="remark_title">艺术品点评（1234）</text>
+        <view class="comment_list">
+            <view class="user_info">
+                <image src="/assets/image/touxiang.png" />
+                <text class="user_name">用户1234567</text>
+            </view>
+            <view class="comment  {{isShow ? 'flag' :''}}">
+                点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点
+                评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评
+                内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容
+                  点评内容点评内容点评内容点评内容点评内容点评内容点评内
+            </view>
+            <view class="view_arr" bindtap="viewArr" >
+                <text>查看全部</text>
+                <image src="/assets/image/arrows_bottom.png" />
+            </view>
+        </view>
+        <view class="comment_list">
+            <view class="user_info">
+                <image src="/assets/image/touxiang.png" />
+                <text class="user_name">用户1234567</text>
+            </view>
+            <view class="comment ">
+                点评内容点评内容点评内容点评内容点评内容点评内容
+                点评内容点评内容点评内容点评内容点评内容点评内容点评
+                内容点评内容点评内容  内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容
+            </view>
+            <view class="view_arr ">
+                <text>查看全部</text>
+                <image src="/assets/image/arrows_bottom.png" />
+            </view>
+        </view>
+    </view>
+</view>

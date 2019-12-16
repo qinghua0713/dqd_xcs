@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/tunnel/tunnel",
+    "pages/art/art",
+    "pages/my/my",
+    "pages/details/details"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "中易德其道",
+    "navigationBarTextStyle": "black"
+  },
+    "tabBar": {
+      "selectedColor":"#e51419",
+      "list": [
+        
+        {
+          "pagePath": "pages/index/index",
+          "text": "首页",
+          "iconPath":"assets/image/home_gray.png",
+          "selectedIconPath":"./assets/image/home_red.png"
+         
+        },
+        {
+          "pagePath": "pages/tunnel/tunnel",
+          "text": "时空隧道",
+          "iconPath":"assets/image/suidao_gray.png",
+          "selectedIconPath":"assets/image/suidao_red.png"
+        },
+          {
+            "pagePath": "pages/art/art",
+            "text": "艺术",
+            "iconPath":"assets/image/yishu_gray.png",
+            "selectedIconPath":"assets/image/yishu_red.png"
+          },
+            {
+              "pagePath": "pages/my/my",
+              "text": "个人中心",
+              "iconPath":"assets/image/my_gray.png",
+              "selectedIconPath":"assets/image/my_red.png"
+            }
+      ]
+    },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,80 @@
+<view class="tunnel_page">
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" easing-function="{{easeInOutCubic}}" circular="{{true}}">
+        <block>
+            <swiper-item>
+                <image class="swiper-image" src="/assets/image/yishuti_1.png" />
+            </swiper-item>
+            <swiper-item>
+                <image class="swiper-image" src="/assets/image/yishuti_2.png" />
+            </swiper-item>
+            <swiper-item>
+                <image class="swiper-image" src="/assets/image/yishuti_3.png" />
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="zp_tuijian">
+        <view class="zp_title">臻品推荐</view>
+        <view class="zp_list">
+            <view class="tj_item">
+                <image src="/assets/image/yishuti_1.png" />
+                <view class="ysp_info">
+                    <text class="ysp_name">艺术品名称</text>
+                    <view class="price_cont">
+                        <text class="price">价值</text>
+                        <text class="ordered">待订购</text>
+                    </view>
+                </view>
+            </view>
+            <view class="tj_item">
+                <image src="/assets/image/yishuti_2.png" />
+                <view class="ysp_info">
+                    <text class="ysp_name">艺术品名称</text>
+                    <view class="price_cont">
+                        <text class="price">价值</text>
+                        <text class="ordered">待订购</text>
+                    </view>
+                </view>
+            </view>
+               <view class="tj_item">
+                <image src="/assets/image/yishuti_3.png" />
+                <view class="ysp_info">
+                    <text class="ysp_name">艺术品名称</text>
+                    <view class="price_cont">
+                        <text class="price">价值</text>
+                        <text class="ordered">待订购</text>
+                    </view>
+                </view>
+            </view>
+               <view class="tj_item">
+                <image src="/assets/image/yishuti_4.png" />
+                <view class="ysp_info">
+                    <text class="ysp_name">艺术品名称</text>
+                    <view class="price_cont">
+                        <text class="price">价值</text>
+                        <text class="ordered">待订购</text>
+                    </view>
+                </view>
+            </view>
+                    <view class="tj_item">
+                <image src="/assets/image/yishuti_5.png" />
+                <view class="ysp_info">
+                    <text class="ysp_name">艺术品名称</text>
+                    <view class="price_cont">
+                        <text class="price">价值</text>
+                        <text class="ordered">待订购</text>
+                    </view>
+                </view>
+            </view>
+                    <view class="tj_item">
+                <image src="/assets/image/yishuti_6.png" />
+                <view class="ysp_info">
+                    <text class="ysp_name">艺术品名称</text>
+                    <view class="price_cont">
+                        <text class="price">价值</text>
+                        <text class="ordered">待订购</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

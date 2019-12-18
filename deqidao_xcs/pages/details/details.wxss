@@ -194,10 +194,15 @@ Page {
     width: 24rpx;
     height: 17rpx;
     margin-left: 4rpx;
+    transition: all .6s;
 }
 .flag{
    display: block ;
    text-overflow: clip ;
    overflow: visible ;
    height: auto;
+}
+.rotate{
+  transform:rotate(180deg);
+ 
 }

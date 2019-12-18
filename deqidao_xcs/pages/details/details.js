@@ -3,7 +3,6 @@ Page({
         isShow:false
       },
   viewArr(){
-   //  this.data.isShow = !this.data.isShow
      this.setData({
        isShow: !this.data.isShow
      })

@@ -52,12 +52,17 @@
     </view>
     <view class="class_item">
       <view class="class_image"></view>
-          <view class="class_tj">臻品推荐</view>
+      <view class="class_tj">臻品推荐</view>
       <view class="class_info">
         <text class="cp_name">藏品名字</text>
         <text class="cp_describe">藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述</text>
         <text class="cp_price">价值：XXXX</text>
       </view>
     </view>
+  </view>
+</view>
+<view class="return_container" hidden="{{showTop}}">
+  <view class="return_top" bindtap="goTop">
+    <image src="/assets/image/go_top.png" />
   </view>
 </view>

@@ -19,8 +19,8 @@
         </view>
         <view class="buy_of_like">
             <view class="like_btn">
-                <image src="/assets/image/dianzan.png" />
-                <text>962人赞过</text>
+                <image src="/assets/image/collect.png" />
+                <text>962人收藏</text>
             </view>
             <view class="buy_btn">立即订购</view>
         </view>
@@ -44,12 +44,12 @@
             </view>
             <view class="view_arr" bindtap="viewArr" >
                 <text>查看全部</text>
-                <image src="/assets/image/arrows_bottom.png" />
+                <image class="{{isShow == true ? 'rotate':''}}" src="/assets/image/arrows_bottom.png" />
             </view>
         </view>
         <view class="comment_list">
             <view class="user_info">
-                <image src="/assets/image/touxiang.png" />
+                <image  src="/assets/image/touxiang.png" />
                 <text class="user_name">用户1234567</text>
             </view>
             <view class="comment ">
@@ -59,7 +59,7 @@
             </view>
             <view class="view_arr ">
                 <text>查看全部</text>
-                <image src="/assets/image/arrows_bottom.png" />
+                <image  src="/assets/image/arrows_bottom.png" />
             </view>
         </view>
     </view>

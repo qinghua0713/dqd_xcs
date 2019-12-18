@@ -102,10 +102,6 @@
                  <text >艺术品寄售</text>
              </view>
                 <view class="order_item">
-                 <image class="jianding" src="/assets/image/jianding.png" />
-                 <text >艺术品鉴定</text>
-             </view>
-                <view class="order_item">
                  <image class="service" src="/assets/image/service.png" />
                  <text >客服中心</text>
              </view>

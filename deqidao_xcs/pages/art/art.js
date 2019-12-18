@@ -5,7 +5,8 @@ Page({
       "/assets/image/tunnel_banner2.png",
       "/assets/image/tunnel_banner.png",
     ],
-    tabShow: false
+    tabShow: true,
+    current:0
   },
   showACS() {
     this.setData({
@@ -16,6 +17,14 @@ Page({
     this.setData({
       tabShow: false
     })
+  },
+  swiperChange(e) {
+    var that = this;
+    console.log(e)
+      that.setData({
+        current: e.detail.current,
+      })
+
   },
   onLoad() {
 

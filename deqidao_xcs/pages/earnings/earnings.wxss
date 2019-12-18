@@ -1,0 +1,113 @@
+
+.date-choose {
+  background: #fff;
+  overflow: hidden;
+  	height: 139rpx;
+  box-shadow:0px 1px 1px 0px rgba(198,198,198,0.5);
+}
+.data-month {
+  width:100%;
+	font-size: 17rpx;
+	color: #686868;
+  padding: 0 0 33rpx 38rpx;
+}
+/* .date-choose-swiper {
+  flex-grow: 1;
+  height: 4em;
+} */
+.swiper-item {
+  display: flex;
+  flex-direction: column ;
+}
+.weekday, .dateday {
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+	font-size: 20rpx;
+	color: #29292a;
+}
+.week, .day {
+	font-size: 23rpx;
+	color: #29292a;
+}
+.week{
+  color: #999;
+  font-size: 24rpx;
+}
+.week text{
+	font-size: 20rpx;
+	color: #29292a;
+}
+
+.day text {
+  position: relative;
+	font-size: 23rpx;
+	color: #020202;
+}
+.day .active:before {/* 圈圈 */
+  content: "";
+  position: absolute;
+  width: 76rpx;
+  height: 76rpx;
+  top: -100%;
+  left: -100%;
+	background-image: linear-gradient(45deg, 
+		#e51419 0%, 
+		#fe8c5a 100%), 
+	linear-gradient(
+		#fd4056, 
+		#fd4056);
+	background-blend-mode: normal, 
+		normal;
+  z-index: -1;
+}
+.current{
+  color: #ffffff !important;
+}
+.earnings_container{
+  padding: 0 35rpx 100rpx 35rpx;
+}
+.earnings_item{
+  display: flex;
+  padding: 20rpx 0 20rpx 0;
+  border-bottom: 1rpx solid #b4b2b3;
+
+}
+.earnings_item  image{
+  width: 292rpx;
+  height: 236rpx;
+  padding-right: 4rpx;
+}
+.right_info{
+  width: calc( 100% - 292rpx);
+  display: flex;
+  flex-direction: column;
+
+}
+.ysp_title{
+	font-size: 35rpx;
+	font-weight: 700;
+	letter-spacing: 1rpx;
+  color: #070707;
+  padding-bottom: 18rpx;
+}
+.income{
+  display: flex;
+  flex-direction: column;
+}
+.income_info{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 14rpx;
+}
+.income_info text{
+  font-size: 17rpx;
+  color: #070707;
+
+}
+.bottom_price{
+  display: flex;
+  justify-content: space-between;
+  font-size: 23rpx;
+	color: #070707;
+}

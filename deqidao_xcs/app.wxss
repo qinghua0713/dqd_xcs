@@ -1,5 +1,77 @@
 
 .current_tab{
-    color: #e51419;
+    color: #e51419 !important;
     border-bottom: 1rpx solid  #e51419;
+}
+Page{
+  box-sizing: border-box;
+}
+.swiperContainer {
+  position: relative;
+}
+
+image{
+  width: 100%;
+  height: 100%;
+}
+
+.imageCount {
+  width: 120rpx;
+  height: 50rpx;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 40rpx;
+  line-height: 50rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 26rpx;
+  position: absolute;
+  left: 13px;
+  bottom: 20rpx;
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 21rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.dots .dot {
+  margin: 0 14rpx;
+  width: 69rpx;
+  height: 3rpx;
+  background-color: #fff;
+  transition: all 0.6s;
+}
+
+.dots .dot.active {
+  width: 69rpx;
+  height: 3rpx;
+  background: #333;
+}
+.return_container{
+  position: fixed;
+  bottom: 120rpx;
+  right: 35rpx;
+}
+.return_home,.return_top{
+  width: 83rpx;
+height: 83rpx;
+  background-color: #ffffff;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0rpx 1rpx 10rpx;
+  margin-bottom: 20rpx;
+}
+.return_home image{
+  width: 45rpx;
+height: 47rpx;
+}
+.return_top image{
+  width: 42rpx;
+height: 54rpx;
 }

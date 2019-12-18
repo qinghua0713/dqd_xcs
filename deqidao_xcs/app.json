@@ -4,7 +4,11 @@
     "pages/tunnel/tunnel",
     "pages/art/art",
     "pages/my/my",
-    "pages/details/details"
+    "pages/details/details",
+    "pages/classify/classify",
+    "pages/binding/binding",
+    "pages/artProductManage/artProductManage",
+    "pages/earnings/earnings"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -36,7 +36,7 @@
        </view>
   </view>
   </view>
-  <view class="menu_container "  wx:if="{{!tabIsShow}}">
+  <view class="menu_container " wx:else>
         <view class="left_menu">
       <view class="menu_item ">
           <view class="yiji_menu" bindtap="showMenu">

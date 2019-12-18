@@ -1,17 +1,19 @@
 <view class="tunnel_page">
-    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" easing-function="{{easeInOutCubic}}" circular="{{true}}">
-        <block>
-            <swiper-item>
-                <image class="swiper-image" src="/assets/image/yishuti_1.png" />
-            </swiper-item>
-            <swiper-item>
-                <image class="swiper-image" src="/assets/image/yishuti_2.png" />
-            </swiper-item>
-            <swiper-item>
-                <image class="swiper-image" src="/assets/image/yishuti_3.png" />
-            </swiper-item>
-        </block>
-    </swiper>
+<view class="swiperContainer">
+  <swiper bindchange="swiperChange"    autoplay="{{true}}"  duration="{{500}}" 
+  circular style='height: 347rpx;'>
+    <block wx:for="{{imgUrl}}" wx:key="*this">
+      <swiper-item wx:key="*this">
+        <image src="{{item}}" class="slide-image"  class='img'  />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="dots">
+    <block wx:for="{{imgUrl}}" wx:key="*">
+      <view class="dot{{index == current ? ' active' : ''}}"></view>
+    </block>
+  </view>  
+</view>
     <view class="zp_tuijian">
         <view class="zp_title">臻品推荐</view>
         <view class="zp_list">
@@ -75,6 +77,14 @@
                     </view>
                 </view>
             </view>
+        </view>
+    </view>
+    <view class="return_container" hidden="{{showTop}}">
+        <view class="return_home" bindtap="returnHome">
+            <image src="/assets/image/return_home.png" />
+        </view>
+        <view class="return_top" bindtap="goTop">
+            <image src="/assets/image/go_top.png" />
         </view>
     </view>
 </view>

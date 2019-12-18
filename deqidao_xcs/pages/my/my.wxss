@@ -214,7 +214,7 @@ color: #090909;
      padding: 13rpx 0 12rpx 0;
 }
 .order_list .order_item{
-    width: 25%;
+    width: 33.33333333%;
     height: 100%;
     display: flex;
     flex-direction: column;

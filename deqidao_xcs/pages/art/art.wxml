@@ -1,11 +1,18 @@
 <view>
-  <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
-    <block wx:for="{{imageUrl}}" wx:key="{{index}}">
-      <swiper-item>
-        <image src="{{item}}" class="swiper-item"></image>
-      </swiper-item>
-    </block>
-  </swiper>
+  <view class="swiperContainer">
+    <swiper bindchange="swiperChange"  autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
+      <block wx:for="{{imageUrl}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="swiper-item"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{imageUrl}}" wx:key="*">
+        <view class="dot{{index == current ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
   <view class="tab_title">
     <view class="tab_option" bindtap="showACS">
       <image src="{{tabShow == true ? '/assets/image/acstz_red.png':'/assets/image/asctz_gray.png '}}"></image>
@@ -17,8 +24,28 @@
     </view>
   </view>
   <view class="tab_content">
-    <view class="content_item">
-      <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+    <view class="content_item" wx:if="{{tabShow}}">
+      <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
+        danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+      <view class="ACS_contract">
+        <view class="contract_title">ACS合同服务须知:</view>
+        <view class="contract_info">
+          <view class="dot"></view>
+          <text>文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述</text>
+        </view>
+        <view class="contract_info">
+          <view class="dot"></view>
+          <text>文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述</text>
+        </view>
+      </view>
+    </view>
+    <view class="content_item qy_Artis" wx:else>
+      <view class="img_cont"> </view>
+      <view class="lj_classify">了解签约详情...</view>
+      <view class="sign_btn">
+        <image src="/assets/image/ljqy_red_bg.png" />
+        <view>立即签约</view>
+      </view>
     </view>
   </view>
 </view>

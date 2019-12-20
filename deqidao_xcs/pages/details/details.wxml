@@ -1,4 +1,5 @@
 <view class="details-page">
+    <!-- 轮播图 -->
     <view class="banner">
         <swiper indicator-dots="{{false}}" autoplay="{{true}}" 
         interval="{{5000}}" duration="{{500}}" current circular="{{true}}"
@@ -15,6 +16,7 @@
         </view>
         <view class="image_num">{{current+1}} / {{imageUrl.length}}</view>
     </view>
+    <!-- 藏品详细信息 -->
     <view class="zp_container">
         <view class="cp_info">
             <text class="cp_title">藏品名称</text>
@@ -37,6 +39,7 @@
             <text>分享</text>
         </view>
     </view>
+    <!-- 评论区 -->
     <view class="art_remark">
         <text class="remark_title">艺术品点评（1234）</text>
         <view class="comment_list">

@@ -1,4 +1,5 @@
 <view class="artProductManage-page">
+    <!-- 点击哪个tab显示哪个的内容 -->
     <view class="tab_option">
         <view class="option_item {{showCurrent == 0 ?'current current_tab':'' }}" bindtap="showTermly">
             锁定期
@@ -10,8 +11,11 @@
             兑现期
         </view>
     </view>
+    <!-- tab内容区域 -->
     <view class="option_content">
+        <!-- tab第一部分内容 -->
         <view class="content_item" wx:if="{{showCurrent == 0}}">
+  <!-- 判断tab是否有数据 -->
             <view class="item_info" wx:if="{{data == 1}}">
                 <image src="/assets/image/cp_img.png" />
                 <view class="right_info">
@@ -39,6 +43,7 @@
                 </view>
             </view>
         </view>
+          <!-- tab第二部分内容 -->
         <view class="content_item" wx:elif="{{showCurrent == 1}}">
             <view class="item_info">
                 <image src="/assets/image/cp_img.png" />
@@ -61,6 +66,7 @@
                 </view>
             </view>
         </view>
+          <!-- tab第三部分内容 -->
         <view class="content_item" wx:elif="{{showCurrent == 2}}">
             <view class="item_info">
                 <image src="/assets/image/cp_img.png" />
@@ -83,8 +89,9 @@
             </view>
         </view>
     </view>
+    <!-- 点击返回个人中心 -->
        <view class="bottom_btn" bindtap="returnMy">
-         <image src="/assets/image/my_small.png" />
+         <image src="/assets/image/my_red.png" />
          <text >返回个人中心</text>
        </view>
 </view>

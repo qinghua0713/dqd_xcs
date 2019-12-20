@@ -57,7 +57,7 @@ z-index: 100;
   position: relative;
   font-size: 23rpx;
   color: #686868;
-  padding-bottom: 6rpx;
+  padding-bottom: 5rpx;
 }
 
 .menu_container {

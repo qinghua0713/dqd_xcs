@@ -1,19 +1,20 @@
 <view class="tunnel_page">
-<view class="swiperContainer">
-  <swiper bindchange="swiperChange"    autoplay="{{true}}"  duration="{{500}}" 
-  circular style='height: 347rpx;'>
-    <block wx:for="{{imgUrl}}" wx:key="*this">
-      <swiper-item wx:key="*this">
-        <image src="{{item}}" class="slide-image"  class='img'  />
-      </swiper-item>
-    </block>
-  </swiper>
-  <view class="dots">
-    <block wx:for="{{imgUrl}}" wx:key="*">
-      <view class="dot{{index == current ? ' active' : ''}}"></view>
-    </block>
-  </view>  
-</view>
+    <!-- 轮播图 -->
+    <view class="swiperContainer">
+        <swiper bindchange="swiperChange" autoplay="{{true}}" duration="{{500}}" circular style='height: 347rpx;'>
+            <block wx:for="{{imgUrl}}" wx:key="*this">
+                <swiper-item wx:key="*this">
+                    <image src="{{item}}" class="slide-image" class='img' />
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="dots">
+            <block wx:for="{{imgUrl}}" wx:key="*">
+                <view class="dot{{index == current ? ' active' : ''}}"></view>
+            </block>
+        </view>
+    </view>
+    <!-- 臻品推荐列表 -->
     <view class="zp_tuijian">
         <view class="zp_title">臻品推荐</view>
         <view class="zp_list">
@@ -37,7 +38,7 @@
                     </view>
                 </view>
             </view>
-               <view class="tj_item">
+            <view class="tj_item">
                 <image src="/assets/image/yishuti_3.png" />
                 <view class="ysp_info">
                     <text class="ysp_name">艺术品名称</text>
@@ -47,7 +48,7 @@
                     </view>
                 </view>
             </view>
-               <view class="tj_item">
+            <view class="tj_item">
                 <image src="/assets/image/yishuti_4.png" />
                 <view class="ysp_info">
                     <text class="ysp_name">艺术品名称</text>
@@ -57,7 +58,7 @@
                     </view>
                 </view>
             </view>
-                    <view class="tj_item">
+            <view class="tj_item">
                 <image src="/assets/image/yishuti_5.png" />
                 <view class="ysp_info">
                     <text class="ysp_name">艺术品名称</text>
@@ -67,7 +68,7 @@
                     </view>
                 </view>
             </view>
-                    <view class="tj_item">
+            <view class="tj_item">
                 <image src="/assets/image/yishuti_6.png" />
                 <view class="ysp_info">
                     <text class="ysp_name">艺术品名称</text>
@@ -79,7 +80,8 @@
             </view>
         </view>
     </view>
-    <view class="return_container" hidden="{{showTop}}">
+    <!-- 回到顶部与首页 -->
+    <view class="return_container" hidden="{{!showTop}}">
         <view class="return_home" bindtap="returnHome">
             <image src="/assets/image/return_home.png" />
         </view>

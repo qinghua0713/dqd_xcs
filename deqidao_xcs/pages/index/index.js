@@ -4,22 +4,24 @@ const app = getApp()
 
 Page({
   data: {
-    showTop: true,
-    userInfo: {},
+    showTop: false,//判断返回按钮是否显示
+    userInfo: {},//用户信息
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+  // 判断返回按钮是否显示
   onPageScroll(e) {
     if (e.scrollTop > 100) {
       this.setData({
-        showTop: false
+        showTop: true
       })
     } else {
       this.setData({
-        showTop: true
+        showTop: false
       })
     }
   },
+  // 点击回到顶部
   goTop() {
     wx.pageScrollTo({
       scrollTop: 0,
@@ -27,6 +29,7 @@ Page({
     })
   },
   onLoad: function () {
+    //判断globalData里面是否有用户信息
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -54,6 +57,7 @@ Page({
       })
     }
   },
+  //获取用户信息
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo

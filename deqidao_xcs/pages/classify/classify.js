@@ -1,13 +1,14 @@
 Page({
   data: {
-    showTop: true,
+    showTop: false,
     imgUrl: [
       "/assets/image/cp_banner.png",
       "/assets/image/cp_banner.png",
       "/assets/image/cp_banner.png"
-    ],
-    current: 0,
+    ],//轮播图数据
+    current: 0,//轮播图当前项
   },
+  //轮播图改变函数
   swiperChange(e) {
     var that = this;
     that.setData({
@@ -15,22 +16,25 @@ Page({
     })
 
   },
+  //点击返回首页
   returnHome() {
     wx.switchTab({
       url: "/pages/index/index",
     })
   },
+  //判断回到顶部按钮是否显示
   onPageScroll(e) {
     if (e.scrollTop > 100) {
       this.setData({
-        showTop: false
+        showTop: true
       })
     } else {
       this.setData({
-        showTop: true
+        showTop: false
       })
     }
   },
+  //点击回到顶部
   goTop() {
     wx.pageScrollTo({
       scrollTop: 0,

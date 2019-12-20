@@ -1,5 +1,7 @@
 <view class="binding-page">
-  <block wx:if="{{isSuccee}}">
+  <!-- 绑定模块的判断是否成功绑定 -->
+  <block wx:if="{{!isSuccee}}">
+    <!-- 轮播图 -->
     <view class="swiperContainer">
       <swiper bindchange="swiperChange" autoplay="{{true}}" duration="{{500}}" circular style='height: 625rpx;'>
         <block wx:for="{{imgUrl}}" wx:key="*this">
@@ -24,29 +26,31 @@
         </view>
         <text class="cp_describe">艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述</text>
       </view>
+      <!-- 绑定按钮 -->
       <view class="btn_container">
         <view class="bindding_btn" bindtap="bindclick">
           <image src="/assets/image/rz_binding.png" />
           <text>认证绑定</text>
         </view>
-        <view class="cancel_btn">
+        <view class="cancel_btn" bindtap="cancelBtn">
           <image src="/assets/image/cancel.png" />
           <text>取 消</text>
         </view>
       </view>
     </view>
   </block>
+  <!-- 绑定成功后显示 -->
   <block wx:else>
     <view class="dind_succeed">
       <view class="center_cont">
         <image src="/assets/image/bidding_succeed.png" />
-        <text >绑定成功，赶快去看看您的宝贝~</text>
-        <text >{{second}}秒后自动跳转至首页</text>
+        <text>绑定成功，赶快去看看您的宝贝~</text>
+        <text>{{second}}秒后自动跳转至首页</text>
       </view>
-       <view class="bottom_btn" bindtap="returnMy">
-         <image src="/assets/image/my_small.png" />
-         <text >返回个人中心</text>
-       </view>
+      <view class="bottom_btn" bindtap="returnMy">
+        <image src="/assets/image/my_red.png" />
+        <text>返回个人中心</text>
+      </view>
     </view>
   </block>
 </view>

@@ -1,10 +1,13 @@
 <!-- index.wxml -->
 <view class="container">
+  <!-- 搜索 -->
   <view class="search-container">
     <input class="search" type="text" placeholder="搜索艺术品" />
     <image class="search-image" src="/assets/image/search.png" alt=""></image>
   </view>
+  <!-- 首页主图 -->
   <view class="banner"></view>
+  <!-- 艺术品分类项 -->
   <view class="class_list">
     <view class="list_item">
       <image src="/assets/image/artist.png" mode="scaleToFill" lazy-load="false"></image>
@@ -22,9 +25,8 @@
       <image src="/assets/image/zisha.png" mode="scaleToFill" lazy-load="false"></image>
       <text>紫 砂</text>
     </view>
-
-  
   </view>
+  <!-- 艺术品详情 -->
   <view class="class_sift">
     <view class="class_title">艺术家</view>
     <view class="class_item">
@@ -47,7 +49,8 @@
     </view>
   </view>
 </view>
-<view class="return_container" hidden="{{showTop}}">
+<!-- 点击返回 -->
+<view class="return_container" hidden="{{!showTop}}">
   <view class="return_top" bindtap="goTop">
     <image src="/assets/image/go_top.png" />
   </view>

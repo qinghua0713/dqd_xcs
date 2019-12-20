@@ -1,16 +1,18 @@
 <view class="my-page">
+  <!-- 用户头像 -->
   <view class="my_info">
     <image class="my_portrait" src="/assets/image/logo.png" />
   </view>
+  <!-- 用户详情 -->
   <view class="list_cont">
     <view class="list_item">
       <text>用户昵称</text>
-      <text >ID：12345678</text>
+      <text>ID：12345678</text>
     </view>
     <view class="list_item balance_info">
       <image class="balance" src="/assets/image/balance.png" />
-       <text>余  额</text>
-      <text >￥ 9999</text>
+      <text>余  额</text>
+      <text>￥ 9999</text>
     </view>
     <view class="list_item">
       <image class="collect" src="/assets/image/collect.png" />
@@ -21,6 +23,7 @@
       <text>足迹</text>
     </view>
   </view>
+  <!-- 艺术品列表 -->
   <view class="ysp_earnings">
     <view class="ys_title">
       <text>艺术品收益</text>
@@ -37,14 +40,17 @@
       <view class="right_progress">
         <text class="progress_title">各阶段进展</text>
         <view class="sj_cont">
-       <view class="circle">
+          <view class="circle">
             <view></view>
           </view>
           <view>审核期</view>
         </view>
         <image class="qs_xiantiao" src="/assets/image/xiantiao.png" />
         <text class="sy_font">收益期</text>
-        <image class="gray_q" src="/assets/image/gray_q.png" />
+        <view class="gray_q">
+          <image src="/assets/image/gray_q.png" />
+          <text>兑现期</text>
+        </view>
       </view>
     </view>
     <view class="ys_info">
@@ -66,7 +72,10 @@
         </view>
         <image class="qs_xiantiao" src="/assets/image/xiantiao.png" />
         <text class="sy_font">收益期</text>
-        <image class="gray_q" src="/assets/image/gray_q.png" />
+        <view class="gray_q">
+          <image src="/assets/image/gray_q.png" />
+          <text>兑现期</text>
+        </view>
       </view>
     </view>
     <view class="ys_info">
@@ -83,18 +92,22 @@
       <view class="right_progress">
         <text class="progress_title">各阶段进展</text>
         <view class="sj_cont">
-      <view class="circle">
+          <view class="circle">
             <view></view>
           </view>
           <view>审核期</view>
         </view>
         <image class="qs_xiantiao" src="/assets/image/xiantiao.png" />
         <text class="sy_font">收益期</text>
-        <image class="gray_q" src="/assets/image/gray_q.png" />
+        <view class="gray_q">
+          <image src="/assets/image/gray_q.png" />
+          <text>兑现期</text>
+        </view>
       </view>
     </view>
     <view class="more">更多藏品收益...</view>
   </view>
+      <!-- 订单信息 -->
   <view class="order_cont">
     <view class="order_title">
       <text>全部订单</text>
@@ -114,6 +127,7 @@
       </view>
     </view>
   </view>
+  <!-- 基本信息 -->
   <view class="message_manage">
     <view class="message_item">基本信息</view>
     <view class="message_item">地址管理</view>

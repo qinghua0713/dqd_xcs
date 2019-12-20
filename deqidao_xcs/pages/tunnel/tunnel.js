@@ -5,7 +5,7 @@ Page({
       "/assets/image/tunnel_banner.png",
       "/assets/image/tunnel_banner2.png",
       "/assets/image/tunnel_banner.png",
-    ],
+    ],//轮播图数据
     imageUrl2: [
       {
         text: "文明的起源——石器诞生",
@@ -42,33 +42,34 @@ Page({
         src:"/assets/image/bg_black.png",
       },
     ],
-    swiperIndex: 0,
-    erjiMenuIsShow: false,
-    tabIsShow:true
+    swiperIndex: 0,//轮播图的当前下标
+    erjiMenuIsShow: false,//用来判断二级菜单是否显示
+    tabIsShow:true//用来判断显示哪个选项卡的内容
   },
-
+// 轮播图改变触发
   swiperChange(e) {
     const that = this;
     that.setData({
       swiperIndex: e.detail.current,
     })
   },
+  //  点击显示二级菜单
   showMenu() {
     this.setData({
       erjiMenuIsShow: !this.data.erjiMenuIsShow
     })
   },
+  // 点击显示第n个tab的内容
   showArtist(){
        this.setData({
          tabIsShow:false
        })
-       console.log(this.data.tabIsShow,1)
   },
+    // 点击显示第n个tab的内容
   showArt(){
     this.setData({
       tabIsShow: true
     })
-    console.log(this.data.tabIsShow,2)
   },
   onLoad() {
 

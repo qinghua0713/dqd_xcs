@@ -4,25 +4,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-      showCurrent:1,
-      data:0
+      showCurrent:1,//显示**的内容
+      data:0//用来判断tab内容是否有数据
   },
+  //点击显示第一个tab的内容
   showTermly(){
     this.setData({
       showCurrent:0
     })
   },
+  //点击跳转个人中心
   returnMy() {
     wx.switchTab({
       url: '/pages/my/my',
     })
   },
+  //点击显示第二个tab的内容
   showEarnings(){
     this.setData({
       showCurrent:1,
       data:1
     })
   },
+  //点击显示第三个tab的内容
   showCash(){
     this.setData({
       showCurrent:2

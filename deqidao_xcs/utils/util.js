@@ -33,6 +33,7 @@ function DateAddDay(d, days) {
 // 获得本周周日的日期
 function FirstDayInThisWeek(d) {
   var d = new Date(d);
+
   return DateAddDay(d, 0 - d.getDay());
 }
 

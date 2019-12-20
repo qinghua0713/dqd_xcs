@@ -5,42 +5,20 @@
     <block wx:for="{{imageUrl}}" wx:index="{{index}}" wx:key="{{index}}">
       <swiper-item class="swiper-item">
         <image mode="aspectFill" src="{{item}}" class="slide-image {{swiperIndex == index ? 'active' : ''}}" />
+        <view>清朝的另类鉴赏</view>
       </swiper-item>
     </block>
   </swiper>
     <view class="ys_tabBar">
-   <text class="tab_item {{tabIsShow == true?'current_tab':'' }}" bindtap="showArt">艺术事</text>
-   <text class="tab_item {{tabIsShow == false?'current_tab':'' }}" bindtap="showArtist">艺术家</text>
+   <text class="tab_item {{tabIsShow == true?'current current_tab':'' }}" bindtap="showArt">艺术家</text>
+   <text class="tab_item {{tabIsShow == false?'current current_tab':'' }}" bindtap="showArtist">时空隧道
+</text>
   </view>
-  <view class="menu_container " wx:if="{{tabIsShow}}">
+    <view class="menu_container "  wx:if="{{tabIsShow}}" >
         <view class="left_menu">
       <view class="menu_item ">
           <view class="yiji_menu" bindtap="showMenu">
-              <text class="current_tab">石器时代</text>
-          </view>
-          <view class="erji_menu" wx:if="{{erjiMenuIsShow}}">
-              <text >青铜时代</text>
-          </view>
-      </view>
-      <view class="menu_item">
-          <view class="yiji_menu">铁器时代</view>
-              <view class="erji_menu">
-              <text >青铜时代</text>
-          </view> 
-      </view>
-  </view>
-  <view class="right_content"  >
-       <view class="list_item " wx:for="{{imageUrl2}}" wx:index="{{index}}" wx:key="{{index}}" >
-           <text>{{item.text}}</text>
-           <image  src="{{item.src}}" />
-       </view>
-  </view>
-  </view>
-  <view class="menu_container " wx:else>
-        <view class="left_menu">
-      <view class="menu_item ">
-          <view class="yiji_menu" bindtap="showMenu">
-              <text class="current_tab">画家</text>
+              <text class="current current_tab">画家</text>
           </view>
           <view class="erji_menu" wx:if="{{erjiMenuIsShow}}">
               <text >陶瓷</text>
@@ -60,4 +38,29 @@
        </view>
   </view>
   </view>
+  <view class="menu_container "wx:else>
+        <view class="left_menu">
+      <view class="menu_item ">
+          <view class="yiji_menu" bindtap="showMenu">
+              <text class="current current_tab">石器时代</text>
+          </view>
+          <view class="erji_menu" wx:if="{{erjiMenuIsShow}}">
+              <text >青铜时代</text>
+          </view>
+      </view>
+      <view class="menu_item">
+          <view class="yiji_menu">铁器时代</view>
+              <view class="erji_menu">
+              <text >青铜时代</text>
+          </view> 
+      </view>
+  </view>
+  <view class="right_content"  >
+       <view class="list_item " wx:for="{{imageUrl2}}" wx:index="{{index}}" wx:key="{{index}}" >
+           <text>{{item.text}}</text>
+           <image  src="{{item.src}}" />
+       </view>
+  </view>
+  </view>
+
 </view>

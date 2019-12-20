@@ -7,8 +7,8 @@
   <view class="banner"></view>
   <view class="class_list">
     <view class="list_item">
-      <image src="/assets/image/zhi_ping.png" mode="scaleToFill" lazy-load="false"></image>
-      <text>臻 品</text>
+      <image src="/assets/image/artist.png" mode="scaleToFill" lazy-load="false"></image>
+      <text>艺术家</text>
     </view>
     <view class="list_item">
       <image src="/assets/image/zihua.png" mode="scaleToFill" lazy-load="false"></image>
@@ -22,25 +22,11 @@
       <image src="/assets/image/zisha.png" mode="scaleToFill" lazy-load="false"></image>
       <text>紫 砂</text>
     </view>
-    <view class="list_item">
-      <image src="/assets/image/sibao.png" mode="scaleToFill" lazy-load="false"></image>
-      <text>文房四宝</text>
-    </view>
-    <view class="list_item">
-      <image src="/assets/image/xianglu.png" mode="scaleToFill" lazy-load="false"></image>
-      <text>香 炉</text>
-    </view>
-    <view class="list_item">
-      <image src="/assets/image/yuqi.png" mode="scaleToFill" lazy-load="false"></image>
-      <text>玉 石</text>
-    </view>
-    <view class="list_item">
-      <image src="/assets/image/tongxiang.png" mode="scaleToFill" lazy-load="false"></image>
-      <text>铜 像</text>
-    </view>
+
+  
   </view>
   <view class="class_sift">
-    <view class="class_title">类别精选</view>
+    <view class="class_title">艺术家</view>
     <view class="class_item">
       <view class="class_image"></view>
       <view class="class_tj">臻品推荐</view>

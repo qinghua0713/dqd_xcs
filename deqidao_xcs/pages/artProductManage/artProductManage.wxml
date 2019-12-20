@@ -1,12 +1,12 @@
 <view class="artProductManage-page">
     <view class="tab_option">
-        <view class="option_item {{showCurrent == 0 ?'current_tab':'' }}" bindtap="showTermly">
+        <view class="option_item {{showCurrent == 0 ?'current current_tab':'' }}" bindtap="showTermly">
             锁定期
         </view>
-        <view class="option_item {{showCurrent == 1 ?'current_tab':'' }}" bindtap="showEarnings">
+        <view class="option_item {{showCurrent == 1 ?'current current_tab':'' }}" bindtap="showEarnings">
             收益期
         </view>
-        <view class="option_item {{showCurrent == 2 ?'current_tab':'' }}" bindtap="showCash">
+        <view class="option_item {{showCurrent == 2 ?'current current_tab':'' }}" bindtap="showCash">
             兑现期
         </view>
     </view>
@@ -83,4 +83,8 @@
             </view>
         </view>
     </view>
+       <view class="bottom_btn" bindtap="returnMy">
+         <image src="/assets/image/my_small.png" />
+         <text >返回个人中心</text>
+       </view>
 </view>

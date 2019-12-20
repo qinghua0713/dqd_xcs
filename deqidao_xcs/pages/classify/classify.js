@@ -10,20 +10,17 @@ Page({
   },
   swiperChange(e) {
     var that = this;
-    console.log(e)
     that.setData({
       current: e.detail.current,
     })
 
   },
   returnHome() {
-    console.log(1)
     wx.switchTab({
       url: "/pages/index/index",
     })
   },
   onPageScroll(e) {
-    console.log(e.scrollTop)
     if (e.scrollTop > 100) {
       this.setData({
         showTop: false

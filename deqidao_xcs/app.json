@@ -29,15 +29,15 @@
         },
         {
           "pagePath": "pages/tunnel/tunnel",
-          "text": "时空隧道",
-          "iconPath":"assets/image/suidao_gray.png",
-          "selectedIconPath":"assets/image/suidao_red.png"
+          "text": "艺术馆",
+          "iconPath":"assets/image/artGallery.png",
+          "selectedIconPath":"assets/image/artGallery_red.png"
         },
           {
             "pagePath": "pages/art/art",
             "text": "艺术",
-            "iconPath":"assets/image/yishu_gray.png",
-            "selectedIconPath":"assets/image/yishu_red.png"
+            "iconPath":"assets/image/ACS.png",
+            "selectedIconPath":"assets/image/acstz_red.png"
           },
             {
               "pagePath": "pages/my/my",

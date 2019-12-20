@@ -30,11 +30,11 @@
       <view class="ACS_contract">
         <view class="contract_title">ACS合同服务须知:</view>
         <view class="contract_info">
-          <view class="dot"></view>
+          <!-- <view class="dot_black"></view> -->
           <text>文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述</text>
         </view>
         <view class="contract_info">
-          <view class="dot"></view>
+          <!-- <view class="dot_black"></view> -->
           <text>文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述</text>
         </view>
       </view>

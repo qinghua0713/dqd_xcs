@@ -12,6 +12,11 @@ Page({
       showCurrent:0
     })
   },
+  returnMy() {
+    wx.switchTab({
+      url: '/pages/my/my',
+    })
+  },
   showEarnings(){
     this.setData({
       showCurrent:1,

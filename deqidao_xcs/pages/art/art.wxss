@@ -1,97 +1,118 @@
-image{
+image {
   width: 100%;
   height: 100%;
 }
-.tab_title{
+
+.tab_title {
   width: 100%;
   height: 104rpx;
-  background-color: #ffffff;
+  background-color: #fff;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.tab_option{
+
+.tab_option {
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: #686868;
   align-items: center;
 }
-.tab_option image{
+
+.tab_option image {
   padding-bottom: 10rpx;
 }
-.tab_option:nth-child(1) > image{
+
+.tab_option:nth-child(1) > image {
   width: 42rpx;
-	height: 41rpx;
+  height: 41rpx;
 }
-.tab_option:nth-child(2) > image{
+
+.tab_option:nth-child(2) > image {
   width: 42rpx;
-	height: 44rpx;
+  height: 44rpx;
 }
+
 .tab_option text {
   font-size: 23rpx;
   padding-bottom: 6rpx;
 }
-#myVideo{
+
+#myVideo {
   width: 100%;
 }
-.dot{
-	width: 22rpx;
-	height: 11rpx;
-	background-color: #010101;
-  border-radius: 100%;
-  margin:16rpx  14rpx 0 0;
-}
-.ACS_contract{
+
+
+
+.ACS_contract {
   padding: 19rpx 67rpx 100rpx 21rpx;
   box-sizing: border-box;
 }
-.contract_title{
+
+.contract_title {
   font-size: 29rpx;
   letter-spacing: 3rpx;
   color: #050505;
   padding-bottom: 20rpx;
 }
-.contract_info{
-  padding-bottom: 20rpx ;
+
+.contract_info {
+  padding: 0 0  20rpx 15rpx;
   display: flex;
 }
-.contract_info text{
-	font-size: 23rpx;
-	color: #090909;
-  line-height: 1.8;
-}	
-.qy_Artis{
-display: flex;
-flex-direction: column;
-align-items: center;
 
+.contract_info text {
+  font-size: 23rpx;
+  color: #090909;
+  line-height: 1.8;
+  position: relative;
 }
-.img_cont{
- width: 100%;
+
+.contract_info text::before {
+  content: "";
+  position: absolute;
+  left: -21rpx;
+  top: 16rpx;
+  width: 11rpx;
+  height: 11rpx;
+  background-color: #010101;
+  border-radius: 50%;
+}
+
+.qy_Artis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img_cont {
+  width: 100%;
   height: 417rpx;
   background-color: #e51419;
 }
-.lj_classify{
-  font-size: 29rpx;
-	letter-spacing: 3rpx;
-  color: #b4b2b3;
-  padding:17rpx 0  39rpx 0;
-  text-align: center;
 
+.lj_classify {
+  font-size: 29rpx;
+  letter-spacing: 3rpx;
+  color: #b4b2b3;
+  padding: 17rpx 0 39rpx 0;
+  text-align: center;
 }
-.sign_btn{
+
+.sign_btn {
   position: relative;
   width: 208rpx;
-	height: 69rpx;
+  height: 69rpx;
 }
-.sign_btn view{
+
+.sign_btn view {
   width: 100%;
- position: absolute;
- top: 50%;
-transform: translateY(-50%);
- font-size: 35rpx;
- letter-spacing: 4rpx;
- color: #ffffff;
- text-align: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 35rpx;
+  letter-spacing: 4rpx;
+  color: #fff;
+  text-align: center;
 }

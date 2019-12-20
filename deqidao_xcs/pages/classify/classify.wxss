@@ -58,6 +58,4 @@ image{
     color: #29292a;
     padding: 0 6rpx 8rpx 6rpx; 
 }
-.price_cont{
-	
-}
+

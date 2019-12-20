@@ -20,7 +20,6 @@ Page({
   },
   swiperChange(e) {
     var that = this;
-    console.log(e)
       that.setData({
         current: e.detail.current,
       })

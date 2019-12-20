@@ -1,10 +1,19 @@
 <view class="details-page">
     <view class="banner">
+        <swiper indicator-dots="{{false}}" autoplay="{{true}}" 
+        interval="{{5000}}" duration="{{500}}" current circular="{{true}}"
+        bindchange="swiperChange">
+            <block wx:for="{{imageUrl}}" wx:key="{{index}}" >
+                <swiper-item >
+                    <image class="swiper-image" src="{{item}}" />
+                </swiper-item>
+            </block>
+        </swiper>
         <view class="tab_option">
             <view class="image_btn">视 频</view>
             <view class="video_btn">图 片</view>
         </view>
-        <view class="image_num">2 / 5</view>
+        <view class="image_num">{{current+1}} / {{imageUrl.length}}</view>
     </view>
     <view class="zp_container">
         <view class="cp_info">
@@ -15,7 +24,6 @@
             <view class="cp_describe">
                 藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述
             </view>
-            
         </view>
         <view class="buy_of_like">
             <view class="like_btn">
@@ -37,29 +45,24 @@
                 <text class="user_name">用户1234567</text>
             </view>
             <view class="comment  {{isShow ? 'flag' :''}}">
-                点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点
-                评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评
-                内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容
-                  点评内容点评内容点评内容点评内容点评内容点评内容点评内
+                点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点 评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评 内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容 点评内容点评内容点评内容点评内容点评内容点评内容点评内
             </view>
-            <view class="view_arr" bindtap="viewArr" >
+            <view class="view_arr" bindtap="viewArr">
                 <text>查看全部</text>
                 <image class="{{isShow == true ? 'rotate':''}}" src="/assets/image/arrows_bottom.png" />
             </view>
         </view>
         <view class="comment_list">
             <view class="user_info">
-                <image  src="/assets/image/touxiang.png" />
+                <image src="/assets/image/touxiang.png" />
                 <text class="user_name">用户1234567</text>
             </view>
             <view class="comment ">
-                点评内容点评内容点评内容点评内容点评内容点评内容
-                点评内容点评内容点评内容点评内容点评内容点评内容点评
-                内容点评内容点评内容  内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容
+                点评内容点评内容点评内容点评内容点评内容点评内容 点评内容点评内容点评内容点评内容点评内容点评内容点评 内容点评内容点评内容 内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容
             </view>
             <view class="view_arr ">
                 <text>查看全部</text>
-                <image  src="/assets/image/arrows_bottom.png" />
+                <image src="/assets/image/arrows_bottom.png" />
             </view>
         </view>
     </view>

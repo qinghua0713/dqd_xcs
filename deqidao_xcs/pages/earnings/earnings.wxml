@@ -1,26 +1,36 @@
 <view class="earnings-page">
-  <view class="date-choose shrink">
-    <view class="data-month">{{currentDate}}</view>
-    <swiper class="date-choose-swiper" indicator-dots="{{false}}" current="{{swiperCurrent}}" bindchange="dateSwiperChange">
-      <block wx:for="{{dateList}}" wx:for-item="date" wx:key="date.id">
-        <swiper-item class="swiper-item">
-          <view class="weekday">
-            <block wx:for-item="weekday" wx:for="{{dateListArray}}" wx:key="{{index}}">
-              <text class="week " bindtap="clickCurrent" data-id="{{index}}" id="{{dateCurrentStr}}">
-                <text >{{weekday}}</text>
-              </text>
-            </block>
-          </view>
-          <view class="dateday">
-            <block wx:for="{{date.days}}" wx:for-item="day" wx:key="{{day.id}}">
-              <text class="day" id="{{day.id}}" bindtap="chooseDate" data-id="{{index}}">
-                <text class="{{dateCurrentStr==day.id?'active current':''}}">{{day.day}}</text>
-              </text>
-            </block>
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
+  <view class="quarter_container">
+    <view class="quarter_title">2019年第二季度</view>
+    <view class="quarter_info">
+      <view class="quarter_item">
+        <image src="/assets/image/jidu_1.png" />
+        <view class="quarter_money">
+          <text>第一季度：</text>
+          <text>￥9999</text>
+        </view>
+      </view>
+      <view class="quarter_item">
+        <image src="/assets/image/jidu_2_red.png" />
+        <view class="quarter_money">
+          <text>第二季度：</text>
+          <text>￥9999</text>
+        </view>
+      </view>
+      <view class="quarter_item">
+        <image src="/assets/image/jidu_3.png" />
+        <view class="quarter_money">
+          <text>第三季度：</text>
+          <text>￥0</text>
+        </view>
+      </view>
+      <view class="quarter_item">
+        <image src="/assets/image/jidu_4.png" />
+        <view class="quarter_money">
+          <text>第四季度：</text>
+          <text>￥0</text>
+        </view>
+      </view>
+    </view>
   </view>
   <view class="earnings_container">
     <view class="earnings_item">
@@ -51,33 +61,14 @@
         </view>
       </view>
     </view>
-    <view class="earnings_item">
-      <image src="/assets/image/ysp_img.png" />
-      <view class="right_info">
-        <text class="ysp_title">艺术品名称</text>
-        <view class="income">
-          <view class="income_info">
-            <text>创投项目名称</text>
-            <text>创收：￥999</text>
-          </view>
-          <view class="income_info">
-            <text>创投项目名称</text>
-            <text>创收：￥999</text>
-          </view>
-          <view class="income_info">
-            <text>创投项目名称</text>
-            <text>创收：￥999</text>
-          </view>
-          <view class="income_info">
-            <text>创投项目名称</text>
-            <text>创收：￥999</text>
-          </view>
-        </view>
-        <view class="bottom_price">
-          <text>原价值：9999元</text>
-          <text>今日创收：￥999</text>
-        </view>
-      </view>
+    
+  </view>
+  <view class="return_container" hidden="{{showTop}}">
+    <view class="return_home" bindtap="returnHome">
+      <image src="/assets/image/return_home.png" />
+    </view>
+    <view class="return_top" bindtap="goTop">
+      <image src="/assets/image/go_top.png" />
     </view>
   </view>
 </view>

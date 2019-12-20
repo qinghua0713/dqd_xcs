@@ -1,118 +1,143 @@
-Page{
-    box-sizing: border-box;
-  }
-  image{
-    width: 100%;
-    height: 100%;
-    
-  }
-
-    .swiper-item{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    overflow:unset;  
-    }  
-    .slide-image{ 
-height: 280rpx;
-    width: 90%;
- 	border-radius: 14rpx;
-    margin: 0rpx 30rpx; 
-    z-index: 1;
-    
-    }
-    .active{
-    transform: scale(1.18);
-    transition:all .2s ease-in 0s;
-    z-index: 20;  
-    }
-    .swiper-block{ 
-    height: 350rpx; 
-    width: 100%;
-    }
-    
-.ys_tabBar{
-    display: flex;
-    height: 55rpx;
-    justify-content: space-around;
-    border-bottom: 3rpx solid #f6f6f6;
-    align-items: center;
-}
-.tab_item{
-    font-size: 23rpx;
-    color: #686868;
-    padding-bottom: 6rpx;
-
+Page {
+  box-sizing: border-box;
 }
 
-.menu_container{
-    display: flex;
-    transition: all 1s;
+image {
+  width: 100%;
+  height: 100%;
 }
-.left_menu{
-    width: 139rpx;
-    display: flex;
-    flex-direction: column;
-    background: #f6f6f6;
+.swiper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: unset;
 }
-.menu_item{
-    width: 100%;
-    /* height: 69rpx; */
-    font-size: 23rpx;
-    color: #090909;
-    letter-spacing: 3rpx;
-}
-.yiji_menu{
-    height: 69rpx;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.erji_menu{
-    height: 69rpx;
-    width: 100%;
-    background: #ffffff;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 23rpx;
-    color: #080808;
-}
-.block{
-    display:block;
+.swiper-item view{
   
-}
-.right_content{
-    width: calc( 100% - 69rpx);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20rpx 0 92rpx 0 ;
-}
-.list_item{
-    width: 542rpx;
-  
-    position: relative;
-   padding-bottom: 14rpx;
-}
-.list_item text{
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%,-50%,0);
-    font-size: 29rpx;
-	letter-spacing: 3rpx;
-	color: #fefefe;
+  width: 100%;
+	font-size: 35rpx;
+	letter-spacing: 24rpx;
+	color: #ffffff;
+  position: absolute;
+  text-align: center;
+  bottom: 67rpx;
+z-index: 100;
 
 }
-.list_item image{
-    width: 100%;
-    height: 139rpx;
+.slide-image {
+  height: 280rpx;
+  width: 88%;
+  border-radius: 14rpx;
+  margin: 0rpx 30rpx;
+  z-index: 1;
+}
+
+.active {
+  transform: scale(1.18);
+  transition: all 0.2s ease-in 0s;
+  z-index: 20;
+}
+
+.swiper-block {
+  height: 350rpx;
+  width: 100%;
+}
+
+.ys_tabBar {
+  display: flex;
+  height: 55rpx;
+  justify-content: space-around;
+  border-bottom: 3rpx solid #f6f6f6;
+  align-items: center;
+}
+
+.tab_item {
+  position: relative;
+  font-size: 23rpx;
+  color: #686868;
+  padding-bottom: 6rpx;
+}
+
+.menu_container {
+  display: flex;
+  transition: all 1s;
+}
+
+.left_menu {
+  width: 139rpx;
+  display: flex;
+  flex-direction: column;
+  background: #f6f6f6;
+}
+
+.menu_item {
+  width: 100%;
+  /* height: 69rpx; */
+  font-size: 23rpx;
+  color: #090909;
+  letter-spacing: 3rpx;
+}
+
+.yiji_menu {
+  height: 69rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yiji_menu text {
+  position: relative;
+  padding-bottom: 5rpx;
+}
+
+.erji_menu {
+  height: 69rpx;
+  width: 100%;
+  background: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23rpx;
+  color: #080808;
+}
+
+.block {
+  display: block;
+}
+
+.right_content {
+  width: calc(100% - 69rpx);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20rpx 0 92rpx 0;
+}
+
+.list_item {
+  width: 542rpx;
+  position: relative;
+  padding-bottom: 14rpx;
+}
+
+.list_item text {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  font-size: 29rpx;
+  letter-spacing: 3rpx;
+  color: #fefefe;
+}
+
+.list_item image {
+  width: 100%;
+  height: 139rpx;
 }

@@ -10,7 +10,6 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onPageScroll(e) {
-    console.log(e.scrollTop)
     if (e.scrollTop > 100) {
       this.setData({
         showTop: false

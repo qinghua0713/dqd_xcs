@@ -1,40 +1,131 @@
 <view class="earnings-page">
-  <!-- 季度区 -->
   <view class="quarter_container">
-    <view class="quarter_title">2019年第二季度</view>
-    <view class="quarter_info">
-      <view class="quarter_item">
-        <image src="/assets/image/jidu_1.png" />
-        <view class="quarter_money">
-          <text>第一季度：</text>
-          <text>￥9999</text>
+    <view class="artist_info">
+      <image src="/assets/image/cp_img.png" />
+      <view class="right_js">
+        <view class="ysj_js">
+          <text class="right_title">艺术家名字</text>
+          <text>艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述</text>
         </view>
-      </view>
-      <view class="quarter_item">
-        <image src="/assets/image/jidu_2_red.png" />
-        <view class="quarter_money">
-          <text>第二季度：</text>
-          <text>￥9999</text>
-        </view>
-      </view>
-      <view class="quarter_item">
-        <image src="/assets/image/jidu_3.png" />
-        <view class="quarter_money">
-          <text>第三季度：</text>
-          <text>￥0</text>
-        </view>
-      </view>
-      <view class="quarter_item">
-        <image src="/assets/image/jidu_4.png" />
-        <view class="quarter_money">
-          <text>第四季度：</text>
-          <text>￥0</text>
+        <view class="yjz_cont">
+          <text>原价值：￥ 99999</text>
         </view>
       </view>
     </view>
   </view>
-  <!--艺术品区 -->
-  <view class="earnings_container">
+  <view class="jd_container">
+    <view class="jd_title">2019年第二阶段</view>
+    <view class="jd_item">
+      <view class="left_jd right">
+        <image src="/assets/image/jidu_1.png" />
+        <view class="jd_price">
+          <text >第一阶段:</text>
+          <text >￥9999</text>
+        </view>
+      </view>
+      <view class="right_info">
+        <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+      </view>
+    </view>
+        <view class="jd_item">
+      <view class="left_jd right">
+        <image src="/assets/image/jidu_2.png" />
+        <view class="jd_price">
+          <text >第一阶段:</text>
+          <text >￥9999</text>
+        </view>
+      </view>
+      <view class="right_info">
+        <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+      </view>
+    </view>
+        <view class="jd_item">
+      <view class="left_jd right">
+        <image src="/assets/image/jidu_3.png" />
+        <view class="jd_price">
+          <text >第一阶段:</text>
+          <text >￥9999</text>
+        </view>
+      </view>
+      <view class="right_info">
+        <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+      </view>
+    </view>
+        <view class="jd_item">
+      <view class="left_jd right">
+        <image src="/assets/image/jidu_4.png" />
+        <view class="jd_price">
+          <text >第一阶段:</text>
+          <text >￥9999</text>
+        </view>
+      </view>
+      <view class="right_info">
+        <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+         <view class="xm_item">
+          <text >创投项目名称</text>
+          <text >创收：￥ 9999</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 艺术品区 -->
+  <!-- <view class="earnings_container">
     <view class="earnings_item">
       <image src="/assets/image/ysp_img.png" />
       <view class="right_info">
@@ -63,7 +154,7 @@
         </view>
       </view>
     </view>
-  </view>
+  </view> -->
   <!-- 返回盒子 -->
   <view class="return_container" hidden="{{!showTop}}">
     <view class="return_home" bindtap="returnHome">

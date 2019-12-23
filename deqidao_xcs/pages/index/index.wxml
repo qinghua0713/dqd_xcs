@@ -26,18 +26,57 @@
       <text>紫 砂</text>
     </view>
   </view>
-  <!-- 艺术品详情 -->
-  <view class="class_sift">
-    <view class="class_title">艺术家</view>
-    <view class="class_item">
-      <view class="class_image"></view>
-      <view class="class_tj">臻品推荐</view>
-      <view class="class_info">
-        <text class="cp_name">藏品名字</text>
-        <text class="cp_describe">藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述</text>
-        <text class="cp_price">价值：XXXX</text>
+  <view class="video_qy">
+    <view class="pad_50">
+      <view class="video_container ">
+        <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" show-center-play-btn="{{false}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls="{{false}}"></video>
+        <cover-view class="cover_img" wx:if="{{!isPlay}}">
+          <cover-image src="/assets/image/ysp_img.png"></cover-image>
+        </cover-view>
+        <cover-view class="play_btn" bindtap="videoPlay" wx:if="{{!isPlay}}">
+          <cover-image src="/assets/image/play.png"></cover-image>
+        </cover-view>
       </view>
     </view>
+    <view class="video_info_item">
+      <view class="info_item">
+        <view class="jb_content">
+          <text class="title_zw">不断创新，重新激活艺术市场</text>
+          <text class="title_yw">Continue to innovate and reactivate the art market</text>
+        </view>
+        <view class="wz_content">
+            不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场
+        </view>
+      </view>
+    </view>
+    <view class="video_info_item bg_white">
+      <view class="info_item">
+        <view class="jb_content">
+          <text class="title_zw">我们汇聚全球艺术爱好者</text>
+          <text class="title_yw">We gather art lovers around the world</text>
+        </view>
+        <view class="wz_content">
+            XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="swiper_container">
+     <swiper display-multiple-items="{{5}}" current="0" bindchange="swiperChange" 
+        autoplay="{{false}}" interval="{{5000}}" duration="{{500}}"
+        circular="{{true}}">
+        <block wx:for="{{imgurl}}" wx:key="{{index}}">
+          <swiper-item class="slide-item">
+            <view class="swiper-item ">
+              <image src="{{item.src}}" class="slide-image  {{swiperIndex == index ? 'active':''}}" />
+              <text class="art_name">{{item.name}}</text>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+  </view>
+  <!-- 艺术品详情 -->
+  <view class="class_sift">
     <view class="class_item">
       <view class="class_image"></view>
       <view class="class_tj">臻品推荐</view>

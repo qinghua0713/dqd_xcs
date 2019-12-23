@@ -61,23 +61,29 @@
         </view>
     </view> -->
     <view class="art_container">
-        <view class="art_dateils">
+        <!-- <view class="art_dateils">
             <view class="art_title">
                 <view class="heixian_h heixian_q">艺术品详情</view>
             </view>
             <view class="dateils_img">
                 <image src="/assets/image/ysp_img.png" />
             </view>
-        </view>
+        </view> -->
         <view class="artist_container">
-            <view class="art_title">
+            <!-- <view class="art_title">
                 <view class="heixian_h heixian_q">艺术品详情</view>
-            </view>
+            </view> -->
             <view class="artist_info">
                 <image src="/assets/image/cp_img.png" />
                 <view class="right_js">
                     <text class="right_title">艺术家名字</text>
-                    <text>文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
                 </view>
             </view>
         </view>
@@ -87,7 +93,7 @@
                 <view class="works_item">
                     <image src="/assets/image/ysp_img.png" />
                     <view class="bottom_content">
-                        <text class="art_name">艺术品名称</text>
+                        <view class="art_name">艺术品名称</view>
                         <view class="price_info">
                             <text>价值</text>
                             <text>待订购</text>
@@ -97,7 +103,7 @@
                 <view class="works_item">
                     <image src="/assets/image/ysp_img.png" />
                     <view class="bottom_content">
-                        <text class="art_name">艺术品名称</text>
+                        <view class="art_name">艺术品名称</view>
                         <view class="price_info">
                             <text>价值</text>
                             <text>待订购</text>

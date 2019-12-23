@@ -1,0 +1,112 @@
+<view class="returnCash-page">
+  <view class="swiperContainer">
+    <swiper bindchange="swiperChange" autoplay="{{true}}" duration="{{500}}" circular style='height: 625rpx;'>
+      <block wx:for="{{imgUrl}}" wx:key="*this">
+        <swiper-item wx:key="*this">
+          <image src="{{item}}" class="slide-image" class='img' />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{imgUrl}}" wx:key="*">
+        <view class="dot{{index == current ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
+  <view class="cp_container">
+    <view class="cp_info">
+      <text class="cp_title">藏品名称</text>
+      <text class="cp_weight" decode="{{true}}">
+        长&nbsp;20cm&nbsp;&nbsp;&nbsp;宽&nbsp;40cm&nbsp;&nbsp;&nbsp;高60cm
+      </text>
+      <text class="cp_ms">艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述</text>
+    </view>
+    <view class="ht_sq">
+      <text class="sq_title">合同时期</text>
+      <view class="ht_date">
+        <text class="date_q">2019-01-20</text>
+        <text class="h_g">—</text>
+        <text class="date_h">2019-XX-XX</text>
+      </view>
+    </view>
+    <view class="sy_container">
+      <view class="sy_list">
+        <view class="sy_item">
+          <view class="sy_title">
+            <text class="title_sy">创投总收益</text>
+            <view class="title_price">
+              <text>￥</text> 9999
+            </view>
+          </view>
+          <view class="jd_sy_item">
+            <text class="dn_jd">第一季度创投收益</text>
+            <text class="jd_price">￥   9999</text>
+          </view>
+          <view class="jd_sy_item">
+            <text class="dn_jd">第二季度创投收益</text>
+            <text class="jd_price">￥   9999</text>
+          </view>
+          <view class="jd_sy_item">
+            <text class="dn_jd">第三季度创投收益</text>
+            <text class="jd_price">￥   9999</text>
+          </view>
+          <view class="jd_sy_item">
+            <text class="dn_jd">第四季度创投收益</text>
+            <text class="jd_price">￥   9999</text>
+          </view>
+        </view>
+        <view class="sy_item">
+          <view class="sy_title">
+            <text class="title_sy">年化总收益</text>
+            <view class="title_price">
+              <text>￥</text> 9999
+            </view>
+          </view>
+          <view class="jd_sy_item">
+            <text class="dn_jd">第一季度年化收益</text>
+            <text class="jd_price">￥   9999</text>
+          </view>
+          <view class="jd_sy_item">
+            <text class="dn_jd">第二季度年化收益</text>
+            <text class="jd_price">￥   9999</text>
+          </view>
+          <view class="jd_sy_item">
+            <text class="dn_jd">第三季度年化收益</text>
+            <text class="jd_price">￥   9999</text>
+          </view>
+          <view class="jd_sy_item">
+            <text class="dn_jd">第四季度年化收益</text>
+            <text class="jd_price">￥   9999</text>
+          </view>
+        </view>
+      </view>
+      <view class="current_gh_sy">
+        <view class="gh_container">
+          <view class="sy_title">
+            <text class="title_sy">创投总收益</text>
+            <view class="title_price">
+              <text>￥</text> 9999
+            </view>
+          </view>
+          <view class="gh_sy_list">
+            <text class="gh_title">归还须知：</text>
+            <view class="xz_info">
+              <view class="xz_item">
+                1.XXXXXXXXXXXXXX 2.XXXXXXXXXXXXX 3.XXXXXXXXXXXXXXX
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="yy_gh_btn">预约归还</view>
+      <view class="gh_address">
+        <text class="address_title">地址:XXXXXXXXXXXXXXXXXXXXX</text>
+        <view class="map_cont">
+          <map style="width: 100%; height:100%;" latitude="{{latitude}}" longitude="{{longitude}}" />
+        </view>
+        <!-- <view bindtap="getLocation">获取当前位置信息</view> -->
+      </view>
+    </view>
+  </view>
+</view>

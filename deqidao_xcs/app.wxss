@@ -14,10 +14,46 @@
   margin: auto;
   background-color: #e51419;
 }
+.cover_container{
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .5);
+  z-index: 400;
+  /* padding: 67rpx 0; */
+  overflow: scroll;
+}
 
 
+.video_container{
+  width: 100%;
+  height: 417rpx;
+  position: relative;
 
-
+}
+#myVideo {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.cover_img{
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ top: 0rpx;
+ box-sizing: border-box;
+}
+.play_btn{
+  width: 126rpx;
+	height: 126rpx;
+  position: absolute;
+  top:50% ;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 
 Page{
   box-sizing: border-box;

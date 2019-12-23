@@ -1,47 +1,61 @@
-
+Page{
+  background: #f6f6f6;
+}
 .quarter_container{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  background: #fff;
+  padding: 35rpx 0;
+
 }
 .quarter_title{
   font-size: 17rpx;
   color: #686868;
   padding-bottom: 17rpx;
 }
-.quarter_info{
-  width: 100%;
+.artist_info {
   display: flex;
-  justify-content:space-evenly;
-
+  padding: 0 30rpx;
+  position: relative;
 }
-.quarter_item{
-  width: 25%;
+
+.right_js {
+  width: calc(100% - 278rpx);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  padding: 6rpx 0;
 }
 
-.quarter_item image{
-  width: 67rpx;
-  height: 67rpx;
-  padding-bottom: 9rpx;
-}
-.quarter_money text{
-  font-size: 17rpx;
-  color: #a4a4a4;
-}
-.quarter_item:nth-child(1) > .quarter_money text{
-   color: #030303;
- }
-.quarter_item:nth-child(2) > .quarter_money text:nth-child(1){
-  color: #e51419;
- }
-.quarter_item:nth-child(2) > .quarter_money text:nth-child(2){
-  color: #fe8c5a;
+.artist_info image {
+  width: 278rpx;
+  height: 348rpx;
+  margin-right: 10rpx;
+
 }
 
-.earnings_container{
+.artist_info .right_title {
+  font-size: 35rpx;
+  letter-spacing: 1rpx;
+  color: #0b0b0b;
+  font-weight: bold;
+  padding-bottom: 20rpx;
+}
+.ysj_js{
+  display: flex;
+  flex-direction: column;
+}
+.ysj_js>text:not(:first-child) {
+	font-size: 23rpx;
+	color: #070707;
+}
+.yjz_cont{
+  font-size: 29rpx;
+	letter-spacing: 1rpx;
+  color: #070707;
+}
+
+/* .earnings_container{
   padding: 0 35rpx 100rpx 35rpx;  
 }
 .earnings_item{
@@ -87,10 +101,74 @@
   justify-content: space-between;
   font-size: 23rpx;
 	color: #070707;
-}
+} */
 
 .weekday view{
   display: flex;
   flex-direction: column;
   align-items:center;
+}
+.jd_container{
+  display: flex;
+  flex-direction: column;
+  padding: 24rpx 0 100rpx 0;
+}
+.jd_title{
+  height: 68rpx;
+  font-size: 23rpx;
+  color: #686868;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jd_item{
+  display: flex;
+  margin-bottom: 14rpx;
+  background: #fff;
+ padding: 26rpx 35rpx 26rpx 0;
+}
+.left_jd{
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.left_jd image{
+  width: 101rpx;
+  height: 101rpx;
+  margin-bottom: 13rpx;
+}
+.jd_price text:nth-child(1){
+	font-size: 17rpx;
+	color: #030303;
+}
+.jd_price text:nth-child(2){
+	font-size: 29rpx;
+	letter-spacing: 1rpx;
+	color: #e51419;
+}
+.right_info{
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+}
+.xm_item{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20rpx ;
+}
+.xm_item text{
+	font-size: 23rpx;
+	color: #070707;
+}
+.right::after{
+  content: "";
+	width: 3rpx;
+	height: 83rpx;
+  background-color: #000000;
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translate(0,-50%);
 }

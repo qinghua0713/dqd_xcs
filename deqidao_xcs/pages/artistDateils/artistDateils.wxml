@@ -1,0 +1,51 @@
+<view class="artistClassify-page">
+ <view class="art_container">
+        <view class="artist_container">
+            <view class="artist_info">
+                <image src="/assets/image/cp_img.png" />
+                <view class="right_js">
+                    <text class="right_title">艺术家名字</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
+                   <text >艺术家称号</text>
+                </view>
+            </view>
+        </view>
+        <view class="hisWorks_container">
+            <text class="Works_title">他的作品</text>
+            <view class="Works_info">
+                <view class="works_item">
+                    <image src="/assets/image/ysp_img.png" />
+                    <view class="bottom_content">
+                        <view class="art_name">艺术品名称</view>
+                        <view class="price_info">
+                            <text>价值</text>
+                            <text>待订购</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="works_item">
+                    <image src="/assets/image/ysp_img.png" />
+                    <view class="bottom_content">
+                        <view class="art_name">艺术品名称</view>
+                        <view class="price_info">
+                            <text>价值</text>
+                            <text>待订购</text>
+                        </view>
+                    </view>
+                </view>
+                
+            </view>
+        </view>
+        <view class="information">
+            <text class="information_title">他的资讯</text>
+            <view class="information_item"></view>
+            <view class="information_item"></view>
+            <view class="information_item"></view>
+        </view>
+    </view>
+</view>

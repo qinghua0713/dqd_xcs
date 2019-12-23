@@ -7,6 +7,8 @@ Page({
       "/assets/image/cp_banner.png"
     ],//轮播图数据
     current: 0,//轮播图当前项
+    val: ["艺术家", "字 画", "瓷 器","紫 砂"],
+    value:"字画",
   },
   //轮播图改变函数
   swiperChange(e) {
@@ -40,6 +42,38 @@ Page({
       scrollTop: 0,
       duration: 300
     })
+  },
+  //点击显示类别选项
+  optionValue(){
+   this.setData({
+     showValue:true
+   })
+  },
+  //选类别中的值
+  selectCentre(e){
+    console.log(e)
+    var value = e.target.dataset.item
+    this.setData({
+      showValue: false,
+      value: value
+    })
+  },
+  //点击显示筛选盒子
+  showCover(){
+    this.setData({
+      isShowCover:true
+    })
+  },
+  //点击隐藏筛选盒子
+  hiddenCover(){
+    this.setData({
+      isShowCover: false
+    })
+  },
+  //弹窗防止穿透
+  touchHandler(){
+    console.log("想都别想")
+    return 
   },
   onLoad() {
 

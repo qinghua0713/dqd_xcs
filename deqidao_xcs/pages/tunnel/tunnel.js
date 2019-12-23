@@ -1,6 +1,5 @@
 Page({
   data: {
-    current: 0,
     imageUrl: [
       "/assets/image/tunnel_banner.png",
       "/assets/image/tunnel_banner2.png",

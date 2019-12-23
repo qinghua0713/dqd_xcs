@@ -1,0 +1,155 @@
+Page{
+    background: #fff;
+}
+.cp_container{
+    display: flex;
+    flex-direction: column;
+    padding: 19rpx 35rpx 300rpx 35rpx;
+
+}
+.cp_info{
+    display: flex;
+    flex-direction: column;
+}
+.cp_title{
+    font-size: 35rpx;
+	font-weight: bold;
+	letter-spacing: 1rpx;
+    color: #0b0b0b;
+    padding-bottom: 16rpx;
+}
+.cp_weight{
+    font-size: 17rpx;
+    color: #686868;
+    padding-bottom: 14rpx;
+}
+.cp_ms{
+    font-size: 23rpx;
+	color: #0b0b0b;
+}
+.ht_sq{
+    padding: 54rpx 0 54rpx 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sq_title{
+    font-size: 35rpx;
+	font-weight: bold;
+	letter-spacing: 1rpx;
+	color: #0b0b0b;
+}
+.ht_date{
+    display: flex;
+    justify-content: space-between;
+}
+.h_g{
+ margin: 0 28rpx;
+}
+.date_q,.date_h,.h_g{
+	font-size: 23rpx;
+	color: #e51419;
+}
+.sy_container{
+    display: flex;
+    flex-direction: column;
+}
+.sy_list,.gh_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding:0  214rpx 54rpx 0;
+    box-sizing: border-box;
+}
+.sy_item{
+
+    display: flex;
+    flex-direction: column;
+   padding-bottom: 54rpx;
+     
+}
+.sy_title{
+    width: 100%;
+    display: flex;
+     justify-content: space-between;
+     padding-bottom: 18rpx;
+}
+.title_sy{
+    font-size: 35rpx;
+	font-weight: bold;
+	letter-spacing: 1rpx;
+    color: #0b0b0b;
+
+}
+.title_price{
+    font-size: 35rpx;
+	font-weight: bold;
+	letter-spacing: 0rpx;
+    color: #e51419;
+    display: flex;
+
+}
+.title_price text{
+    	font-size: 23rpx;
+}
+.jd_sy_item{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 16rpx;
+}
+.dn_jd{
+	font-size: 23rpx;
+	color: #a4a4a4;
+}
+
+.jd_price{
+    font-size: 23rpx;
+    color: #a4a4a4;
+}
+.current_gh_sy,.gh_sy_list{
+    display: flex;
+    flex-direction: column;
+
+}
+.gh_title{
+    font-size: 35rpx;
+	font-weight: bold;
+	letter-spacing: 1rpx;
+    color: #0b0b0b;
+    padding-bottom: 22rpx;
+}
+.xz_info{
+    width: 225rpx;
+    display: flex;
+  align-items:center;
+  padding-bottom: 48rpx;
+}
+.xz_item{
+    font-size: 23rpx;
+  line-height: 1.5;
+	color: #a4a4a4;
+}
+.yy_gh_btn{
+    margin: 0 auto;
+    width: 208rpx;
+	height: 69rpx;
+	background-color: #e51419;
+    border-radius: 7rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 38rpx;
+    font-size: 35rpx;
+	letter-spacing: 1rpx;
+	color: #ffffff;
+}
+.address_title{
+    font-size: 23rpx;
+	color: #000000;
+}
+.map_cont{
+    width: 100%;
+    height: 417rpx;
+    border-radius: 14rpx;
+    margin-top: 10rpx;
+}

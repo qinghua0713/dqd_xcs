@@ -28,30 +28,51 @@
     <view class="ys_title">
       <text>艺术品收益</text>
     </view>
-    <view class="ys_info">
-      <view class="left_info">
-        <image src="/assets/image/earnings2.png" />
-        <view class="shop_ms">
-          <text class="ysp_name">青花瓷圆口瓶</text>
-          <text class="cp_maoshu">景德镇</text>
-          <text class="price">价值</text>
+    <view class="ysp_container">
+      <view class="ys_item" wx:if="{{!yspIsNo}}">
+        <view class="left_info">
+          <image src="/assets/image/earnings2.png" />
+          <view class="shop_ms">
+            <text class="ysp_name">青花瓷圆口瓶</text>
+            <text class="cp_maoshu">景德镇</text>
+            <text class="price">价值</text>
+          </view>
+        </view>
+        <view class="right_progress">
+          <view class="progress_title">各阶段进展</view>
+          <view class="jd_progress">
+            <view class="jd_item">
+              <view class="circle circleDot gq_dot"></view>
+              <text>锁定期</text>
+            </view>
+            <view class="progress pgs_1 current_pro"></view>
+            <view class="jd_item">
+              <image src="/assets/image/hongqi.png" />
+              <text class="circle circleDot current_dot"></text>
+              <text>收益期</text>
+            </view>
+            <view class="progress pgs_2"></view>
+            <view class="jd_item">
+              <text class="circle circleDot"></text>
+              <text>兑现期</text>
+            </view>
+          </view>
+          <view class="view_dateils">查看详情</view>
         </view>
       </view>
-      <view class="right_progress">
-        <text class="progress_title">各阶段进展</text>
-        <view class="sd_cont">
-          <view class="circle"></view>
-          <text>锁定期</text>
-        </view>
-        <view class="progress"></view>
-        <view class="sd_cont">
-          <text class="circle"></text>
-          <text>收益期</text>
-        </view>
-        <view class="progress"></view>
-        <view class="sd_cont">
-          <text class="circle"></text>
-          <text>兑现期</text>
+      <view class="No-ysp" wx:if="{{yspIsNo}}">
+        <image src="/assets/image/empty.png" />
+        <view class="ts_title">您的宝箱还没有艺术品呢~</view>
+        <text class="biaoyu-text">艺术，也是一种有效的投资手段</text>
+        <view class="lk_btn">
+           <view class="btn_item" bindtap="goToDateils">
+             <text >去发现</text>
+             <text >赶快去艺术档案看看</text>
+           </view>
+           <view class="btn_item" bindtap="scanMa">
+             <text >扫一扫</text>
+             <text >已签约订购，扫码绑定</text>
+           </view>
         </view>
       </view>
     </view>

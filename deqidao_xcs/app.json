@@ -10,45 +10,50 @@
     "pages/artProductManage/artProductManage",
     "pages/earnings/earnings",
     "pages/address/address",
-    "pages/editorAddress/editorAddress"
+    "pages/editorAddress/editorAddress",
+    "pages/artistDateils/artistDateils",
+    "pages/returnCash/returnCash"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "中易德其道",
     "navigationBarTextStyle": "black"
   },
-    "tabBar": {
-      "selectedColor":"#e51419",
-      "list": [
-        
-        {
-          "pagePath": "pages/index/index",
-          "text": "首页",
-          "iconPath":"assets/image/home_gray.png",
-          "selectedIconPath":"./assets/image/home_red.png"
-         
-        },
-        {
-          "pagePath": "pages/tunnel/tunnel",
-          "text": "艺术馆",
-          "iconPath":"assets/image/artGallery.png",
-          "selectedIconPath":"assets/image/artGallery_red.png"
-        },
-          {
-            "pagePath": "pages/art/art",
-            "text": "艺术",
-            "iconPath":"assets/image/ACS.png",
-            "selectedIconPath":"assets/image/acstz_red.png"
-          },
-            {
-              "pagePath": "pages/my/my",
-              "text": "个人中心",
-              "iconPath":"assets/image/my_gray.png",
-              "selectedIconPath":"assets/image/my_red.png"
-            }
-      ]
-    },
+  "tabBar": {
+    "selectedColor": "#e51419",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/image/home_gray.png",
+        "selectedIconPath": "./assets/image/home_red.png"
+      },
+      {
+        "pagePath": "pages/tunnel/tunnel",
+        "text": "艺术馆",
+        "iconPath": "assets/image/artGallery.png",
+        "selectedIconPath": "assets/image/artGallery_red.png"
+      },
+      {
+        "pagePath": "pages/art/art",
+        "text": "艺术",
+        "iconPath": "assets/image/ACS.png",
+        "selectedIconPath": "assets/image/acstz_red.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "个人中心",
+        "iconPath": "assets/image/my_gray.png",
+        "selectedIconPath": "assets/image/my_red.png"
+      }
+    ]
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

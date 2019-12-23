@@ -2,8 +2,8 @@
     <!-- 轮播图 -->
     <view class="swiperContainer">
         <swiper bindchange="swiperChange" autoplay="{{true}}" duration="{{500}}" circular style='height: 347rpx;'>
-            <block wx:for="{{imgUrl}}" wx:key="*this">
-                <swiper-item wx:key="*this">
+            <block wx:for="{{imgUrl}}" wx:key="{{index}}">
+                <swiper-item wx:key="{{index}}">
                     <image src="{{item}}" class="slide-image" class='img' />
                 </swiper-item>
             </block>
@@ -16,7 +16,25 @@
     </view>
     <!-- 臻品推荐列表 -->
     <view class="zp_tuijian">
-        <view class="zp_title">臻品推荐</view>
+        <view class="zp_title">
+            <view class="xl_container">
+                <view class="xl_info" bindtap="optionValue">
+                    <text class="value_item">{{value}}</text>
+                    <image src="/assets/image/d_sanjiao.png" />
+                </view>
+                <view class="xl_option" wx:if="{{showValue}}">
+                    <block wx:for="{{val}}" wx:key="{{index}}">
+                        <view class="options_item" bindtap="selectCentre" data-item="{{item}}">
+                            {{item}}
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <view class="filtrate_btn" bind:tap="showCover">
+                <text>筛选</text>
+                <image class="filtrate_img" src="/assets/image/filtrate.png" />
+            </view>
+        </view>
         <view class="zp_list">
             <view class="tj_item">
                 <image src="/assets/image/yishuti_1.png" />
@@ -88,5 +106,44 @@
         <view class="return_top" bindtap="goTop">
             <image src="/assets/image/go_top.png" />
         </view>
+    </view>
+</view>
+<!-- 筛选遮罩以及内容 -->
+<view catchtap="hiddenCover"  class="cover_container"
+ wx:if="{{isShowCover}}" catchtouchmove="touchHandler">
+    <view class="filtrate_container" >
+           <text class="filtrate_title">艺术家</text>
+       <view class="filtrate_list">
+         <view class="item_option">
+             <view class="item_info"></view>
+         </view>
+         <view class="item_option">
+             <view class="item_info"></view>
+         </view>
+         <view class="item_option">
+             <view class="item_info"></view>
+         </view>
+         <view class="item_option">
+             <view class="item_info"></view>
+         </view>
+         <view class="item_option">
+             <view class="item_info"></view>
+         </view>
+         <view class="item_option">
+             <view class="item_info"></view>
+         </view>
+       </view>
+       <view class="price_section">
+           <text class="section_title">价格区间</text>
+           <view class="max_min">
+              <input class="z_d_j" placeholder="最低价"/>
+              <view class="henggang"></view>
+              <input class="z_g_j" placeholder="最高价"/>
+           </view>
+           <view class="cg_dd">
+               <view class="d_g">从低到高</view>
+               <view class="g_d">从高到低</view>
+           </view>
+       </view>
     </view>
 </view>

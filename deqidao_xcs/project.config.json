@@ -142,6 +142,27 @@
 					"id": -1,
 					"name": "pages/editorAddress/editorAddress",
 					"pathName": "pages/editorAddress/editorAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/artistClassify/artistClassify",
+					"pathName": "pages/artistClassify/artistClassify",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/returnCash/returnCash",
+					"pathName": "pages/returnCash/returnCash",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/artistDateils/artistDateils",
+					"pathName": "pages/artistDateils/artistDateils",
 					"scene": null
 				}
 			]

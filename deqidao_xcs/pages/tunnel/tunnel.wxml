@@ -10,12 +10,12 @@
     </swiper>
     <!-- tab选项 -->
     <view class="ys_tabBar">
-        <text class="tab_item {{tabIsShow == true?'current current_tab':'' }}" bindtap="showArt">
+        <view class="tab_item {{tabIsShow == true?'current current_tab':'' }}" bindtap="showArt">
             艺术家
-        </text>
-        <text class="tab_item {{tabIsShow == false?'current current_tab':'' }}" bindtap="showArtist">
+        </view>
+        <view class="tab_item {{tabIsShow == false?'current current_tab':'' }}" bindtap="showArtist">
             时空隧道
-        </text>
+        </view>
     </view>
     <!-- tab菜单选项 -->
     <view class="menu_container " wx:if="{{tabIsShow}}">

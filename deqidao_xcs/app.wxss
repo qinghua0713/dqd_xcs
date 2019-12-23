@@ -14,8 +14,14 @@
   margin: auto;
   background-color: #e51419;
 }
+
+
+
+
+
 Page{
   box-sizing: border-box;
+
 }
 .swiperContainer {
   position: relative;

@@ -8,7 +8,9 @@
     "pages/classify/classify",
     "pages/binding/binding",
     "pages/artProductManage/artProductManage",
-    "pages/earnings/earnings"
+    "pages/earnings/earnings",
+    "pages/address/address",
+    "pages/editorAddress/editorAddress"
   ],
   "window": {
     "backgroundTextStyle": "light",

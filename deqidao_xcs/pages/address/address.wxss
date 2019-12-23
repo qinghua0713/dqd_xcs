@@ -1,0 +1,42 @@
+.address_container{
+    display: flex;
+    flex-direction: column;
+  }
+  .address_item{
+    display: flex;
+    align-items: center;
+      padding: 0  35rpx 68rpx;
+  }
+  .address_info{
+    display: flex;
+    flex-direction: column;
+  }
+  .user_tx{
+    width: 63rpx;
+    height: 63rpx;
+    margin-right: 15rpx;
+  }
+  .user_name{
+      font-size: 29rpx;
+      letter-spacing: 1rpx;
+    color: #020202;
+    padding-bottom: 6rpx;
+    font-family: "REGULAR";
+  }
+  .user_sh_address{
+    width: 499rpx;
+      font-size: 29rpx;
+      letter-spacing: 1rpx;
+    color: #29292a;
+    margin-right: 33rpx;
+    
+  }
+  .redact{
+    height: 42rpx;
+    border-left: 1rpx solid #000;
+    padding-left: 12rpx;
+    font-size: 29rpx;
+      letter-spacing: 1rpx;
+      color: #a4a4a4;
+  }
+  

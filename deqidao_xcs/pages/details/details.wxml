@@ -1,11 +1,9 @@
-<view class="details-page">
+<view class="details-page " wx:if="{{!showAddress}}" >
     <!-- 轮播图 -->
     <view class="banner">
-        <swiper indicator-dots="{{false}}" autoplay="{{true}}" 
-        interval="{{5000}}" duration="{{500}}" current circular="{{true}}"
-        bindchange="swiperChange">
-            <block wx:for="{{imageUrl}}" wx:key="{{index}}" >
-                <swiper-item >
+        <swiper indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" current circular="{{true}}" bindchange="swiperChange">
+            <block wx:for="{{imageUrl}}" wx:key="{{index}}">
+                <swiper-item>
                     <image class="swiper-image" src="{{item}}" />
                 </swiper-item>
             </block>
@@ -27,20 +25,13 @@
                 藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述
             </view>
         </view>
-        <view class="buy_of_like">
-            <view class="like_btn">
-                <image src="/assets/image/collect.png" />
-                <text>962人收藏</text>
-            </view>
-            <view class="buy_btn">立即订购</view>
-        </view>
         <view class="share_btn">
             <image src="/assets/image/share.png" />
             <text>分享</text>
         </view>
     </view>
     <!-- 评论区 -->
-    <view class="art_remark">
+    <!-- <view class="art_remark">
         <text class="remark_title">艺术品点评（1234）</text>
         <view class="comment_list">
             <view class="user_info">
@@ -67,6 +58,108 @@
                 <text>查看全部</text>
                 <image src="/assets/image/arrows_bottom.png" />
             </view>
+        </view>
+    </view> -->
+    <view class="art_container">
+        <view class="art_dateils">
+            <view class="art_title">
+                <view class="heixian_h heixian_q">艺术品详情</view>
+            </view>
+            <view class="dateils_img">
+                <image src="/assets/image/ysp_img.png" />
+            </view>
+        </view>
+        <view class="artist_container">
+            <view class="art_title">
+                <view class="heixian_h heixian_q">艺术品详情</view>
+            </view>
+            <view class="artist_info">
+                <image src="/assets/image/cp_img.png" />
+                <view class="right_js">
+                    <text class="right_title">艺术家名字</text>
+                    <text>文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑文字编辑</text>
+                </view>
+            </view>
+        </view>
+        <view class="hisWorks_container">
+            <text class="Works_title">他的作品</text>
+            <view class="Works_info">
+                <view class="works_item">
+                    <image src="/assets/image/ysp_img.png" />
+                    <view class="bottom_content">
+                        <text class="art_name">艺术品名称</text>
+                        <view class="price_info">
+                            <text>价值</text>
+                            <text>待订购</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="works_item">
+                    <image src="/assets/image/ysp_img.png" />
+                    <view class="bottom_content">
+                        <text class="art_name">艺术品名称</text>
+                        <view class="price_info">
+                            <text>价值</text>
+                            <text>待订购</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="information">
+            <text class="information_title">他的资讯</text>
+            <view class="information_item"></view>
+            <view class="information_item"></view>
+            <view class="information_item"></view>
+        </view>
+    </view>
+    <view class="buy_of_like">
+        <view class="like_btn">
+            <image src="/assets/image/collect.png" />
+            <text>962人收藏</text>
+        </view>
+        <view class="buy_btn"  bindtap="promptlyOrder">立即订购</view>
+    </view>
+    <view class="cover_container"    wx:if="{{order}}">
+        <view class="pay_container">
+            <view class="shop_info">
+                <view class="shop_content">
+                    <image src="/assets/image/cp_img.png" />
+                    <view class="right_shop_js">
+                        <text class="shop_title">艺术品名称</text>
+                        <text>艺术品基本信息艺术品基本信息艺术品基本   信息艺术品基本信息艺术品基本信息</text>
+                    </view>
+                </view>
+                <view class="shop_price">
+                    <text>签约价</text>
+                    <text>￥9999</text>
+                </view>
+            </view>
+            <image bindtap="closeShop" class="gb_btn" src="/assets/image/chacha.png" />
+            <view class="cq_fs">
+                <text class="cq_title">存取方式</text>
+                <view class="fs_cont">
+                    <text class="fs_item current_fs">自 提</text>
+                    <text class="fs_item" bindtap="addAddress">寄 存</text>
+                    <text class="fs_item">寄 卖</text>
+                </view>
+                <view class="xy_ts">
+                    <image src="/assets/image/gantanhao.png" />
+                    <text>请仔细阅读协议</text>
+                </view>
+                <view class="my_yyd">
+                    <checkbox class="checkbox"  />
+                    <text>我已经详细阅读并同意</text>
+                    <text class="xy_link xy_bor">XXXXXX协议</text>
+                </view>
+            </view>
+            <view class="pay_fs">
+                <text class="pay_fs_title">付款方式</text>
+                <text class="pay_fs_cont">
+                    <text class="pay_fs_item">微 信</text>
+                </text>
+            </view>
+            <view class="qr_pay_btn">确认付款</view>
         </view>
     </view>
 </view>

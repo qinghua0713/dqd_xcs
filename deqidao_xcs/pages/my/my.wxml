@@ -30,31 +30,6 @@
     </view>
     <view class="ys_info">
       <view class="left_info">
-        <image src="/assets/image/earnings.png" />
-        <view class="shop_ms">
-          <text class="ysp_name">艺术品名称</text>
-          <text class="cp_maoshu">藏品简述</text>
-          <text class="price">价值</text>
-        </view>
-      </view>
-      <view class="right_progress">
-        <text class="progress_title">各阶段进展</text>
-        <view class="sj_cont">
-          <view class="circle">
-            <view></view>
-          </view>
-          <view>审核期</view>
-        </view>
-        <image class="qs_xiantiao" src="/assets/image/xiantiao.png" />
-        <text class="sy_font">收益期</text>
-        <view class="gray_q">
-          <image src="/assets/image/gray_q.png" />
-          <text>兑现期</text>
-        </view>
-      </view>
-    </view>
-    <view class="ys_info">
-      <view class="left_info">
         <image src="/assets/image/earnings2.png" />
         <view class="shop_ms">
           <text class="ysp_name">青花瓷圆口瓶</text>
@@ -64,50 +39,25 @@
       </view>
       <view class="right_progress">
         <text class="progress_title">各阶段进展</text>
-        <view class="sj_cont">
-          <view class="circle">
-            <view></view>
-          </view>
-          <view>审核期</view>
+        <view class="sd_cont">
+          <view class="circle"></view>
+          <text>锁定期</text>
         </view>
-        <image class="qs_xiantiao" src="/assets/image/xiantiao.png" />
-        <text class="sy_font">收益期</text>
-        <view class="gray_q">
-          <image src="/assets/image/gray_q.png" />
-          <text>兑现期</text>
+        <view class="progress"></view>
+        <view class="sd_cont">
+          <text class="circle"></text>
+          <text>收益期</text>
         </view>
-      </view>
-    </view>
-    <view class="ys_info">
-      <view class="left_info">
-        <image src="/assets/image/earnings3.png" />
-        <view class="shop_ms">
-          <text class="ysp_name">彩铅画——《凝》</text>
-          <text class="cp_maoshu">现代优秀插画师作品
-彩铅绘画而成
-23X23cm</text>
-          <text class="price">价值</text>
-        </view>
-      </view>
-      <view class="right_progress">
-        <text class="progress_title">各阶段进展</text>
-        <view class="sj_cont">
-          <view class="circle">
-            <view></view>
-          </view>
-          <view>审核期</view>
-        </view>
-        <image class="qs_xiantiao" src="/assets/image/xiantiao.png" />
-        <text class="sy_font">收益期</text>
-        <view class="gray_q">
-          <image src="/assets/image/gray_q.png" />
+        <view class="progress"></view>
+        <view class="sd_cont">
+          <text class="circle"></text>
           <text>兑现期</text>
         </view>
       </view>
     </view>
     <view class="more">更多藏品收益...</view>
   </view>
-      <!-- 订单信息 -->
+  <!-- 订单信息 -->
   <view class="order_cont">
     <view class="order_title">
       <text>全部订单</text>

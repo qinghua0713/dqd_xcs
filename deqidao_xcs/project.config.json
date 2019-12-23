@@ -135,6 +135,13 @@
 					"id": -1,
 					"name": "pages/earnings/earnings",
 					"pathName": "pages/earnings/earnings",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/editorAddress/editorAddress",
+					"pathName": "pages/editorAddress/editorAddress",
 					"scene": null
 				}
 			]

@@ -47,7 +47,7 @@ Page{
     margin-bottom: 11rpx;
 }
 .balance_info{
-    padding-top: 13rpx;
+    padding-top: 16rpx;
 }
 .list_item:nth-child(2) > text:nth-child(3){
 	font-size: 17rpx;
@@ -116,97 +116,24 @@ Page{
     box-sizing: border-box;
     position: relative;
 }
-.right_progress{
-    width: 50%;
-    display: flex;
-    padding-left: 8rpx;
-    position: relative;
-}
-
-.ysp_name{
-    font-size: 17rpx;
-    color: #29292a;
-    padding-bottom: 9rpx;
-}
-.cp_maoshu{
-    font-size: 17rpx;
-	font-weight: normal;
-    color: #a4a4a4;
-    line-height: 1.7;
-}
-.price{
-    font-size: 17rpx;
-    color: #29292a;
-    position: absolute;
-    bottom: 0;
-}
-.qushi{
-    display: inline-block;
-    position: relative;
-}
-.progress_title{
-    font-size: 17rpx;
-    color: #29292a;
-
-}
-
-.sj_cont{
-display: flex;
-flex-direction: column;
-align-items: center;
- top:68rpx;
- left:108rpx;
-position: absolute;
-font-size: 12rpx;
-color: #090909; 
-}
 .circle{
-  	width: 14rpx;
-	height: 14rpx;
-	border: solid 1rpx #000000;
-  border-radius: 50%;
-  display: flex;
-align-items: center;
-justify-content: center;
-margin-bottom: 6rpx;
+    position: relative;
 }
-.circle view{
-  	width: 7rpx;
+.circleDot::before{
+    content: "";
+    width: 7rpx;
 	height: 7rpx;
-	background-color: #000000;
+    background-color: #a4a4a4;
     border-radius: 50%;
-}
-.qs_xiantiao{
-	width: 145rpx;
-    height: 42rpx;
-    right :50rpx;
-    top:32rpx;
     position: absolute;
-}
-.gray_q{
+    top: 0rpx;
+    left: 0rpx;
 
-    position: absolute;
-    right: 10rpx;
-    display: flex;
-    flex-direction: column;
-    top:-3rpx;
 }
-.gray_q image{
-    width: 23rpx;
-    height: 34rpx;
-    margin-left: 4rpx;
-}
-.gray_q text{
- /* margin-top: 5rpx; */
- font-size: 12rpx;
- color: #a4a4a4;
-}
-.sy_font{
-    position: absolute;
-    right: 100rpx;
-    top: 58rpx;
-    font-size: 12rpx;
-	color: #e51419;
+.progress{
+    width: 130rpx;
+    height: 4rpx;
+    background: #a4a4a4;
 }
 .more{
     text-align: center;

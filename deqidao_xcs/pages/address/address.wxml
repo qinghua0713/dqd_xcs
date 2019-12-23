@@ -1,0 +1,13 @@
+<view class="address_container">
+     <view class="address_item" wx:if="{{!showRedactAddress}}">
+         <image class="user_tx" src="/assets/image/touxiang.png" />
+         <view class="address_info">
+             <text class="user_name">姓名</text>
+             <view class="user_sh_address">
+                 地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址
+             </view>
+         </view>
+         <view class="redact" bindtap="redactAddress">编辑</view>
+     </view>
+     
+</view>

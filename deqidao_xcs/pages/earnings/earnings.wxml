@@ -44,7 +44,7 @@
     </view>
         <view class="jd_item">
       <view class="left_jd right">
-        <image src="/assets/image/jidu_2.png" />
+        <image src="/assets/image/jidu_2_red.png" />
         <view class="jd_price">
           <text >第一阶段:</text>
           <text >￥9999</text>
@@ -124,44 +124,14 @@
       </view>
     </view>
   </view>
-  <!-- 艺术品区 -->
-  <!-- <view class="earnings_container">
-    <view class="earnings_item">
-      <image src="/assets/image/ysp_img.png" />
-      <view class="right_info">
-        <text class="ysp_title">艺术品名称</text>
-        <view class="income">
-          <view class="income_info">
-            <text>创投项目名称</text>
-            <text>创收：￥999</text>
-          </view>
-          <view class="income_info">
-            <text>创投项目名称</text>
-            <text>创收：￥999</text>
-          </view>
-          <view class="income_info">
-            <text>创投项目名称</text>
-            <text>创收：￥999</text>
-          </view>
-          <view class="income_info">
-            <text>创投项目名称</text>
-            <text>创收：￥999</text>
-          </view>
-        </view>
-        <view class="bottom_price">
-          <text>原价值：9999元</text>
-          <text>今日创收：￥999</text>
-        </view>
-      </view>
-    </view>
-  </view> -->
+
   <!-- 返回盒子 -->
-  <view class="return_container" hidden="{{!showTop}}">
+  <!-- <view class="return_container" hidden="{{!showTop}}">
     <view class="return_home" bindtap="returnHome">
       <image src="/assets/image/return_home.png" />
     </view>
     <view class="return_top" bindtap="goTop">
       <image src="/assets/image/go_top.png" />
     </view>
-  </view>
+  </view> -->
 </view>

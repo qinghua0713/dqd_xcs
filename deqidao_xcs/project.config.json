@@ -22,7 +22,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.4",
-	"appid": "wx44817b0d07b41845",
+	"appid": "wx5311e9fe3c14fc2d",
 	"projectname": "deqidao_xcs",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -147,13 +147,6 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/artistClassify/artistClassify",
-					"pathName": "pages/artistClassify/artistClassify",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/returnCash/returnCash",
 					"pathName": "pages/returnCash/returnCash",
 					"query": "",
@@ -163,6 +156,7 @@
 					"id": -1,
 					"name": "pages/artistDateils/artistDateils",
 					"pathName": "pages/artistDateils/artistDateils",
+					"query": "",
 					"scene": null
 				}
 			]

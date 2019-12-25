@@ -9,6 +9,7 @@ Page({
     hasUserInfo: false,
     isPlay: false,//用来判断是否显示播放按钮
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    swiperIndex: 2,//swiper当前下标
     imgurl: [
       {
         src: "/assets/image/ysp_img.png",
@@ -58,6 +59,16 @@ Page({
       })
     }
   },
+  //点击跳转详情
+  goToDateils(){
+    wx.navigateTo({
+      url: `/pages/classify/classify?value=艺术家&index=0`,
+    })
+  },
+  //点击跳转tunnel页面
+  goToTunnel(){
+   wx.switchTab({ url: '/pages/tunnel/tunnel' });
+  },
   // 点击回到顶部
   goTop() {
     wx.pageScrollTo({
@@ -67,10 +78,16 @@ Page({
   },
   // 轮播图改变触发
   swiperChange(e) {
-    console.log(e.detail.current)
     const that = this;
+    var current = e.detail.current + 2
+    if (e.detail.current == this.data.imgurl.length - 1) {
+      current = 1
+    }
+    if (current > this.data.imgurl.length - 1) {
+      current = 0
+    }
     that.setData({
-      swiperIndex: e.detail.current,
+      swiperIndex: current,
     })
   },
   onLoad: function () {

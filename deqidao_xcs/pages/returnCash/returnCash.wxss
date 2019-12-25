@@ -61,8 +61,14 @@ Page{
     padding:0  214rpx 54rpx 0;
     box-sizing: border-box;
 }
+.gh_xuzhi_box{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding:0  0rpx 54rpx 0;
+    box-sizing: border-box;
+}
 .sy_item{
-
     display: flex;
     flex-direction: column;
    padding-bottom: 54rpx;
@@ -73,6 +79,53 @@ Page{
     display: flex;
      justify-content: space-between;
      padding-bottom: 18rpx;
+}
+.gh_zsy{
+    width: 100%;
+    display: flex;
+     justify-content: space-between;
+     padding: 0 42rpx 18rpx 0;
+     position: relative;
+     box-sizing: border-box;
+}
+
+.gh_ts_btn image{
+    width: 35rpx;
+    height: 35rpx;
+    position: relative;
+}
+.sanjiao::after{
+    content: '';
+    height: 0;
+    width: 0;
+    border: 20rpx solid;
+    border-color: transparent transparent #e2e2e2;
+    position: absolute;
+    top: -38rpx;
+    right:40rpx;
+}
+.ts_container{
+    position: absolute;
+    top: 56rpx;
+    right: 0rpx;
+}
+.gh_ts_content{
+position: relative;
+    background-color: #e2e2e2;
+    padding: 20rpx;
+    font-size: 23rpx;
+    color: #686868;
+    border-radius: 14rpx;
+    display: flex;
+    flex-direction: column;
+ 
+
+}
+.gh_ts_content text:nth-child(1){
+  margin-bottom: 15rpx;
+}
+.gh_ts_content text:nth-child(2){
+    line-height: 1.5;
 }
 .title_sy{
     font-size: 35rpx;
@@ -122,12 +175,21 @@ Page{
     width: 225rpx;
     display: flex;
   align-items:center;
-  padding-bottom: 48rpx;
 }
 .xz_item{
     font-size: 23rpx;
   line-height: 1.5;
 	color: #a4a4a4;
+}
+.gh_time{
+    display: flex;
+    justify-content: space-between;
+    font-size: 35rpx;
+	font-weight: bold;
+	letter-spacing: 1rpx;
+    color: #000000;
+    align-items: center;
+    padding-bottom: 48rpx;
 }
 .yy_gh_btn{
     margin: 0 auto;

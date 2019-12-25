@@ -8,7 +8,7 @@
       </block>
     </swiper>
     <view class="dots">
-      <block wx:for="{{imgUrl}}" wx:key="*">
+      <block wx:for="{{imgUrl}}" wx:key="{{index}}">
         <view class="dot{{index == current ? ' active' : ''}}"></view>
       </block>
     </view>
@@ -81,29 +81,41 @@
         </view>
       </view>
       <view class="current_gh_sy">
-        <view class="gh_container">
-          <view class="sy_title">
+        <view class="gh_xuzhi_box">
+          <view class=" gh_zsy">
             <text class="title_sy">创投总收益</text>
             <view class="title_price">
               <text>￥</text> 9999
             </view>
-          </view>
-          <view class="gh_sy_list">
-            <text class="gh_title">归还须知：</text>
-            <view class="xz_info">
-              <view class="xz_item">
-                1.XXXXXXXXXXXXXX 2.XXXXXXXXXXXXX 3.XXXXXXXXXXXXXXX
+            <view class="gh_ts_btn " bindtap="showReturn">
+              <image src="/assets/image/gantanhao.png" />
+            </view>
+            <view class="ts_container" wx:if="{{isTsShow}}">
+              <view class="gh_ts_content sanjiao">
+                <text>计算公式：</text>
+                <text>满十二个月：艺术品交易价格+创投总收益+年化收益
+未满十二个月：艺术品交易价格+创投总收益</text>
               </view>
             </view>
           </view>
+          <view class="gh_sy_list ">
+            <text class="gh_title">归还须知：</text>
+            <view class="xz_info">
+              <view class="xz_item">1.XXXXXXXXXXXXXX 2.XXXXXXXXXXXXX 3.XXXXXXXXXXXXXXX</view>
+            </view>
+          </view>
+        </view>
+        <view class="gh_time">
+          <text>归还时间：</text>
+          <text decode="{{true}}">2019年  3  月  20  日</text>
         </view>
       </view>
-
       <view class="yy_gh_btn">预约归还</view>
       <view class="gh_address">
-        <text class="address_title">地址:XXXXXXXXXXXXXXXXXXXXX</text>
+        <text class="address_title">地址:{{address}}</text>
         <view class="map_cont">
-          <map style="width: 100%; height:100%;" latitude="{{latitude}}" longitude="{{longitude}}" />
+          <map id="myMap" markers="{{markers}}" style="width:100%;height:300px;" longitude="{{lng}}" latitude="{{lat}}" scale='16' show-location>
+          </map>
         </view>
         <!-- <view bindtap="getLocation">获取当前位置信息</view> -->
       </view>

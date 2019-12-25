@@ -9,7 +9,7 @@
             </block>
         </swiper>
         <view class="dots">
-            <block wx:for="{{imgUrl}}" wx:key="*">
+            <block wx:for="{{imgUrl}}" wx:key="{{index}}">
                 <view class="dot{{index == current ? ' active' : ''}}"></view>
             </block>
         </view>
@@ -19,12 +19,17 @@
         <view class="zp_title">
             <view class="xl_container">
                 <view class="xl_info" bindtap="optionValue">
-                    <text class="value_item">{{value}}</text>
-                    <image src="/assets/image/d_sanjiao.png" />
+                    <view class="value_item">
+                        <text>{{value}}</text>
+                    </view>
+                    <view class="xl_img_btn">
+                        <image src="/assets/image/d_sanjiao.png" />
+                    </view>
                 </view>
                 <view class="xl_option" wx:if="{{showValue}}">
                     <block wx:for="{{val}}" wx:key="{{index}}">
-                        <view class="options_item" bindtap="selectCentre" data-item="{{item}}">
+                        <view class="options_item" data-index="{{index}}" bindtap="selectCentre" 
+                        data-item="{{item}}" wx:if="{{valIndex != index }}">
                             {{item}}
                         </view>
                     </block>
@@ -109,41 +114,40 @@
     </view>
 </view>
 <!-- 筛选遮罩以及内容 -->
-<view catchtap="hiddenCover"  class="cover_container"
- wx:if="{{isShowCover}}" catchtouchmove="touchHandler">
-    <view class="filtrate_container" >
-           <text class="filtrate_title">艺术家</text>
-       <view class="filtrate_list">
-         <view class="item_option">
-             <view class="item_info"></view>
-         </view>
-         <view class="item_option">
-             <view class="item_info"></view>
-         </view>
-         <view class="item_option">
-             <view class="item_info"></view>
-         </view>
-         <view class="item_option">
-             <view class="item_info"></view>
-         </view>
-         <view class="item_option">
-             <view class="item_info"></view>
-         </view>
-         <view class="item_option">
-             <view class="item_info"></view>
-         </view>
-       </view>
-       <view class="price_section">
-           <text class="section_title">价格区间</text>
-           <view class="max_min">
-              <input class="z_d_j" placeholder="最低价"/>
-              <view class="henggang"></view>
-              <input class="z_g_j" placeholder="最高价"/>
-           </view>
-           <view class="cg_dd">
-               <view class="d_g">从低到高</view>
-               <view class="g_d">从高到低</view>
-           </view>
-       </view>
+<view catchtap="hiddenCover" class="cover_container" wx:if="{{isShowCover}}" catchtouchmove="touchHandler">
+    <view class="filtrate_container">
+        <text class="filtrate_title">艺术家</text>
+        <view class="filtrate_list">
+            <view class="item_option">
+                <view class="item_info"></view>
+            </view>
+            <view class="item_option">
+                <view class="item_info"></view>
+            </view>
+            <view class="item_option">
+                <view class="item_info"></view>
+            </view>
+            <view class="item_option">
+                <view class="item_info"></view>
+            </view>
+            <view class="item_option">
+                <view class="item_info"></view>
+            </view>
+            <view class="item_option">
+                <view class="item_info"></view>
+            </view>
+        </view>
+        <view class="price_section">
+            <text class="section_title">价格区间</text>
+            <view class="max_min">
+                <input class="z_d_j" placeholder="最低价" />
+                <view class="henggang"></view>
+                <input class="z_g_j" placeholder="最高价" />
+            </view>
+            <view class="cg_dd">
+                <view class="d_g">从低到高</view>
+                <view class="g_d">从高到低</view>
+            </view>
+        </view>
     </view>
 </view>

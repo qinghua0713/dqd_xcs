@@ -8,7 +8,6 @@ Page({
     ],//轮播图数据
     current: 0,//轮播图当前项
     val: ["艺术家", "字 画", "瓷 器","紫 砂"],
-    value:"字画",
   },
   //轮播图改变函数
   swiperChange(e) {
@@ -46,16 +45,17 @@ Page({
   //点击显示类别选项
   optionValue(){
    this.setData({
-     showValue:true
+     showValue:!this.data.showValue
    })
   },
   //选类别中的值
   selectCentre(e){
-    console.log(e)
+    var index = e.target.dataset.index
     var value = e.target.dataset.item
     this.setData({
       showValue: false,
-      value: value
+      value: value,
+      valIndex:index
     })
   },
   //点击显示筛选盒子
@@ -75,8 +75,14 @@ Page({
     console.log("想都别想")
     return 
   },
-  onLoad() {
-
+  onLoad(e) {
+ 
+   console.log(e)
+   var that = this
+   that.setData({
+     value:e.value,
+     valIndex:e.index
+   })
   }
 
 })

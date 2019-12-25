@@ -9,11 +9,11 @@
   <view class="banner"></view>
   <!-- 艺术品分类项 -->
   <view class="class_list">
-    <view class="list_item">
+    <view class="list_item" bind:tap="goToTunnel">
       <image src="/assets/image/artist.png" mode="scaleToFill" lazy-load="false"></image>
       <text>艺术家</text>
     </view>
-    <view class="list_item">
+    <view class="list_item" bindtap="goToDateils">
       <image src="/assets/image/zihua.png" mode="scaleToFill" lazy-load="false"></image>
       <text>字 画</text>
     </view>
@@ -62,8 +62,8 @@
     </view>
   </view>
   <view class="swiper_container">
-     <swiper display-multiple-items="{{5}}" current="0" bindchange="swiperChange" 
-        autoplay="{{false}}" interval="{{5000}}" duration="{{500}}"
+     <swiper display-multiple-items="{{5}}"  bindchange="swiperChange" 
+        autoplay="{{true}}" interval="{{5000}}" duration="{{500}}"  
         circular="{{true}}">
         <block wx:for="{{imgurl}}" wx:key="{{index}}">
           <swiper-item class="slide-item">

@@ -51,7 +51,7 @@
                     <view class="cp_title">
                         <text>藏品名称</text>
                     </view>
-                    <view class="cp_weight" decode="{{true}}">
+                    <view class="cp_weight">
                         <text decode="{{true}}">
                             长&nbsp;20cm&nbsp;&nbsp;&nbsp;宽&nbsp;40cm&nbsp;&nbsp;&nbsp;高60cm
                         </text>

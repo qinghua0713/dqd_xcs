@@ -12,7 +12,10 @@
     "pages/address/address",
     "pages/editorAddress/editorAddress",
     "pages/artistDateils/artistDateils",
-    "pages/returnCash/returnCash"
+    "pages/returnCash/returnCash",
+    "pages/collection/collection",
+    "pages/footprint/footprint",
+    "pages/consignment/consignment"
   ],
   "permission": {
     "scope.userLocation": {

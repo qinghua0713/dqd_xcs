@@ -1,0 +1,18 @@
+<view class="container">
+    <view class="cp_container">
+        <view class="cp_item" wx:for="{{4}}">
+            <image src="/assets/image/cp_img.png" />
+            <view class="right_info">
+                <text class="cp_title">藏品名称</text>
+                <view class="cp_ms">
+                    艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述
+                </view>
+                <view class="price_info">
+                  <text class="dg_jg">订购价格：</text>
+         
+                  <text class="price"><text >￥ </text>99999</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

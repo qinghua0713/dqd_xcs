@@ -14,11 +14,11 @@
       <text>余  额</text>
       <text>￥ 9999</text>
     </view>
-    <view class="list_item">
+    <view class="list_item" bindtap="goToCollection">
       <image class="collect" src="/assets/image/collect.png" />
       <text>收藏</text>
     </view>
-    <view class="list_item">
+    <view class="list_item" bindtap="goToFootprint">
       <image class="footprint" src="/assets/image/footprint.png" />
       <text>足迹</text>
     </view>
@@ -41,23 +41,23 @@
         <view class="right_progress">
           <view class="progress_title">各阶段进展</view>
           <view class="jd_progress">
-            <view class="jd_item">
+            <view class="jd_item" bind:tap="goToManAgeShowOne">
               <view class="circle circleDot gq_dot"></view>
               <text>锁定期</text>
             </view>
             <view class="progress pgs_1 current_pro"></view>
-            <view class="jd_item">
+            <view class="jd_item" bind:tap="goToManAgeShowTwo">
               <image src="/assets/image/hongqi.png" />
               <text class="circle circleDot current_dot"></text>
               <text>收益期</text>
             </view>
             <view class="progress pgs_2"></view>
-            <view class="jd_item">
+            <view class="jd_item" bind:tap="goToManAgeShowThree">
               <text class="circle circleDot"></text>
               <text>兑现期</text>
             </view>
           </view>
-          <view class="view_dateils">查看详情</view>
+          <view class="view_dateils" bind:tap="goToEarnings">查看详情</view>
         </view>
       </view>
       <view class="No-ysp" wx:if="{{yspIsNo}}">
@@ -84,18 +84,18 @@
       <text>全部订单</text>
     </view>
     <view class="order_list">
-      <view class="order_item">
+      <view class="order_item" bind:tap="goToManAgeShowOne">
         <image class="guanli" src="/assets/image/guanli.png" />
         <text>艺术品管理</text>
       </view>
-      <view class="order_item">
+      <view class="order_item" bindtap="goToConsignment">
         <image class="mail" src="/assets/image/mail.png" />
         <text>艺术品寄售</text>
       </view>
-      <view class="order_item">
+      <button class="order_item kf_btn" open-type="contact" >
         <image class="service" src="/assets/image/service.png" />
         <text>客服中心</text>
-      </view>
+      </button>
     </view>
   </view>
   <!-- 基本信息 -->

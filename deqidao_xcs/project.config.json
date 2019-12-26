@@ -84,13 +84,6 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/tunnel/tunnel",
-					"pathName": "pages/tunnel/tunnel",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/art/art",
 					"pathName": "pages/art/art",
 					"query": "",
@@ -156,6 +149,27 @@
 					"id": -1,
 					"name": "pages/artistDateils/artistDateils",
 					"pathName": "pages/artistDateils/artistDateils",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/footprint/footprint",
+					"pathName": "pages/footprint/footprint",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/collection/collection",
+					"pathName": "pages/collection/collection",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/consignment/consignment",
+					"pathName": "pages/consignment/consignment",
 					"query": "",
 					"scene": null
 				}

@@ -13,6 +13,40 @@ Page({
       region: e.detail.value
     })
   },
+  inputShowed(e){
+    console.log(e)
+    var value = e.detail.value
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/
+    if(!myreg.test(value)){
+      wx.showToast({
+        title: '手机号码有误',
+        icon:'none',
+        duration:1500
+      })
+    }else{
+      wx.showToast({
+        title: '输入正确',
+        icon: 'none',
+        duration: 1500
+      })
+    }
+  },
+  inputName(e){
+    var isName = /^[A-Za-z\u4e00-\u9fa5]+$/
+    var name = e.detail.value
+    //name = parseInt(name)
+    console.log(typeof name)
+    console.log(!isName.test(name))
+    if (!isName.test(name)){
+      wx.showToast({
+        title: '请输入合法名字',
+        icon: 'none',
+        duration: 1500
+      })
+    }else{
+      console.log("这是对的")
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

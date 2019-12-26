@@ -66,7 +66,7 @@
         autoplay="{{true}}" interval="{{5000}}" duration="{{500}}"  
         circular="{{true}}">
         <block wx:for="{{imgurl}}" wx:key="{{index}}">
-          <swiper-item class="slide-item">
+          <swiper-item class="slide-item" bind:tap="goToArtistDateils">
             <view class="swiper-item ">
               <image src="{{item.src}}" class="slide-image  {{swiperIndex == index ? 'active':''}}" />
               <text class="art_name">{{item.name}}</text>

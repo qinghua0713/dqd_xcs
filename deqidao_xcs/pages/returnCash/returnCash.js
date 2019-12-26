@@ -51,7 +51,6 @@ Page({
     wx.getLocation({ //没有特别说明的都是固定写法
       type: 'wgs84',
       success: function (res) {
-        console.log('location', res);
         var locationString = res.latitude + "," + res.longitude;
         wx.request({
           url: 'http://apis.map.qq.com/ws/geocoder/v1/',
@@ -67,10 +66,6 @@ Page({
               lng: r.data.result.location.lng,
               address: r.data.result.address
             })
-            console.log(that.data.lat)
-            console.log(that.data.lng)
-            console.log(r)
-            console.log('用户位置信息', r.data.result.address);
             //r.data.result.address获得的就是用户的位置信息，将它保存到一个全局变量上
             getApp().globalData.locationInfo = r.data.result.address;
             //这步是将位置信息保存到本地缓存中，key = value的形式

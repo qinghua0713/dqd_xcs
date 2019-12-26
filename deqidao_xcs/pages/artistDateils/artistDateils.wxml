@@ -43,9 +43,15 @@
         </view>
         <view class="information">
             <text class="information_title">他的资讯</text>
-            <view class="information_item"></view>
-            <view class="information_item"></view>
-            <view class="information_item"></view>
+            <view class="information_item">
+            <text >艺术家文章1</text>
+            </view>
+            <view class="information_item">
+            <text >艺术家文章2</text>
+            </view>
+            <view class="information_item">
+            <text >艺术家文章3</text>
+            </view>
         </view>
     </view>
 </view>

@@ -1,0 +1,143 @@
+Page {
+    background: #f6f6f6;
+
+}
+
+.cp_container {
+    display: flex;
+    flex-direction: column;
+    padding: 30rpx 34rpx;
+}
+
+.cp_item {
+    display: flex;
+    margin-bottom: 14rpx;
+    padding: 35rpx 22rpx 35rpx 14rpx;
+    background: #fff;
+    border-radius: 14rpx;
+}
+
+.cp_item image {
+    width: 208rpx;
+    height: 278rpx;
+    margin-right: 14rpx;
+}
+
+.right_info {
+    width: calc(100% - 208rpx);
+    display: flex;
+    flex-direction: column;
+}
+
+.cp_title {
+    font-size: 35rpx;
+    font-weight: bold;
+    letter-spacing: 1rpx;
+    color: #0b0b0b;
+    margin-bottom: 16rpx;
+}
+
+.cp_ms {
+    font-size: 23rpx;
+    color: #0b0b0b;
+    margin-bottom: 20rpx;
+}
+
+.price_info {
+    display: flex;
+    align-items: center;
+}
+
+.dg_jg {
+    font-size: 29rpx;
+    letter-spacing: 1rpx;
+    color: #0b0b0b;
+}
+
+.price {
+    font-size: 35rpx;
+    font-weight: bold;
+    letter-spacing: 1rpx;
+    color: #e51419;
+}
+
+.price text {
+    font-size: 29rpx;
+    font-weight: bold;
+    letter-spacing: 1rpx;
+}
+
+.tj_container {
+  box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 10rpx 34rpx 134rpx 34rpx;
+}
+
+.tj_title {
+    display: flex;
+    justify-content: center;
+    margin: 26rpx 0 32rpx 0;
+    align-items: center;
+}
+
+.tj_title image {
+    width: 34rpx;
+    height: 45rpx;
+}
+
+.tj_title text {
+    font-size: 29rpx;
+    letter-spacing: 1rpx;
+    color: #e51419;
+    margin-left: 22rpx;
+}
+
+.tj_list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.tj_item {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30rpx;
+   
+  box-sizing: border-box;
+}
+.tj_item:nth-child(2n+1){
+    padding-right: 17rpx;
+}
+.tj_item:nth-child(2n+2){
+    padding-left: 17rpx;
+}
+.tj_item image {
+
+    height: 243rpx;
+}
+
+.tj_info {
+    display: flex;
+    flex-direction: column;
+    padding: 3rpx 5rpx 8rpx;
+    box-shadow: 0rpx 0rpx 10rpx #f6f6f6;
+    box-sizing: border-box;
+}
+
+.ysp_name {
+    font-size: 17rpx;
+    color: #29292a;
+    margin-bottom: 24rpx;
+}
+
+.price_info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 17rpx;
+    color: #29292a;
+}

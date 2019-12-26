@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      showCurrent:1,//显示**的内容
+      showCurrent:0,//显示**的内容
       data:0//用来判断tab内容是否有数据
   },
   //点击显示第一个tab的内容
@@ -32,13 +32,31 @@ Page({
       showCurrent:2
     })
   },
+  //点击跳转分类页
+  goToClassify(){
+  wx.navigateTo({
+    url: '/pages/classify/classify',
+  })
+  },
+  //点击跳转收益页
+  goToEarnings(){
+   wx.navigateTo({ url: '/pages/earnings/earnings' });
+  },
+  //点击跳转退还页
+  goToReturnCash(){
+    wx.navigateTo({ url: '/pages/returnCash/returnCash' });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
+  onLoad: function (e) {
+     var that = this
+     console.log(e)
+     that.setData({
+       showCurrent: e.showCurrent
+     })
   },
-
+   
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

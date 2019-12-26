@@ -19,11 +19,23 @@ Page {
     color: #070707;
     padding-bottom: 6rpx;
 }
+.new_message::before{
+    content: '';
+      position: absolute;
+      height: 14rpx;
+      width: 14rpx;
+      background: #e60111;
+      border-radius: 50%;
+      right: -2rpx;
+      top: 0rpx;
 
+}
 .option_content {
     padding: 0 35rpx;
 }
-
+.content_item{
+    padding-bottom: 160rpx;
+}
 .item_info {
     display: flex;
     /* align-items: center; */
@@ -96,6 +108,7 @@ Page {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    transform: translateY(-160rpx);
 }
 
 .empty_point {
@@ -152,7 +165,7 @@ Page {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     background: #fbfbfb;
     font-size: 29rpx;

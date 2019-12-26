@@ -76,6 +76,10 @@ Page({
       duration: 300
     })
   },
+  //点击跳转艺术家详情页
+  goToArtistDateils(){
+    wx.navigateTo({ url: '/pages/artistDateils/artistDateils' });
+  },
   // 轮播图改变触发
   swiperChange(e) {
     const that = this;

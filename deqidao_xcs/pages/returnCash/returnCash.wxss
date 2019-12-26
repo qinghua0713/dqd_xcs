@@ -47,7 +47,8 @@ Page{
  margin: 0 28rpx;
 }
 .date_q,.date_h,.h_g{
-	font-size: 23rpx;
+	font-size: 29rpx;
+	letter-spacing: 1rpx;
 	color: #e51419;
 }
 .sy_container{

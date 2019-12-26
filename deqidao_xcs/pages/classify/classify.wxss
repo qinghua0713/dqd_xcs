@@ -1,5 +1,4 @@
 Page {
-  box-sizing: border-box;
   background: #f6f6f6;
 }
 
@@ -31,7 +30,7 @@ image {
   font-size: 29rpx;
   letter-spacing: 1rpx;
   color: #040404;
-  width: 139rpx;
+  min-width: 139rpx;
   height: 56rpx;
   background-color: #fff;
   border-radius: 7rpx;
@@ -44,11 +43,11 @@ image {
 .value_item {
   display: flex;
   height: 100%;
-  width: 97rpx;
+  padding: 18rpx;
   border-right: 1rpx solid #e2e2e2;
   align-items: center;
   justify-content: center;
-
+  box-sizing: border-box;
 }
 
 .xl_img_btn {

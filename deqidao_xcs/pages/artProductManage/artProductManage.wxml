@@ -4,7 +4,7 @@
         <view class="option_item {{showCurrent == 0 ?'current current_tab':'' }}" bindtap="showTermly">
             锁定期
         </view>
-        <view class="option_item {{showCurrent == 1 ?'current current_tab':'' }}" bindtap="showEarnings">
+        <view class="option_item new_message {{showCurrent == 1 ?'current current_tab':'' }}" bindtap="showEarnings">
             收益期
         </view>
         <view class="option_item {{showCurrent == 2 ?'current current_tab':'' }}" bindtap="showCash">
@@ -15,8 +15,8 @@
     <view class="option_content">
         <!-- tab第一部分内容 -->
         <view class="content_item" wx:if="{{showCurrent == 0}}">
-  <!-- 判断tab是否有数据 -->
-            <view class="item_info" wx:if="{{data == 1}}">
+            <!-- 判断tab是否有数据 -->
+            <view class="item_info" wx:for="{{5}}" wx:if="{{data === 1}}">
                 <image src="/assets/image/cp_img.png" />
                 <view class="right_info">
                     <view class="cp_title">
@@ -32,20 +32,20 @@
                     </view>
                 </view>
             </view>
-            <view class="empty" wx:else>
-                <view class="empty_point">
-                    <image src="/assets/image/empty.png" />
-                    <view class="point_font">
-                        <text>宝箱现在还是空的呢~</text>
-                        <text>艺术，也是一种有效的投资手段</text>
-                    </view>
-                    <view class="goFind">去发现</view>
+        </view>
+        <view class="empty" wx:if="{{data === 0}}">
+            <view class="empty_point">
+                <image src="/assets/image/empty.png" />
+                <view class="point_font">
+                    <text>宝箱现在还是空的呢~</text>
+                    <text>艺术，也是一种有效的投资手段</text>
                 </view>
+                <view class="goFind" bindtap="goToClassify">去发现</view>
             </view>
         </view>
-          <!-- tab第二部分内容 -->
+        <!-- tab第二部分内容 -->
         <view class="content_item" wx:elif="{{showCurrent == 1}}">
-            <view class="item_info">
+            <view class="item_info" wx:for="{{5}}">
                 <image src="/assets/image/cp_img.png" />
                 <view class="right_info">
                     <view class="cp_title">
@@ -60,15 +60,15 @@
                         <text>艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述</text>
                     </view>
                     <view class="btn_cont">
-                        <text class="withdraw">退还变现</text>
-                        <text class="earnings">查看收益</text>
+                        <text class="withdraw" bind:tap="goToReturnCash">退还变现</text>
+                        <text class="earnings" bind:tap="goToEarnings">查看收益</text>
                     </view>
                 </view>
             </view>
         </view>
-          <!-- tab第三部分内容 -->
+        <!-- tab第三部分内容 -->
         <view class="content_item" wx:elif="{{showCurrent == 2}}">
-            <view class="item_info">
+            <view class="item_info" wx:for="{{5}}">
                 <image src="/assets/image/cp_img.png" />
                 <view class="right_info">
                     <view class="cp_title">
@@ -90,8 +90,8 @@
         </view>
     </view>
     <!-- 点击返回个人中心 -->
-       <view class="bottom_btn" bindtap="returnMy">
-         <image src="/assets/image/my_red.png" />
-         <text >返回个人中心</text>
-       </view>
+    <view class="bottom_btn" bindtap="returnMy">
+        <image src="/assets/image/my_red.png" />
+        <text>返回个人中心</text>
+    </view>
 </view>

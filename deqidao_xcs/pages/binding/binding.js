@@ -1,4 +1,4 @@
-var http = require("../../utils/ajax.js")
+
 Page({
   data: {
     imgUrl: [

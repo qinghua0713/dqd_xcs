@@ -1,0 +1,215 @@
+.nav {
+    height: 70px;
+    background: #333;
+    padding: 0 20px;
+    position: relative;
+}
+
+.logo_title {
+    color: #fff;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.left-search {
+    width: 400px;
+    height: 70px;
+    display: table-cell;
+    vertical-align: middle;
+
+    position: relative;
+}
+
+.left-search input {
+    width: 200px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 6px 0 0 6px;
+}
+
+.search_btn {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 0;
+    border-radius: 0 6px 6px 0;
+}
+
+.xiala_content {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    z-index: 10;
+    box-shadow: 0px 0px 10px #aaa;
+    border-radius: 6px;
+    width: 200px;
+    background: #fff;
+}
+
+.search-item {
+    padding: 10px;
+    line-height: 1;
+}
+
+.right_menu {
+    position: absolute;
+    right: 20px;
+    height: 100%;
+    top: 0;
+}
+
+.right-nav {
+    height: 100%;
+}
+
+.right-nav ul {
+    line-height: 70px;
+    height: 100%;
+}
+
+.menu-item {
+    height: 100%;
+    float: left;
+    color: #aaa;
+    margin-right: 20px;
+    position: relative;
+}
+
+.menu-item:hover .item-info {
+    color: #fff;
+}
+
+.menu-item .xiala_content {
+    top: 70px;
+    border-radius: 0 0 6px 6px;
+    color: #333;
+}
+
+.search-item:hover {
+    background: #f6f6f6;
+}
+
+.bgBlack {
+    background: #000;
+}
+
+.mian-container {
+    overflow: hidden;
+}
+
+.left-menu {
+    width: 15%;
+    height: 100%;
+    float: left;
+}
+
+.right-container {
+    width: 85%;
+    min-height: 600px;
+    height: 100%;
+    float: right;
+    background: #f6f6f6;
+    border: 1px solid #aaa;
+    padding: 20px  ;
+}
+
+.mian-container {
+    padding: 20px;
+}
+
+.mian-menu-list {
+    width: 80%;
+    margin: 0 auto;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #aaa;
+    color: #333;
+    font-size: 14px;
+    background: #f6f6f6;
+    margin-bottom: -1px;
+
+}
+
+.mian-menu-list:last-child {
+    margin-top: 20px;
+}
+
+.current_red {
+    color: red;
+}
+
+.content-item {
+    padding: 26px 26px 100px 26px ;
+    min-height: 600px;
+    height: 100%;
+    background: #f6f6f6;
+    position: relative;
+    border: 1px solid #aaa;
+}
+
+.search-district {
+    height: 40px;
+    overflow: hidden;
+}
+
+.main-seach {
+    display: inline-block;
+    height: 100%;
+
+}
+
+.main-seach input {
+    height: 100%;
+    width: 280px;
+    border: 1px solid #444;
+    display: inline-block;
+    padding-left: 4px;
+}
+
+.main-search-btn {
+ padding: 10px 20px;
+    height: 100%;
+    background: #333;
+    text-align: center;
+    color: #fff;
+    float: right;
+    margin-left: 10px;
+}
+
+.add_art {
+    float: right;
+    padding: 10px 20px;
+    height: 100%;
+    background: #333;
+    text-align: center;
+    color: #fff;
+}
+.bg333{
+   height: 30px;
+   width: 100%;
+   background: #555;
+   margin: 20px 0 10px 0 ;
+}
+
+.data-item {
+    padding: 10px 20px 10px 20px ;
+    color: #333;
+    background: #fff;
+    margin-bottom: 10px;
+}
+.data-item img{
+  width: 80px;
+  height: 80px;
+  margin-left: 20px;
+}
+.data-index{
+  font-size: 12px;
+  color: #333;
+}
+.art_name,.art_price{
+    margin-left: 20px;
+}

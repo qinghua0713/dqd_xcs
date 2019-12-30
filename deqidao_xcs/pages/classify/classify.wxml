@@ -41,7 +41,7 @@
             </view>
         </view>
         <view class="zp_list">
-            <view class="tj_item" wx:for="{{8}}" bind:tap="goToDateils">
+            <view class="tj_item" wx:for="{{8}}" bind:tap="goToDateils" wx:key="{{index}}">
                 <image src="/assets/image/yishuti_1.png" />
                 <view class="ysp_info">
                     <text class="ysp_name">艺术品名称</text>
@@ -67,7 +67,7 @@
 </view>
 <!-- 筛选遮罩以及内容 -->
 <view catchtap="hiddenCover" class="cover_container" wx:if="{{isShowCover}}" catchtouchmove="touchHandler">
-    <view class="filtrate_container">
+    <view class="filtrate_container" catchtap='showCover'>
         <text class="filtrate_title">艺术家</text>
         <view class="filtrate_list">
             <view class="item_option">

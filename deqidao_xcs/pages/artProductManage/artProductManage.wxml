@@ -16,7 +16,7 @@
         <!-- tab第一部分内容 -->
         <view class="content_item" wx:if="{{showCurrent == 0}}">
             <!-- 判断tab是否有数据 -->
-            <view class="item_info" wx:for="{{5}}" wx:if="{{data === 1}}">
+            <view class="item_info" wx:for="{{5}}" wx:if="{{data === 1}}" wx:key="{{index}}">
                 <image src="/assets/image/cp_img.png" />
                 <view class="right_info">
                     <view class="cp_title">
@@ -45,7 +45,7 @@
         </view>
         <!-- tab第二部分内容 -->
         <view class="content_item" wx:elif="{{showCurrent == 1}}">
-            <view class="item_info" wx:for="{{5}}">
+            <view class="item_info" wx:for="{{5}}" wx:key="{{index}}">
                 <image src="/assets/image/cp_img.png" />
                 <view class="right_info">
                     <view class="cp_title">
@@ -68,7 +68,7 @@
         </view>
         <!-- tab第三部分内容 -->
         <view class="content_item" wx:elif="{{showCurrent == 2}}">
-            <view class="item_info" wx:for="{{5}}">
+            <view class="item_info" wx:for="{{5}}" wx:key="{{index}}">
                 <image src="/assets/image/cp_img.png" />
                 <view class="right_info">
                     <view class="cp_title">

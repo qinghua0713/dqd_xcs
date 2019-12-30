@@ -12,13 +12,18 @@ Page({
     //order:true,
  
   },
-  //点击显示全部
-  // viewArr() {
-  //   this.setData({
-  //     isShow: !this.data.isShow
-  //   })
-  //   console.log(this.data.isShow)
-  // },
+  //点击遮罩隐藏
+  hiddenCover(){
+   this.setData({
+     order:false
+   })
+  },
+  //点击遮罩子盒子显示(事件冒泡真恶心)
+  showCover(){
+  this.setData({
+    order:true
+  })
+  },
   //点击立即预定按钮事件
   promptlyOrder(){
      this.setData({

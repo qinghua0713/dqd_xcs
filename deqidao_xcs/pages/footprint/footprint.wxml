@@ -9,10 +9,10 @@
                 </view>
                 <view class="price_info">
                     <text class="dg_jg">订购价格：</text>
-                    <text class="price">
+                    <view class="price">
                         <text>￥</text>
                         99999
-                    </text>
+                    </view>
                 </view>
             </view>
         </view>

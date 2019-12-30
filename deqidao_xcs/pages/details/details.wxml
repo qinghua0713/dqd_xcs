@@ -126,8 +126,8 @@
         </view>
         <view class="buy_btn"  bindtap="promptlyOrder">立即订购</view>
     </view>
-    <view class="cover_container"    wx:if="{{order}}">
-        <view class="pay_container">
+    <view class="cover_container" bindtap="hiddenCover"   wx:if="{{order}}">
+        <view class="pay_container" catchtap="showCover">
             <view class="shop_info">
                 <view class="shop_content">
                     <image src="/assets/image/cp_img.png" />
@@ -141,7 +141,7 @@
                     <text>￥9999</text>
                 </view>
             </view>
-            <image bindtap="closeShop" class="gb_btn" src="/assets/image/chacha.png" />
+            <image catchtap="closeShop" class="gb_btn" src="/assets/image/chacha.png" />
             <view class="cq_fs">
                 <text class="cq_title">存取方式</text>
                 <view class="fs_cont">

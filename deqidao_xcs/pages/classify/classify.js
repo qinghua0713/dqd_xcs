@@ -70,6 +70,12 @@ Page({
       isShowCover: false
     })
   },
+  //点击显示筛选盒子(没办法的办法，不然会触发父盒子的事件)
+  showCover(){
+    this.setData({
+      isShowCover:true
+    })
+  },
   //弹窗防止穿透
   touchHandler() {
     console.log("想都别想")

@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 	//轮播图
-	var url = "https://www.imcare.top/"
+	var url = "https://www.artmore.top/"
 	var mySwiper = new Swiper('.swiper-container', {
 		effect: 'fade',
 		loop: true,
@@ -170,7 +170,7 @@ $(document).ready(function () {
 				filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=" + dataList.five.other.backgropund + ", sizingMethod='scale')"
 			})
 			$(".ysp_title_cont").append("<h2>" + dataList.five.other.big_title + "</h2><span>" + dataList.five.other.small_title + "</span><p>" + dataList.five.other.details + "</p>")
-			$(".coypright").append("<div class='left_cop'><span>" + dataList.five.other.name + "</span></div><div class='right_cop'><span>" + dataList.five.other.copyright + "</span></div>")
+			$(".coypright").append("<div class='left_cop'><span>" + dataList.five.other.name + "</span></div><div class='right_cop'><a href='www.beian.miit.gov.cn'>" + dataList.five.other.copyright + "</a></div>")
 			$(".video_cont video").attr("src", dataList.five.other.video)
 			// $(".right_js ul").append("<li><h3>"++"</h3><p>"++"</p></li>")
 			for (var a = 0; a < dataList.five.module.length; a++) {
@@ -198,18 +198,28 @@ $(document).ready(function () {
 
 
 	$(window).scroll(function () {
-		function animated(el) {
-			if ($(window).scrollTop() + $(window).height() > $(el).offset().top) {
-				$(el).addClass("animated fadeInUpBig")
-			}
-		}
-		animated(".zwjs")
-		animated(".yx_cont")
-		animated(".gs_addss")
-		animated(".yst_title_cont")
-		animated(".ysp_title_cont")
-		animated(".right_js")
-		animated(".left_js")
+
+function scrollTop(el){
+	if ($(window).scrollTop() + $(window).height() > $(el).offset().top) {
+		$(el).addClass("animated fadeInUpBig")
+	}
+}
+scrollTop(".zwjs")
+scrollTop(".yx_cont")
+scrollTop(".gsdz_cont")
+scrollTop(".right_js")
+scrollTop(".left_js")
+scrollTop(".yst_title_cont")
+scrollTop(".ysp_title_cont")
+// scrollTop(" .top_cont")
+// scrollTop(" .bottom_cont")
+	
+	
+			// if ($(window).scrollTop() + $(window).height() > $(".bottom_cont .left_js").offset().top) {
+			// 	$(".bottom_cont .left_js").addClass("animated fadeInUpBig")
+			// }
+
+
 	})
 
 	//点击给头部导航添当前加字体颜色

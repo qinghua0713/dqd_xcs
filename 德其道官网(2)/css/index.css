@@ -275,6 +275,10 @@ section {
 .gsjs_info .bottom_cont {
   overflow: hidden;
 }
+.gsjs_info .top_cont .left_js,
+.gsjs_info .bottom_cont .left_js {
+  padding-right: 50px;
+}
 .gsjs_info .top_cont img,
 .gsjs_info .bottom_cont img {
   max-width: 475px;
@@ -303,7 +307,7 @@ section {
   padding-left: 50px;
 }
 .gsjs_info .gstp_left {
-  width: 48%;
+  width: 45%;
   max-width: 475px;
   height: 100%;
   float: left;
@@ -311,11 +315,11 @@ section {
 }
 .gsjs_info .right_js,
 .gsjs_info .left_js {
-  width: 52%;
+  width: 55%;
   float: left;
 }
 .gsjs_info .gstp_right {
-  width: 48%;
+  width: 55%;
   max-width: 475px;
   float: right;
   text-align: right;
@@ -491,6 +495,9 @@ section {
 }
 .coypright .right_cop {
   float: right;
+}
+.coypright .right_cop a {
+  color: #ffffff;
 }
 .wode {
   width: 100%;

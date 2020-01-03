@@ -1,37 +1,18 @@
 
 
 $(document).ready(function () {
-
-	// function browserRedirect() {
-	// 	var sUserAgent = navigator.userAgent.toLowerCase();
-	// 	console.log(navigator.userAgent,1)
-	// 	var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-	// 	var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-	// 	var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-	// 	var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-	// 	var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-	// 	var bIsAndroid = sUserAgent.match(/android/i) == "android";
-	// 	var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-	// 	var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-	// 	if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
-	// 		//跳转移动端页面
-	// 		window.location.href = "http://f.jcngame.com/fanfan20171208/mobile/index.html";
-	// 	} else {
-	// 		//跳转pc端页面
-	// 		window.location.href = "http://127.0.0.1:5500/index.html";
-	// 	}
-	// }
-	// browserRedirect();
 	var url = "https://www.artmore.top/"
 	//轮播图
+	var delay = 3000
 	new Swiper('.swiper-container', {
-		effect: 'fade',
+
 		loop: true,
-		//	autoplay: 3000,		//轮播时间
+		autoplay: true,		//轮播时间
 		speed: 600,
+		delay:delay,
 		simulateTouch: false,
 		calculateHeight: 750,
-		mode: "horizontal",
+		direction: "horizontal",
 	})
 
 
@@ -98,17 +79,17 @@ $(document).ready(function () {
 				$(".tab-list").append("<div class='swiper-slide vertical-item'><div class='item_info current_item'><h3>" + dataList.two.module[j].title + "</h3><p>" + dataList.two.module[j].content + "</p></div></div>")
 
 			}
-
 			new Swiper('.swiper-tab', {
-				effect: 'fade',
 				loop: true,
-				autoplay: 3000,		//轮播时间
 				speed: 600,
-				simulateTouch: false,
-				calculateHeight: 750,
-				mode: "vertical",
+				autoplay: true,
+				spaceBetween: 20,
+				delay:delay,
+				slidesPerView: "auto",
+				centeredSlides: true,
+				direction: "horizontal",
+				//spaceBetween : '10%',按container的百分比
 			})
-
 			//渲染公司地址模块
 			$(".gs_addss").css({
 				background: "url(" + dataList.three.other.background + ") no-repeat",
@@ -135,18 +116,19 @@ $(document).ready(function () {
 
 
 			var mySwiper = new Swiper('.ys_classify', {
-				effect: 'fade',
 				loop: true,
-				autoplay: 2000,		//轮播时间
+				autoplay: true,	//轮播时间
 				speed: 600,
 				slidesPerView: 3,
 				centeredSlides: true,
+				spaceBetween: 16,
+				delay:delay,
 				simulateTouch: false,
 				calculateHeight: 750,
-				mode: "horizontal",
+				direction: "horizontal",
 				autoplayDisableOnInteraction: false,
-	
-		
+
+
 			})
 
 			//渲染艺术品服务合同模块数据
@@ -182,21 +164,21 @@ $(document).ready(function () {
 				$(el).addClass("animated fadeInUpBig")
 			}
 		}
-		scrollTop(".zwjs")
-		 scrollTop(".swiper-tab")
-		 scrollTop(".gsdz_cont")
-		 scrollTop(".right_js")
-		 scrollTop(".left_js")
-		 scrollTop(".gstp_left")
-		 scrollTop(".ys_classify")
-		 scrollTop(".video_cont")
-		 scrollTop(".yst_title_cont")
-		 scrollTop(".ysp_title_cont")
-		 scrollTop(" .top_cont")
-		 scrollTop(" .bottom_cont")
+		// scrollTop(".zwjs")
+		//  scrollTop(".swiper-tab")
+		//  scrollTop(".gsdz_cont")
+		//  scrollTop(".right_js")
+		//  scrollTop(".left_js")
+		//  scrollTop(".gstp_left")
+		//  scrollTop(".ys_classify")
+		//  scrollTop(".video_cont")
+		//  scrollTop(".yst_title_cont")
+		//  scrollTop(".ysp_title_cont")
+		//  scrollTop(" .top_cont")
+		//  scrollTop(" .bottom_cont")
 
 
-		
+
 
 
 	})

@@ -191,7 +191,7 @@ section {
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-
+  position: relative;
 }
 .About_us .zwjs {
   text-align: center;
@@ -221,7 +221,7 @@ section {
   overflow: hidden;
 }
 .vertical-item{
-height: 3.32rem !important;
+/* height: 3.32rem !important; */
   padding: 0.16rem 0.16rem 0.54rem 0.16rem;
   box-sizing: border-box;
   background: #f1f4f4;
@@ -229,12 +229,32 @@ height: 3.32rem !important;
 }
 
 .swiper-tab{
+  height: 3.32rem !important;
   margin-bottom: 1rem;
+  /* position: relative; */
+}
+.tab-list {
+  display: flex;
+  align-items: center;
+}
+.swiper-tab .vertical-item{
+  -webkit-transition: all .6s;
+  -moz-transition: all .6s;
+  -o-transition: all .6s;
+ transition: all .6s;
+ /* margin: 0 0.16rem; */
+ width: 80%;
+height: 80% !important;
+}
+.tab-list .swiper-slide{
+/* width: 24% !important; */
+ 
+  color: #fff !important;
 }
 .tab-list .swiper-slide-active{
+  transform: scaleY(1.2);
   background: radial-gradient(circle farthest-side at 0 0,#fe8c5a 0%,#e41518 100%);
 
-  color: #fff !important;
 }
 .tab-list .swiper-slide-active p{
   color: #ffffff !important;
@@ -262,7 +282,7 @@ height: 3.32rem !important;
   font-size: 0.16rem;
   letter-spacing: 0.01rem;
   color: #a4a4a4;
-  padding-top: 0.5rem;
+  padding-top: 0.2rem;
   line-height: 0.4rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -396,14 +416,15 @@ height: 3.32rem !important;
   padding-bottom: 0.94rem;
   font-weight: 700;
 }
-
+.ys_classify{
+  height: 5.5rem;
+}
 .classify_list{
   display: flex;
   align-items: center !important;
 }
 .classify_item {
   height: 80% !important;
-  margin: 0 0.16rem;
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -o-transition: all 1s;

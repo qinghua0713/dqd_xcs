@@ -3,13 +3,16 @@
 $(document).ready(function () {
 	var url = "https://www.artmore.top/"
 	//轮播图
-	var delay = 3000
-	new Swiper('.swiper-container', {
+	var delay = 5000
+	var mySwiper1 =new Swiper('.main-container', {
 
 		loop: true,
-		autoplay: true,		//轮播时间
+		autoplay: {
+			delay:delay,
+			disableOnInteraction: false,
+		},
 		speed: 600,
-		delay:delay,
+		delay: delay,
 		simulateTouch: false,
 		calculateHeight: 750,
 		direction: "horizontal",
@@ -27,6 +30,7 @@ $(document).ready(function () {
 			var getLocaLstore = localStorage.getItem("locaLstore")
 			var dataList = JSON.parse(getLocaLstore)
 			//渲染顶部导航
+			console.log(dataList.two.module)
 			for (var i = 0; i < dataList.one.nav.length; i++) {
 				$(".nav_cont ul ").append
 					("<li class='nav_item'><a  href=" + anchor[i] + ">" + dataList.one.nav[i].btitle + "</a></li>")
@@ -79,17 +83,23 @@ $(document).ready(function () {
 				$(".tab-list").append("<div class='swiper-slide vertical-item'><div class='item_info current_item'><h3>" + dataList.two.module[j].title + "</h3><p>" + dataList.two.module[j].content + "</p></div></div>")
 
 			}
-			new Swiper('.swiper-tab', {
-				loop: true,
-				speed: 600,
-				autoplay: true,
-				spaceBetween: 20,
-				delay:delay,
-				slidesPerView: "auto",
+
+			var mySwiper2 = new Swiper('.swiper-tab', {
+				direction: 'horizontal',
+				loop: true, // 循环模式选项
+
+				speed: 1000,
+				autoplay: {
+					delay:delay,
+					disableOnInteraction: false,
+				},
+				slidesPerView: 'auto',
 				centeredSlides: true,
-				direction: "horizontal",
-				//spaceBetween : '10%',按container的百分比
+				spaceBetween: 10,
+
+
 			})
+
 			//渲染公司地址模块
 			$(".gs_addss").css({
 				background: "url(" + dataList.three.other.background + ") no-repeat",
@@ -115,20 +125,20 @@ $(document).ready(function () {
 			}
 
 
-			var mySwiper = new Swiper('.ys_classify', {
+			var mySwiper3 = new Swiper('.ys_classify', {
 				loop: true,
-				autoplay: true,	//轮播时间
+				direction: "horizontal",
+				autoplay: {
+					delay:delay,
+					disableOnInteraction: false,
+				},
 				speed: 600,
 				slidesPerView: 3,
 				centeredSlides: true,
 				spaceBetween: 16,
-				delay:delay,
+				delay: delay,
 				simulateTouch: false,
 				calculateHeight: 750,
-				direction: "horizontal",
-				autoplayDisableOnInteraction: false,
-
-
 			})
 
 			//渲染艺术品服务合同模块数据

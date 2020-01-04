@@ -3,6 +3,38 @@ page {
 
 }
 
+.header {
+  margin: 90rpx 0 90rpx 50rpx;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  width: 650rpx;
+  height: 300rpx;
+  line-height: 450rpx;
+}
+
+.header image {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.content {
+  margin-left: 50rpx;
+  margin-bottom: 90rpx;
+}
+
+.content text {
+  display: block;
+  color: #9d9d9d;
+  margin-top: 40rpx;
+}
+
+.bottom {
+  border-radius: 80rpx;
+  margin: 70rpx 50rpx;
+  font-size: 35rpx;
+}
+
+
 .search-container {
   width: 100%;
   position: relative;
@@ -37,20 +69,35 @@ page {
 .banner {
   width: 100%;
   height: 658rpx;
-  background: #454444;
+  position: relative;
 }
+.banner swiper{
+  height: 100%;
 
+}
 .class_list {
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding-top: 50rpx;
-
+  box-sizing: border-box;
+  padding: 50rpx 35rpx 0 35rpx;
 }
-
-.list_item {
+.goToArtist{
   width: 25%;
+}
+.goToArtist .list_item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.classify_options{
+  width: 75%;
+  display: flex;
+}
+.main-swiper-item{
+  height: 100%;
+}
+.classify_options .list_item {
+  width: 33.333333%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -186,7 +233,7 @@ page {
 	font-size: 29rpx;
 	letter-spacing: 1rpx;
 	color: #29292a;
-  background-image: -webkit-linear-gradient(to right,#e82120,#fe8c5a ,#e82120,#fe8c5a);
+
   background-image: linear-gradient(to right,#e82120,#fe8c5a ,#e82120,#fe8c5a);
   -webkit-background-clip:text;
   color: transparent;
@@ -195,7 +242,6 @@ page {
 .title_yw{
 	font-size: 23rpx;
 	color: #29292a;
-  background-image: -webkit-linear-gradient(to right,#e82120,#fe8c5a ,#e82120,#fe8c5a);
   background-image: linear-gradient(to right,#e82120,#fe8c5a ,#e82120,#fe8c5a);
   -webkit-background-clip:text;
   color: transparent;
@@ -219,7 +265,7 @@ page {
   flex-direction: column;
   align-items: center;
 }
-.swiper-item image{
+.slide-item-five image{
   width: 139rpx;
   height: 208rpx;
   margin-bottom: 18rpx;
@@ -228,7 +274,7 @@ page {
     font-size: 23rpx;
     color: #29292a;
   }
-  .active {
+  .active_two {
     height: 222rpx !important;
   transition: all 0.2s ease-in 0s;
   z-index: 20;

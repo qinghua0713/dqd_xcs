@@ -92,17 +92,15 @@ image{
 }
 
 .dots .dot {
-  margin: 0 14rpx;
-  width: 69rpx;
+  margin: 0 6rpx;
+  width: 30rpx;
   height: 3rpx;
   background-color: #fff;
-  transition: all 0.6s;
+  /* transition: all 0.6s; */
 }
 
 .dots .dot.active {
-  width: 69rpx;
-  height: 3rpx;
-  background: #333;
+  background: #aaa;
 }
 .return_container{
   position: fixed;

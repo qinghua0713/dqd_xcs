@@ -1,5 +1,5 @@
 
-export const baseUrl = 'https://www.baidu.com/'
+export const baseUrl = 'http://imcare.top:8000/'
 
 /**
  * 统一的请求封装
@@ -8,7 +8,7 @@ export const baseUrl = 'https://www.baidu.com/'
  * @param {String} methods 请求方式，默认GET
  * @param {boolean} [loading=true] 是否显示loading，默认true
  */
-export const Request = (api, params, method = 'GET', loading = true) => {
+export const Request = (api, data, method = 'GET', loading = true) => {
   return new Promise((resovle, reject) => {
     if (loading) {
       wx.showLoading({
@@ -17,7 +17,7 @@ export const Request = (api, params, method = 'GET', loading = true) => {
     }
     wx.request({
       url: baseUrl + api,
-      params: params,
+      data: data,
       method: method,
       dataType: "json",
       success: res => {

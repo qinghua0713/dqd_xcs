@@ -54,13 +54,17 @@ Page{
 .sy_container{
     display: flex;
     flex-direction: column;
+    padding-right: 80rpx;
 }
 .sy_list,.gh_container{
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding:0  214rpx 54rpx 0;
+    padding:0  0rpx 54rpx 0;
     box-sizing: border-box;
+}
+.item-cotainer{
+    padding-right: 214rpx;
 }
 .gh_xuzhi_box{
     width: 100%;
@@ -78,17 +82,12 @@ Page{
 .sy_title{
     width: 100%;
     display: flex;
+    position: relative;
      justify-content: space-between;
-     padding-bottom: 18rpx;
-}
-.gh_zsy{
-    width: 100%;
-    display: flex;
-     justify-content: space-between;
-     padding: 0 42rpx 18rpx 0;
-     position: relative;
+     padding: 0  0px 18rpx 0;
      box-sizing: border-box;
 }
+
 
 .gh_ts_btn image{
     width: 35rpx;
@@ -108,7 +107,7 @@ Page{
 .ts_container{
     position: absolute;
     top: 56rpx;
-    right: 0rpx;
+    right: -42rpx;
 }
 .gh_ts_content{
 position: relative;
@@ -144,7 +143,8 @@ position: relative;
 
 }
 .title_price text{
-    	font-size: 23rpx;
+        font-size: 23rpx;
+        padding-top: 10rpx;
 }
 .jd_sy_item{
     display: flex;

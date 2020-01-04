@@ -18,7 +18,8 @@ Page({
       width: 50,
       height: 50
     }],
-    isTsShow: false//默认归还提示不显示
+    isTsShow: false,//默认归还提示不显示
+    isCtShow: false//默认创投提示不显示
   },
   //轮播图内容位置改变触发
   swiperChange(e) {
@@ -30,12 +31,18 @@ Page({
   },
   //点击显示归还须知提示
   showReturn() {
-    console.log(1)
+
     this.setData({
-      isTsShow: !this.data.isTsShow
+      isTsShow: !this.data.isTsShow,
     })
-    console.log(this.data.isTsShow)
   },
+  showCtTs() {
+    this.setData({
+      isCtShow:!this.data.isCtShow,
+
+    })
+  },
+  
   //Page点击隐藏提示框（一切为了用户体验 T_T）
   // hiddenTs(){
   //   this.setData({

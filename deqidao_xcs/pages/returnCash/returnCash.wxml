@@ -1,14 +1,14 @@
 <view class="returnCash-page">
   <view class="swiperContainer">
     <swiper bindchange="swiperChange" autoplay="{{true}}" duration="{{500}}" circular style='height: 625rpx;'>
-      <block wx:for="{{imgUrl}}" wx:key="{{index}}">
-        <swiper-item wx:key="*this">
+      <block wx:for="{{imgUrl}}" wx:key="index">
+        <swiper-item >
           <image src="{{item}}" class="slide-image" class='img' />
         </swiper-item>
       </block>
     </swiper>
     <view class="dots">
-      <block wx:for="{{imgUrl}}" wx:key="{{index}}">
+      <block wx:for="{{imgUrl}}" wx:key="index">
         <view class="dot{{index == current ? ' active' : ''}}"></view>
       </block>
     </view>
@@ -35,57 +35,66 @@
           <view class="sy_title">
             <text class="title_sy">创投总收益</text>
             <view class="title_price">
-              <text>￥</text> 9999
+              <text>￥</text>
+              9999
+            </view>
+            <view class="gh_ts_btn " bindtap="showCtTs">
+              <image src="/assets/image/gantanhao.png" />
+            </view>
+            <view class="ts_container" wx:if="{{isCtShow}}">
+              <view class="gh_ts_content sanjiao">
+                <text>
+                  第一阶段：ACS服务合同进行至第91天~180天
+第二阶段：ACS服务合同进行至第181天~270天
+第三阶段：ACS服务合同进行至第271天~365天
+第三阶段：ACS服务合同进行至第366天~395天
+                </text>
+              </view>
             </view>
           </view>
-          <view class="jd_sy_item">
-            <text class="dn_jd">第一季度创投收益</text>
-            <text class="jd_price">￥   9999</text>
-          </view>
-          <view class="jd_sy_item">
-            <text class="dn_jd">第二季度创投收益</text>
-            <text class="jd_price">￥   9999</text>
-          </view>
-          <view class="jd_sy_item">
-            <text class="dn_jd">第三季度创投收益</text>
-            <text class="jd_price">￥   9999</text>
-          </view>
-          <view class="jd_sy_item">
-            <text class="dn_jd">第四季度创投收益</text>
-            <text class="jd_price">￥   9999</text>
+          <view class="item-cotainer">
+            <view class="jd_sy_item">
+              <text class="dn_jd">第一季度创投收益</text>
+              <text class="jd_price">￥   9999</text>
+            </view>
+            <view class="jd_sy_item">
+              <text class="dn_jd">第二季度创投收益</text>
+              <text class="jd_price">￥   9999</text>
+            </view>
+            <view class="jd_sy_item">
+              <text class="dn_jd">第三季度创投收益</text>
+              <text class="jd_price">￥   9999</text>
+            </view>
+            <view class="jd_sy_item">
+              <text class="dn_jd">第四季度创投收益</text>
+              <text class="jd_price">￥   9999</text>
+            </view>
           </view>
         </view>
         <view class="sy_item">
           <view class="sy_title">
             <text class="title_sy">年化总收益</text>
             <view class="title_price">
-              <text>￥</text> 9999
+              <text>￥</text>
+              9999
             </view>
+            <view></view>
           </view>
-          <view class="jd_sy_item">
-            <text class="dn_jd">第一季度年化收益</text>
-            <text class="jd_price">￥   9999</text>
-          </view>
-          <view class="jd_sy_item">
-            <text class="dn_jd">第二季度年化收益</text>
-            <text class="jd_price">￥   9999</text>
-          </view>
-          <view class="jd_sy_item">
-            <text class="dn_jd">第三季度年化收益</text>
-            <text class="jd_price">￥   9999</text>
-          </view>
-          <view class="jd_sy_item">
-            <text class="dn_jd">第四季度年化收益</text>
-            <text class="jd_price">￥   9999</text>
+          <view class="item-cotainer">
+            <view class="jd_sy_item">
+              <text class="dn_jd">第一季度年化收益</text>
+              <text class="jd_price">￥   9999</text>
+            </view>
           </view>
         </view>
       </view>
       <view class="current_gh_sy">
         <view class="gh_xuzhi_box">
-          <view class=" gh_zsy">
+          <view class=" sy_title">
             <text class="title_sy">创投总收益</text>
             <view class="title_price">
-              <text>￥</text> 9999
+              <text>￥</text>
+              9999
             </view>
             <view class="gh_ts_btn " bindtap="showReturn">
               <image src="/assets/image/gantanhao.png" />
@@ -114,8 +123,7 @@
       <view class="gh_address">
         <text class="address_title">地址:{{address}}</text>
         <view class="map_cont">
-          <map id="myMap" markers="{{markers}}" style="width:100%;height:300px;" longitude="{{lng}}" latitude="{{lat}}" scale='16' show-location>
-          </map>
+          <map id="myMap" markers="{{markers}}" style="width:100%;height:300px;" longitude="{{lng}}" latitude="{{lat}}" scale='16' show-location></map>
         </view>
         <!-- <view bindtap="getLocation">获取当前位置信息</view> -->
       </view>

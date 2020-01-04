@@ -1,96 +1,118 @@
 <!-- index.wxml -->
-<view class="container">
-  <!-- 搜索 -->
-  <view class="search-container">
-    <input class="search" type="text" placeholder="搜索艺术品" />
-    <image class="search-image" src="/assets/image/search.png" alt=""></image>
-  </view>
-  <!-- 首页主图 -->
-  <view class="banner"></view>
-  <!-- 艺术品分类项 -->
-  <view class="class_list">
-    <view class="list_item" bind:tap="goToTunnel">
-      <image src="/assets/image/artist.png" mode="scaleToFill" lazy-load="false"></image>
-      <text>艺术家</text>
-    </view>
-    <view class="list_item" bindtap="goToDateils">
-      <image src="/assets/image/zihua.png" mode="scaleToFill" lazy-load="false"></image>
-      <text>字 画</text>
-    </view>
-    <view class="list_item">
-      <image src="/assets/image/ciqi.png" mode="scaleToFill" lazy-load="false"></image>
-      <text>瓷 器</text>
-    </view>
-    <view class="list_item">
-      <image src="/assets/image/zisha.png" mode="scaleToFill" lazy-load="false"></image>
-      <text>紫 砂</text>
-    </view>
-  </view>
-  <view class="video_qy">
-    <view class="pad_50">
-      <view class="video_container ">
-        <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" show-center-play-btn="{{false}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls="{{false}}"></video>
-        <cover-view class="cover_img" wx:if="{{!isPlay}}">
-          <cover-image src="/assets/image/ysp_img.png"></cover-image>
-        </cover-view>
-        <cover-view class="play_btn" bindtap="videoPlay" wx:if="{{!isPlay}}">
-          <cover-image src="/assets/image/play.png"></cover-image>
-        </cover-view>
-      </view>
-    </view>
-    <view class="video_info_item">
-      <view class="info_item">
-        <view class="jb_content">
-          <text class="title_zw">不断创新，重新激活艺术市场</text>
-          <text class="title_yw">Continue to innovate and reactivate the art market</text>
-        </view>
-        <view class="wz_content">
-            不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场
-        </view>
-      </view>
-    </view>
-    <view class="video_info_item bg_white">
-      <view class="info_item">
-        <view class="jb_content">
-          <text class="title_zw">我们汇聚全球艺术爱好者</text>
-          <text class="title_yw">We gather art lovers around the world</text>
-        </view>
-        <view class="wz_content">
-            XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="swiper_container">
-     <swiper display-multiple-items="{{5}}"  bindchange="swiperChange" 
-        autoplay="{{true}}" interval="{{5000}}" duration="{{500}}"  
-        circular="{{true}}">
-        <block wx:for="{{imgurl}}" wx:key="{{index}}">
-          <swiper-item class="slide-item" bind:tap="goToArtistDateils">
-            <view class="swiper-item ">
-              <image src="{{item.src}}" class="slide-image  {{swiperIndex == index ? 'active':''}}" />
-              <text class="art_name">{{item.name}}</text>
-            </view>
-          </swiper-item>
-        </block>
-      </swiper>
-  </view>
-  <!-- 艺术品详情 -->
-  <view class="class_sift">
-    <view class="class_item">
-      <view class="class_image"></view>
-      <view class="class_tj">臻品推荐</view>
-      <view class="class_info">
-        <text class="cp_name">藏品名字</text>
-        <text class="cp_describe">藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述</text>
-        <text class="cp_price">价值：XXXX</text>
-      </view>
-    </view>
-  </view>
+<view wx:if="{{isHide}}">
+	<view>
+		<view class='header'>
+			<image src='/assets/image/wx_login.png'></image>
+		</view>
+
+		<view class='content'>
+			<view>申请获取以下权限</view>
+			<text>获得你的公开信息(昵称，头像等)</text>
+		</view>
+
+		<button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+			授权登录
+		</button>
+	</view>
+
 </view>
-<!-- 点击返回 -->
-<view class="return_container" hidden="{{!showTop}}">
-  <view class="return_top" bindtap="goTop">
-    <image src="/assets/image/go_top.png" />
-  </view>
+
+<view class="index-page" wx:else>
+	<!-- 搜索 -->
+	<view class="search-container">
+		<input class="search" type="text" placeholder="搜索艺术品" />
+		<image class="search-image" src="/assets/image/search.png" alt=""></image>
+	</view>
+	<!-- 首页主图 -->
+	<view class="banner">
+		<swiper autoplay="{{true}}" bindchange="swiperChange_one" interval="{{5000}}" duration="{{500}}" circular='{{true}}'>
+			<swiper-item bindtap="goToArtDetails" wx:for="{{dataList.show_img}}" wx:key="index">
+				<view class="swiper-item main-swiper-item">
+					<image src="{{item.img}}" alt></image>
+				</view>
+			</swiper-item>
+		</swiper>
+		<view class="dots">
+			<view wx:for="{{dataList.show_img}}" wx:key="index" class="dot{{index == swiper_noe_current ? ' active' : ''}}"></view>
+		</view>
+	</view>
+	<!-- 艺术品分类项 -->
+	<view class="class_list">
+		<view class="goToArtist">
+			<view class="list_item" bind:tap="goToTunnel">
+				<image src="/assets/image/artist.png" mode="scaleToFill" lazy-load="false"></image>
+				<text>艺术家</text>
+			</view>
+		</view>
+		<view class="classify_options">
+
+			<view class="list_item" wx:for="{{dataList.category}}" wx:for-item='itm' wx:for-index="idx" wx:key='idx' bindtap="goToDateils" data-id='{{itm.id}}'>
+				<image src="{{itm.img}}" mode="scaleToFill" lazy-load="false"></image>
+				<text>{{itm.catergory.name}}</text>
+			</view>
+		</view>
+	</view>
+	<view class="video_qy">
+		<view class="pad_50">
+			<view class="video_container ">
+				<video id="myVideo" src="{{item.video}}" wx:for='{{dataList.video}}' wx:key='index' show-center-play-btn="{{false}}" danmu-list="{{danmuList}}" enable-danmu='{{true}}' danmu-btn='{{true}}' controls="{{false}}" object-fit='cover'></video>
+				<cover-view class="cover_img" wx:if="{{!isPlay}}">
+					<cover-image src="/assets/image/ysp_img.png"></cover-image>
+				</cover-view>
+				<cover-view class="play_btn" bindtap="videoPlay" wx:if="{{!isPlay}}">
+					<cover-image src="/assets/image/play.png"></cover-image>
+				</cover-view>
+			</view>
+		</view>
+		<view class="video_info_item">
+			<view class="info_item">
+				<view class="jb_content">
+					<text class="title_zw">不断创新，重新激活艺术市场</text>
+					<text class="title_yw">Continue to innovate and reactivate the art market</text>
+				</view>
+				<view class="wz_content">
+					不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场
+				</view>
+			</view>
+		</view>
+		<view class="video_info_item bg_white">
+			<view class="info_item">
+				<view class="jb_content">
+					<text class="title_zw">我们汇聚全球艺术爱好者</text>
+					<text class="title_yw">We gather art lovers around the world</text>
+				</view>
+				<view class="wz_content">
+					XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="swiper_container">
+		<swiper display-multiple-items="{{5}}" bindchange="swiperChange_two" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
+				<swiper-item wx:for="{{imgurl}}" wx:key="index" class="slide-item slide-item-five" bind:tap="goToArtistDateils">
+					<view class="swiper-item ">
+						<image src="{{item.src}}" class="slide-image  {{swiperIndex == index ? 'active_two':''}}" />
+						<text class="art_name">{{item.name}}</text>
+					</view>
+				</swiper-item>
+		</swiper>
+	</view>
+	<!-- 艺术品详情 -->
+	<view class="class_sift">
+		<view class="class_item">
+			<view class="class_image"></view>
+			<view class="class_tj">臻品推荐</view>
+			<view class="class_info">
+				<text class="cp_name">藏品名字</text>
+				<text class="cp_describe">藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述</text>
+				<text class="cp_price">价值：XXXX</text>
+			</view>
+		</view>
+	</view>
+	<!-- 点击返回 -->
+	<view class="return_container" hidden="{{!showTop}}">
+		<view class="return_top" bindtap="goTop">
+			<image src="/assets/image/go_top.png" />
+		</view>
+	</view>
 </view>

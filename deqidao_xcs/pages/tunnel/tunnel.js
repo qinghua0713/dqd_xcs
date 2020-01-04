@@ -1,10 +1,7 @@
+import { Request } from "../../utils/request";
 Page({
   data: {
-    imageUrl: [
-      "/assets/image/tunnel_banner.png",
-      "/assets/image/tunnel_banner2.png",
-      "/assets/image/tunnel_banner.png",
-    ],//轮播图数据
+  
     imageUrl2: [
       {
         text: "文明的起源——石器诞生",
@@ -43,7 +40,18 @@ Page({
     ],
     swiperIndex: 0,//轮播图的当前下标
     erjiMenuIsShow: false,//用来判断二级菜单是否显示
-    tabIsShow:true//用来判断显示哪个选项卡的内容
+    dataList:null,//数据列表
+    showClassifyIndex:0//默认显示第一个分类
+  },
+  onLoad(e) {
+    var that = this
+       Request('xcx/page/art/').then(res=>{
+  
+      console.log(res.data)
+           that.setData({
+             dataList:res.data
+           })
+       }) 
   },
 // 轮播图改变触发
   swiperChange(e) {
@@ -58,19 +66,16 @@ Page({
       erjiMenuIsShow: !this.data.erjiMenuIsShow
     })
   },
-  // 点击显示第n个tab的内容
-  showArtist(){
-       this.setData({
-         tabIsShow:false
-       })
-  },
+
     // 点击显示第n个tab的内容
-  showArt(){
+    showClassify(e){
+      console.log(e.target.dataset.id)
+      Request('xcx/page/art/one/'+e.target.dataset.id).then(res=>{
+        console.log(res)
+      })
     this.setData({
-      tabIsShow: true
+      showClassifyIndex: (e.target.dataset.id -1)
     })
   },
-  onLoad() {
 
-  }
 })

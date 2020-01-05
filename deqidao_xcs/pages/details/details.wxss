@@ -433,6 +433,7 @@ swiper {
   height: 100%;
   margin-top: 67rpx;
   z-index: 500;
+  box-sizing: border-box;
 }
 
 .gb_btn {

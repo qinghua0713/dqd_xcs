@@ -1,23 +1,7 @@
 <!-- index.wxml -->
-<view wx:if="{{isHide}}">
-	<view>
-		<view class='header'>
-			<image src='/assets/image/wx_login.png'></image>
-		</view>
 
-		<view class='content'>
-			<view>申请获取以下权限</view>
-			<text>获得你的公开信息(昵称，头像等)</text>
-		</view>
 
-		<button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
-			授权登录
-		</button>
-	</view>
-
-</view>
-
-<view class="index-page" wx:else>
+<view class="index-page" >
 	<!-- 搜索 -->
 	<view class="search-container">
 		<input class="search" type="text" placeholder="搜索艺术品" />
@@ -46,16 +30,19 @@
 		</view>
 		<view class="classify_options">
 
-			<view class="list_item" wx:for="{{dataList.category}}" wx:for-item='itm' wx:for-index="idx" wx:key='idx' bindtap="goToDateils" data-id='{{itm.id}}'>
+			<view class="list_item" wx:for="{{dataList.category}}" wx:for-item='itm' wx:for-index="idx" wx:key='idx' bindtap="goToClassify" data-id='{{itm.id}}' data-value="{{itm.catergory.name}}">
 				<image src="{{itm.img}}" mode="scaleToFill" lazy-load="false"></image>
 				<text>{{itm.catergory.name}}</text>
 			</view>
 		</view>
 	</view>
-	<view class="video_qy">
+	<view class="video_qy" wx:for='{{dataList.video}}' wx:key='index'>
 		<view class="pad_50">
 			<view class="video_container ">
-				<video id="myVideo" src="{{item.video}}" wx:for='{{dataList.video}}' wx:key='index' show-center-play-btn="{{false}}" danmu-list="{{danmuList}}" enable-danmu='{{true}}' danmu-btn='{{true}}' controls="{{false}}" object-fit='cover'></video>
+				<video id="myVideo" src="{{item.video}}"  show-center-play-btn="{{false}}" 
+				danmu-list="{{danmuList}}" enable-danmu='{{true}}'
+				 danmu-btn='{{true}}' controls="{{false}}"
+				  object-fit='cover'></video>
 				<cover-view class="cover_img" wx:if="{{!isPlay}}">
 					<cover-image src="/assets/image/ysp_img.png"></cover-image>
 				</cover-view>
@@ -67,31 +54,31 @@
 		<view class="video_info_item">
 			<view class="info_item">
 				<view class="jb_content">
-					<text class="title_zw">不断创新，重新激活艺术市场</text>
-					<text class="title_yw">Continue to innovate and reactivate the art market</text>
+					<text class="title_zw">{{item.title}}</text>
+					<text class="title_yw">{{item.title_en}}</text>
 				</view>
 				<view class="wz_content">
-					不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场不断创新，重新激活艺术市场
+					{{item.content}}
 				</view>
 			</view>
 		</view>
-		<view class="video_info_item bg_white">
-			<view class="info_item">
-				<view class="jb_content">
-					<text class="title_zw">我们汇聚全球艺术爱好者</text>
-					<text class="title_yw">We gather art lovers around the world</text>
-				</view>
-				<view class="wz_content">
-					XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-				</view>
-			</view>
-		</view>
+
 	</view>
-	<view class="swiper_container">
-		<swiper display-multiple-items="{{5}}" bindchange="swiperChange_two" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
-				<swiper-item wx:for="{{imgurl}}" wx:key="index" class="slide-item slide-item-five" bind:tap="goToArtistDateils">
-					<view class="swiper-item ">
-						<image src="{{item.src}}" class="slide-image  {{swiperIndex == index ? 'active_two':''}}" />
+	<view class="swiper_container" >
+		<view class="video_info_item bg_white" wx:for="{{dataList.articles}}" wx:key="index">
+			<view class="info_item" data-id="{{item.id}}">
+				<view class="jb_content">
+					<text class="title_zw">{{item.title}}</text>
+					<text class="title_yw">{{item.title_en}}</text>
+				</view>
+				<view class="wz_content">{{item.content}}</view>
+			</view>
+		</view>
+		<swiper class="swiperChange_two"  display-multiple-items="{{5}}" bindchange="swiperChange_two" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
+				<swiper-item wx:for="{{dataList.authors}}" wx:key="index" wx:key="index" data-id="{{item.id}}"
+				 class="slide-item slide-item-five" bind:tap="goToArtistDateils">
+					<view class="swiper-item {{swiperIndex == index ? 'active_two':''}}">
+						<image src="{{item.default_image_url}}" class="slide-image  " />
 						<text class="art_name">{{item.name}}</text>
 					</view>
 				</swiper-item>
@@ -99,13 +86,13 @@
 	</view>
 	<!-- 艺术品详情 -->
 	<view class="class_sift">
-		<view class="class_item">
-			<view class="class_image"></view>
-			<view class="class_tj">臻品推荐</view>
+		<view class="class_item class_tj" data-text='臻品推荐' bind:tap="goToDetails" wx:for="{{dataList.recommend}}" wx:key="index"
+		 data-id="{{item.id}}" data-index='{{item.index}}'>
+			<image  class="class_image" src="{{item.goods.default_image_url}}" />
 			<view class="class_info">
-				<text class="cp_name">藏品名字</text>
-				<text class="cp_describe">藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述</text>
-				<text class="cp_price">价值：XXXX</text>
+				<text class="cp_name">{{item.goods.name}}</text>
+				<text class="cp_describe">{{item.goods.synopsis}}</text>
+				<text class="cp_price">价值:{{item.goods.price}}</text>
 			</view>
 		</view>
 	</view>

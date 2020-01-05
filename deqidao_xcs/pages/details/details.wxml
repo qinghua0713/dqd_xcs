@@ -2,7 +2,7 @@
     <!-- 轮播图 -->
     <view class="banner">
         <swiper indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" current circular="{{true}}" bindchange="swiperChange">
-            <block wx:for="{{imageUrl}}" wx:key="{{index}}">
+            <block wx:for="{{imageUrl}}" wx:key="index">
                 <swiper-item>
                     <image class="swiper-image" src="{{item}}" />
                 </swiper-item>
@@ -30,49 +30,8 @@
             <text>分享</text>
         </view>
     </view>
-    <!-- 评论区 -->
-    <!-- <view class="art_remark">
-        <text class="remark_title">艺术品点评（1234）</text>
-        <view class="comment_list">
-            <view class="user_info">
-                <image src="/assets/image/touxiang.png" />
-                <text class="user_name">用户1234567</text>
-            </view>
-            <view class="comment  {{isShow ? 'flag' :''}}">
-                点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点 评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评 内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容 点评内容点评内容点评内容点评内容点评内容点评内容点评内
-            </view>
-            <view class="view_arr" bindtap="viewArr">
-                <text>查看全部</text>
-                <image class="{{isShow == true ? 'rotate':''}}" src="/assets/image/arrows_bottom.png" />
-            </view>
-        </view>
-        <view class="comment_list">
-            <view class="user_info">
-                <image src="/assets/image/touxiang.png" />
-                <text class="user_name">用户1234567</text>
-            </view>
-            <view class="comment ">
-                点评内容点评内容点评内容点评内容点评内容点评内容 点评内容点评内容点评内容点评内容点评内容点评内容点评 内容点评内容点评内容 内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容
-            </view>
-            <view class="view_arr ">
-                <text>查看全部</text>
-                <image src="/assets/image/arrows_bottom.png" />
-            </view>
-        </view>
-    </view> -->
     <view class="art_container">
-        <!-- <view class="art_dateils">
-            <view class="art_title">
-                <view class="heixian_h heixian_q">艺术品详情</view>
-            </view>
-            <view class="dateils_img">
-                <image src="/assets/image/ysp_img.png" />
-            </view>
-        </view> -->
         <view class="artist_container">
-            <!-- <view class="art_title">
-                <view class="heixian_h heixian_q">艺术品详情</view>
-            </view> -->
             <view class="artist_info">
                 <image src="/assets/image/cp_img.png" />
                 <view class="right_js">
@@ -126,8 +85,8 @@
         </view>
         <view class="buy_btn"  bindtap="promptlyOrder">立即订购</view>
     </view>
-    <view class="cover_container" bindtap="hiddenCover"   wx:if="{{order}}">
-        <view class="pay_container" catchtap="showCover">
+    <view class="cover_container" bindtap="hiddenCover"   wx:if="{{order}}" catchtouchmove='doNotMove'>
+        <scroll-view scroll-y="{{true}}" class="pay_container" catchtap="showCover" catchtouchmove='true'>
             <view class="shop_info">
                 <view class="shop_content">
                     <image src="/assets/image/cp_img.png" />
@@ -166,6 +125,6 @@
                 </text>
             </view>
             <view class="qr_pay_btn">确认付款</view>
-        </view>
+        </scroll-view>
     </view>
 </view>

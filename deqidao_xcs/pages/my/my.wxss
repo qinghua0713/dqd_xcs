@@ -315,7 +315,6 @@ Page {
     padding: 22rpx 16rpx 6rpx 16rpx;
 
 }
-
 .order_title text {
     display: block;
     border-bottom: 1rpx solid #e2e2e2;
@@ -424,4 +423,8 @@ Page {
   background: none;
   padding: 0;
   font-weight: normal;
+  border: none;
+}
+button::after{
+    display: none;
 }

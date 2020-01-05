@@ -1,3 +1,4 @@
+import {Request} from '../../utils/request'
 Page({
   data: {
     imageUrl: [
@@ -8,6 +9,11 @@ Page({
     tabShow: true,//用来判断显示tab
     current: 0,//轮播图的当前下标
     isPlay:false//用来判断是否显示播放按钮
+  },
+  onLoad() {
+    Request('xcx/asc/').then(res=>{
+      console.log(res.data)
+    })
   },
   //点击显示tab第n项
   showACS() {
@@ -37,7 +43,5 @@ Page({
     var videoplay = wx.createVideoContext("myVideo")
     videoplay.play()
   },
-  onLoad() {
-
-  }
+ 
 })

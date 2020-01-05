@@ -2,14 +2,14 @@
   <!-- 轮播图 -->
   <view class="swiperContainer">
     <swiper bindchange="swiperChange" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
-      <block wx:for="{{imageUrl}}" wx:key="{{index}}">
+      <block wx:for="{{imageUrl}}" wx:key="index">
         <swiper-item>
           <image src="{{item}}" class="swiper-item"></image>
         </swiper-item>
       </block>
     </swiper>
     <view class="dots">
-      <block wx:for="{{imageUrl}}" wx:key="*">
+      <block wx:for="{{imageUrl}}" wx:key="index">
         <view class="dot{{index == current ? ' active' : ''}}"></view>
       </block>
     </view>

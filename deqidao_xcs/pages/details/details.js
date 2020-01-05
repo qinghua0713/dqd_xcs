@@ -1,3 +1,4 @@
+import {Request} from '../../utils/request'
 Page({
   data: {
     isShow: false,//用来判断是否显示全部内容
@@ -12,6 +13,13 @@ Page({
     //order:true,
  
   },
+  onLoad(e){
+    console.log(e.id)
+     Request(`xcx/order/${e.id}`).then(res=>{
+       console.log(res.data)
+     })
+  },
+
   //点击遮罩隐藏
   hiddenCover(){
    this.setData({
@@ -38,10 +46,10 @@ Page({
     })
   },
   //防止遮罩穿透
-  // doNotMove(){
-  //   console.log(11)
-  //   return
-  // },
+  doNotMove(){
+    console.log(11)
+    return
+  },
   //点击显示收货地址模块
   addAddress(){
   wx.navigateTo({ url: '/pages/address/address' });
@@ -55,8 +63,5 @@ Page({
       current: e.detail.current,
     })
   },
-  onLoad(){
-  
-  }
 
 })

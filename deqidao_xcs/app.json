@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/authorization/authorization",
     "pages/index/index",
     "pages/tunnel/tunnel",
     "pages/art/art",

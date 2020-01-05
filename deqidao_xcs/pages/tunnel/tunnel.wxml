@@ -12,7 +12,7 @@
 
 		<view class="ys_tabBar">
         <block wx:for='{{dataList.one_category}}' wx:key='index'>
-        	<view class="tab_item {{showClassifyIndex == index?'current current_tab':'' }}" bindtap="showClassify" data-id="{{item.id}}">
+        	<view class="tab_item {{showClassifyIndex == index?'current current_tab':'' }}" bindtap="showClassify" data-index='{{index}}' data-id="{{item.id}}">
 				{{item.name}}
 			</view>
         </block>
@@ -21,44 +21,21 @@
 
 
 	<!-- tab菜单选项 -->
-	<view class="menu_container " wx:if="{{showClassifyIndex == 0}}">
+	<view class="menu_container " >
 		<view class="left_menu">
 			<view class="menu_item ">
 				<!-- 菜单 -->
-				<block wx:for='{{dataList.two_category}}' wx:key='index'>
-					<view class="yiji_menu" bindtap="showMenu">
+					<view wx:for='{{defaultValue.two_category}}' wx:key='index' class="yiji_menu"
+					 data-id='{{item.id}}' bindtap="showMenuContent">
 						<text class="current current_tab">{{item.name}}</text>
-					</view>
-				</block>
-			</view>
-
-		</view>
-		<view class="right_content">
-			<view class="list_item " wx:for="{{imageUrl3}}" wx:index="{{index}}" wx:key="index">
-				<text>{{item.text}}</text>
-				<image src="{{item.src}}" />
-			</view>
-		</view>
-	</view>
-	<!-- tab菜单选项 -->
-	<view class="menu_container " wx:else>
-		<view class="left_menu">
-			<view class="menu_item ">
-				<view class="yiji_menu" bindtap="showMenu">
-					<text class="current current_tab">石器时代</text>
-				</view>
-			</view>
-			<view class="menu_item">
-				<view class="yiji_menu">铁器时代</view>
-				<view class="erji_menu">
-					<text>青铜时代</text>
-				</view>
+					</view>			
 			</view>
 		</view>
 		<view class="right_content">
-			<view class="list_item " wx:for="{{imageUrl2}}" wx:index="{{index}}" wx:key="index">
-				<text>{{item.text}}</text>
-				<image src="{{item.src}}" />
+			<view class="list_item " wx:for="{{defaultValue.two_category_article}}"
+			 wx:index="{{index}}" wx:key="index" data-id='{{item.id}}'>
+				<text>{{item.url}}</text>
+				<image src="{{item.img}}" />
 			</view>
 		</view>
 	</view>

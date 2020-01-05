@@ -2,16 +2,12 @@
     <!-- 轮播图 -->
     <view class="swiperContainer">
         <swiper bindchange="swiperChange" autoplay="{{true}}" duration="{{500}}" circular style='height: 347rpx;'>
-            <block wx:for="{{imgUrl}}" wx:key="{{index}}">
-                <swiper-item wx:key="{{index}}">
-                    <image src="{{item}}" class="slide-image" class='img' />
+                <swiper-item wx:key="index" data-id="{{item.id}}"  wx:for="{{dataList.imgs}}" wx:key="index">
+                    <image src="{{item.img}}" class="slide-image" class='img' />
                 </swiper-item>
-            </block>
         </swiper>
         <view class="dots">
-            <block wx:for="{{imgUrl}}" wx:key="{{index}}">
-                <view class="dot{{index == current ? ' active' : ''}}"></view>
-            </block>
+                <view  wx:for="{{dataList.imgs}}" wx:key="index" class="dot{{index == current ? ' active' : ''}}"></view>
         </view>
     </view>
     <!-- 臻品推荐列表 -->
@@ -27,12 +23,12 @@
                     </view>
                 </view>
                 <view class="xl_option" wx:if="{{showValue}}">
-                    <block wx:for="{{val}}" wx:key="{{index}}">
-                        <view class="options_item" data-index="{{index}}" bindtap="selectCentre" 
-                        data-item="{{item}}" wx:if="{{valIndex != index }}">
-                            {{item}}
+                        <view  wx:for="{{dataList.category}}" wx:key="index"
+                         class="options_item" data-index="{{index}}" data-id="{{item.id}}" bindtap="selectCentre" 
+                        data-item="{{item.name}}" wx:if="{{item.name != value }}">
+                            {{item.name}}
                         </view>
-                    </block>
+                 
                 </view>
             </view>
             <view class="filtrate_btn" bind:tap="showCover">
@@ -41,13 +37,14 @@
             </view>
         </view>
         <view class="zp_list">
-            <view class="tj_item" wx:for="{{8}}" bind:tap="goToDateils" wx:key="{{index}}">
-                <image src="/assets/image/yishuti_1.png" />
+            <view class="tj_item" wx:for="{{classifyList.results}}" bind:tap="goToDateils"
+            data-id='{{item.order_status}}' wx:key="index">
+                <image src="{{item.default_image_url}}" />
                 <view class="ysp_info">
-                    <text class="ysp_name">艺术品名称</text>
+                    <text class="ysp_name">{{item.name}}</text>
                     <view class="price_cont">
-                        <text class="price">价值</text>
-                        <text class="ordered">待订购</text>
+                        <text class="price">价值:{{item.price}}</text>
+                        <text class="ordered">待订购:{{item.order_status}}</text>
                     </view>
                 </view>
             </view>
@@ -67,39 +64,27 @@
 </view>
 <!-- 筛选遮罩以及内容 -->
 <view catchtap="hiddenCover" class="cover_container" wx:if="{{isShowCover}}" catchtouchmove="touchHandler">
-    <view class="filtrate_container" catchtap='showCover'>
+    <scroll-view scroll-y='{{true}}' catchtouchmove='true'  class="filtrate_container" catchtap='showCover'>
         <text class="filtrate_title">艺术家</text>
         <view class="filtrate_list">
-            <view class="item_option">
+            <view class="item_option" bind:tap="artistScreening" wx:for="{{dataList.author}}" data-id='{{item.id}}' wx:key="index">
                 <view class="item_info"></view>
-            </view>
-            <view class="item_option">
-                <view class="item_info"></view>
-            </view>
-            <view class="item_option">
-                <view class="item_info"></view>
-            </view>
-            <view class="item_option">
-                <view class="item_info"></view>
-            </view>
-            <view class="item_option">
-                <view class="item_info"></view>
-            </view>
-            <view class="item_option">
-                <view class="item_info"></view>
-            </view>
+                <image src="{{item.default_image_url}}" />
+                <view >{{item.name}}</view>
+            </view>            
         </view>
         <view class="price_section">
             <text class="section_title">价格区间</text>
             <view class="max_min">
-                <input class="z_d_j" placeholder="最低价" />
+                <input class="z_d_j" type="digit" bindinput="getMinValue"  value="{{filtratePirce.lowest}}" placeholder="最低价" />
                 <view class="henggang"></view>
-                <input class="z_g_j" placeholder="最高价" />
+                <input class="z_g_j" type="digit" bindinput="getMaxValue" value="{{filtratePirce.tallest}}" placeholder="最高价" />
             </view>
             <view class="cg_dd">
-                <view class="d_g">从低到高</view>
-                <view class="g_d">从高到低</view>
+                <view class="d_g" bind:tap="LowToTall">从低到高</view>
+                <view class="g_d" bind:tap="TallToLow">从高到低</view>
             </view>
         </view>
-    </view>
+        <button class="filtrate_Btn" bind:tap="filtrateClassify">确定</button>
+    </scroll-view>
 </view>

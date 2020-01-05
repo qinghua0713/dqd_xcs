@@ -1,7 +1,7 @@
 import { Request } from "../../utils/request";
 Page({
   data: {
-  
+
     imageUrl2: [
       {
         text: "文明的起源——石器诞生",
@@ -20,40 +20,42 @@ Page({
         src: "/assets/image/sqdysjs.png"
       }
     ],
-    imageUrl3:[
+    imageUrl3: [
       {
-        text:"称号——陈冰",
-        src:"/assets/image/bg_black.png",
+        text: "称号——陈冰",
+        src: "/assets/image/bg_black.png",
       },
       {
-        text:"意与古会 守正出新——常勇钢",
-        src:"/assets/image/bg_black.png",
+        text: "意与古会 守正出新——常勇钢",
+        src: "/assets/image/bg_black.png",
       },
       {
-        text:"称号——名字",
-        src:"/assets/image/bg_black.png",
+        text: "称号——名字",
+        src: "/assets/image/bg_black.png",
       },
       {
-        text:"称号——名称",
-        src:"/assets/image/bg_black.png",
+        text: "称号——名称",
+        src: "/assets/image/bg_black.png",
       },
     ],
     swiperIndex: 0,//轮播图的当前下标
-    erjiMenuIsShow: false,//用来判断二级菜单是否显示
-    dataList:null,//数据列表
-    showClassifyIndex:0//默认显示第一个分类
+    dataList: null,//数据列表
+    defaultValue: '',//默认渲染的分类选项数据
+    showClassifyIndex: 0,//默认显示第一个选项卡的内容
   },
   onLoad(e) {
     var that = this
-       Request('xcx/page/art/').then(res=>{
-  
-      console.log(res.data)
-           that.setData({
-             dataList:res.data
-           })
-       }) 
+    Request('xcx/page/art/').then(res => {
+      that.setData({
+        dataList: res.data,
+        defaultValue: {
+          two_category: res.data.two_category,
+          two_category_article: res.data.two_category_article
+        }
+      })
+    })
   },
-// 轮播图改变触发
+  // 轮播图改变触发
   swiperChange(e) {
     const that = this;
     that.setData({
@@ -61,20 +63,32 @@ Page({
     })
   },
   //  点击显示二级菜单
-  showMenu() {
-    this.setData({
-      erjiMenuIsShow: !this.data.erjiMenuIsShow
-    })
-  },
-
-    // 点击显示第n个tab的内容
-    showClassify(e){
-      console.log(e.target.dataset.id)
-      Request('xcx/page/art/one/'+e.target.dataset.id).then(res=>{
-        console.log(res)
+  showMenuContent(e) {
+    Request('xcx/page/art/two/' + e.currentTarget.dataset.id).then(res => {
+      console.log(res.data)
+      let two_category_article = 'defaultValue.two_category_article'
+      this.setData({
+        [two_category_article]:res.data
       })
-    this.setData({
-      showClassifyIndex: (e.target.dataset.id -1)
+      console.log(this.data.defaultValue)
+    })
+
+  },
+  // 点击显示第n个tab的内容
+  showClassify(e) {
+    var that = this
+    Request('xcx/page/art/one/' + e.target.dataset.id).then(res => {
+      //更新默认数据
+      that.setData({
+        defaultValue: {
+          two_category: res.data.two_category_data,
+          two_category_article: res.data.article_data,
+        }
+      })
+    })
+    //分开写是因为有异步问题
+    that.setData({
+      showClassifyIndex: e.currentTarget.dataset.index
     })
   },
 

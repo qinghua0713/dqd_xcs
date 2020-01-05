@@ -69,10 +69,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "pages/details/details",
 					"pathName": "pages/details/details",
-					"query": "",
+					"query": "id=2",
 					"scene": null
 				},
 				{
@@ -100,13 +100,6 @@
 					"id": -1,
 					"name": "pages/details/details",
 					"pathName": "pages/details/details",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/classify/classify",
-					"pathName": "pages/classify/classify",
 					"query": "",
 					"scene": null
 				},
@@ -174,16 +167,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "compent/accredit/accredit",
-					"pathName": "compent/accredit/accredit",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "component/accredit/accredit",
-					"pathName": "component/accredit/accredit",
+					"id": 17,
+					"name": "pages/classify/classify",
+					"pathName": "pages/classify/classify",
+					"query": "id=1&value=紫砂",
 					"scene": null
 				}
 			]

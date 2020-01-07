@@ -7,10 +7,14 @@ Page({
     classifyList: null,//分类每一个藏品的数据列表
     artworkId: null,//艺术品每一类的id
     filtratePirce: {
-      lowest: null,
-      tallest: null
+      lowest: '',
+      tallest: ''
     },//筛选输入框的最大小值
-    isShowCover: true
+    artistId: '',//艺术家的id
+    // isShowCover: true,
+    // ischecked: false,//筛选艺术家是否选中
+    artistIndex:0
+
   },
   //轮播图改变函数
   swiperChange(e) {
@@ -63,43 +67,98 @@ Page({
     })
   },
   //点击艺术家进行筛选
-  artistScreening(e){
+  artistScreening(e) {
     let that = this
-   Request(`xcx/category/`,{
-    author:e.currentTarget.dataset.id
-   }).then(res=>{
-     console.log(res.data)
+   if(that.data.artistIndex == e.target.dataset.id){
+      that.setData({
+        artistIndex:0
+      })
+   }else{
+    that.setData({
+      artistIndex: e.target.dataset.id,
+    })
+   }
+    Request(`xcx/category/`, {
+      author: e.currentTarget.dataset.id
+    }).then(res => {
+      that.setData({
+        classifyList: res.data,
+       
+        ischecked: !that.data.ischecked
+      })
+      if (that.data.ischecked) {
         that.setData({
-          classifyList:res.data
+          artistId: e.currentTarget.dataset.id,
         })
-   })
+      } else {
+        that.setData({
+          artistId: '',
+        })
+      }
+    })
   },
   //手动输入金额筛选按钮
   filtrateClassify() {
     let that = this
+    let reg = /(^[1-9](\d+)?(\.\d{1,2})?$)|(^[1-9]$)|(^\d\.[1-9]{1,2}$)|(^\d\.[0]{1}[1-9]{1}$|(^\d\.[1-9]{1}[0]{1}$)$)/;//判断金额合法性
     //如果用户输入的最小值大于最大值那么就交换它们的值再请求
-    if (that.data.filtratePirce.lowest > that.data.filtratePirce.tallest) {
-      let lowest = 'filtratePirce.lowest'
-      let tallest = 'filtratePirce.tallest'
-      that.setData({
-        [lowest]: that.data.filtratePirce.tallest,
-        [tallest]: that.data.filtratePirce.lowest
-      })
-      Request(`xcx/category/${that.data.artworkId}`, {
-        min: that.data.filtratePirce.lowest,
-        max: that.data.filtratePirce.tallest
-      }).then(res => {
-        console.log(res.data)
-      })
-    } else {
-      //否则直接请求
-      Request(`xcx/category/${that.data.artworkId}`, {
-        min: that.data.filtratePirce.lowest,
-        max: that.data.filtratePirce.tallest
-      }).then(res => {
-        console.log(res.data)
-      })
-    }
+      if (that.data.filtratePirce.lowest != '' && that.data.filtratePirce.tallest != '') {
+        if (reg.test(that.data.filtratePirce.lowest) && reg.test(that.data.filtratePirce.tallest)) {
+          if (parseFloat(that.data.filtratePirce.lowest) > parseFloat(that.data.filtratePirce.tallest)) {
+            let lowest = 'filtratePirce.lowest'
+            let tallest = 'filtratePirce.tallest'
+            that.setData({
+              [lowest]: that.data.filtratePirce.tallest,
+              [tallest]: that.data.filtratePirce.lowest
+            })
+            Request(`xcx/category/${that.data.artworkId}?author=${that.data.artistId}`, {
+              min: that.data.filtratePirce.lowest,
+              max: that.data.filtratePirce.tallest
+            }).then(res => {
+              that.setData({
+                classifyList: res.data,
+                isShowCover: false,
+              })
+              console.log(res.data)
+            })
+            console.log(that.data.artistId, 11, that.data.ischecked)
+
+          } else {
+            //否则直接请求
+            Request(`xcx/category/${that.data.artworkId}`, {
+              min: that.data.filtratePirce.lowest,
+              max: that.data.filtratePirce.tallest
+            }).then(res => {
+              console.log(res.data)
+              that.setData({
+                classifyList: res.data,
+                isShowCover: false,
+
+              })
+            })
+          }
+        } else {
+          wx.showToast({
+            title: '筛选格式错误',
+            icon: 'none',
+            duration: 2000
+          })
+
+        }
+      } else {
+        wx.showToast({
+          title: '筛选金额不能为空',
+          icon: 'none',
+          duration: 2000
+        })
+        //可以不用return 但是为了保险起见加上
+        return
+      }
+ 
+    console.log(that.data.ischecked)
+
+
+
 
   },
   //从低到高筛选
@@ -134,7 +193,7 @@ Page({
   },
   //判断回到顶部按钮是否显示
   onPageScroll(e) {
-    if (e.scrollTop > 100) {
+    if (e.scrollTop > 1000) {
       this.setData({
         showTop: true
       })
@@ -159,15 +218,17 @@ Page({
   },
   //选类别中的值
   selectCentre(e) {
-    var index = e.target.dataset.index
-    var value = e.target.dataset.item
-    this.setData({
-      showValue: false,
-      value: value,
+    Request(`xcx/category/${e.target.dataset.id}`).then(res => {
+      console.log(res.data)
+      this.setData({
+        showValue: false,
+        value: e.target.dataset.item,
+        classifyList: res.data
+      })
     })
   },
   //点击显示筛选盒子
-  showCover() {
+  showCover_one() {
     this.setData({
       isShowCover: true
     })
@@ -179,10 +240,10 @@ Page({
     })
   },
   //点击显示筛选盒子(没办法的办法，不然会触发父盒子的事件)
-  showCover() {
-    this.setData({
-      isShowCover: true
-    })
+  showCover_two() {
+      this.setData({
+        isShowCover: true
+      })
   },
   //弹窗防止穿透
   touchHandler() {
@@ -191,7 +252,6 @@ Page({
   },
   //点击跳转详情页
   goToDateils(e) {
-    console.log(e)
     wx.navigateTo({ url: `/pages/details/details?id=${e.currentTarget.dataset.id}` });
   },
 

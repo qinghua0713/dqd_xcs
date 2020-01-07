@@ -3,9 +3,6 @@ page {
 
 }
 
-
-
-
 .search-container {
   width: 100%;
   position: relative;
@@ -242,4 +239,33 @@ page {
    transform: scaleY(1.11);
   transition: all 0.3s ease-in 0s;
   z-index: 20;
+}
+.keywordCover{
+   background: rgba(0, 0, 0, .5);
+   position: fixed;
+   z-index: 1000;
+   top:0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+}
+.keywordList{
+  background: #fff;
+  height:100%;
+}
+.keyword-container{
+  height:calc(100% - 62rpx) ;
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  border-radius: 16rpx 16rpx 0 0 ;
+}
+.keywordItem{
+  width: 90%;
+  margin: 0 auto;
+  font-size: 20rpx;
+  color: #a4a4a4;
+  padding: 16rpx;
+  border-bottom: 1rpx solid #a4a4a4;
 }

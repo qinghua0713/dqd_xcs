@@ -1,15 +1,30 @@
 
+import { Request } from '../../utils/request'
+const app = getApp()
 Page({
   data: {
-    imgUrl: [
-      "/assets/image/cp_banner.png",
-      "/assets/image/cp_banner.png",
-      "/assets/image/cp_banner.png"
-    ],//banner图片数据
+    dataList: '',//数据列表
     current: 0,//当前图片的位置
     isSuccee: false,//绑定成功的开关
     second: 5,//倒计时的秒数
     time: null//声明一个定时器
+  },
+  onLoad(e) {
+    let that = this
+    console.log(1)
+    wx.getStorage({
+      key: 'resultUserInfo',
+      success: (res) => {
+        console.log(res.data)
+        Request(`goods/code/bind`, '', 'GET', {
+          'content-type': 'application/json',
+          openid: res.data.openid
+        }).then(res => {
+          console.log(res.data)
+        })
+      },
+    })
+
   },
   //轮播图内容位置改变触发
   swiperChange(e) {
@@ -42,10 +57,10 @@ Page({
 
   },
   //取消绑定跳去首页
-  cancelBtn(){
-   wx.switchTab({
-     url: '/pages/index/index',
-   })
+  cancelBtn() {
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
   },
   //点击返回个人中心
   returnMy() {
@@ -58,9 +73,7 @@ Page({
   onShow() {
 
   },
-  onLoad(e) {
 
-  },
   onUnload() {
 
 

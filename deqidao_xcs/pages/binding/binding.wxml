@@ -4,27 +4,27 @@
     <!-- 轮播图 -->
     <view class="swiperContainer">
       <swiper bindchange="swiperChange" autoplay="{{true}}" duration="{{500}}" circular style='height: 625rpx;'>
-        <block wx:for="{{imgUrl}}" wx:key="*this">
-          <swiper-item wx:key="*this">
-            <image src="{{item}}" class="slide-image" class='img' />
+        <block wx:for="{{dataList.imgs}}" wx:key="*this">
+          <swiper-item wx:key="index" data-id="{{item.id}}">
+            <image src="{{item.image}}" class="slide-image" class='img' />
           </swiper-item>
         </block>
       </swiper>
       <view class="dots">
-        <block wx:for="{{imgUrl}}" wx:key="*">
+        <block wx:for="{{dataList.imgs}}" wx:key="index">
           <view class="dot{{index == current ? ' active' : ''}}"></view>
         </block>
       </view>
     </view>
     <view class="cp_container">
-      <view class="cp_info">
-        <text class="cp_title">藏品名称</text>
+      <view class="cp_info" data-id="{{dataList.good.id}}">
+        <text class="cp_title">{{dataList.good.name}}</text>
         <view class="cp_weight">
           <text decode="{{true}}">
-            长&nbsp;20cm&nbsp;&nbsp;&nbsp;宽&nbsp;40cm&nbsp;&nbsp;&nbsp;高60cm
+            长&nbsp;{{dataList.good.length}}cm&nbsp;&nbsp;&nbsp;宽&nbsp;{{dataList.good.wide}}cm&nbsp;&nbsp;&nbsp;高{{dataList.good.height}}cm
           </text>
         </view>
-        <text class="cp_describe">艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述</text>
+        <text class="cp_describe">{{dataList.good.synopsis}}</text>
       </view>
       <!-- 绑定按钮 -->
       <view class="btn_container">

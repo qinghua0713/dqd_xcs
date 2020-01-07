@@ -31,14 +31,14 @@
                  
                 </view>
             </view>
-            <view class="filtrate_btn" bind:tap="showCover">
+            <view class="filtrate_btn" bind:tap="showCover_one">
                 <text>筛选</text>
                 <image class="filtrate_img" src="/assets/image/filtrate.png" />
             </view>
         </view>
         <view class="zp_list">
             <view class="tj_item" wx:for="{{classifyList.results}}" bind:tap="goToDateils"
-            data-id='{{item.order_status}}' wx:key="index">
+            data-id='{{item.id}}' wx:key="index">
                 <image src="{{item.default_image_url}}" />
                 <view class="ysp_info">
                     <text class="ysp_name">{{item.name}}</text>
@@ -64,13 +64,12 @@
 </view>
 <!-- 筛选遮罩以及内容 -->
 <view catchtap="hiddenCover" class="cover_container" wx:if="{{isShowCover}}" catchtouchmove="touchHandler">
-    <scroll-view scroll-y='{{true}}' catchtouchmove='true'  class="filtrate_container" catchtap='showCover'>
+    <scroll-view scroll-y='{{true}}' catchtouchmove='true'  class="filtrate_container" catchtap='showCover_two'>
         <text class="filtrate_title">艺术家</text>
         <view class="filtrate_list">
-            <view class="item_option" bind:tap="artistScreening" wx:for="{{dataList.author}}" data-id='{{item.id}}' wx:key="index">
-                <view class="item_info"></view>
-                <image src="{{item.default_image_url}}" />
-                <view >{{item.name}}</view>
+            <view class="item_option " bind:tap="artistScreening" wx:for="{{dataList.author}}" data-id='{{item.id}}'  wx:key="index">
+                <!-- <image src="{{item.default_image_url}}" /> -->
+                <view class="artist_name {{artistIndex == item.id  ? 'current_artist':''}}" data-id='{{item.id}}' >{{item.name}}</view>
             </view>            
         </view>
         <view class="price_section">

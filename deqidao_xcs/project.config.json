@@ -90,17 +90,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 5,
 					"name": "pages/binding/binding",
 					"pathName": "pages/binding/binding",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/details/details",
-					"pathName": "pages/details/details",
-					"query": "",
+					"query": "id=2",
 					"scene": null
 				},
 				{
@@ -167,10 +160,10 @@
 					"scene": null
 				},
 				{
-					"id": 17,
+					"id": 16,
 					"name": "pages/classify/classify",
 					"pathName": "pages/classify/classify",
-					"query": "id=1&value=紫砂",
+					"query": "id=2&value=紫砂",
 					"scene": null
 				}
 			]

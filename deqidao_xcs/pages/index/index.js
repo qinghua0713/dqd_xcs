@@ -10,14 +10,33 @@ Page({
     isPlay: false, //用来判断是否显示播放按钮
     swiperIndex: 2, //swiper当前下标
     dataList:null, //请求回来的数据列表
-    //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     swiper_noe_current:0,//第一个轮播图的当前下标
-    
+    isShowCearchCover:true
+  },
+  //搜索框获取焦点
+  searchFocus(){
+     this.setData({
+       isShowCearchCover:true//显示搜索框的遮罩
+     })
+  },
+  hideSearchCover(){
+   this.setData({
+     isShowCearchCover:false
+   })
+  },
+  //手机键盘输入实时请求数据
+  searchShop(e){
+    console.log(e)
+    wx.request({
+      url:app.globalData.BaseUrl+ `goods/search/?search=${e.detail.value}`, //开发者服务器接口地址",
+      success: res => {
+        console.log(res)
+      },
+    });
   },
   // 加载小程序的时候会触发这个 onLoad方法
   onLoad: function () {
     var that = this;
-
     Request('xcx/page/index/').then(res=>{
       that.setData({
         dataList:res.data
@@ -48,8 +67,6 @@ goToArtDetails(){
   },
   //点击跳转详情
   goToClassify(e) {
-    console.log(e.currentTarget.dataset.id)
-    console.log(e.currentTarget.dataset.value)
     var value = decodeURIComponent(e.currentTarget.dataset.value);
     wx.navigateTo({
       url: `/pages/classify/classify?id=${e.currentTarget.dataset.id}&value=${value}`,

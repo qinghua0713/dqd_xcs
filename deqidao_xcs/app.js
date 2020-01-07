@@ -8,6 +8,6 @@ App({
   },
   globalData: {
     userInfo: null,
-
+    BaseUrl:'http://imcare.top:8000/'
   }
 })

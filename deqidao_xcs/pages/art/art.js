@@ -1,18 +1,18 @@
 import {Request} from '../../utils/request'
 Page({
   data: {
-    imageUrl: [
-      "/assets/image/tunnel_banner.png",
-      "/assets/image/tunnel_banner2.png",
-      "/assets/image/tunnel_banner.png",
-    ],//轮播图数据列表
     tabShow: true,//用来判断显示tab
     current: 0,//轮播图的当前下标
-    isPlay:false//用来判断是否显示播放按钮
+    isPlay:false,//用来判断是否显示播放按钮
+    dataList:null,//数据列表
   },
   onLoad() {
+    let that = this
     Request('xcx/asc/').then(res=>{
       console.log(res.data)
+       that.setData({
+         dataList:res.data
+       })
     })
   },
   //点击显示tab第n项

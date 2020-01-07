@@ -44,12 +44,11 @@ bindGetUserInfo: function (e) {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.switchTab({
-      url: '/pages/index/index',
-    })
+ 
     let that = this
     wx.getSetting({
       success: function (res) {
+        console.log(res)
         // res.authSetting['scope.userInfo']监测本地缓存是否存在一个登陆状态标识
         if (res.authSetting['scope.userInfo']) {
           // 获取用户信息
@@ -62,6 +61,9 @@ bindGetUserInfo: function (e) {
               if (that.userInfoReadyCallback) {
                 that.userInfoReadyCallback(_res)
               }
+              wx.switchTab({
+                url: '/pages/index/index',
+              })
             }
           });
         } // 如果没有授权

@@ -12,6 +12,7 @@ Page({
   onLoad(e) {
     let that = this
     console.log(1)
+    //请求绑定数据
     wx.getStorage({
       key: 'resultUserInfo',
       success: (res) => {
@@ -22,7 +23,13 @@ Page({
         }).then(res => {
           console.log(res.data)
         })
-      },
+      },fail: () => { 
+        wx.showToast({
+          title: '用户未授权',
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
 
   },

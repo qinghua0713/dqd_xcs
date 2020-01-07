@@ -11,27 +11,87 @@ Page({
     buyStatus: "立即订购",//藏品状态
     orderDataList: '',//订单数据列表
     currentWay: 1,//默认选中第中存储方式
+    collectNum: ''//收藏人数
+  },
+  //用户点击收藏发送数据给后台
+  Collect() {
+    let that = this
+    wx.getStorage({
+      key: 'resultUserInfo',
+      success: (res) => {
+        Request('goods/collect', {
+          good: that.data.artworkId
+        }, 'POST', {
+          'openid': res.data.openid
+        }).then(res => {
+          console.log(res.data)
+          wx.setStorageSync('status', res.data.status)
+          if(res.data.status != 1){
+            that.setData({
+              collectNum: res.data.collect + "人收藏"
+            })
+          }else{
+            that.setData({
+              collectNum:  "已收藏"
+            })
+          }
+       
+        })
+      },
+      fail: () => {
+        wx.showToast({
+          title: '用户未授权',
+          icon: 'none',
+          duration: 2000
+        })
+      },
+    })
+
   },
   onLoad(e) {
     let that = this
     console.log(e.id)
+    //请求商品详情页数据
     Request(`goods/details/${e.id}`).then(res => {
       that.setData({
         dataList: res.data,
-        artworkId: e.id
+        artworkId: e.id,
       })
+      //判断本地存储的收藏状态是不是以已收藏
+      wx.getStorage({
+        key: 'status',
+        success: (res) => {
+          console.log(res.data)
+          //如果是未收藏
+            if(res.data != 1){
+              that.setData({
+                collectNum: that.data.dataList.details.collect + "人收藏"
+              })
+            }else{
+              that.setData({
+                collectNum:  "已收藏"
+              })
+            }
+        },
+        fail: () => {
+          //如果本地存储没有这个字段证明用户没有点击过收藏
+          that.setData({
+            collectNum: res.data.details.collect + "人收藏"
+          })
+         },
+      })
+      console.log(res.data)
       if (that.data.dataList.details.order_status != 1) {
         that.setData({
           buyStatus: '已订购'
         })
       }
-    })
-
+    })      
+ //发送用户足迹给后台
     wx.getStorage({
       key: 'resultUserInfo',
       success: (res) => {
-        console.log(parseInt(e.id))
-         wx.request({
+        wx.request({
           url: app.globalData.BaseUrl + 'user/history/', //开发者服务器接口地址",
           data: {
             good: e.id
@@ -39,14 +99,20 @@ Page({
           method: 'POST',
           dataType: 'json', //如果设为json，会尝试对返回的数据做一次 JSON.parse
           header: {
-            'content-type': 'application/json',
             'openid': res.data.openid
           },
           success: res => {
             console.log(res.data)
           },
         });
+      }, fail: () => {
+        wx.showToast({
+          title: '用户未授权',
+          icon: 'none',
+          duration: 2000
+        })
       },
+
     })
 
   },
@@ -85,6 +151,7 @@ Page({
       })
       return
     }
+    //请求订单数据
     Request(`xcx/order/${that.data.artworkId}`).then(res => {
       console.log(res.data)
       this.setData({

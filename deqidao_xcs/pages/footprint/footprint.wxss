@@ -16,7 +16,10 @@ Page {
     background: #fff;
     border-radius: 14rpx;
 }
-
+.cp_item_info{
+    display: flex;
+    
+}
 .cp_item image {
     width: 208rpx;
     height: 278rpx;

@@ -3,7 +3,8 @@
     <view class="banner">
         <swiper indicator-dots="{{false}}" autoplay="{{false}}" interval="{{5000}}" duration="{{500}}" current="{{current}}" circular="{{false}}" bindchange="swiperChange">
             <swiper-item wx:for="{{dataList.img}}" wx:key="index" data-id='{{item.id}}' data-author='{{item.author}}'>
-                <image class="swiper-image" src="{{item.image}}" />
+            <video id="myVideo" src="{{item}}" danmu-list="{{danmuList}}" wx:if="{{index < 1}}" enable-danmu danmu-btn controls></video>
+                <image class="swiper-image" src="{{item.image}}"  wx:if="{{index > 0}}" />
             </swiper-item>
         </swiper>
         <view class="tab_option">
@@ -62,9 +63,9 @@
         </view>
     </view>
     <view class="buy_of_like">
-        <view class="like_btn">
+        <view class="like_btn" bind:tap="Collect">
             <image src="/assets/image/collect.png" />
-            <text>962人收藏</text>
+            <text>{{collectNum}}</text>
         </view>
         <view class="buy_btn {{dataList.details.order_status != 1 ? 'ordered_bg':''}}" bindtap="promptlyOrder">{{buyStatus}}</view>
     </view>

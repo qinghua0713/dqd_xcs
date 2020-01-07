@@ -1,17 +1,40 @@
+import {Request} from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+     dataList:''//数据列表
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    let that = this
+    wx.getStorage({
+      key: 'resultUserInfo',
+      success: (res) => {
+        console.log(res.data)
+        Request('goods/collect','','GET',{
+          'openid': res.data.openid
+        }).then(res=>{
+          console.log(res.data)
+          that.setData({
+            dataList:res.data
+          })
+  
+        })
+      },fail: () => { 
+        wx.showToast({
+          title: '用户未授权',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
+  
   },
 
   /**

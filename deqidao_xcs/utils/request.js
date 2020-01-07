@@ -35,7 +35,7 @@ export const Request = (api, data, method = 'GET',header,loading = true) => {
         reject(err)
       }
     })
-  }).catch((e) => {})
+  })
 
 
 }

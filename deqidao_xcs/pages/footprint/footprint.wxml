@@ -1,20 +1,24 @@
 <view class="container">
     <view class="cp_container">
-        <view class="cp_item" wx:for="{{2}}">
+        <view class="cp_item" wx:for="{{dataList}}" wx:key="index" >
+          <view class="cp_item_info" wx:for="{{item.history}}" wx:for-item="itm" wx:for-index="idx" 
+          data-id='{{itm.good.id}}' wx:key="idx">
             <image src="/assets/image/cp_img.png" />
             <view class="right_info">
-                <text class="cp_title">藏品名称</text>
+                <text class="cp_title">{{itm.good.name}}</text>
                 <view class="cp_ms">
                     艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述
                 </view>
                 <view class="price_info">
-                    <text class="dg_jg">订购价格：</text>
+                    <text class="dg_jg">订购价格:</text>
                     <view class="price">
                         <text>￥</text>
-                        99999
+                        {{itm.good.price}}
                     </view>
                 </view>
             </view>
+          </view>
+          
         </view>
     </view>
     <view class="tj_container">
@@ -23,7 +27,7 @@
             <text>精 选 推 荐</text>
         </view>
         <view class="tj_list">
-            <view class="tj_item" wx:for="{{4}}">
+            <view class="tj_item" wx:for="{{4}}" wx:key="index">
                 <image src="/assets/image/ysp_img.png" />
                 <view class="tj_info">
                     <text class="ysp_name">艺术品名称</text>

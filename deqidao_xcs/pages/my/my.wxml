@@ -1,18 +1,18 @@
 <view class="my-page">
   <!-- 用户头像 -->
   <view class="my_info">
-    <image class="my_portrait" src="/assets/image/logo.png" />
+    <image class="my_portrait" src="{{userInfo.profile}}" />
   </view>
   <!-- 用户详情 -->
   <view class="list_cont">
     <view class="list_item">
       <text>用户昵称</text>
-      <text>ID：12345678</text>
+      <text>ID: {{userInfo.username}}</text>
     </view>
     <view class="list_item balance_info">
       <image class="balance" src="/assets/image/balance.png" />
       <text>余  额</text>
-      <text>￥ 9999</text>
+      <text>￥ {{property}}</text>
     </view>
     <view class="list_item" bindtap="goToCollection">
       <image class="collect" src="/assets/image/collect.png" />
@@ -101,7 +101,7 @@
   <!-- 基本信息 -->
   <view class="message_manage">
     <view class="message_item">基本信息</view>
-    <view class="message_item">地址管理</view>
+    <view class="message_item" bind:tap="goToAddress">地址管理</view>
     <view class="message_item">ACS合同条约</view>
   </view>
 </view>

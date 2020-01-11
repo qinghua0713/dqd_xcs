@@ -1,24 +1,31 @@
 <view class="redact_address_cont">
   <view class="redact_title">
-    <text></text>
     <text>编辑收货地址</text>
-    <view class="saveAddress" bind:tap="goToAddress">保存</view>
   </view>
   <view class="redact_input">
-    <input class="redact_user_name" type="text" bindinput="inputName" placeholder="请输入姓名"></input>
-    <input class="redace_user_tel" type="number" maxlength="11" bindinput="inputShowed" placeholder="请输入电话"></input>
+    <input class="redact_user_name" type="text" bindblur="inputName" value="{{userName}}" placeholder="请输入姓名"></input>
+    <input class="redace_user_tel" type="number" maxlength="11" value="{{iPhone}}" bindblur="inputShowed" placeholder="请输入电话"></input>
     <view class="address_container">
-       <view>{{areaInfo}}</view>
+       <input  placeholder="请选择地址" value="{{checkedAddress}}" disabled="{{true}}" placeholder-style="color:#020202;" />
       <view class="right_select" bindtap='select'>
         <text>选择</text>
         <image  src="/assets/image/youjiantou.png" />
       </view>
     </view>
     <view class="dateils_address">
-      <input type="text" placeholder="具体地址" />
+      <input type="text" bindblur="specificAddress" value="{{specificAddress}}" placeholder="具体地址" placeholder-style="color:#020202;" />
+    </view>
+    <view class="defaultAddress"  >
+      <text >设为默认地址</text>
+      <switch bindchange="isSwitchChecked" color="#fe4055" checked="{{switchChecked}}" />
+    </view>
+    <view class="deleteAddress">
+      <text bind:tap="deleteAddress">删除地址</text>
     </view>
   </view>
+  <view class="saveAddress" bind:tap="goToAddress">保存地址</view>
 </view>
+
 <view class="picker-view" style="visibility:{{addressMenuIsShow ? 'visible':'hidden'}}">
     <!-- 确认取消按钮 -->
     <view class='btn'>

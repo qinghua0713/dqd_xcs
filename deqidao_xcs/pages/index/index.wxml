@@ -11,12 +11,12 @@
 
 	<view class="keywordList" catch:tap="true">
 				 <view class="search-container">
-		    <input class="search"  bindinput="searchShop"  type="text" placeholder="搜索艺术品" />
+		    <input class="search"  bindinput="searchShop" value="{{keyword}}"  type="text" placeholder="搜索艺术品" />
 		   <image class="search-image" src="/assets/image/search.png" alt=""></image>
 		</view>
 		<view class="keyword-container">
-			<view class="keywordItem">
-				1111
+			<view  class="keywordItem" wx:for="{{keywordList}}" >
+				  <text wx:for="{{item.keyword}}" wx:key="{{index}}" class="{{item == keyword ? 'searchHigh' : '' }}">{{item}}</text>
 			</view>
 		</view>
 	</view>

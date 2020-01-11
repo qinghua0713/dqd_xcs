@@ -1,32 +1,32 @@
-<view class="returnCash-page">
+<view class="returnCash-page" catch:tap="hiddenReturn">
   <view class="swiperContainer">
     <swiper bindchange="swiperChange" autoplay="{{true}}" duration="{{500}}" circular style='height: 625rpx;'>
-      <block wx:for="{{imgUrl}}" wx:key="index">
+      <block wx:for="{{dataList.imgs}}" wx:key="index" data-id='{{item.id}}'>
         <swiper-item >
-          <image src="{{item}}" class="slide-image" class='img' />
+          <image src="{{item.image}}" class="slide-image" class='img' />
         </swiper-item>
       </block>
     </swiper>
     <view class="dots">
-      <block wx:for="{{imgUrl}}" wx:key="index">
+      <block wx:for="{{dataList.imgs}}" wx:key="index">
         <view class="dot{{index == current ? ' active' : ''}}"></view>
       </block>
     </view>
   </view>
   <view class="cp_container">
-    <view class="cp_info">
-      <text class="cp_title">藏品名称</text>
+    <view class="cp_info" >
+      <text class="cp_title">{{dataList.good.name}}</text>
       <text class="cp_weight" decode="{{true}}">
-        长&nbsp;20cm&nbsp;&nbsp;&nbsp;宽&nbsp;40cm&nbsp;&nbsp;&nbsp;高60cm
+        长&nbsp;{{dataList.good.length}}cm&nbsp;&nbsp;&nbsp;宽&nbsp;{{dataList.good.wide}}cm&nbsp;&nbsp;&nbsp;高{{dataList.good.height}}cm
       </text>
-      <text class="cp_ms">艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述</text>
+      <text class="cp_ms">{{dataList.good.synopsis}}</text>
     </view>
     <view class="ht_sq">
       <text class="sq_title">合同时期</text>
       <view class="ht_date">
-        <text class="date_q">2019-01-20</text>
+        <text class="date_q">{{dataList.contract.create_time}}</text>
         <text class="h_g">—</text>
-        <text class="date_h">2019-XX-XX</text>
+        <text class="date_h">{{dataList.contract.closed_time}}</text>
       </view>
     </view>
     <view class="sy_container">
@@ -36,12 +36,12 @@
             <text class="title_sy">创投总收益</text>
             <view class="title_price">
               <text>￥</text>
-              9999
+              {{dataList.ear.ear_sum}}
             </view>
-            <view class="gh_ts_btn " bindtap="showCtTs">
+            <view class="gh_ts_btn "catch:tap="showCtTs">
               <image src="/assets/image/gantanhao.png" />
             </view>
-            <view class="ts_container" wx:if="{{isCtShow}}">
+            <view class="ts_container" wx:if="{{isShowCtTs}}">
               <view class="gh_ts_content sanjiao">
                 <text>
                   第一阶段：ACS服务合同进行至第91天~180天
@@ -52,22 +52,10 @@
               </view>
             </view>
           </view>
-          <view class="item-cotainer">
-            <view class="jd_sy_item">
+          <view class="item-cotainer" >
+            <view class="jd_sy_item" wx:for="{{dataList.ear.ear_sum_data}}" wx:key="index">
               <text class="dn_jd">第一季度创投收益</text>
-              <text class="jd_price">￥   9999</text>
-            </view>
-            <view class="jd_sy_item">
-              <text class="dn_jd">第二季度创投收益</text>
-              <text class="jd_price">￥   9999</text>
-            </view>
-            <view class="jd_sy_item">
-              <text class="dn_jd">第三季度创投收益</text>
-              <text class="jd_price">￥   9999</text>
-            </view>
-            <view class="jd_sy_item">
-              <text class="dn_jd">第四季度创投收益</text>
-              <text class="jd_price">￥   9999</text>
+              <text class="jd_price">￥   {{item}}</text>
             </view>
           </view>
         </view>
@@ -76,14 +64,14 @@
             <text class="title_sy">年化总收益</text>
             <view class="title_price">
               <text>￥</text>
-              9999
+             {{dataList.ear.year_ear}}
             </view>
             <view></view>
           </view>
           <view class="item-cotainer">
             <view class="jd_sy_item">
-              <text class="dn_jd">第一季度年化收益</text>
-              <text class="jd_price">￥   9999</text>
+              <text class="dn_jd">当前进度 第{{dataList.ear.day}}天</text>
+              <text class="jd_price">￥   {{dataList.ear.yesterday}}</text>
             </view>
           </view>
         </view>
@@ -91,12 +79,12 @@
       <view class="current_gh_sy">
         <view class="gh_xuzhi_box">
           <view class=" sy_title">
-            <text class="title_sy">创投总收益</text>
+            <text class="title_sy">当前归还总收益</text>
             <view class="title_price">
               <text>￥</text>
-              9999
+            {{dataList.ear.sum_ear}}
             </view>
-            <view class="gh_ts_btn " bindtap="showReturn">
+            <view class="gh_ts_btn " catch:tap="showReturn">
               <image src="/assets/image/gantanhao.png" />
             </view>
             <view class="ts_container" wx:if="{{isTsShow}}">
@@ -119,14 +107,16 @@
           <text decode="{{true}}">2019年  3  月  20  日</text>
         </view>
       </view>
-      <view class="yy_gh_btn">预约归还</view>
-      <view class="gh_address">
+
+      
+    </view>
+          <view class="yy_gh_btn">预约归还</view>
+    <view class="gh_address">
         <text class="address_title">地址:{{address}}</text>
         <view class="map_cont">
-          <map id="myMap" markers="{{markers}}" style="width:100%;height:300px;" longitude="{{lng}}" latitude="{{lat}}" scale='16' show-location></map>
+          <map id="myMap" markers="{{markers}}" style="width:100%;" longitude="{{lng}}" latitude="{{lat}}" scale='16' show-location></map>
         </view>
         <!-- <view bindtap="getLocation">获取当前位置信息</view> -->
       </view>
-    </view>
   </view>
 </view>

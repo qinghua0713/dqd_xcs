@@ -1,0 +1,21 @@
+﻿├─assets //静态文件目录
+│  └─image //图片文件夹
+├─pages //小程序页面目录
+│  ├─address //收货地址页
+│  ├─art //艺术品合同页
+│  ├─artistDateils //艺术家详情页
+│  ├─artProductManage //艺术品管理页
+│  ├─authorization //用户授权页
+│  ├─binding //艺术品绑定页
+│  ├─classify //艺术品分类页
+│  ├─collection //藏品页
+│  ├─consignment //艺术品寄售页
+│  ├─details //艺术品详情页
+│  ├─earnings //艺术品收益页
+│  ├─editorAddress //编辑地址与添加地址页
+│  ├─footprint //足迹页
+│  ├─index //首页
+│  ├─my //个人中心页
+│  ├─returnCash //艺术品返还页
+│  └─tunnel //艺术馆页
+└─utils //公用js目录

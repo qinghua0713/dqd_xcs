@@ -93,28 +93,21 @@
 					"id": 5,
 					"name": "pages/binding/binding",
 					"pathName": "pages/binding/binding",
-					"query": "id=2",
+					"query": "id=38",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/art/art",
-					"pathName": "pages/art/art",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
+					"id": 6,
 					"name": "pages/artProductManage/artProductManage",
 					"pathName": "pages/artProductManage/artProductManage",
-					"query": "",
+					"query": "showCurrent=2",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 7,
 					"name": "pages/earnings/earnings",
 					"pathName": "pages/earnings/earnings",
-					"query": "",
+					"query": "id=1",
 					"scene": null
 				},
 				{
@@ -125,10 +118,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 9,
 					"name": "pages/returnCash/returnCash",
 					"pathName": "pages/returnCash/returnCash",
-					"query": "",
+					"query": "id=1",
 					"scene": null
 				},
 				{
@@ -160,10 +153,10 @@
 					"scene": null
 				},
 				{
-					"id": 16,
+					"id": 14,
 					"name": "pages/classify/classify",
 					"pathName": "pages/classify/classify",
-					"query": "id=2&value=紫砂",
+					"query": "",
 					"scene": null
 				},
 				{

@@ -24,7 +24,12 @@
 }
 
 .bottom {
-  border-radius: 80rpx;
+  height: 80rpx !important;
+  width: 90% !important;
+  border-radius: 80rpx !important;
   margin: 70rpx 50rpx;
   font-size: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

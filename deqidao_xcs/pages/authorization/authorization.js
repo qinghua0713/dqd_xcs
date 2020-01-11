@@ -9,7 +9,7 @@ Page({
     isHide: false//判断用户是否授权
   },
 //点击获取用户授权
-bindGetUserInfo: function (e) {
+  bindGetUserInfo: function (e) {
   if (e.detail.userInfo) {
     //用户按了允许授权按钮
     var that = this;
@@ -48,7 +48,6 @@ bindGetUserInfo: function (e) {
     let that = this
     wx.getSetting({
       success: function (res) {
-        console.log(res)
         // res.authSetting['scope.userInfo']监测本地缓存是否存在一个登陆状态标识
         if (res.authSetting['scope.userInfo']) {
           // 获取用户信息

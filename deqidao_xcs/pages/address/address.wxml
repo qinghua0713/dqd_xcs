@@ -1,13 +1,25 @@
 <view class="address_container">
-     <view class="address_item" wx:if="{{!showRedactAddress}}">
-         <image class="user_tx" src="/assets/image/touxiang.png" />
-         <view class="address_info">
-             <text class="user_name">姓名</text>
-             <view class="user_sh_address">
-                 地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址
-             </view>
-         </view>
-         <view class="redact" bindtap="redactAddress">编辑</view>
-     </view>
-     
+    <view  class="addAddress">
+         <button open-type="getUserInfo" bindgetuserinfo="addAddress">添加地址</button>
+    </view>
+   
+    <view class="address_item" wx:if="{{!showRedactAddress}}" wx:for="{{dataList.results}}" wx:key="index">
+        <text class="user_tx" >{{item.userTx}}</text>
+        <view class="address_info">
+            <view class="top_name">
+                <text class="user_name">{{item.receiver}}</text>
+                <text class="iphone">{{item.mobile}}</text>
+            </view>
+            <view class="user_sh_address">
+                {{item.province.name}} {{item.city.name}} {{item.district.name}} {{item.place}}
+            </view>
+        </view>
+        <button class="redact" open-type="getUserInfo" data-id="{{item.id}}"
+         data-province='{{item.province.name}}'data-provinceId='{{item.province.id}}'  data-city='{{item.city.name}}' data-cityId='{{item.city.id}}'
+          data-district='{{item.district.name}}' data-districtId='{{item.district.id}}'  data-place='{{item.place}}' 
+          data-receiver='{{item.receiver}}' data-mobile='{{item.mobile}}'
+          data-isChecked='{{item.is_default_address}}' bindgetuserinfo="redactAddress">
+            编辑
+        </button>
+    </view>
 </view>

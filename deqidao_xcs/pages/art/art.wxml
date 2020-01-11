@@ -2,30 +2,26 @@
   <!-- 轮播图 -->
   <view class="swiperContainer">
     <swiper bindchange="swiperChange" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
-        <swiper-item wx:for="{{dataList.show_img}}" wx:key="index" data-id="{{item.id}}">
-          <image src="{{item.img}}" class="swiper-item"></image>
-        </swiper-item>
+      <swiper-item wx:for="{{dataList.show_img}}" wx:key="index" data-id="{{item.id}}">
+        <image src="{{item.img}}" class="swiper-item"></image>
+      </swiper-item>
     </swiper>
     <view class="dots">
-        <view wx:for="{{dataList.show_img}}" wx:key="index" class="dot{{index == current ? ' active' : ''}}"></view>
+      <view wx:for="{{dataList.show_img}}" wx:key="index" class="dot{{index == current ? ' active' : ''}}"></view>
     </view>
   </view>
   <!-- tab选项卡 -->
   <view class="tab_title">
-    <view class="tab_option" bindtap="showACS">
+    <view class="tab_option" bindtap="showACS" wx:for="{{dataList.img}}" wx:key="index" data-id='{{item.id}}'>
       <image src="{{tabShow == true ? '/assets/image/acstz_red.png':'/assets/image/asctz_gray.png '}}"></image>
-      <text class=" {{tabShow == true ? 'current_tab':''}}">ACS投资</text>
-    </view>
-    <view class="tab_option" bindtap="showArtis">
-      <image src="{{tabShow == false ? '/assets/image/qyysj_red.png':'/assets/image/qyysj_gray.png'}} "></image>
-      <text class="{{tabShow == false ? 'current_tab':''}}">签约艺术家</text>
+      <text class=" {{tabShow == true ? 'current_tab':''}}">{{item.name}}</text>
     </view>
   </view>
   <!-- 选项卡的内容 -->
   <view class="tab_content">
-    <view class="content_item" wx:if="{{tabShow}}">
+    <view class="content_item" wx:if="{{currentId == 1}}" wx:for="{{dataList.page_serializer}}" wx:key="index">
       <view class="video_container">
-        <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" show-center-play-btn="{{false}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls="{{false}}"></video>
+        <video id="myVideo" src="{{item.video}}" show-center-play-btn="{{false}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls="{{false}}"></video>
         <cover-view class="cover_img" wx:if="{{!isPlay}}">
           <cover-image src="/assets/image/video_fm.png"></cover-image>
         </cover-view>
@@ -34,20 +30,16 @@
         </cover-view>
       </view>
       <view class="ACS_contract">
-        <view class="contract_title">ACS合同服务须知:</view>
-        <view class="contract_info">
+        <view class="contract_title">{{item.title}}:</view>
+        <view class="contract_info" wx:for="{{dataList.details}}" wx:key="idx" wx:for-item="itm" wx:for-index="idx" data-id='{{itm.id}}'>
           <!-- <view class="dot_black"></view> -->
-          <text>文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述</text>
-        </view>
-        <view class="contract_info">
-          <!-- <view class="dot_black"></view> -->
-          <text>文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述文字表述</text>
+          <text>{{itm.title}}</text>
         </view>
       </view>
     </view>
-    <view class="content_item qy_Artis" wx:else>
-      <view class="img_cont"></view>
-      <view class="lj_classify">了解签约详情...</view>
+    <view class="content_item qy_Artis" wx:if="{{currentId != 1}}">
+      <image wx:for="{{dataList.page_serializer}}" wx:key="index" class="img_cont" src="{{item.details}}" />
+      <view class="lj_classify" bind:tap="goTo">了解签约详情...</view>
       <view class="sign_btn">
         <image src="/assets/image/ljqy_red_bg.png" />
         <view>立即签约</view>

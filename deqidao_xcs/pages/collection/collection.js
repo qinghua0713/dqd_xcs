@@ -16,11 +16,9 @@ Page({
     wx.getStorage({
       key: 'resultUserInfo',
       success: (res) => {
-        console.log(res.data)
         Request('goods/collect','','GET',{
           'openid': res.data.openid
         }).then(res=>{
-          console.log(res.data)
           that.setData({
             dataList:res.data
           })

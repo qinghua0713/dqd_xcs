@@ -1,5 +1,5 @@
 
-export const baseUrl = 'http://imcare.top:8000/'
+export const baseUrl = 'http://47.106.115.198:8000/'
 
 /**
  * 统一的请求封装

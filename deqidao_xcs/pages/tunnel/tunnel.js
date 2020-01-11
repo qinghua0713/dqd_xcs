@@ -1,7 +1,6 @@
 import { Request } from "../../utils/request";
 Page({
   data: {
-
     imageUrl2: [
       {
         text: "文明的起源——石器诞生",
@@ -45,6 +44,8 @@ Page({
   },
   onLoad(e) {
     var that = this
+
+    //请求艺术馆默认列表数据
     Request('xcx/page/art/').then(res => {
       that.setData({
         dataList: res.data,
@@ -65,19 +66,17 @@ Page({
   //  点击显示二级菜单
   showMenuContent(e) {
     Request('xcx/page/art/two/' + e.currentTarget.dataset.id).then(res => {
-      console.log(res.data)
       let two_category_article = 'defaultValue.two_category_article'
       this.setData({
         [two_category_article]:res.data
       })
-      console.log(this.data.defaultValue)
     })
 
   },
   // 点击显示第n个tab的内容
   showClassify(e) {
     var that = this
-    Request('xcx/page/art/one/' + e.target.dataset.id).then(res => {
+    Request('xcx/page/art/one/' + e.currentTarget.dataset.id).then(res => {
       //更新默认数据
       that.setData({
         defaultValue: {
@@ -91,5 +90,4 @@ Page({
       showClassifyIndex: e.currentTarget.dataset.index
     })
   },
-
 })

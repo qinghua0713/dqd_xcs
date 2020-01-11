@@ -13,6 +13,7 @@ Page({
     currentWay: 1,//默认选中第中存储方式
     collectNum: ''//收藏人数
   },
+
   //用户点击收藏发送数据给后台
   Collect() {
     let that = this
@@ -24,7 +25,6 @@ Page({
         }, 'POST', {
           'openid': res.data.openid
         }).then(res => {
-          console.log(res.data)
           wx.setStorageSync('status', res.data.status)
           if(res.data.status != 1){
             that.setData({
@@ -50,7 +50,6 @@ Page({
   },
   onLoad(e) {
     let that = this
-    console.log(e.id)
     //请求商品详情页数据
     Request(`goods/details/${e.id}`).then(res => {
       that.setData({
@@ -61,7 +60,6 @@ Page({
       wx.getStorage({
         key: 'status',
         success: (res) => {
-          console.log(res.data)
           //如果是未收藏
             if(res.data != 1){
               that.setData({
@@ -80,7 +78,6 @@ Page({
           })
          },
       })
-      console.log(res.data)
       if (that.data.dataList.details.order_status != 1) {
         that.setData({
           buyStatus: '已订购'
@@ -102,7 +99,6 @@ Page({
             'openid': res.data.openid
           },
           success: res => {
-            console.log(res.data)
           },
         });
       }, fail: () => {
@@ -153,7 +149,6 @@ Page({
     }
     //请求订单数据
     Request(`xcx/order/${that.data.artworkId}`).then(res => {
-      console.log(res.data)
       this.setData({
         orderDataList: res.data,
         order: true,
@@ -175,7 +170,6 @@ Page({
   },
   //防止遮罩穿透
   doNotMove() {
-    console.log(11)
     return
   },
   //点击显示收货地址模块

@@ -1,14 +1,10 @@
+import { Request } from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrl: [
-      "/assets/image/cp_banner.png",
-      "/assets/image/cp_banner.png",
-      "/assets/image/cp_banner.png"
-    ],//banner图片数据
     current: 0,//当前图片的位置
     markers: [{
       iconPath: "/assets/image/hongqi.png",
@@ -18,8 +14,9 @@ Page({
       width: 50,
       height: 50
     }],
-    isTsShow: false,//默认归还提示不显示
-    isCtShow: false//默认创投提示不显示
+    isShowCtTs:false,//默认不显示提示
+    isTsShow:false,//默认不显示提示
+    dataList:'',//数据列表
   },
   //轮播图内容位置改变触发
   swiperChange(e) {
@@ -31,30 +28,42 @@ Page({
   },
   //点击显示归还须知提示
   showReturn() {
-
     this.setData({
-      isTsShow: !this.data.isTsShow,
+      isTsShow: !this.data.isCtShow,
     })
   },
+  //点击页面隐藏提示
+  hiddenReturn(){
+    this.setData({
+      isTsShow: false,
+      isShowCtTs:false
+    })
+  },
+  //点击显示藏品提示
   showCtTs() {
     this.setData({
-      isCtShow:!this.data.isCtShow,
-
+      isShowCtTs:!this.data.isShowCtTs,
     })
   },
-  
-  //Page点击隐藏提示框（一切为了用户体验 T_T）
-  // hiddenTs(){
-  //   this.setData({
-  //     isTsShow:false
-  //   })
-  // },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (e) {
     var that = this
+  wx.getStorage({
+    key: 'resultUserInfo',
+    success: (res) => {
+      Request(`xcx/return/${e.id}`,'','GET',{
+        openid: res.data.openid
+      }).then(res=>{
+        that.setData({
+          dataList:res.data
+        })
+      })
+    },
+  })
 
+  //获取用户当前位置
     wx.getLocation({ //没有特别说明的都是固定写法
       type: 'wgs84',
       success: function (res) {
@@ -79,7 +88,6 @@ Page({
             try {
               wx.setStorageSync('locationInfo', r.data.result.address)
             } catch (e) {
-              console.log(e)
             }
           }
         });

@@ -45,9 +45,9 @@ Page {
 }
 
 .bindding_btn, .cancel_btn {
-  width: 625rpx;
+  width: 625rpx !important;
   height: 104rpx;
-  border-radius: 52rpx;
+  border-radius: 52rpx !important;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -9,16 +9,20 @@ Page {
     padding: 30rpx 34rpx;
 }
 
+.history_time{
+    font-size: 23rpx;
+    color: #686868;
+}
 .cp_item {
     display: flex;
     margin-bottom: 14rpx;
-    padding: 35rpx 22rpx 35rpx 14rpx;
+    padding: 25rpx 17rpx;
     background: #fff;
     border-radius: 14rpx;
 }
 .cp_item_info{
     display: flex;
-    
+      width: 100%;
 }
 .cp_item image {
     width: 208rpx;
@@ -30,8 +34,24 @@ Page {
     width: calc(100% - 208rpx);
     display: flex;
     flex-direction: column;
+    position: relative;
 }
-
+.cp_weigth{
+    font-size: 13rpx;
+	color: #686868;
+}
+.price_info {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 17rpx;
+    color: #29292a;
+    position: absolute;
+    bottom: 0rpx;
+     right:0rpx;
+     overflow: hidden;
+     white-space: nowrap;
+}
 .cp_title {
     font-size: 35rpx;
     font-weight: bold;
@@ -62,6 +82,9 @@ Page {
     font-weight: bold;
     letter-spacing: 1rpx;
     color: #e51419;
+    white-space: nowrap;
+    overflow: hidden;
+text-overflow: ellipsis;
 }
 
 .price text {
@@ -136,11 +159,4 @@ Page {
     font-size: 17rpx;
     color: #29292a;
     margin-bottom: 24rpx;
-}
-
-.price_info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 17rpx;
-    color: #29292a;
 }

@@ -7,7 +7,6 @@ Page({
   data: {
     dataList: ''//数据列表
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -16,11 +15,11 @@ Page({
     wx.getStorage({
       key: 'resultUserInfo',
       success: (res) => {
+        // 请求历史记录以及推荐数据
         Request('user/history/', '', 'GET', {
           'content-type': 'application/json',
           'openid': res.data.openid
         }).then(res => {
-          console.log(res.data)
           that.setData({
             dataList: res.data
           })

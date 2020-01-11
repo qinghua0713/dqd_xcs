@@ -2,41 +2,69 @@
     display: flex;
     flex-direction: column;
   }
+  .addAddress{
+    width: 100% !important;
+    height: 54rpx;
+    background-color: #f6f6f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .addAddress button{
+    font-size: 23rpx;
+    color: #686868;
+  }
   .address_item{
     display: flex;
     align-items: center;
-      padding: 0  35rpx 68rpx;
+      padding: 20rpx  35rpx 20rpx;
   }
   .address_info{
     display: flex;
     flex-direction: column;
   }
   .user_tx{
-    width: 63rpx;
-    height: 63rpx;
-    margin-right: 15rpx;
+    width: 49rpx;
+    height: 49rpx;
+    background-color: #b4b2b3;
+    border-radius: 50%;
+    font-size: 16rpx;
+    overflow: hidden;
+    white-space: nowrap;
+text-overflow: ellipsis;
+box-sizing: border-box;
+      display: flex; 
+       align-items: center; 
+       justify-content: center;
+      margin-right: 13rpx;
+      padding: 2rpx;
   }
-  .user_name{
-      font-size: 29rpx;
-      letter-spacing: 1rpx;
-    color: #020202;
+  .top_name{
+    display: flex;
+    align-items: center;
+  }
+  .user_name,.iphone{
     padding-bottom: 6rpx;
-    font-family: "REGULAR";
+    font-size: 23rpx;
+    color: #020202;
+    margin-right: 10rpx;
   }
   .user_sh_address{
     width: 499rpx;
-      font-size: 29rpx;
+    font-size: 23rpx;
       letter-spacing: 1rpx;
     color: #29292a;
-    margin-right: 33rpx;
+    margin-right: 26rpx;
     
   }
   .redact{
     height: 42rpx;
-    border-left: 1rpx solid #000;
-    padding-left: 12rpx;
-    font-size: 29rpx;
-      letter-spacing: 1rpx;
-      color: #a4a4a4;
+    border-left: 1rpx solid #a4a4a4;
+    padding-left: 12rpx !important;
+    font-size: 23rpx;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    color: #a4a4a4;
   }
   

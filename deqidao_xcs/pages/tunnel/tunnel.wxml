@@ -9,17 +9,13 @@
 		</block>
 	</swiper>
 	<!-- tab选项 -->
-
 		<view class="ys_tabBar">
         <block wx:for='{{dataList.one_category}}' wx:key='index'>
         	<view class="tab_item {{showClassifyIndex == index?'current current_tab':'' }}" bindtap="showClassify" data-index='{{index}}' data-id="{{item.id}}">
 				{{item.name}}
 			</view>
-        </block>
-		
+        </block>	
 		</view>
-
-
 	<!-- tab菜单选项 -->
 	<view class="menu_container " >
 		<view class="left_menu">

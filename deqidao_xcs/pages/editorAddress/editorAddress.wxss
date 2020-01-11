@@ -1,5 +1,6 @@
 Page {
   background: #f6f6f6;
+  padding-bottom: 240rpx;
 }
 
 .redact_address_cont {
@@ -9,17 +10,27 @@ Page {
 }
 
 .redact_title {
-  height: 69rpx;
+	height: 54rpx;
+	background-color: #f6f6f6;
   display: flex;
   align-items: center;
-  justify-content:space-between;
+  justify-content:center;
   padding: 0 40rpx;
-  font-size: 35rpx;
-  color: #020202;
+	font-size: 27rpx;
+	letter-spacing: 1rpx;
+	color: #020202;
 }
 .saveAddress{
-  color: #fe8c5a;
-  font-size: 20rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+	height: 100rpx;
+  background-color: #e51419;
+  font-size: 32rpx;
+	letter-spacing: 3rpx;
+  color: #fefefe;
+  margin-top: 33rpx;
 }
 .redact_input {
   display: flex;
@@ -28,9 +39,9 @@ Page {
 
 .redact_user_name,
 .redace_user_tel {
-  height: 97rpx;
+	height: 96rpx;
   background-color: #ffffff;
-  padding-left: 37rpx;
+  padding-left: 28rpx;
   display: flex;
   align-items: center;
   font-size: 29rpx;
@@ -38,13 +49,23 @@ Page {
   color: #020202;
   margin-bottom: 4rpx;
 }
-
+.defaultAddress,.deleteAddress{
+  padding-left: 28rpx;
+  height: 96rpx;
+  display: flex;
+  margin-bottom: 4rpx;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  font-size: 23rpx;
+	color: #020202;
+}
 .address_container {
   height: 208rpx;
   background-color: #ffffff;
   display: flex;
   align-items: center;
-  padding: 0 36rpx;
+  padding: 0 28rpx;
   margin-bottom: 4rpx;
   position: relative;
 }
@@ -61,7 +82,7 @@ Page {
 }
 
 .right_select {
-  font-size: 17rpx;
+  font-size: 20rpx;
   color: #020202;
   display: flex;
   align-items: center;
@@ -73,24 +94,27 @@ Page {
   width: 9rpx;
   height: 17rpx;
   margin-left: 7rpx;
+
 }
 .dateils_address{
   height: 139rpx;
   background-color: #ffffff;
-  padding: 13rpx 38rpx;
+  padding: 13rpx 28rpx;
+  margin-bottom: 4rpx;
 }
 
 .dateils_address input{
   font-size: 29rpx;
   letter-spacing: 1rpx;
   color: #020202;
+  
 }
 .picker-view {
   width: 100%;
   display: flex;
   z-index:12;
   background-color: #fff;
-  background: rgba(0, 0, 0, .2);
+  background:#f6f6f6;
   flex-direction: column;
   justify-content: center;
   align-items: center;

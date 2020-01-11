@@ -126,3 +126,17 @@ height: 47rpx;
   width: 42rpx;
 height: 54rpx;
 }
+button{
+  width: auto !important;
+  line-height: normal !important;
+  border-radius: 0 !important;
+font-weight: normal !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+background: none;
+overflow:visible !important;
+
+}
+button::after{
+  border:none !important;
+}

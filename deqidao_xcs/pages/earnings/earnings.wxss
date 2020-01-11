@@ -54,55 +54,11 @@ Page{
 	letter-spacing: 1rpx;
   color: #070707;
 }
-
-/* .earnings_container{
-  padding: 0 35rpx 100rpx 35rpx;  
+.yjz_cont text{
+  width: 100%;
+  overflow: hidden;
+text-overflow: ellipsis;
 }
-.earnings_item{
-  display: flex;
-  padding: 20rpx 0 20rpx 0;
-  border-bottom: 1rpx solid #b4b2b3;
-
-}
-.earnings_item  image{
-  width: 292rpx;
-  height: 236rpx;
-  padding-right: 4rpx;
-}
-.right_info{
-  width: calc( 100% - 292rpx);
-  display: flex;
-  flex-direction: column;
-
-}
-.ysp_title{
-	font-size: 35rpx;
-	font-weight: 700;
-	letter-spacing: 1rpx;
-  color: #070707;
-  padding-bottom: 18rpx;
-}
-.income{
-  display: flex;
-  flex-direction: column;
-}
-.income_info{
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 14rpx;
-}
-.income_info text{
-  font-size: 17rpx;
-  color: #070707;
-
-}
-.bottom_price{
-  display: flex;
-  justify-content: space-between;
-  font-size: 23rpx;
-	color: #070707;
-} */
-
 .weekday view{
   display: flex;
   flex-direction: column;
@@ -111,7 +67,7 @@ Page{
 .jd_container{
   display: flex;
   flex-direction: column;
-  padding: 24rpx 0 100rpx 0;
+  padding: 0rpx 0 100rpx 0;
 }
 .jd_title{
   height: 68rpx;
@@ -125,6 +81,7 @@ Page{
   display: flex;
   margin-bottom: 14rpx;
   background: #fff;
+  align-items: center;
  padding: 26rpx 35rpx 26rpx 0;
 }
 .left_jd{
@@ -139,14 +96,29 @@ Page{
   height: 101rpx;
   margin-bottom: 13rpx;
 }
+.jd_price {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content:center;
+}
 .jd_price text:nth-child(1){
 	font-size: 17rpx;
-	color: #030303;
+  color: #030303;
+  white-space: nowrap;
+  overflow: hidden;
+
 }
-.jd_price text:nth-child(2){
-	font-size: 29rpx;
-	letter-spacing: 1rpx;
-	color: #e51419;
+.jd_price text:nth-child(2) {
+  width: 100%;
+  font-size: 29rpx;
+  text-align: center;
+  color: #e51419;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .right_info{
   width: 65%;

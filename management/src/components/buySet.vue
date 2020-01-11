@@ -21,7 +21,7 @@
             <span>库存</span>
           </div>
           <div class="right-info">
-            <input class="kucun" type="text" placeholder="默认为1" />
+              <el-input class="kucun" v-model="inventoryNum" placeholder="默认为1" clearable></el-input>
           </div>
         </li>
         <li class="list-item">
@@ -50,7 +50,7 @@
             </div>
             <div class="option-item">
               <span>邮费</span>
-              <input class="youfei" v-model="price" type="text" @input="inputPrice" />
+              <input class="youfei" v-model="price" placeholder="默认为1" @input="inputPrice" />
               <span>元</span>
             </div>
             <div class="option-item">
@@ -69,7 +69,7 @@
             </div>
             <div class="option-item">
               <span>寄存费用</span>
-              <input class="youfei" type="text" />
+              <input class="youfei" type="text"   @input="inputPrice" />
               <span>元</span>
             </div>
           </div>
@@ -84,7 +84,8 @@ export default {
   name: "BuySet",
   data() {
     return {
-      price: ""
+      price: "",
+      inventoryNum:'',//库存数量
     };
   },
   methods: {
@@ -143,7 +144,6 @@ input {
 .right-info .kucun {
   height: 40px;
   width: 100%;
-  border: 1px solid #333;
   box-sizing: border-box;
   display: block;
   padding-left: 4px;

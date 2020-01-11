@@ -9,19 +9,19 @@
             <div class="search-district">
               <div class="main-seach">
                 <input type="text" placeholder="请输入艺术品名称/艺术品编号/艺术品合同" />
-                <button class="main-search-btn">搜索</button>
+                   <el-button class="main-search-btn" type="info">搜索</el-button>
               </div>
               <div class="btn-hz">
-                <button class="add_art">添加艺术品</button>
-                <button class="return_btn" @click="returnList">返回列表</button>
+                 <el-button class="add_art"  type="info">添加艺术品</el-button>
+                   <el-button class="return_btn"  @click="returnList" type="info">返回列表</el-button>
               </div>
             </div>
 
             <div class="tab-container">
-              <MainTab />
-              <dateilsModule />
-              <BuySet />
-              <ACS />
+              <MainTab />   <!--选项切换  -->
+              <dateilsModule /> <!--艺术品详情组件  -->
+              <BuySet /> <!--购买设置组件  -->
+              <ACS />  <!--ACS服务组件  -->
             </div>
             <button class="save-btn">保存艺术品</button>
           </div>
@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import Nav from "../components/topNav";
-import LeftMenu from "../components/leftMenu";
-import MainTab from "../components/MainTab";
-import dateilsModule from "../components/dateilsModule";
-import BuySet from "../components/buySet";
-import ACS from "../components/ACS";
+import Nav from "@/components/topNav";
+import LeftMenu from "@/components/leftMenu";
+import MainTab from "@/components/MainTab";
+import dateilsModule from "@/components/dateilsModule";
+import BuySet from "@/components/buySet";
+import ACS from "@/components/ACS";
 export default {
   name: "dateils",
   data() {

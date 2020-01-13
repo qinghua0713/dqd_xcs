@@ -1,17 +1,27 @@
+import { Request } from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+     dataList:'',//数据列表
+     artistId:'',//艺术家ID
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
+  onLoad: function (e) {
+    let that = this
+    //请求艺术家数据
+           Request(`xcx/details/${e.id}`).then(res=>{
+             console.log(res.data)
+             that.setData({
+               dataList:res.data,
+               artistId:e.id
+             })
+           })
   },
 
   /**
@@ -42,13 +52,27 @@ Page({
     
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
+  //下拉刷新
+  onPullDownRefresh() {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+     //请求艺术家数据
+     Request(`xcx/details/${that.data.artistId}`).then(res=>{
+      console.log(res.data)
+      wx.hideLoading();
+      wx.showToast({
+        title: '刷新成功', //提示的内容,
+        icon: 'success', //图标,
+        duration: 2000, //延迟时间,
+      });
+      that.setData({
+        dataList:res.data
+      })
+    })
 
+  },
   /**
    * 页面上拉触底事件的处理函数
    */

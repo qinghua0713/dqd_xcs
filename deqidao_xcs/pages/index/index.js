@@ -12,19 +12,20 @@ Page({
     swiperIndex: 2, //swiper当前下标
     dataList: null, //请求回来的数据列表
     swiper_noe_current: 0,//第一个轮播图的当前下标
-    isShowCearchCover: true,//
     keyword: "",//关键字
     keywordList: [],//关键字列表
-
+    keywordSearchList: '',//请求回来的关键字
   },
   //搜索框获取焦点
   searchFocus() {
     this.setData({
-      isShowCearchCover: true//显示搜索框的遮罩
+      isShowCearchCover: true,//显示搜索框的遮罩
+      focus: true,//遮罩层的搜素框获取焦点
     })
   },
-  //点击隐藏搜索遮罩
-  hideSearchCover() {
+
+  //点击隐藏遮罩
+  cancelSearch() {
     this.setData({
       isShowCearchCover: false
     })
@@ -63,11 +64,22 @@ Page({
   // 加载小程序的时候会触发这个 onLoad方法
   onLoad: function () {
     var that = this;
+    //请求首页数据
     Request('xcx/page/index/').then(res => {
       that.setData({
         dataList: res.data
       })
     })
+    //请求热搜关键字
+    Request(`good/keyword/search/`).then(res => {
+      that.setData({
+        keywordSearchList: res.data
+      })
+    })
+  },
+  //遮罩防止穿透
+  catchTouchmove() {
+    return
   },
   //点击跳转艺术家详情
   goToArtDetails() {
@@ -94,6 +106,13 @@ Page({
       url: `/pages/classify/classify?id=${e.currentTarget.dataset.id}&value=${value}`,
     })
   },
+  //点击热搜关键字跳转分类页
+  goToClassify_tow() {
+    this.setData({
+      isShowCearchCover: false
+    })
+    wx.navigateTo({ url: '/pages/classify/classify' });
+  },
   //点击跳转tunnel页面
   goToTunnel() {
     wx.switchTab({
@@ -108,9 +127,9 @@ Page({
     })
   },
   //点击跳转艺术家详情页
-  goToArtistDateils() {
+  goToArtistDateils(e) {
     wx.navigateTo({
-      url: '/pages/artistDateils/artistDateils'
+      url: `/pages/artistDateils/artistDateils?id=${e.currentTarget.dataset.id}`
     });
   },
   //点击跳转艺术品详情
@@ -147,5 +166,37 @@ Page({
     var videoplay = wx.createVideoContext("myVideo")
     videoplay.play()
   },
+  //下拉刷新
+  onPullDownRefresh() {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    //请求首页数据
+    Request('xcx/page/index/').then(res => {
+      wx.hideLoading();
+      wx.showToast({
+        title: '刷新成功', //提示的内容,
+        icon: 'success', //图标,
+        duration: 2000, //延迟时间,
+      });
+      that.setData({
+        dataList: res.data
+      })
+    })
+    //请求热搜关键字
+    Request(`good/keyword/search/`).then(res => {
+      that.setData({
+        keywordSearchList: res.data
+      })
+    })
 
+  },
+  //页面隐藏是触发
+  onHide() {
+    let that = this
+    that.setData({
+      isShowCearchCover: false
+    })
+  }
 })

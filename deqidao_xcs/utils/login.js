@@ -13,7 +13,7 @@ export const Login = (nickName,avatarUrl) => {
                     username: nickName,
                     profile: avatarUrl
                 }, 'POST').then(res => {
-                    console.log('我执行登陆请求')
+                    console.log('我执行了登陆请求')
                     wx.setStorageSync('resultUserInfo', res.data)
                 })
             },

@@ -13,6 +13,7 @@ Page({
   onLoad(e) {
     let that = this
     //请求绑定数据
+    console.log(e)
     if (e.q) {
       //获取二维码的携带的链接信息
       let qrUrl = decodeURIComponent(e.q)
@@ -21,8 +22,15 @@ Page({
         //获取链接中的参数信息
         actId: that.getQueryString(qrUrl, 'id')//用户商品id
       })
-      //请求用户扫码进来的数据
+      //请求用户从外面扫码进来的数据
       Request(`xcx/bind/${that.getQueryString(qrUrl, 'id')}`).then(res => {
+        that.setData({
+          dataList: res.data
+        })
+      })
+    }else{
+       //请求用户从小程序里面扫码进来的数据
+      Request(`xcx/bind/${e.id}`).then(res => {
         that.setData({
           dataList: res.data
         })

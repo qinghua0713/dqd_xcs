@@ -57,13 +57,33 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  //下拉刷新
+  onPullDownRefresh() {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.getStorage({
+      key: 'resultUserInfo',
+      success: (res) => {
+        // 请求历史记录以及推荐数据
+        Request('user/history/', '', 'GET', {
+          'content-type': 'application/json',
+          'openid': res.data.openid
+        }).then(res => {
+          wx.hideLoading();
+          wx.showToast({
+            title: '刷新成功', //提示的内容,
+            icon: 'success', //图标,
+            duration: 2000, //延迟时间,
+          });
+          that.setData({
+            dataList: res.data
+          })
+        })
+      },
+    })
   },
-
   /**
    * 页面上拉触底事件的处理函数
    */

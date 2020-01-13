@@ -3,20 +3,31 @@
 
 <view class="index-page" >
 	<!-- 搜索 -->
-	<view class="search-container" wx:if="{{!isShowCearchCover}}">
-		<input class="search" bindfocus="searchFocus"  type="text" placeholder="搜索艺术品" />
+	<view class="search-container" hidden="{{isShowCearchCover}}">
+		<input class="search" bind:tap="searchFocus"  disabled="{{true}}"  type="text" placeholder="搜索艺术品" />
 		<image class="search-image" src="/assets/image/search.png" alt=""></image>
 	</view>
-	<view class="keywordCover" wx:if="{{isShowCearchCover}}" catch:tap="hideSearchCover" >
+	<!-- 搜索遮罩 -->
+	<view class="keywordCover" hidden="{{!isShowCearchCover}}" catchtouchmove="catchTouchmove">
 
 	<view class="keywordList" catch:tap="true">
 				 <view class="search-container">
-		    <input class="search"  bindinput="searchShop" value="{{keyword}}"  type="text" placeholder="搜索艺术品" />
+		    <input class="search"  bindinput="searchShop"  focus="{{focus}}" value="{{keyword}}"  type="text" placeholder="搜索艺术品" />
 		   <image class="search-image" src="/assets/image/search.png" alt=""></image>
+		   <view class="cancel" bind:tap="cancelSearch">取消</view>
 		</view>
 		<view class="keyword-container">
-			<view  class="keywordItem" wx:for="{{keywordList}}" >
-				  <text wx:for="{{item.keyword}}" wx:key="{{index}}" class="{{item == keyword ? 'searchHigh' : '' }}">{{item}}</text>
+			<view class="search_list" wx:if="{{keywordList.length > 0}}">
+	           <view  class="keywordItem" wx:for="{{keywordList}}" wx:key="index">
+				  <text wx:for="{{item.keyword}}" wx:key="index" class="{{item == keyword ? 'searchHigh' : '' }}">{{item}}</text>
+			  </view>
+			</view>
+		
+			<view class="top_search_container" wx:elif="{{keywordList.length < 1}}">
+			   <view class="top_search_item" wx:for="{{keywordSearchList}}"
+			   bind:tap="goToClassify_tow"  wx:key="index">
+				 <text >{{item.keyword}}</text>
+			  </view> 
 			</view>
 		</view>
 	</view>
@@ -91,7 +102,7 @@
 		<swiper class="swiperChange_two"  display-multiple-items="{{5}}" bindchange="swiperChange_two" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
 				<swiper-item wx:for="{{dataList.authors}}" wx:key="index" wx:key="index" data-id="{{item.id}}"
 				 class="slide-item slide-item-five" bind:tap="goToArtistDateils">
-					<view class="swiper-item {{swiperIndex == index ? 'active_two':''}}">
+					<view class="swiper-item {{swiperIndex == index ? 'active_two':''}}" data-id="{{item.id}}">
 						<image src="{{item.default_image_url}}" class="slide-image  " />
 						<text class="art_name">{{item.name}}</text>
 					</view>

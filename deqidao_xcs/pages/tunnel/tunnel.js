@@ -1,46 +1,11 @@
 import { Request } from "../../utils/request";
 Page({
   data: {
-    imageUrl2: [
-      {
-        text: "文明的起源——石器诞生",
-        src: "/assets/image/sqdysjs.png"
-      },
-      {
-        text: "早期制造工艺",
-        src: "/assets/image/zqzzgy.png",
-      },
-      {
-        text: "石器时代遗迹",
-        src: "/assets/image/sqsdyj.png",
-      },
-      {
-        text: "石器的艺术鉴赏",
-        src: "/assets/image/sqdysjs.png"
-      }
-    ],
-    imageUrl3: [
-      {
-        text: "称号——陈冰",
-        src: "/assets/image/bg_black.png",
-      },
-      {
-        text: "意与古会 守正出新——常勇钢",
-        src: "/assets/image/bg_black.png",
-      },
-      {
-        text: "称号——名字",
-        src: "/assets/image/bg_black.png",
-      },
-      {
-        text: "称号——名称",
-        src: "/assets/image/bg_black.png",
-      },
-    ],
     swiperIndex: 0,//轮播图的当前下标
     dataList: null,//数据列表
     defaultValue: '',//默认渲染的分类选项数据
     showClassifyIndex: 0,//默认显示第一个选项卡的内容
+    current_menu:0,//默认菜单第一个下标
   },
   onLoad(e) {
     var that = this
@@ -65,10 +30,14 @@ Page({
   },
   //  点击显示二级菜单
   showMenuContent(e) {
+    this.setData({
+      current_menu:e.currentTarget.dataset.index
+    })
     Request('xcx/page/art/two/' + e.currentTarget.dataset.id).then(res => {
       let two_category_article = 'defaultValue.two_category_article'
       this.setData({
-        [two_category_article]:res.data
+        [two_category_article]: res.data,
+      
       })
     })
 
@@ -88,6 +57,29 @@ Page({
     //分开写是因为有异步问题
     that.setData({
       showClassifyIndex: e.currentTarget.dataset.index
+    })
+  },
+  //下拉刷新
+  onPullDownRefresh() {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    //请求艺术馆默认列表数据
+    Request('xcx/page/art/').then(res => {
+      wx.hideLoading();
+      wx.showToast({
+        title: '刷新成功', //提示的内容,
+        icon: 'success', //图标,
+        duration: 2000, //延迟时间,
+      });
+      that.setData({
+        dataList: res.data,
+        defaultValue: {
+          two_category: res.data.two_category,
+          two_category_article: res.data.two_category_article
+        }
+      })
     })
   },
 })

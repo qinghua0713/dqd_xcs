@@ -185,5 +185,53 @@ Page({
       current: e.detail.current,
     })
   },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+        //请求商品详情页数据
+        Request(`goods/details/${that.data.artworkId}`).then(res => {
+          wx.hideLoading();
+          wx.showToast({
+            title: '刷新成功', //提示的内容,
+            icon: 'success', //图标,
+            duration: 2000, //延迟时间,
+          });
+          that.setData({
+            dataList: res.data,
+          })
+          //判断本地存储的收藏状态是不是以已收藏
+          wx.getStorage({
+            key: 'status',
+            success: (res) => {
+              //如果是未收藏
+                if(res.data != 1){
+                  that.setData({
+                    collectNum: that.data.dataList.details.collect + "人收藏"
+                  })
+                }else{
+                  that.setData({
+                    collectNum:  "已收藏"
+                  })
+                }
+            },
+            fail: () => {
+              //如果本地存储没有这个字段证明用户没有点击过收藏
+              that.setData({
+                collectNum: res.data.details.collect + "人收藏"
+              })
+             },
+          })
+          if (that.data.dataList.details.order_status != 1) {
+            that.setData({
+              buyStatus: '已订购'
+            })
+          }
+        })  
+  },
 
 })

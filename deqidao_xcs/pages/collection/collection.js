@@ -67,7 +67,35 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.getStorage({
+      key: 'resultUserInfo',
+      success: (res) => {
+        Request('goods/collect','','GET',{
+          'openid': res.data.openid
+        }).then(res=>{
+          wx.hideLoading();
+          wx.showToast({
+            title: '刷新成功', //提示的内容,
+            icon: 'success', //图标,
+            duration: 2000, //延迟时间,
+          });
+          that.setData({
+            dataList:res.data
+          })
+  
+        })
+      },fail: () => { 
+        wx.showToast({
+          title: '用户未授权',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
   },
 
   /**

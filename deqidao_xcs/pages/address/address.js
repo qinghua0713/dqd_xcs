@@ -52,7 +52,6 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    console.log(1)
     wx.getStorage({
       key: 'resultUserInfo',
       success: (res) => {
@@ -111,11 +110,45 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+  //下拉刷新
+  onPullDownRefresh() {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.getStorage({
+      key: 'resultUserInfo',
+      success: (res) => {
+        //发送获取地址请求
+        Request(`user/addr`, '', 'GET', {
+          'openid': res.data.openid
+        }).then(res => {
+          wx.hideLoading();
+          wx.showToast({
+            title: '刷新成功', //提示的内容,
+            icon: 'success', //图标,
+            duration: 2000, //延迟时间,
+          });
+          var userTx = []//用户切割后的头像
+          for (let i = 0; i < res.data.results.length; i++) {
+            userTx = userTx.concat({ userTx: res.data.results[i].receiver })
+            userTx[i].userTx = userTx[i].userTx.substring(userTx[i].userTx.length - 1, userTx[i].userTx.length)
+            res.data.results[i].userTx = userTx[i].userTx
+          }
+          that.setData({
+            dataList: res.data,
+          })
+        })
 
+      },
+      fail: () => {
+        wx.showToast({
+          title: '用户未授权',
+          icon: 'none',
+          duration: 2000
+        })
+      },
+    })
   },
 
   /**

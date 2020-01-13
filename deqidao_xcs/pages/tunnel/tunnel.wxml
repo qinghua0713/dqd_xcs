@@ -19,11 +19,10 @@
 	<!-- tab菜单选项 -->
 	<view class="menu_container " >
 		<view class="left_menu">
-			<view class="menu_item ">
+			<view class="menu_item " wx:for='{{defaultValue.two_category}}' wx:key='index'bindtap="showMenuContent"  data-index='{{index}}' data-id='{{item.id}}'>
 				<!-- 菜单 -->
-					<view wx:for='{{defaultValue.two_category}}' wx:key='index' class="yiji_menu"
-					 data-id='{{item.id}}' bindtap="showMenuContent">
-						<text class="current current_tab">{{item.name}}</text>
+					<view  class="yiji_menu {{current_menu == index ? ' bg_fff':''}}" >
+						<text class="{{current_menu == index ? 'current current_tab bg_fff':''}}">{{item.name}}</text>
 					</view>			
 			</view>
 		</view>

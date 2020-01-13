@@ -13,6 +13,7 @@ Page({
     artistId: '',//艺术家的id
     artistIndex: 0,//当前选中的艺术家
     PageUrl: '',//下拉加载更多的请求地址
+    currentClass:'',//路由传过来当前分类值
   },
   //轮播图改变函数
   swiperChange(e) {
@@ -28,7 +29,8 @@ Page({
     Request('xcx/category/imgs/').then(res => {
       that.setData({
         dataList: res.data,
-        artworkId: e.id
+        artworkId: e.id,
+        currentClass:e.value
       })
       //判断如果跳转没有传值默认显示第一条
       if (e.value == undefined && e.id == undefined) {
@@ -52,7 +54,7 @@ Page({
           })
         })
       }
-   
+
     })
 
 
@@ -275,5 +277,53 @@ Page({
     wx.navigateTo({ url: `/pages/details/details?id=${e.currentTarget.dataset.id}` });
   },
 
+  //下拉刷新
+  onPullDownRefresh() {
+    wx.showLoading({
+      title: '加载中',
+    })
+    var that = this
+    //请求分类页的轮播图
+    Request('xcx/category/imgs/').then(res => {
+      that.setData({
+        dataList: res.data,
+      })
+      //判断如果跳转没有传值默认显示第一条
+      if (that.data.currentClass == undefined && that.data.artworkId == undefined) {
+        //请求分类的列表数据
+        Request('xcx/category/').then(res => {
+          wx.hideLoading();
+          wx.showToast({
+            title: '刷新成功', //提示的内容,
+            icon: 'success', //图标,
+            duration: 2000, //延迟时间,
+          });
+          that.setData({
+            classifyList: res.data,
+            PageUrl: res.data.next,
+            value: '分类',
+          })
+        })
+      } else {
+        that.setData({
+          value: e.value,
+        })
+        //请求分类的列表数据
+        Request('xcx/category/' + that.data.artworkId).then(res => {
+          wx.hideLoading();
+          wx.showToast({
+            title: '刷新成功', //提示的内容,
+            icon: 'success', //图标,
+            duration: 2000, //延迟时间,
+          });
+          that.setData({
+            classifyList: res.data,
+            PageUrl: res.data.next
+          })
+        })
+      }
 
+    })
+
+  },
 })

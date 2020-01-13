@@ -17,7 +17,7 @@
 
 Page {
     background: #f6f6f6;
-
+    padding-bottom: 30rpx;
 }
 
 .list_cont {
@@ -59,11 +59,11 @@ Page {
 
 .list_item:nth-child(2)>text:nth-child(3) {
     width: 100%;
-    font-size: 17rpx; 
+    font-size: 17rpx;
     white-space: nowrap;
     overflow: hidden;
-text-overflow: ellipsis;
-text-align: center;
+    text-overflow: ellipsis;
+    text-align: center;
 }
 
 .collect {
@@ -86,9 +86,8 @@ text-align: center;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    padding: 19rpx 14rpx 0 14rpx;
+    padding-top: 19rpx;
     margin-top: 83rpx;
-
     border-radius: 7rpx;
 }
 
@@ -132,6 +131,8 @@ text-align: center;
 }
 
 .shop_ms {
+    width: calc(100% - 150rpx);
+    padding-right: 10rpx;
     display: flex;
     flex-direction: column;
     /* padding : 5rpx 0 10rpx 11rpx; */
@@ -165,7 +166,7 @@ text-align: center;
     margin-top: 30rpx;
     padding-left: 16rpx;
     box-sizing: border-box;
-    position: relative ;
+    position: relative;
 }
 
 .jd_item {
@@ -219,34 +220,40 @@ text-align: center;
     font-size: 17rpx;
     color: #a4a4a4;
 }
-.No-ysp{
+
+.No-ysp {
     display: flex;
     flex-direction: column;
     align-items: center;
-  padding:50rpx 0 58rpx 0;
+    padding: 50rpx 0 58rpx 0;
 }
-.No-ysp image{
+
+.No-ysp image {
     width: 276rpx;
     height: 209rpx;
     margin-bottom: 14rpx;
 }
-.ts_title{
+
+.ts_title {
     font-size: 29rpx;
-	letter-spacing: 1rpx;
+    letter-spacing: 1rpx;
     color: #010101;
     padding-bottom: 24rpx;
 }
- .biaoyu-text{
+
+.biaoyu-text {
     font-size: 23rpx;
     color: #686868;
     margin-bottom: 46rpx;
 }
-.lk_btn{
+
+.lk_btn {
     width: 80%;
     display: flex;
     justify-content: space-around;
 }
-.btn_item{
+
+.btn_item {
     width: 208rpx;
     height: 69rpx;
     border-radius: 7rpx;
@@ -254,27 +261,35 @@ text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow:1rpx 1rpx 10px #f6f6f6 inset;
-    box-shadow:1rpx 1rpx 10px #f6f6f6;
+    box-shadow: 1rpx 1rpx 10px #f6f6f6 inset;
+    box-shadow: 1rpx 1rpx 10px #f6f6f6;
 }
-.btn_item text:nth-child(1){
+
+.btn_item text:nth-child(1) {
     font-size: 30rpx;
-	letter-spacing: 1rpx;
+    letter-spacing: 1rpx;
     color: #080808;
 }
-.btn_item text:nth-child(2){
-	font-size: 17rpx;
-	color: #a4a4a4;
+
+.btn_item text:nth-child(2) {
+    font-size: 17rpx;
+    color: #a4a4a4;
 }
+
 .price {
+    width: 100%;
     position: absolute;
     bottom: 0rpx;
     font-size: 17rpx;
     color: #29292a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
 }
 
 .progress {
-    width: 106rpx;
+    width: 100rpx;
     height: 2rpx;
     background: #a4a4a4;
     position: absolute;
@@ -289,10 +304,6 @@ text-align: center;
     justify-content: flex-end;
 }
 
-/* .pgs_1 {
-    top: 7rpx;
-    left: 32rpx;
-} */
 .pgs_1 {
     top: 7rpx;
     left: 66rpx;
@@ -310,21 +321,26 @@ text-align: center;
     margin: 0 auto;
     background: #ffffff;
     margin-bottom: 14rpx;
-    border-radius: 7rpx;
+    border-bottom-left-radius: 7rpx;
+    border-bottom-right-radius: 7rpx;
 }
 
 .order_title {
+    width: 96% ;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
     font-size: 23rpx;
     color: #29292a;
-    padding: 22rpx 16rpx 6rpx 16rpx;
-
-}
-.order_title text {
-    display: block;
-    border-bottom: 1rpx solid #e2e2e2;
-    /* padding-bottom: 6rpx; */
+    padding: 22rpx 16rpx 6rpx 0rpx ;
+    position: relative;
+    border-bottom: 1rpx solid #e2e2e2 ;
+    margin: 0 auto;
 }
 
+.order_title button{
+   margin-left: 0 ;
+}
 .order_list {
     width: 100%;
     display: flex;
@@ -371,9 +387,8 @@ text-align: center;
     width: 90%;
     border-radius: 7rpx;
     background: #ffffff;
-    padding-left: 15rpx;
     margin: 0 auto;
-    margin-bottom: 14rpx;
+    padding: 0 15rpx 64rpx 15rpx;
     box-sizing: border-box;
 
 }
@@ -423,12 +438,11 @@ text-align: center;
     transform: translate(-50%, -50%);
 
 }
-.kf_btn{
-  background: none;
-  padding: 0;
-  font-weight: normal;
-  border: none;
+
+.kf_btn {
+    background: none;
+    padding: 0;
+    font-weight: normal;
+    border: none;
 }
-button::after{
-    display: none;
-}
+

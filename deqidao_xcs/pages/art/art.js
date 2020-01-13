@@ -8,6 +8,7 @@ Page({
   },
   onLoad() {
     let that = this
+    //请求ACS合同数据
     Request('xcx/asc/').then(res=>{
        that.setData({
          dataList:res.data
@@ -38,5 +39,23 @@ Page({
     var videoplay = wx.createVideoContext("myVideo")
     videoplay.play()
   },
- 
+  //下拉刷新
+  onPullDownRefresh() {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+  //请求ACS合同数据
+    Request('xcx/asc/').then(res=>{
+      wx.hideLoading();
+      wx.showToast({
+        title: '刷新成功', //提示的内容,
+        icon: 'success', //图标,
+        duration: 2000, //延迟时间,
+      });
+      that.setData({
+        dataList:res.data
+      })
+   })
+  },
 })

@@ -81,18 +81,18 @@
   </view>
   <!-- 订单信息 -->
   <view class="order_cont">
-    <view class="order_title">
-      <text>全部订单</text>
+    <view class="order_title "  >
+      <button open-type="getUserInfo" bindgetuserinfo="goToallOrders">全部订单</button>
     </view>
     <view class="order_list">
       <button class="order_item"  open-type="getUserInfo" bindgetuserinfo="goToManAgeShowOne">
         <image class="guanli" src="/assets/image/guanli.png" />
         <text>艺术品管理</text>
       </button>
-      <view class="order_item" bindtap="goToConsignment">
+      <button class="order_item"  open-type="getUserInfo" bindgetuserinfo="goToConsignment">
         <image class="mail" src="/assets/image/mail.png" />
         <text>艺术品寄售</text>
-      </view>
+      </button>
       <button class="order_item kf_btn" open-type="contact" >
         <image class="service" src="/assets/image/service.png" />
         <text>客服中心</text>
@@ -101,8 +101,8 @@
   </view>
   <!-- 基本信息 -->
   <view class="message_manage">
-    <view class="message_item">基本信息</view>
+    <button class="message_item" open-type="getUserInfo" bindgetuserinfo="goToPersonalInformation">基本信息</button>
     <button open-type="getUserInfo" class="message_item" bindgetuserinfo="goToAddress">地址管理</button>
-    <view class="message_item">ACS合同条约</view>
+    <button class="message_item" open-type="getUserInfo" bindgetuserinfo="goToArt">ACS合同条约</button>
   </view>
 </view>

@@ -269,4 +269,12 @@ image {
 }
 .filtrate_Btn{
   margin: 40rpx 0 100rpx 0;
+  background:#e2e2e2;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+   justify-content: center;
+   color: #686868;
+   font-size: 26rpx;
+  border-radius: 10rpx !important;
 }

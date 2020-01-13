@@ -25,6 +25,7 @@ Page({
         specificAddress: "",//用户填写的详细地址
         switchChecked: false,//是否设置默认地址
         addressId: '',//当前地址的id
+        //------------------------------区分射线-------------------------------------
         editedUserName: '',//用户编辑过的名字
         editedIphone: '',//用户编辑过的手机号码
         editedCheckedProvincesId: '',//用户编辑过的省Id
@@ -135,6 +136,11 @@ Page({
                             openid: res.data.openid
                         },
                         success: res => {
+                            wx.showToast({
+                              title: '保存成功', //提示的内容,
+                              icon: 'success', //图标,
+                              duration: 2000, //延迟时间,
+                            });
                             wx.navigateTo({ url: '/pages/address/address' });
                         },
                     });

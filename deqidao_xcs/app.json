@@ -16,7 +16,9 @@
     "pages/returnCash/returnCash",
     "pages/collection/collection",
     "pages/footprint/footprint",
-    "pages/consignment/consignment"
+    "pages/consignment/consignment",
+    "pages/PersonalInformation/PersonalInformation",
+    "pages/allOrders/allOrders"
   ],
   "permission": {
     "scope.userLocation": {

@@ -3,18 +3,19 @@ Page({
   data: {
     swiperIndex: 0,//轮播图的当前下标
     dataList: null,//数据列表
-    defaultValue: '',//默认渲染的分类选项数据
+    defaultValue_one: '',//默认渲染的分类选项数据
+    defaultValue_two: '',//默认渲染的分类选项数据
     showClassifyIndex: 0,//默认显示第一个选项卡的内容
-    current_menu:0,//默认菜单第一个下标
+    current_menu_one:0,//默认菜单第一个下标
+    current_menu_two:0,//默认菜单第一个下标
   },
   onLoad(e) {
     var that = this
-
     //请求艺术馆默认列表数据
     Request('xcx/page/art/').then(res => {
       that.setData({
         dataList: res.data,
-        defaultValue: {
+        defaultValue_one: {
           two_category: res.data.two_category,
           two_category_article: res.data.two_category_article
         }
@@ -29,26 +30,40 @@ Page({
     })
   },
   //  点击显示二级菜单
-  showMenuContent(e) {
-    this.setData({
-      current_menu:e.currentTarget.dataset.index
-    })
+  showMenuContent_one(e) {
+    let that = this
+     //请求艺术家选项下的菜单以及内容
     Request('xcx/page/art/two/' + e.currentTarget.dataset.id).then(res => {
-      let two_category_article = 'defaultValue.two_category_article'
-      this.setData({
+      let two_category_article = 'defaultValue_one.two_category_article'
+      that.setData({
+        current_menu_one:e.currentTarget.dataset.index,
         [two_category_article]: res.data,
-      
       })
     })
-
+  },
+    //  点击显示二级菜单
+    showMenuContent_two(e) {
+      let that = this
+      //请求艺术圈选项下的菜单以及内容
+      Request('xcx/page/art/two/' + e.currentTarget.dataset.id).then(res => {
+        let two_category_article = 'defaultValue_two.two_category_article'
+        that.setData({
+          current_menu_two:e.currentTarget.dataset.index,
+          [two_category_article]: res.data,
+        })
+      })
+    },
+  //点击跳转公众号文章页
+  goToArticle(e){
+  wx.navigateTo({ url:`/pages/article/article?src=${e.currentTarget.dataset.src}`});
   },
   // 点击显示第n个tab的内容
   showClassify(e) {
     var that = this
+          //请求艺术圈选项下的菜单以及内容数据
     Request('xcx/page/art/one/' + e.currentTarget.dataset.id).then(res => {
-      //更新默认数据
       that.setData({
-        defaultValue: {
+        defaultValue_two: {
           two_category: res.data.two_category_data,
           two_category_article: res.data.article_data,
         }
@@ -75,7 +90,7 @@ Page({
       });
       that.setData({
         dataList: res.data,
-        defaultValue: {
+        defaultValue_one: {
           two_category: res.data.two_category,
           two_category_article: res.data.two_category_article
         }

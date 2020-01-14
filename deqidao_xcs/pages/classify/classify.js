@@ -11,7 +11,7 @@ Page({
       tallest: ''
     },//筛选输入框的最大小值
     artistId: '',//艺术家的id
-    artistIndex: 0,//当前选中的艺术家
+    artistId: 0,//当前选中的艺术家
     PageUrl: '',//下拉加载更多的请求地址
     currentClass:'',//路由传过来当前分类值
   },
@@ -63,7 +63,6 @@ Page({
   //滚动条触底函数
   onReachBottom() {
     let that = this
-    let results = 'classifyList.results'
     wx.request({
       url: that.data.PageUrl, //开发者服务器接口地址",
       success: res => {
@@ -74,11 +73,12 @@ Page({
             duration: 2000
           })
         }
+        let results = 'classifyList.results'
         //拼接请求回来的数据
-        var results = that.data.classifyList.results.concat(res.data.results)
+        var results_two = that.data.classifyList.results.concat(res.data.results)
         that.setData({
           PageUrl: res.data.next,//请求成功从新给更新请求地址
-          [results]: results
+          [results]: results_two
         })
       },
     });
@@ -102,33 +102,22 @@ Page({
   //点击艺术家进行筛选
   artistScreening(e) {
     let that = this
-    if (that.data.artistIndex == e.target.dataset.id) {
+    if (that.data.artistId == e.target.dataset.id) {
       that.setData({
-        artistIndex: 0
+        artistId: 0
       })
     } else {
-      that.setData({
-        artistIndex: e.target.dataset.id,
-      })
-    }
-    //请求艺术家的分类
+        //请求艺术家的分类
     Request(`xcx/category/`, {
       author: e.currentTarget.dataset.id
     }).then(res => {
       that.setData({
         classifyList: res.data,
-        ischecked: !that.data.ischecked
+        artistId: e.target.dataset.id,
       })
-      if (that.data.ischecked) {
-        that.setData({
-          artistId: e.currentTarget.dataset.id,
-        })
-      } else {
-        that.setData({
-          artistId: '',
-        })
-      }
     })
+    }
+  
   },
 
   //手动输入金额筛选按钮
@@ -152,7 +141,7 @@ Page({
           }).then(res => {
             that.setData({
               classifyList: res.data,
-              isShowCover: false,
+              // isShowCover: false,
             })
           })
 
@@ -164,7 +153,7 @@ Page({
           }).then(res => {
             that.setData({
               classifyList: res.data,
-              isShowCover: false,
+              // isShowCover: false,
 
             })
           })
@@ -190,24 +179,25 @@ Page({
   //从低到高筛选
   LowToTall() {
     let that = this
-    Request(`xcx/category/${that.data.artworkId}`, {
-      ordering: 'price'
-    }).then(res => {
-      that.setData({
-        classifyList: res.data
+    if(that.data.artistId != 0){
+      Request(`xcx/category/?author=${that.data.artistId}&ordering=price`).then(res => {
+        that.setData({
+          classifyList: res.data
+        })
       })
-    })
+    }
+  
   },
   //从高到低筛选
   TallToLow() {
     let that = this
-    Request(`xcx/category/${that.data.artworkId}`, {
-      ordering: '-price'
-    }).then(res => {
-      that.setData({
-        classifyList: res.data
+    if(that.data.artistId != 0){
+      Request(`xcx/category/?author=${that.data.artistId}&ordering=-price`).then(res => {
+        that.setData({
+          classifyList: res.data
+        })
       })
-    })
+    }
   },
   //点击返回首页
   returnHome() {
@@ -217,7 +207,7 @@ Page({
   },
   //判断回到顶部按钮是否显示
   onPageScroll(e) {
-    if (e.scrollTop > 1000) {
+    if (e.scrollTop > 300) {
       this.setData({
         showTop: true
       })
@@ -240,6 +230,12 @@ Page({
       showValue: !this.data.showValue
     })
   },
+  //点击页面任何地方隐藏下拉框的值
+  concealOptionsValue(){
+   this.setData({
+     showValue:false
+   })
+  },
   //选类别中的值
   selectCentre(e) {
     Request(`xcx/category/${e.target.dataset.id}`).then(res => {
@@ -259,7 +255,8 @@ Page({
   //点击隐藏筛选盒子
   hiddenCover() {
     this.setData({
-      isShowCover: false
+      isShowCover: false,
+      artistId:0,//从新赋值0
     })
   },
   //点击显示筛选盒子(没办法的办法，不然会触发父盒子的事件)

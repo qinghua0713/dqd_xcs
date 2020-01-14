@@ -13,7 +13,6 @@ Page({
   onLoad(e) {
     let that = this
     //请求绑定数据
-    console.log(e)
     if (e.q) {
       //获取二维码的携带的链接信息
       let qrUrl = decodeURIComponent(e.q)

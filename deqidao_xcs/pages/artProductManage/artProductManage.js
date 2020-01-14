@@ -10,7 +10,6 @@ Page({
     deadline_one: '',//锁定期数据列表
     deadline_two: '',//收益期数据列表
     deadline_three: '',//兑现期数据列表
-
   },
   /**
  * 生命周期函数--监听页面加载

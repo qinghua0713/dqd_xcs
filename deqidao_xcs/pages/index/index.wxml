@@ -18,14 +18,14 @@
 		</view>
 		<view class="keyword-container">
 			<view class="search_list" wx:if="{{keywordList.length > 0}}">
-	           <view  class="keywordItem" wx:for="{{keywordList}}" wx:key="index">
+	           <view  class="keywordItem" wx:for="{{keywordList}}" wx:key="index" bind:tap="goToclassify_two">
 				  <text wx:for="{{item.keyword}}" wx:key="index" class="{{item == keyword ? 'searchHigh' : '' }}">{{item}}</text>
 			  </view>
 			</view>
 		
 			<view class="top_search_container" wx:elif="{{keywordList.length < 1}}">
 			   <view class="top_search_item" wx:for="{{keywordSearchList}}"
-			   bind:tap="goToClassify_tow"  wx:key="index">
+			   bind:tap="goToClassify_three"  wx:key="index">
 				 <text >{{item.keyword}}</text>
 			  </view> 
 			</view>
@@ -48,16 +48,17 @@
 	<!-- 艺术品分类项 -->
 	<view class="class_list">
 		<view class="goToArtist">
-			<view class="list_item" bind:tap="goToTunnel">
-				<image src="/assets/image/artist.png" mode="scaleToFill" lazy-load="false"></image>
+			<view class="list_item" bind:tap="goToTunnel"  wx:for="{{dataList.category}}" 
+			 wx:key='index' bindtap="goToTunnel" data-id='{{item.catergory.id}}' wx:if="{{item.catergory == null}}">
+				<image src="{{item.img}}" mode="scaleToFill" lazy-load="false"></image>
 				<text>艺术家</text>
 			</view>
 		</view>
 		<view class="classify_options">
-
-			<view class="list_item" wx:for="{{dataList.category}}" wx:for-item='itm' wx:for-index="idx" wx:key='idx' bindtap="goToClassify" data-id='{{itm.catergory.id}}' data-value="{{itm.catergory.name}}">
-				<image src="{{itm.img}}" mode="scaleToFill" lazy-load="false"></image>
-				<text>{{itm.catergory.name}}</text>
+			<view class="list_item" wx:for="{{dataList.category}}"  wx:key='index' bindtap="goToClassify"
+			 data-id='{{item.catergory.id}}' data-value="{{item.catergory.name}}"wx:if="{{item.catergory != null}}">
+				<image src="{{item.img}}" mode="scaleToFill" lazy-load="false"></image>
+				<text>{{item.catergory.name}}</text>
 			</view>
 		</view>
 	</view>
@@ -69,7 +70,7 @@
 				 danmu-btn='{{true}}' controls="{{false}}"
 				  object-fit='cover'></video>
 				<cover-view class="cover_img" wx:if="{{!isPlay}}">
-					<cover-image src="/assets/image/ysp_img.png"></cover-image>
+					<cover-image src="{{item.img}}"></cover-image>
 				</cover-view>
 				<cover-view class="play_btn" bindtap="videoPlay" wx:if="{{!isPlay}}">
 					<cover-image src="/assets/image/play.png"></cover-image>
@@ -112,7 +113,7 @@
 	<!-- 艺术品详情 -->
 	<view class="class_sift">
 		<view class="class_item class_tj" data-text='臻品推荐' bind:tap="goToDetails" wx:for="{{dataList.recommend}}" wx:key="index"
-		 data-id="{{item.id}}" data-index='{{item.index}}'>
+		 data-id="{{item.goods.id}}" data-index='{{item.index}}'>
 			<image  class="class_image" src="{{item.goods.default_image_url}}" />
 			<view class="class_info">
 				<text class="cp_name">{{item.goods.name}}</text>

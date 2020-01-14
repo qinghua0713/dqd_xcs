@@ -24,9 +24,9 @@
     <view class="ht_sq">
       <text class="sq_title">合同时期</text>
       <view class="ht_date">
-        <text class="date_q">{{dataList.contract.create_time}}</text>
+        <text class="date_q">{{dataList.contract_time.create_time}}</text>
         <text class="h_g">—</text>
-        <text class="date_h">{{dataList.contract.closed_time}}</text>
+        <text class="date_h">{{dataList.contract_time.closed_time}}</text>
       </view>
     </view>
     <view class="sy_container">
@@ -36,7 +36,7 @@
             <text class="title_sy">创投总收益</text>
             <view class="title_price">
               <text>￥</text>
-              {{dataList.ear.ear_sum}}
+              {{dataList.movement_ear.one_to_four_sum}}
             </view>
             <view class="gh_ts_btn "catch:tap="showCtTs">
               <image src="/assets/image/gantanhao.png" />
@@ -53,9 +53,9 @@
             </view>
           </view>
           <view class="item-cotainer" >
-            <view class="jd_sy_item" wx:for="{{dataList.ear.ear_sum_data}}" wx:key="index">
-              <text class="dn_jd">第一季度创投收益</text>
-              <text class="jd_price">￥   {{item}}</text>
+            <view class="jd_sy_item" wx:for="{{dataList.movement_ear.one_to_four}}" wx:key="index">
+              <text class="dn_jd">{{index}}</text>
+              <text class="jd_price">￥{{item}}</text>
             </view>
           </view>
         </view>
@@ -64,14 +64,14 @@
             <text class="title_sy">年化总收益</text>
             <view class="title_price">
               <text>￥</text>
-             {{dataList.ear.year_ear}}
+             {{dataList.year_data.ear_sum}}
             </view>
             <view></view>
           </view>
           <view class="item-cotainer">
             <view class="jd_sy_item">
-              <text class="dn_jd">当前进度 第{{dataList.ear.day}}天</text>
-              <text class="jd_price">￥   {{dataList.ear.yesterday}}</text>
+              <text class="dn_jd">当前进度 第{{dataList.year_data.day}}天</text>
+              <text class="jd_price">￥   {{dataList.year_data.today_ear}}</text>
             </view>
           </view>
         </view>
@@ -82,7 +82,7 @@
             <text class="title_sy">当前归还总收益</text>
             <view class="title_price">
               <text>￥</text>
-            {{dataList.ear.sum_ear}}
+            {{dataList.sun_ear}}
             </view>
             <view class="gh_ts_btn " catch:tap="showReturn">
               <image src="/assets/image/gantanhao.png" />

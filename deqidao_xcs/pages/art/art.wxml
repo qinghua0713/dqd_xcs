@@ -12,9 +12,9 @@
   </view>
   <!-- tab选项卡 -->
   <view class="tab_title">
-    <view class="tab_option" bindtap="showACS" wx:for="{{dataList.img}}" wx:key="index" data-id='{{item.id}}'>
-      <image src="{{tabShow == true ? '/assets/image/acstz_red.png':'/assets/image/asctz_gray.png '}}"></image>
-      <text class=" {{tabShow == true ? 'current_tab':''}}">{{item.name}}</text>
+    <view class="tab_option" bindtap="showACS" wx:for="{{dataList.img}}" wx:key="index" data-id='{{item.id}}' data-index='{{index}}'>
+      <image src="{{currentIndex == index ? item.yes_img:item.no_img}}"></image>
+      <text class=" {{currentIndex == index ? 'current_tab':''}}">{{item.name}}</text>
     </view>
   </view>
   <!-- 选项卡的内容 -->
@@ -23,7 +23,7 @@
       <view class="video_container">
         <video id="myVideo" src="{{item.video}}" show-center-play-btn="{{false}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls="{{false}}"></video>
         <cover-view class="cover_img" wx:if="{{!isPlay}}">
-          <cover-image src="/assets/image/video_fm.png"></cover-image>
+          <cover-image src="{{item.video_img}}"></cover-image>
         </cover-view>
         <cover-view class="play_btn" bindtap="videoPlay" wx:if="{{!isPlay}}">
           <cover-image src="/assets/image/play.png"></cover-image>
@@ -41,8 +41,7 @@
       <image wx:for="{{dataList.page_serializer}}" wx:key="index" class="img_cont" src="{{item.details}}" />
       <view class="lj_classify" bind:tap="goTo">了解签约详情...</view>
       <view class="sign_btn">
-        <image src="/assets/image/ljqy_red_bg.png" />
-        <view>立即签约</view>
+        <view class="ljContract">立即签约</view>
       </view>
     </view>
   </view>

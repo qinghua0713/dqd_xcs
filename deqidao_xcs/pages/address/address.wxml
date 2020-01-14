@@ -3,7 +3,7 @@
          <button open-type="getUserInfo" bindgetuserinfo="addAddress">添加地址</button>
     </view>
    
-    <view class="address_item" wx:if="{{!showRedactAddress}}" wx:for="{{dataList.results}}" wx:key="index">
+    <view class="address_item" wx:if="{{!showRedactAddress}}" wx:for="{{dataList}}" wx:key="index">
         <text class="user_tx" >{{item.userTx}}</text>
         <view class="address_info">
             <view class="top_name">
@@ -18,7 +18,7 @@
          data-province='{{item.province.name}}'data-provinceId='{{item.province.id}}'  data-city='{{item.city.name}}' data-cityId='{{item.city.id}}'
           data-district='{{item.district.name}}' data-districtId='{{item.district.id}}'  data-place='{{item.place}}' 
           data-receiver='{{item.receiver}}' data-mobile='{{item.mobile}}'
-          data-isChecked='{{item.is_default_address}}' bindgetuserinfo="redactAddress">
+          data-ischecked='{{item.is_default_address}}' bindgetuserinfo="redactAddress">
             编辑
         </button>
     </view>

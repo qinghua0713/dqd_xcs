@@ -52,7 +52,6 @@ Page {
 .list_item image {
     margin-bottom: 11rpx;
 }
-
 .balance_info {
     padding-top: 16rpx;
 }
@@ -142,7 +141,7 @@ Page {
 
 .ysp_container {
     background: #ffffff;
-    height: 490rpx;
+    max-height: 490rpx;
     overflow: scroll;
 }
 
@@ -285,7 +284,6 @@ Page {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: center;
 }
 
 .progress {
@@ -340,6 +338,8 @@ Page {
 
 .order_title button{
    margin-left: 0 ;
+   font-size: 23rpx;
+
 }
 .order_list {
     width: 100%;

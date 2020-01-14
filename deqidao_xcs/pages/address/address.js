@@ -11,7 +11,6 @@ Page({
   },
   //点击编辑地址
   redactAddress(e) {
-    console.log(e)
     if (e.detail.userInfo) {
       let nickName = e.detail.userInfo.nickName
       let avatarUrl = e.detail.userInfo.avatarUrl
@@ -24,14 +23,14 @@ Page({
       let place = decodeURIComponent(e.target.dataset.place)
       let receiver = decodeURIComponent(e.target.dataset.receiver)
       let mobile = decodeURIComponent(e.target.dataset.mobile)
-      let isChecked = e.target.dataset.isChecked
+      let ischecked = e.target.dataset.ischecked
       let provinceId = e.target.dataset.provinceid
       let cityId = e.target.dataset.cityid
       let districtId = e.target.dataset.districtid
       wx.navigateTo({
         url: `/pages/editorAddress/editorAddress?id=${
           id}&province=${province}&city=${
-          city}&district=${district}&place=${place}&receiver=${receiver}&mobile=${mobile}&isChecked=${isChecked}&provinceId=${provinceId}&cityId=${
+          city}&district=${district}&place=${place}&receiver=${receiver}&mobile=${mobile}&ischecked=${ischecked}&provinceId=${provinceId}&cityId=${
           cityId}&districtId=${districtId}`
       });
     }
@@ -43,7 +42,16 @@ Page({
       let avatarUrl = e.detail.userInfo.avatarUrl
       //用户登陆
       Login(nickName, avatarUrl)
-      wx.navigateTo({ url: '/pages/editorAddress/editorAddress' });
+      if(this.data.dataList.length >= 7){
+        wx.showToast({
+          title: '收货地址不能超过7个',
+          icon: 'none',
+          duration: 2000
+        })
+      }else{
+        wx.navigateTo({ url: '/pages/editorAddress/editorAddress' });
+      }
+      
     }
 
   },
@@ -60,10 +68,10 @@ Page({
           'openid': res.data.openid
         }).then(res => {
           var userTx = []//用户切割后的头像
-          for (let i = 0; i < res.data.results.length; i++) {
-            userTx = userTx.concat({ userTx: res.data.results[i].receiver })
+          for (let i = 0; i < res.data.length; i++) {
+            userTx = userTx.concat({ userTx: res.data[i].receiver })
             userTx[i].userTx = userTx[i].userTx.substring(userTx[i].userTx.length - 1, userTx[i].userTx.length)
-            res.data.results[i].userTx = userTx[i].userTx
+            res.data[i].userTx = userTx[i].userTx
           }
           that.setData({
             dataList: res.data,

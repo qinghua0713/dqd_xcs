@@ -2,55 +2,35 @@
  <view class="art_container">
         <view class="artist_container">
             <view class="artist_info">
-                <image src="/assets/image/cp_img.png" />
+                <image src="{{dataList.aut.img}}" />
                 <view class="right_js">
-                    <text class="right_title">艺术家名字</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
+                    <text class="right_title">{{dataList.aut.name}}</text>
+                   <text wx:for="{{dataList.aut.glorys}}" wx:key="index">{{item.glory}}</text>
                 </view>
             </view>
         </view>
         <view class="hisWorks_container">
             <text class="Works_title">他的作品</text>
-            <view class="Works_info">
-                <view class="works_item">
-                    <image src="/assets/image/ysp_img.png" />
+            <view class="Works_info" >
+                <view class="works_item"wx:for="{{dataList.goods}}" wx:key="index">
+                    <image src="{{item.default_image_url}}" />
                     <view class="bottom_content">
-                        <view class="art_name">艺术品名称</view>
+                        <view class="art_name">{{item.name}}</view>
                         <view class="price_info">
-                            <text>价值</text>
-                            <text>待订购</text>
+                            <text>价值:{{item.price}}</text>
+                            <text>{{item.order_status}}</text>
                         </view>
                     </view>
                 </view>
-                <view class="works_item">
-                    <image src="/assets/image/ysp_img.png" />
-                    <view class="bottom_content">
-                        <view class="art_name">艺术品名称</view>
-                        <view class="price_info">
-                            <text>价值</text>
-                            <text>待订购</text>
-                        </view>
-                    </view>
-                </view>
-                
             </view>
         </view>
         <view class="information">
             <text class="information_title">他的资讯</text>
-            <view class="information_item">
-            <text >艺术家文章1</text>
-            </view>
-            <view class="information_item">
-            <text >艺术家文章2</text>
-            </view>
-            <view class="information_item">
-            <text >艺术家文章3</text>
+            <view class="information_item" wx:for="{{dataList.consult}}" bind:tap="goToArticle"
+             data-src="{{item.url}}" wx:key="index"
+             data-id="{{item.id}}" data-index='{{index}}'>
+                <image src="{{item.imgs}}" />
+            <text >{{item.url}}</text>
             </view>
         </view>
     </view>

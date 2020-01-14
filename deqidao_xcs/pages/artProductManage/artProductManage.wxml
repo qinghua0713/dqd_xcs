@@ -16,7 +16,7 @@
         <!-- tab第一部分内容 -->
         <view class="content_item" wx:if="{{showCurrent == 1}}">
             <!-- 判断tab是否有数据 -->
-            <view class="item_info" wx:for="{{deadline_one}}" wx:if="{{data === 0}}" wx:key="index" data-id='{{item.good.id}}'>
+            <view class="item_info" wx:for="{{deadline_one}}"  wx:key="index" data-id='{{item.good.id}}'>
                 <image src="{{item.good.default_image_url}}" />
                 <view class="right_info">
                     <view class="cp_title">

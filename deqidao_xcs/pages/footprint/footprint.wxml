@@ -33,7 +33,7 @@
         </view>
         <view class="tj_list">
             <view class="tj_item" wx:for="{{dataList.handpick}}" wx:key="index">
-                <image src="/assets/image/ysp_img.png" />
+                <image src="{{item.good.default_image_url}}" />
                 <view class="tj_info">
                     <text class="ysp_name">{{item.good.name}}</text>
                     <view class="price_info">

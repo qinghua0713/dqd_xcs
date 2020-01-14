@@ -43,14 +43,16 @@ Page {
 .price_info {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     font-size: 17rpx;
     color: #29292a;
-    position: absolute;
-    bottom: 0rpx;
-     right:0rpx;
      overflow: hidden;
      white-space: nowrap;
+}
+.right_info .price_info{
+    position:absolute;
+    bottom: 0;
+    left: 0;
 }
 .cp_title {
     font-size: 35rpx;
@@ -133,6 +135,7 @@ text-overflow: ellipsis;
     display: flex;
     flex-direction: column;
     margin-bottom: 30rpx;
+    position: relative;
    
   box-sizing: border-box;
 }
@@ -148,6 +151,7 @@ text-overflow: ellipsis;
 }
 
 .tj_info {
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 3rpx 5rpx 8rpx;

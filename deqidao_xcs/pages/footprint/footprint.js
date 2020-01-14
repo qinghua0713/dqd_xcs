@@ -71,6 +71,7 @@ Page({
           'content-type': 'application/json',
           'openid': res.data.openid
         }).then(res => {
+ 
           wx.hideLoading();
           wx.showToast({
             title: '刷新成功', //提示的内容,

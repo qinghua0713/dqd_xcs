@@ -81,13 +81,65 @@ Page({
             })
             //判断，如果用户是从地址页点击添加地址进来的就执行
             //判断用户是否改过用户名
-        } else if (that.data.addressId != '' && that.data.editedUserName != that.data.userName
-            || that.data.editedIphone != that.data.iPhone
-            || that.data.editedCheckedProvincesId != that.data.checkedProvincesId
-            || that.data.editedCheckedCitysId != that.data.checkedCitysId
-            || that.data.editedCheckedAreasId != that.data.checkedAreasId
-            || that.data.editedSpecificAddress != that.data.specificAddress
-            || that.data.editedSwitchChecked != that.data.switchChecked) {
+        } else if (that.data.addressId == "" ) {
+            console.log('POST')
+            wx.getStorage({
+                key: 'resultUserInfo',
+                success: (res) => {
+                    //发送已编辑的地址给后端
+                    wx.request({
+                        url: app.globalData.BaseUrl + 'user/addr',
+                        data: {
+                            receiver: that.data.userName,
+                            mobile: that.data.iPhone,
+                            is_default_address: that.data.switchChecked == true ? 1 : 0,
+                            province: that.data.checkedProvincesId,
+                            city: that.data.checkedCitysId,
+                            district: that.data.checkedAreasId,
+                            place: that.data.specificAddress
+                        }, //请求的参数",
+                        method: 'POST',
+                        dataType: 'json', //如果设为json，会尝试对返回的数据做一次 JSON.parse
+                        header: {
+                            openid: res.data.openid
+                        },
+                        success: res => {
+                            if(res.statusCode == 201){
+                                wx.showToast({
+                                    title: '添加成功', //提示的内容,
+                                    icon: 'success', //图标,
+                                    duration: 2000, //延迟时间,
+                                  });
+                            }else if(res.statusCode == 400){
+                                wx.showToast({
+                                    title: '收货地址不能超过7个', //提示的内容,
+                                    icon: 'none', //图标,
+                                    duration: 2000, //延迟时间,
+                                  });
+                            }
+                            setTimeout(() => {
+                                wx.navigateTo({ url: '/pages/address/address' });
+                            }, 1000);
+                        },
+                    });
+
+                },
+                fail: () => {
+                    wx.showToast({
+                        title: '用户未授权',
+                        icon: 'none',
+                        duration: 2000
+                    })
+                },
+            })
+        }else if (that.data.addressId !='' && that.data.editedUserName != that.data.userName
+    || that.data.editedIphone != that.data.iPhone
+    || that.data.editedCheckedProvincesId != that.data.checkedProvincesId
+    || that.data.editedCheckedCitysId != that.data.checkedCitysId
+    || that.data.editedCheckedAreasId != that.data.checkedAreasId
+    || that.data.editedSpecificAddress != that.data.specificAddress
+    || that.data.editedSwitchChecked != that.data.switchChecked) {
+        console.log('PUT')
             wx.getStorage({
                 key: 'resultUserInfo',
                 success: (res) => {
@@ -114,46 +166,9 @@ Page({
                 },
             })
 
-        } else if (that.data.checkedProvincesId != '' && that.data.checkedCitysId != '' && that.data.checkedAreasId != '') {
-            wx.getStorage({
-                key: 'resultUserInfo',
-                success: (res) => {
-                    //发送已编辑的地址给后端
-                    wx.request({
-                        url: app.globalData.BaseUrl + 'user/addr',
-                        data: {
-                            receiver: that.data.userName,
-                            mobile: that.data.iPhone,
-                            is_default_address: that.data.switchChecked == true ? 1 : 0,
-                            province: that.data.checkedProvincesId,
-                            city: that.data.checkedCitysId,
-                            district: that.data.checkedAreasId,
-                            place: that.data.specificAddress
-                        }, //请求的参数",
-                        method: 'POST',
-                        dataType: 'json', //如果设为json，会尝试对返回的数据做一次 JSON.parse
-                        header: {
-                            openid: res.data.openid
-                        },
-                        success: res => {
-                            wx.showToast({
-                              title: '保存成功', //提示的内容,
-                              icon: 'success', //图标,
-                              duration: 2000, //延迟时间,
-                            });
-                            wx.navigateTo({ url: '/pages/address/address' });
-                        },
-                    });
-
-                },
-                fail: () => {
-                    wx.showToast({
-                        title: '用户未授权',
-                        icon: 'none',
-                        duration: 2000
-                    })
-                },
-            })
+        }else{
+            console.log('没有执行请求')
+            wx.navigateTo({ url: '/pages/address/address' });
         }
     },
     //删除地址请求
@@ -193,28 +208,25 @@ Page({
         let that = this
         if (e.id) {
             that.setData({
+                addressId: e.id,//地址id
                 userName: e.receiver,//用户名
                 iPhone: e.mobile,//手机号码
                 checkedAddress: e.province + ',' + e.city + ',' + e.district,//省市区
                 specificAddress: e.place,//详细地址
-                switchChecked: e.isChecked,//传过来的是否是默认地址
-                editedUserName: e.receiver,//用户的名字
-                editedIphone: e.mobile,//用户的手机号码
-                editedCheckedAddress: e.province + ',' + e.city + ',' + e.district,//用户编辑过的省市区地址
                 checkedProvincesId:e.provinceId,//传过来的省id
                 checkedCitysId:e.cityId,////传过来的市id
                 checkedAreasId:e.districtId,//传过来的区id
-                switchChecked:e.isChecked,//传过来的是否默认地址
-                editedSpecificAddress:e.place,//用户编辑过的详细地址
-                editedSwitchChecked: e.isChecked,//用户编辑过的是否默认地址
-                addressId: e.id,//地址id
+                switchChecked:(e.ischecked == 1 ? true : false),//传过来的是否默认地址
+                //------------------------------区分射线-------------------------------------
+                editedUserName: e.receiver,//用户的名字
+                editedIphone: e.mobile,//用户的手机号码
                 editedCheckedProvincesId:e.provinceId,//传过来的省id
                 editedCheckedCitysId:e.cityId,////传过来的市id
                 editedCheckedAreasId:e.districtId,//传过来的区id
-                editedSwitchChecked:e.isChecked//传过来的是否默认地址
+                editedSpecificAddress:e.place,//用户编辑过的详细地址
+                editedSwitchChecked: (e.ischecked == 1 ? true : false),//用户编辑过的是否默认地址
             })
         }
-
         wx.getStorage({
             key: 'resultUserInfo',
             success: (res) => {

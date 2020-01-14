@@ -18,7 +18,8 @@
     "pages/footprint/footprint",
     "pages/consignment/consignment",
     "pages/PersonalInformation/PersonalInformation",
-    "pages/allOrders/allOrders"
+    "pages/allOrders/allOrders",
+    "pages/article/article"
   ],
   "permission": {
     "scope.userLocation": {

@@ -56,6 +56,7 @@ Page({
       Request(`xcx/return/${e.id}`,'','GET',{
         openid: res.data.openid
       }).then(res=>{
+        console.log(res.data)
         that.setData({
           dataList:res.data,
           artworkId:e.id

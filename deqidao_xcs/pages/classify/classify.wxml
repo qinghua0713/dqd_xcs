@@ -1,4 +1,4 @@
-<view class="tunnel_page">
+<view class="tunnel_page" catch:tap="concealOptionsValue">
     <!-- 轮播图 -->
     <view class="swiperContainer">
         <swiper bindchange="swiperChange" autoplay="{{true}}" duration="{{500}}" circular style='height: 347rpx;'>
@@ -14,7 +14,7 @@
     <view class="zp_tuijian">
         <view class="zp_title">
             <view class="xl_container">
-                <view class="xl_info" bindtap="optionValue">
+                <view class="xl_info" catch:tap="optionValue">
                     <view class="value_item">
                         <text>{{value}}</text>
                     </view>
@@ -69,7 +69,7 @@
         <view class="filtrate_list">
             <view class="item_option " bind:tap="artistScreening" wx:for="{{dataList.author}}" data-id='{{item.id}}'  wx:key="index">
                 <!-- <image src="{{item.default_image_url}}" /> -->
-                <view class="artist_name {{artistIndex == item.id  ? 'current_artist':''}}" data-id='{{item.id}}' >{{item.name}}</view>
+                <view class="artist_name {{artistId == item.id  ? 'current_artist':''}}" data-id='{{item.id}}' >{{item.name}}</view>
             </view>            
         </view>
         <view class="price_section">

@@ -57,7 +57,6 @@ Page({
     wx.scanCode({
       onlyFromCamera: true,
       success(res) {
-        console.log(res)
         //请求绑定数据
         if (res.result) {
           //获取二维码的携带的链接信息

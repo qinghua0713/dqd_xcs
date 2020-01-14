@@ -69,7 +69,7 @@ page {
 	width: 108rpx;
 }
 .list_item  image{
-  width: 83rpx;
+  width: 106rpx;
 	height: 83rpx;
    padding-bottom: 16rpx;
 }

@@ -106,11 +106,12 @@ Page({
       url: `/pages/classify/classify?id=${e.currentTarget.dataset.id}&value=${value}`,
     })
   },
+  //点击搜索出来的关键字跳转详情页
+  goToclassify_two(){
+    wx.navigateTo({ url: '/pages/classify/classify' });
+  },
   //点击热搜关键字跳转分类页
-  goToClassify_tow() {
-    this.setData({
-      isShowCearchCover: false
-    })
+  goToClassify_three() {
     wx.navigateTo({ url: '/pages/classify/classify' });
   },
   //点击跳转tunnel页面
@@ -196,7 +197,9 @@ Page({
   onHide() {
     let that = this
     that.setData({
-      isShowCearchCover: false
+      isShowCearchCover: false,
+      keyword:'',//清空搜索框的值
+      keywordList:'',//清空请求回来的关键字列表
     })
   }
 })

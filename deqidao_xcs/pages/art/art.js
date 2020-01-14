@@ -5,6 +5,7 @@ Page({
     current: 0,//轮播图的当前下标
     isPlay:false,//用来判断是否显示播放按钮
     dataList:null,//数据列表
+    currentIndex:0,//当前显示的选项卡
   },
   onLoad() {
     let that = this
@@ -18,7 +19,7 @@ Page({
   //点击显示tab第n项
   showACS(e) {
     this.setData({
-      tabShow: true,
+      currentIndex:e.currentTarget.dataset.index,
       currentId:e.currentTarget.dataset.id
     })
   },

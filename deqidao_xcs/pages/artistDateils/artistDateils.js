@@ -8,7 +8,9 @@ Page({
      dataList:'',//数据列表
      artistId:'',//艺术家ID
   },
-
+  goToArticle(e){
+ wx.navigateTo({ url: `/pages/article/article?src=${e.currentTarget.dataset.src}` });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -16,7 +18,6 @@ Page({
     let that = this
     //请求艺术家数据
            Request(`xcx/details/${e.id}`).then(res=>{
-             console.log(res.data)
              that.setData({
                dataList:res.data,
                artistId:e.id
@@ -60,7 +61,6 @@ Page({
     })
      //请求艺术家数据
      Request(`xcx/details/${that.data.artistId}`).then(res=>{
-      console.log(res.data)
       wx.hideLoading();
       wx.showToast({
         title: '刷新成功', //提示的内容,

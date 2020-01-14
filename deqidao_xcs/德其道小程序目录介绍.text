@@ -1,9 +1,12 @@
-﻿├─assets //静态文件目录
+﻿
+├─assets //静态文件目录
 │  └─image //图片文件夹
 ├─pages //小程序页面目录
 │  ├─address //收货地址页
+│  ├─allOrders //全部订单页面
 │  ├─art //艺术品合同页
-│  ├─artistDateils //艺术家详情页
+│  ├─article //公众号文章页
+│  ├─artistDateils//艺术家详情页
 │  ├─artProductManage //艺术品管理页
 │  ├─authorization //用户授权页
 │  ├─binding //艺术品绑定页
@@ -16,6 +19,7 @@
 │  ├─footprint //足迹页
 │  ├─index //首页
 │  ├─my //个人中心页
+│  ├─PersonalInformation //个人信息页
 │  ├─returnCash //艺术品返还页
 │  └─tunnel //艺术馆页
 └─utils //公用js目录

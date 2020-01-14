@@ -110,7 +110,7 @@ swiper {
 
 .like_btn,
 .buy_btn {
-  width: 50%;
+  width: 50% !important;
 }
 
 .like_btn {
@@ -142,20 +142,25 @@ swiper {
   color: #f6f6f6 !important;
 }
 .share_btn {
-  width: 128rpx;
+  width: 128rpx !important;
   height: 47rpx;
   position: absolute;
   top: 23rpx;
   right: 0;
   display: flex;
-  border-radius: 24rpx 0 0 24rpx;
+  border-radius: 24rpx 0 0 24rpx !important;
   background-color: #f3f3f3;
   font-size: 23rpx;
   color: #686868;
   align-items: center;
   justify-content: center;
 }
-
+.ordered{
+  color: #e51419 !important;
+}
+.not_order{
+  color: #37e514 !important;
+}
 .share_btn image {
   width: 28rpx;
   height: 32rpx;
@@ -436,11 +441,9 @@ swiper {
   width: calc(100% - 300rpx);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   font-size: 23rpx;
   color: #29292a;
 }
-
 .right_shop_js .shop_title {
   font-size: 29rpx;
   font-weight: bold;
@@ -568,7 +571,7 @@ swiper {
 }
 
 .qr_pay_btn {
-  width: 382rpx;
+  width: 382rpx !important;
   height: 83rpx;
   display: flex;
   align-items: center;
@@ -579,7 +582,7 @@ swiper {
       #000000);
   background-blend-mode: normal,
     normal;
-  border-radius: 7rpx;
+  border-radius: 7rpx !important;
   font-size: 41rpx;
   letter-spacing: 4rpx;
   color: #fefefe;

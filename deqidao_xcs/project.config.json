@@ -72,7 +72,7 @@
 					"id": 2,
 					"name": "pages/details/details",
 					"pathName": "pages/details/details",
-					"query": "id=2",
+					"query": "id=7",
 					"scene": null
 				},
 				{
@@ -100,7 +100,7 @@
 					"id": 6,
 					"name": "pages/artProductManage/artProductManage",
 					"pathName": "pages/artProductManage/artProductManage",
-					"query": "showCurrent=2",
+					"query": "showCurrent=1",
 					"scene": null
 				},
 				{
@@ -121,14 +121,14 @@
 					"id": 9,
 					"name": "pages/returnCash/returnCash",
 					"pathName": "pages/returnCash/returnCash",
-					"query": "id=1",
+					"query": "id=9",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 10,
 					"name": "pages/artistDateils/artistDateils",
 					"pathName": "pages/artistDateils/artistDateils",
-					"query": "",
+					"query": "id=3",
 					"scene": null
 				},
 				{
@@ -163,6 +163,13 @@
 					"id": -1,
 					"name": "pages/address/address",
 					"pathName": "pages/address/address",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "pages/article/article",
+					"pathName": "pages/article/article",
 					"query": "",
 					"scene": null
 				}

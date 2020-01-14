@@ -3,7 +3,7 @@
 	<swiper class="swiper-block" previous-margin="60rpx" next-margin="60rpx" current="0" bindchange="swiperChange" circular="{{true}}">
 		<block wx:for="{{dataList.show_image}}" wx:key="index">
 			<swiper-item class="swiper-item" data-id='{{item.id}}'>
-				<image mode="aspectFill" src="{{item.img}}" class="slide-image {{swiperIndex == index ? 'active' : ''}}" />
+				  <image mode="aspectFill" src="{{item.img}}" class="slide-image {{swiperIndex == index ? 'active' : ''}}" />
 				<!-- <view>清朝的另类鉴赏</view> -->
 			</swiper-item>
 		</block>
@@ -17,18 +17,35 @@
         </block>	
 		</view>
 	<!-- tab菜单选项 -->
-	<view class="menu_container " >
+	<view class="menu_container " wx:if="{{showClassifyIndex < 1}}"> 
 		<view class="left_menu">
-			<view class="menu_item " wx:for='{{defaultValue.two_category}}' wx:key='index'bindtap="showMenuContent"  data-index='{{index}}' data-id='{{item.id}}'>
+			<view class="menu_item " wx:for='{{defaultValue_one.two_category}}' wx:key='index'bindtap="showMenuContent_one"  data-index='{{index}}' data-id='{{item.id}}'>
 				<!-- 菜单 -->
-					<view  class="yiji_menu {{current_menu == index ? ' bg_fff':''}}" >
-						<text class="{{current_menu == index ? 'current current_tab bg_fff':''}}">{{item.name}}</text>
+					<view  class="yiji_menu {{current_menu_one == index ? ' bg_fff':''}}" >
+						<text class="{{current_menu_one == index ? 'current current_tab bg_fff':''}}">{{item.name}}</text>
 					</view>			
 			</view>
 		</view>
 		<view class="right_content">
-			<view class="list_item " wx:for="{{defaultValue.two_category_article}}"
-			 wx:index="{{index}}" wx:key="index" data-id='{{item.id}}'>
+			<view bind:tap="goToArticle" class="list_item " wx:for="{{defaultValue_one.two_category_article}}"
+			 wx:index="{{index}}" wx:key="index" data-id='{{item.id}}' data-src="{{item.url}}">
+				<text>{{item.url}}</text>
+				<image src="{{item.img}}" />
+			</view>
+		</view>
+	</view>
+		<view class="menu_container " wx:elif="{{showClassifyIndex > 0}}"> 
+		<view class="left_menu">
+			<view class="menu_item " wx:for='{{defaultValue_two.two_category}}' wx:key='index'bindtap="showMenuContent_two"  data-index='{{index}}' data-id='{{item.id}}'>
+				<!-- 菜单 -->
+					<view  class="yiji_menu {{current_menu_two == index ? ' bg_fff':''}}" >
+						<text class="{{current_menu_two == index ? 'current current_tab bg_fff':''}}">{{item.name}}</text>
+					</view>			
+			</view>
+		</view>
+		<view class="right_content">
+			<view bind:tap="goToArticle" class="list_item " wx:for="{{defaultValue_two.two_category_article}}"
+			 wx:index="{{index}}" wx:key="index" data-id='{{item.id}}' data-src="{{item.url}}">
 				<text>{{item.url}}</text>
 				<image src="{{item.img}}" />
 			</view>

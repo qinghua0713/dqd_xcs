@@ -69,7 +69,9 @@ Page {
   margin-bottom: 4rpx;
   position: relative;
 }
-
+.address_container input{
+  width: 90%;
+}
 .left_address {
   width: 100%;
   display: flex;
@@ -139,9 +141,8 @@ Page {
   height: 389rpx;
 }
 .picker-item {
+ font-size: 20rpx;
   line-height: 70rpx;
-  margin-left: 5rpx;
-  margin-right: 5rpx;
   text-align: center;
 }
 .address {

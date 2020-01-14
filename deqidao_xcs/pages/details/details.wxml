@@ -2,7 +2,7 @@
     <!-- 轮播图 -->
     <view class="banner">
         <swiper indicator-dots="{{false}}" autoplay="{{false}}" interval="{{5000}}" duration="{{500}}" current="{{current}}" circular="{{false}}" bindchange="swiperChange">
-            <swiper-item wx:for="{{dataList.img}}" wx:key="index" data-id='{{item.id}}' data-author='{{item.author}}'>
+            <swiper-item wx:for="{{dataList.img_data}}" wx:key="index" data-id='{{item.id}}' data-author='{{item.author}}'>
             <video id="myVideo" src="{{item}}" danmu-list="{{danmuList}}" wx:if="{{index < 1}}" enable-danmu danmu-btn controls></video>
                 <image class="swiper-image" src="{{item.image}}"  wx:if="{{index > 0}}" />
             </swiper-item>
@@ -11,7 +11,7 @@
             <view class="image_btn {{current < 1 ? 'current_index':''}}" bind:tap="swiperVideo">视 频</view>
             <view class="video_btn {{current > 0 ? 'current_index':''}}" bind:tap="siwperImage">图 片</view>
         </view>
-        <view class="image_num">{{current+1}} / {{dataList.img.length}}</view>
+        <view class="image_num">{{current+1}} / {{dataList.img_data.length}}</view>
     </view>
     <!-- 藏品详细信息 -->
     <view class="zp_container">
@@ -24,18 +24,19 @@
                {{dataList.details.synopsis}}
             </view>
         </view>
-        <view class="share_btn">
+        <button class="share_btn" open-type="share" bindgetuserinfo='shareGood'>
             <image src="/assets/image/share.png" />
             <text>分享</text>
-        </view>
+        </button>
     </view>
     <view class="art_container">
         <view class="artist_container">
-            <view class="artist_info" wx:key="index">
-                <image src="{{dataList.aut.img}}" />
+            <view class="artist_info" wx:key="index" data-id="{{dataList.aut_data.aut.id}}">
+                <image src="{{dataList.aut_data.aut.img}}" />
                 <view class="right_js">
-                    <text class="right_title">{{dataList.aut.name}}</text>
-                    <text wx:for="{{dataList.aut.glorys}}" wx:key="index">{{item.glory}}</text>
+                    <text class="right_title">{{dataList.aut_data.aut.name}}</text>
+                    <!-- <text class="artistIntroduce">{{dataList.aut.intro}}</text> -->
+                    <text  >{{dataList.aut_data.aut.works}}</text>
                     
                 </view>
             </view>
@@ -43,13 +44,13 @@
         <view class="hisWorks_container">
             <text class="Works_title">他的作品</text>
             <view class="Works_info">
-                <view class="works_item" wx:for="{{dataList.aut_goods}}" wx:key="index">
+                <view class="works_item" wx:for="{{dataList.aut_data.goods}}" wx:key="index">
                     <image src="{{item.default_image_url}}" />
                     <view class="bottom_content">
                         <view class="art_name">{{item.name}}</view>
                         <view class="price_info">
                             <text>价值:{{item.price}}</text>
-                            <text>{{item.order_status}}</text>
+                            <text class="{{item.order_status_num == 0 ?'ordered':'not_order'}}">{{item.order_status}}</text>  
                         </view>
                     </view>
                 </view>
@@ -63,11 +64,11 @@
         </view>
     </view>
     <view class="buy_of_like">
-        <view class="like_btn" bind:tap="Collect">
+        <button class="like_btn" open-type="getUserInfo" bindgetuserinfo="Collect">
             <image src="/assets/image/collect.png" />
             <text>{{collectNum}}</text>
-        </view>
-        <view class="buy_btn {{dataList.details.order_status != 1 ? 'ordered_bg':''}}" bindtap="promptlyOrder">{{buyStatus}}</view>
+        </button>
+        <button class="buy_btn {{dataList.good_data.order_status_num != 1 ? 'ordered_bg':''}}"  open-type="getUserInfo" bindgetuserinfo="promptlyOrder">{{buyStatus}}</button>
     </view>
     <view class="cover_container" bindtap="hiddenCover" wx:if="{{order}}" catchtouchmove='doNotMove'>
         <scroll-view scroll-y="{{true}}" class="pay_container" catchtap="showCover" catchtouchmove='true'>
@@ -106,7 +107,7 @@
                     <text class="pay_fs_item">微 信</text>
                 </text>
             </view>
-            <view class="qr_pay_btn">确认付款</view>
+            <button class="qr_pay_btn" open-type="getUserInfo" bindgetuserinfo="payment">确认付款</button>
         </scroll-view>
     </view>
 </view>

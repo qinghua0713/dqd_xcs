@@ -155,12 +155,7 @@ swiper {
   align-items: center;
   justify-content: center;
 }
-.ordered{
-  color: #e51419 !important;
-}
-.not_order{
-  color: #37e514 !important;
-}
+
 .share_btn image {
   width: 28rpx;
   height: 32rpx;
@@ -277,6 +272,7 @@ swiper {
 }
 
 .artist_info {
+  width: 100%;
   display: flex;
   padding: 0 30rpx;
 }

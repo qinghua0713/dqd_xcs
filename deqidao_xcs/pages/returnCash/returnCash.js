@@ -71,7 +71,7 @@ Page({
       success: function (res) {
         var locationString = res.latitude + "," + res.longitude;
         wx.request({
-          url: 'http://apis.map.qq.com/ws/geocoder/v1/',
+          url: 'https://apis.map.qq.com/ws/geocoder/v1/',
           data: {
             "key": "GEOBZ-TIOWG-KNMQN-IKQEY-JTI7Q-O2FXR",
             "location": locationString

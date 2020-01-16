@@ -7,6 +7,7 @@ Page({
     dataList:null,//数据列表
     currentIndex:0,//当前显示的选项卡
   },
+  //页面加载是触发
   onLoad() {
     let that = this
     //请求ACS合同数据
@@ -15,6 +16,9 @@ Page({
          dataList:res.data
        })
     })
+  },
+  goToArticle(e){
+    //wx.navigateTo({ url: `/pages/details/details?id=${e.currentTarget.dataset.id}` });
   },
   //点击显示tab第n项
   showACS(e) {

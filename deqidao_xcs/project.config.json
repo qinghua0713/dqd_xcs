@@ -93,7 +93,7 @@
 					"id": 5,
 					"name": "pages/binding/binding",
 					"pathName": "pages/binding/binding",
-					"query": "id=38",
+					"query": "id=9",
 					"scene": null
 				},
 				{
@@ -107,7 +107,7 @@
 					"id": 7,
 					"name": "pages/earnings/earnings",
 					"pathName": "pages/earnings/earnings",
-					"query": "id=1",
+					"query": "id=9",
 					"scene": null
 				},
 				{
@@ -156,7 +156,7 @@
 					"id": 14,
 					"name": "pages/classify/classify",
 					"pathName": "pages/classify/classify",
-					"query": "",
+					"query": "id=1&value=紫砂",
 					"scene": null
 				},
 				{

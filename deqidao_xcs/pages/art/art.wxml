@@ -1,8 +1,9 @@
-<view>
+<view class="art_page">
   <!-- 轮播图 -->
-  <view class="swiperContainer">
+  <view class="swiper_Container">
     <swiper bindchange="swiperChange" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
-      <swiper-item wx:for="{{dataList.show_img}}" wx:key="index" data-id="{{item.id}}">
+      <swiper-item wx:for="{{dataList.show_img}}"  bind:tap="goToArticle"
+       wx:key="index" data-id="{{item.id}}">
         <image src="{{item.img}}" class="swiper-item"></image>
       </swiper-item>
     </swiper>

@@ -80,7 +80,7 @@
         <!-- tab第三部分内容 -->
         <view class="content_item" wx:elif="{{showCurrent == 3}}">
             <view class="item_info" wx:for="{{deadline_three}}" wx:key="index" >
-                <image src="/assets/image/cp_img.png" />
+                <image src="{{item.good.default_image_url}}" />
                 <view class="right_info">
                     <view class="cp_title">
                         <text>{{item.good.name}}</text>

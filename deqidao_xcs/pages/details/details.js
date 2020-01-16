@@ -17,11 +17,15 @@ Page({
   //用户点击收藏发送数据给后台
   Collect(e) {
     let that = this
+    console.log(1)
     if (e.detail.userInfo) {
       let nickName = e.detail.userInfo.nickName
       let avatarUrl = e.detail.userInfo.avatarUrl
       //用户登陆
       Login(nickName, avatarUrl)
+      that.setData({
+        collectNum: "已收藏"
+      })
       wx.getStorage({
         key: 'resultUserInfo',
         success: (res) => {
@@ -62,17 +66,27 @@ Page({
   //页面分享事件
   onShareAppMessage(res) {
     let that = this
-      // 来自页面内转发按钮
-      return {
-        title: '这个艺术家很牛逼哦~~~',
-        path: `/pages/details/details?id=${that.data.artworkId}`
-      }
+    // 来自页面内转发按钮
+    return {
+      title: '这个艺术家很牛逼哦~~~',
+      path: `/pages/details/details?id=${that.data.artworkId}`
+    }
 
   },
+  goToArticle(e){
+    wx.navigateTo({ url: `/pages/article/article?src=${e.currentTarget.dataset.src}` });
+  },
+  //点击跳转艺术家详情页
+  goToArtistDateils(e) {
+    wx.navigateTo({ url: `/pages/artistDateils/artistDateils?id=${e.currentTarget.dataset.id}` });
+  },
+  //页面加载时触发
   onLoad(e) {
     let that = this
     //请求商品详情页数据
+    console.log(e)
     Request(`goods/details/${e.id}`).then(res => {
+      console.log(res.data)
       that.setData({
         dataList: res.data,
         artworkId: e.id,
@@ -185,7 +199,7 @@ Page({
     }
   },
   //点击支付
-  payment(e){
+  payment(e) {
     let that = this
     if (e.detail.userInfo) {
       let nickName = e.detail.userInfo.nickName
@@ -201,6 +215,10 @@ Page({
       //   order:false
       //  })
     }
+  },
+  //点击跳转商品详情页
+  goToDetails(e) {
+    wx.navigateTo({ url: `/pages/details/details?id=${e.currentTarget.dataset.id}` });
   },
   //点击选中存储方式
   storageWay(e) {

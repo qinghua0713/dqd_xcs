@@ -1,18 +1,21 @@
 <view class="artistClassify-page">
+    <!-- 艺术家介绍 -->
  <view class="art_container">
         <view class="artist_container">
             <view class="artist_info">
-                <image src="{{dataList.aut.img}}" />
+                <image src="{{dataList.aut.default_image_url}}" />
                 <view class="right_js">
                     <text class="right_title">{{dataList.aut.name}}</text>
-                   <text wx:for="{{dataList.aut.glorys}}" wx:key="index">{{item.glory}}</text>
+                   <text  wx:key="index">{{dataList.aut_data.aut.works == null ? '该艺术家暂无称号~':dataList.aut_data.aut.works}}</text>
                 </view>
             </view>
         </view>
+        <!-- 艺术家作品 -->
         <view class="hisWorks_container">
             <text class="Works_title">他的作品</text>
             <view class="Works_info" >
-                <view class="works_item"wx:for="{{dataList.goods}}" wx:key="index">
+                <view class="works_item"wx:for="{{dataList.goods}}" bind:tap="goToDdetails"
+                 wx:key="index"data-id='{{item.id}}'>
                     <image src="{{item.default_image_url}}" />
                     <view class="bottom_content">
                         <view class="art_name">{{item.name}}</view>
@@ -22,16 +25,19 @@
                         </view>
                     </view>
                 </view>
+                 <view class="no-production" wx:if="{{dataList.goods.length < 1}}">该艺术家暂无作品~</view>
             </view>
         </view>
+        <!-- 艺术家文章 -->
         <view class="information">
             <text class="information_title">他的资讯</text>
             <view class="information_item" wx:for="{{dataList.consult}}" bind:tap="goToArticle"
              data-src="{{item.url}}" wx:key="index"
              data-id="{{item.id}}" data-index='{{index}}'>
                 <image src="{{item.imgs}}" />
-            <text >{{item.url}}</text>
+            <!-- <text >{{item.url}}</text> -->
             </view>
+            <view class="No-message" wx:if="{{dataList.consult.length < 1}}">该艺术家暂无资讯~</view>
         </view>
     </view>
 </view>

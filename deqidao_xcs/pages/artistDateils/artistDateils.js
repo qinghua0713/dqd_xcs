@@ -18,13 +18,17 @@ Page({
     let that = this
     //请求艺术家数据
            Request(`xcx/details/${e.id}`).then(res=>{
+             console.log(res.data)
              that.setData({
                dataList:res.data,
                artistId:e.id
              })
            })
   },
-
+//点击跳转详情页
+goToDdetails(e){
+  wx.navigateTo({ url: `/pages/details/details?id=${e.currentTarget.dataset.id}` });
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

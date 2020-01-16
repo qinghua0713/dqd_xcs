@@ -61,6 +61,7 @@ Page{
 }
 
 .Works_info {
+  min-height:313rpx;
   padding: 0 34rpx;
   clear: both;
   display: flex;
@@ -111,11 +112,6 @@ Page{
   color: #29292a;
 }
 
-.information {
-  display: flex;
-  flex-direction: column;
-  padding: 0 30rpx 130rpx 30rpx;
-}
 
 .information_title {
   font-size: 29rpx;

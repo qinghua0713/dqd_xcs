@@ -19,8 +19,8 @@
       <text >设为默认地址</text>
       <switch bindchange="isSwitchChecked" color="#fe4055" checked="{{switchChecked}}" />
     </view>
-    <view class="deleteAddress">
-      <text bind:tap="deleteAddress">删除地址</text>
+    <view class="deleteAddress" wx:if="{{addressId != ''}}">
+      <text bind:tap="deleteAddress" >删除地址</text>
     </view>
   </view>
   <view class="saveAddress" bind:tap="goToAddress">保存地址</view>

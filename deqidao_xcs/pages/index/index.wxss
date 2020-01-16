@@ -1,7 +1,4 @@
-page {
-  box-sizing: border-box;
 
-}
 .search-container {
 
   width: 90%;
@@ -9,10 +6,8 @@ page {
  margin: 0 auto;
  margin-top: 10rpx;
 }
-.search {
-  padding-left: 66rpx;
+.search_one {
   box-sizing: border-box;
-  height: 56rpx;
   background-color: #f7f7f7;
   border-radius: 30px;
   margin: 0 auto;
@@ -20,18 +15,20 @@ page {
   color: #a4a4a4;
   margin-bottom: 6rpx;
    height: 56rpx;
+  text-align: center;
 }
-.search-image {
+.search-image_one {
   width: 50rpx;
   height: 50rpx;
   position: absolute;
   top: 50%;
-  left: 10rpx;
+  left: 234rpx;
   transform: translateY(-50%);
+
 }
 .banner {
   width: 100%;
-  height: 658rpx;
+	height: 960rpx;
   position: relative;
 }
 .banner swiper{
@@ -223,27 +220,45 @@ page {
 }
 .keywordList{
   width:100%;
-  height:100%;
+  height:50%;
   margin: 0 auto;
   padding-top: 10rpx;
+  background: #fff;
 }
 .keywordList .search-container{
   width: 100%;
   display: flex;
  align-items: center;
+ justify-content: space-around;
  padding: 0 20rpx;
  box-sizing: border-box;
 
 }
 .keywordList .search-container .search{
-  width: 90%;
+  width: 86%;
+  padding-left: 66rpx;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+  border-radius: 30px;
+  font-size: 23rpx;
+  color: #a4a4a4;
+   height: 56rpx;
 }
 .keywordList .search-container  .search-image {
-  left: 40rpx;
+  left: 44rpx;
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .cancel{
-  color: #FFF;
+  height: 56rpx;
+  color: #333;
   font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
 }
 .keyword-container{
   width: 100%;

@@ -44,7 +44,7 @@
                     <text class="ysp_name">{{item.name}}</text>
                     <view class="price_cont">
                         <text class="price">价值:{{item.price}}</text>
-                        <text class="ordered">待订购:{{item.order_status}}</text>
+                        <text class=" {{item.order_status_num == 0 ?'ordered':'not_order'}}">{{item.order_status}}</text>
                     </view>
                 </view>
             </view>
@@ -75,15 +75,15 @@
         <view class="price_section">
             <text class="section_title">价格区间</text>
             <view class="max_min">
-                <input class="z_d_j" type="digit" bindinput="getMinValue"  value="{{filtratePirce.lowest}}" placeholder="最低价" />
+                <input class="z_d_j" type="digit" bindinput="getMinValue"  value="{{filtratePirce.lowest}}" placeholder="最低价(元)" />
                 <view class="henggang"></view>
-                <input class="z_g_j" type="digit" bindinput="getMaxValue" value="{{filtratePirce.tallest}}" placeholder="最高价" />
+                <input class="z_g_j" type="digit" bindinput="getMaxValue" value="{{filtratePirce.tallest}}" placeholder="最高价(元)" />
             </view>
             <view class="cg_dd">
                 <view class="d_g" bind:tap="LowToTall">从低到高</view>
                 <view class="g_d" bind:tap="TallToLow">从高到低</view>
             </view>
         </view>
-        <button class="filtrate_Btn" bind:tap="filtrateClassify">确定</button>
+        <button class="filtrate_Btn" catch:tap="filtrateClassify">确定</button>
     </scroll-view>
 </view>

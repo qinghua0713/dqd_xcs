@@ -29,7 +29,7 @@
 		<view class="right_content">
 			<view bind:tap="goToArticle" class="list_item " wx:for="{{defaultValue_one.two_category_article}}"
 			 wx:index="{{index}}" wx:key="index" data-id='{{item.id}}' data-src="{{item.url}}">
-				<text>{{item.url}}</text>
+				<!-- <text>{{item.url}}</text> -->
 				<image src="{{item.img}}" />
 			</view>
 		</view>
@@ -46,7 +46,7 @@
 		<view class="right_content">
 			<view bind:tap="goToArticle" class="list_item " wx:for="{{defaultValue_two.two_category_article}}"
 			 wx:index="{{index}}" wx:key="index" data-id='{{item.id}}' data-src="{{item.url}}">
-				<text>{{item.url}}</text>
+				<!-- <text>{{item.url}}</text> -->
 				<image src="{{item.img}}" />
 			</view>
 		</view>

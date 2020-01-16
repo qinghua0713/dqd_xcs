@@ -175,7 +175,7 @@ Page {
     font-size: 12rpx;
     color: #a4a4a4;
     position: relative;
-
+   overflow:visible !important;
 }
 
 .jd_item image {

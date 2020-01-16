@@ -7,6 +7,10 @@ Page({
   data: {
     dataList: ''//数据列表
   },
+  //点击跳转艺术品详情
+  goToDetails(e){
+    wx.navigateTo({ url: `/pages/details/details?id=${e.currentTarget.dataset.id}` });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -20,6 +24,7 @@ Page({
           'content-type': 'application/json',
           'openid': res.data.openid
         }).then(res => {
+          console.log(res.data)
           that.setData({
             dataList: res.data
           })

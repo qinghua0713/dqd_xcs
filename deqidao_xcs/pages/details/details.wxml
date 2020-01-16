@@ -16,9 +16,9 @@
     <!-- 藏品详细信息 -->
     <view class="zp_container">
         <view class="cp_info" >
-            <text class="cp_title">藏品名称</text>
+            <text class="cp_title">{{dataList.good_data.name}}</text>
             <text class="cp_weight" decode="{{true}}">
-                长&nbsp;{{dataList.details.length}}cm&nbsp;&nbsp;&nbsp;宽&nbsp;{{dataList.details.wide}}cm&nbsp;&nbsp;&nbsp;高{{dataList.details.height}}cm
+                长&nbsp;{{dataList.good_data.length}}cm&nbsp;&nbsp;&nbsp;宽&nbsp;{{dataList.good_data.wide}}cm&nbsp;&nbsp;&nbsp;高{{dataList.good_data.height}}cm
             </text>
             <view class="cp_describe">
                {{dataList.details.synopsis}}
@@ -31,12 +31,12 @@
     </view>
     <view class="art_container">
         <view class="artist_container">
-            <view class="artist_info" wx:key="index" data-id="{{dataList.aut_data.aut.id}}">
-                <image src="{{dataList.aut_data.aut.img}}" />
+            <view class="artist_info" wx:key="index" data-id="{{dataList.aut_data.aut.id}}" bind:tap="goToArtistDateils">
+                <image src="{{dataList.aut_data.aut.default_image_url}}" />
                 <view class="right_js">
                     <text class="right_title">{{dataList.aut_data.aut.name}}</text>
                     <!-- <text class="artistIntroduce">{{dataList.aut.intro}}</text> -->
-                    <text  >{{dataList.aut_data.aut.works}}</text>
+                    <text  >{{dataList.aut_data.aut.works == null ? '该艺术家暂无称号~':dataList.aut_data.aut.works}}</text>
                     
                 </view>
             </view>
@@ -44,7 +44,8 @@
         <view class="hisWorks_container">
             <text class="Works_title">他的作品</text>
             <view class="Works_info">
-                <view class="works_item" wx:for="{{dataList.aut_data.goods}}" wx:key="index">
+                <view class="works_item" wx:for="{{dataList.aut_data.goods}}" bind:tap="goToDetails"
+                 wx:key="index" data-id='{{item.id}}'>
                     <image src="{{item.default_image_url}}" />
                     <view class="bottom_content">
                         <view class="art_name">{{item.name}}</view>
@@ -54,13 +55,17 @@
                         </view>
                     </view>
                 </view>
+                <view class="no-production" wx:if="{{dataList.aut_data.goods.length < 1}}">该艺术家暂无作品~</view>
             </view>
         </view>
         <view class="information">
             <text class="information_title">他的资讯</text>
-            <view class="information_item" wx:for="{{dataList.article}}" wx:key="index">
+            <view class="information_item" wx:for="{{dataList.aut_data.consult}}" bind:tap="goToArticle"
+             wx:key="index" data-src='{{item.url}}'
+             data-id="{{item.id}}">
                  <image src="{{item.imgs}}" />
             </view>
+              <view class="No-message" wx:if="{{dataList.aut_data.consult.length < 1}}">该艺术家暂无资讯~</view>
         </view>
     </view>
     <view class="buy_of_like">

@@ -4,8 +4,8 @@
 <view class="index-page" >
 	<!-- 搜索 -->
 	<view class="search-container" hidden="{{isShowCearchCover}}">
-		<input class="search" bind:tap="searchFocus"  disabled="{{true}}"  type="text" placeholder="搜索艺术品" />
-		<image class="search-image" src="/assets/image/search.png" alt=""></image>
+		<input class="search_one" bind:tap="searchFocus"  disabled="{{true}}"  type="text" placeholder="搜索艺术品" />
+		<image class="search-image_one" src="/assets/image/search.png" alt=""></image>
 	</view>
 	<!-- 搜索遮罩 -->
 	<view class="keywordCover" hidden="{{!isShowCearchCover}}" catchtouchmove="catchTouchmove">
@@ -35,7 +35,7 @@
 	<!-- 首页主图 -->
 	<view class="banner">
 		<swiper autoplay="{{true}}" bindchange="swiperChange_one" interval="{{5000}}" duration="{{500}}" circular='{{true}}'>
-			<swiper-item bindtap="goToArtDetails" wx:for="{{dataList.show_img}}" wx:key="index">
+			<swiper-item bindtap="goToArtDetails" wx:for="{{dataList.show_img}}" wx:key="index" data-id="{{item.id}}">
 				<view class="swiper-item main-swiper-item">
 					<image src="{{item.img}}" alt></image>
 				</view>

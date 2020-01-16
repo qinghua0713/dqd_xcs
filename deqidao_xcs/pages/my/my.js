@@ -18,6 +18,10 @@ Page({
   },
   //页面加载时执行的函数
   onLoad(e) {
+
+  },
+  //页面从新渲染是触发
+  onShow(e){
     let that = this
     wx.getStorage({
       key: 'resultUserInfo',
@@ -37,6 +41,7 @@ Page({
         Request(`user/good/ear`,'','GET',{
           openid: res.data.openid
         }).then(res=>{
+          console.log(res.data)
           that.setData({
             artworkDataList:res.data
           })
@@ -49,7 +54,6 @@ Page({
         })
       }
     })
-   
   },
   //点击扫码
   scanMa() {

@@ -10,7 +10,7 @@ Page({
     showTop: false, //判断返回按钮是否显示
     isPlay: false, //用来判断是否显示播放按钮
     swiperIndex: 2, //swiper当前下标
-    dataList: null, //请求回来的数据列表
+    dataList: '', //请求回来的数据列表
     swiper_noe_current: 0,//第一个轮播图的当前下标
     keyword: "",//关键字
     keywordList: [],//关键字列表
@@ -38,10 +38,17 @@ Page({
     })
     //请求搜索关键字
     Request(`goods/search/name/?search=${e.detail.value}`).then(res => {
+      console.log(res.data)
       var keywordList = []
       for (let i = 0; i < res.data.length; i++) {
-        keywordList = keywordList.concat({ keyword: res.data[i] })
+        if(typeof res.data[i] != 'object'){
+          keywordList = keywordList.concat({ keyword: res.data[i] })
+        }else{
+          keywordList = keywordList.concat({ keyword: res.data[i].name })
+        }
+        
       }
+      console.log(keywordList)
       var data = keywordList;
       var newData = keywordList;
       for (var i = 0; i < data.length; i++) {
@@ -56,7 +63,6 @@ Page({
     })
 
   },
-
   // 去除首尾的空格
   trim: function (s) {
     return s.replace(/(^\s*)|(\s*$)/g, "");
@@ -66,6 +72,7 @@ Page({
     var that = this;
     //请求首页数据
     Request('xcx/page/index/').then(res => {
+      console.log(res.data)
       that.setData({
         dataList: res.data
       })
@@ -82,10 +89,9 @@ Page({
     return
   },
   //点击跳转艺术家详情
-  goToArtDetails() {
-    wx.navigateTo({
-      url: '/pages/artistDateils/artistDateils',
-    })
+  goToArtDetails(e) {
+    console.log(e)
+    //wx.navigateTo({ url: `/pages/details/details?id=${e.currentTarget.dataset.id}`, })
   },
   // 判断返回按钮是否显示
   onPageScroll(e) {

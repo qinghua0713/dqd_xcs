@@ -1,8 +1,9 @@
 <view class="container">
     <view class="cp_container">
-        <view class="cp_item" wx:for="{{dataList}}" data-id="{{item.good.id}}">
+        <view class="cp_item" wx:for="{{dataList}}" bind:tap="goToDetails"
+         data-id="{{item.good.id}}" wx:key="index">
         <view class="cp_item_info">
-            <image src="/assets/image/cp_img.png" />
+            <image src="{{item.good.default_image_url}}" />
             <view class="right_info">
                 <text class="cp_title">{{item.good.name}}</text>
                 <view class="cp_ms">
@@ -10,12 +11,12 @@
                 </view>
                 <view class="price_info">
                   <text class="dg_jg">订购价格：</text>
-         
                   <text class="price"><text >￥ </text>{{item.good.price}}</text>
                 </view>
             </view>
         </view>
         
         </view>
+        <view wx:if="{{dataList.length < 1 }}" class="No-message">您还没有收藏的艺术品哦,快去收藏吧~</view>
     </view> 
 </view>

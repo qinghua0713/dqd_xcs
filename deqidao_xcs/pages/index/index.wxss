@@ -62,14 +62,15 @@
   flex-direction: column;
   margin-bottom: 34rpx;
 }
-.list_item:nth-child(4) > image{
+.list_item:nth-child(3) > image{
 	width: 108rpx;
 }
 .list_item  image{
-  width: 106rpx;
+  width: 90rpx;
 	height: 83rpx;
    padding-bottom: 16rpx;
 }
+
 .list_item text{
   font-size: 23rpx;
   color: #29292a;
@@ -183,21 +184,31 @@
   background: #fff;
 }
 .swiperChange_two{
-  height: 270rpx;
+  width: 100%;
+  height: 300rpx;
+}
+.swier_cover{
+  width: 100%;
+  height: 370rpx;
+  position: absolute;
+  filter: blur(30rpx)
 }
 .slide-item{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
+  position: relative;
+
 }
-.swiper-item{
+.swiperChange_two .swiper-item{
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0.4;
 }
 .slide-item-five image{
-  width: 139rpx;
-  height: 208rpx;
+  width: 129rpx;
+  height: 188rpx;
   margin-bottom: 12rpx;
 }
   .art_name{
@@ -205,14 +216,20 @@
     color: #29292a;
   }
   .active_two {
-   transform: scaleY(1.11);
-  transition: all 0.3s ease-in 0s;
-  z-index: 20;
+   transform: scale(1.18,1.1);
+    position: absolute;
+   transform-origin: bottom;
+   z-index: 1000;
+   opacity: 1 !important;
+   transition: all 0.1s ease-in 0s;
+
+  /* transition: all 0.06s ease-in-out; */
+  z-index: 20;  
 }
 .keywordCover{
    background: rgba(129, 92, 92, 0.5);
    position: fixed;
-   z-index: 999999;
+   z-index: 99999;
    top:0;
    left: 0;
    right: 0;
@@ -224,6 +241,7 @@
   margin: 0 auto;
   padding-top: 10rpx;
   background: #fff;
+  overflow: scroll;
 }
 .keywordList .search-container{
   width: 100%;

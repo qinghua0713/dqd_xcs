@@ -72,7 +72,7 @@
 					"id": 2,
 					"name": "pages/details/details",
 					"pathName": "pages/details/details",
-					"query": "id=7",
+					"query": "id=9",
 					"scene": null
 				},
 				{
@@ -94,7 +94,7 @@
 					"name": "pages/binding/binding",
 					"pathName": "pages/binding/binding",
 					"query": "id=9",
-					"scene": null
+					"scene": 1011
 				},
 				{
 					"id": 6,
@@ -172,6 +172,13 @@
 					"pathName": "pages/article/article",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 17,
+					"name": "pages/index/index",
+					"pathName": "pages/authorization/authorization",
+					"query": "",
+					"scene": 1011
 				}
 			]
 		}

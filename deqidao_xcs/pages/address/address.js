@@ -16,6 +16,7 @@ Page({
       let avatarUrl = e.detail.userInfo.avatarUrl
       //用户登陆
       Login(nickName, avatarUrl)
+      //进行中文转码
       let id = e.target.dataset.id
       let province = decodeURIComponent(e.target.dataset.province)
       let city = decodeURIComponent(e.target.dataset.city)
@@ -34,6 +35,8 @@ Page({
           cityId}&districtId=${districtId}`
       });
     }
+
+    
   },
   //点击添加地址
   addAddress(e) {
@@ -89,7 +92,9 @@ Page({
     })
 
   },
+  onShow(){
 
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -103,14 +108,15 @@ Page({
   onShow: function () {
 
   },
-
+  //点击返回个人中心
+  returnMy(){
+  wx.switchTab({ url: '/pages/my/my' });
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
-
   /**
    * 生命周期函数--监听页面卸载
    */
@@ -138,10 +144,11 @@ Page({
             duration: 2000, //延迟时间,
           });
           var userTx = []//用户切割后的头像
-          for (let i = 0; i < res.data.results.length; i++) {
-            userTx = userTx.concat({ userTx: res.data.results[i].receiver })
+          console.log(res.data)
+          for (let i = 0; i < res.data.length; i++) {
+            userTx = userTx.concat({ userTx: res.data[i].receiver })
             userTx[i].userTx = userTx[i].userTx.substring(userTx[i].userTx.length - 1, userTx[i].userTx.length)
-            res.data.results[i].userTx = userTx[i].userTx
+            res.data[i].userTx = userTx[i].userTx
           }
           that.setData({
             dataList: res.data,

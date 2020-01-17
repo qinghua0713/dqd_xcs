@@ -26,6 +26,10 @@ Page({
         Request(`xcx/deadline/1`, '', 'GET', {
           openid: res.data.openid
         }).then(res => {
+          for(let i = 0; i < res.data.length; i++){
+            res.data[i].good.default_image_url = res.data[i].good.default_image_url+"?"+Math.random()    
+          }
+          console.log(res.data)
           that.setData({
             deadline_one: res.data
           })
@@ -34,6 +38,10 @@ Page({
         Request(`xcx/deadline/2`, '', 'GET', {
           openid: res.data.openid
         }).then(res => {
+          for(let i = 0; i < res.data.length; i++){
+            res.data[i].good.default_image_url = res.data[i].good.default_image_url+"?"+Math.random()    
+          }
+          console.log(res.data)
           that.setData({
             deadline_two: res.data
           })
@@ -42,6 +50,10 @@ Page({
         Request(`xcx/deadline/3`, '', 'GET', {
           openid: res.data.openid
         }).then(res => {
+          for(let i = 0; i < res.data.length; i++){
+            res.data[i].good.default_image_url = res.data[i].good.default_image_url+"?"+Math.random()    
+          }
+          console.log(res.data)
           that.setData({
             deadline_three: res.data
           })
@@ -147,6 +159,9 @@ Page({
         Request(`xcx/deadline/1`, '', 'GET', {
           openid: res.data.openid
         }).then(res => {
+          for(let i = 0; i < res.data.length; i++){
+            res.data[i].good.default_image_url = res.data[i].good.default_image_url+"?"+Math.random()    
+          }
           wx.hideLoading();
           wx.showToast({
             title: '刷新成功', //提示的内容,
@@ -161,6 +176,9 @@ Page({
         Request(`xcx/deadline/2`, '', 'GET', {
           openid: res.data.openid
         }).then(res => {
+          for(let i = 0; i < res.data.length; i++){
+            res.data[i].good.default_image_url = res.data[i].good.default_image_url+"?"+Math.random()    
+          }
           that.setData({
             deadline_two: res.data
           })
@@ -169,6 +187,9 @@ Page({
         Request(`xcx/deadline/3`, '', 'GET', {
           openid: res.data.openid
         }).then(res => {
+          for(let i = 0; i < res.data.length; i++){
+            res.data[i].good.default_image_url = res.data[i].good.default_image_url+"?"+Math.random()    
+          }
           that.setData({
             deadline_three: res.data
           })

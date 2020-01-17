@@ -1,4 +1,5 @@
 <view class="container">
+<!-- 藏品列表 -->
     <view class="cp_container">
         <view class="cp_item" wx:for="{{dataList}}" bind:tap="goToDetails"
          data-id="{{item.good.id}}" wx:key="index">

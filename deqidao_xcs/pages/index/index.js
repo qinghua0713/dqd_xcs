@@ -15,6 +15,7 @@ Page({
     keyword: "",//关键字
     keywordList: [],//关键字列表
     keywordSearchList: '',//请求回来的关键字
+    objectList:'',//这里存放搜索请求回来的对象列表
   },
   //搜索框获取焦点
   searchFocus() {
@@ -38,27 +39,27 @@ Page({
     })
     //请求搜索关键字
     Request(`goods/search/name/?search=${e.detail.value}`).then(res => {
-      console.log(res.data)
       var keywordList = []
+      var objectList = []//声明一个空数组来储存请求回来的对象
       for (let i = 0; i < res.data.length; i++) {
-        if(typeof res.data[i] != 'object'){
+        //判断如果请求回来的数组中的值不是对象的话
+        if (typeof res.data[i] != 'object') {
           keywordList = keywordList.concat({ keyword: res.data[i] })
-        }else{
+        } else {//否则是对象
+          //把请求回来的对象存起来
+          objectList = objectList.concat(res.data[i])
+          //拼接对象
           keywordList = keywordList.concat({ keyword: res.data[i].name })
         }
-        
       }
-      console.log(keywordList)
-      var data = keywordList;
-      var newData = keywordList;
-      for (var i = 0; i < data.length; i++) {
-        var dic = data[i];
-        var newDic = newData[i];
-        var text = dic["keyword"];
-        newDic["keyword"] = getInf(text, that.data.keyword);
+      //循环拼接好的数组
+      for (var i = 0; i < keywordList.length; i++) {
+        //检索输入框的值
+        keywordList[i].keyword = getInf(keywordList[i].keyword, that.data.keyword);
       }
       that.setData({
-        keywordList: newData
+        keywordList: keywordList,//数组列表
+        objectList:objectList//对象列表
       })
     })
 
@@ -72,6 +73,22 @@ Page({
     var that = this;
     //请求首页数据
     Request('xcx/page/index/').then(res => {
+      console.log(res.data)
+      //循环给图片路径添加上随机数(因为有缓存机制导致部分ios机型图片不显示)
+      for(let i = 0; i < res.data.show_img.length; i++){
+        res.data.show_img[i].img =  res.data.show_img[i].img+"?"+Math.random()    
+      }
+      for(let j = 0; j < res.data.category.length; j++){
+        res.data.category[j].img =  res.data.category[j].img+"?"+Math.random()    
+      }
+      for(let a = 0; a < res.data.authors.length; a++){
+        res.data.authors[a].default_image_url =  res.data.authors[a].default_image_url+"?"+Math.random()    
+      }
+      for(let n = 0; n < res.data.recommend.length; n++){
+        res.data.recommend[n].goods.default_image_url =  res.data.recommend[n].goods.default_image_url+"?"+Math.random()    
+      }
+      //给视频遮罩图片添加上随机数
+      res.data.video[0].img = res.data.video[0].img+"?"+Math.random()    
       console.log(res.data)
       that.setData({
         dataList: res.data
@@ -113,8 +130,35 @@ Page({
     })
   },
   //点击搜索出来的关键字跳转详情页
-  goToclassify_two(){
-    wx.navigateTo({ url: '/pages/classify/classify' });
+  goToclassify_two(e) {
+    var keyValue = []
+    //循环点击的数组
+    for (var i = 0; i < e.currentTarget.dataset.item.keyword.length; i++) {
+      //拼接数组每一项
+      keyValue = keyValue.concat(e.currentTarget.dataset.item.keyword[i])
+    }
+    //把数组每一项拼起来变成字符串
+    keyValue = keyValue.join('')
+    //循环后台发过来的分类对象
+     for( var j = 0; j < this.data.objectList.length; j++){
+       //如果当前点击的值等于请求回来的对象的name的值话就拿到那个对象的id进行跳转
+       if(keyValue == this.data.objectList[j].name){
+          wx.navigateTo({ url: `/pages/classify/classify?id=${this.data.objectList[j].category_id}&value=${keyValue}` });
+       }
+     }
+    this.setData({
+      keyword: keyValue//把当前点击的值传给输入框的值
+    })
+    //如果请求回来没有对象的话直接点击直接跳转分类页
+    if(this.data.objectList.length < 1){
+      wx.navigateTo({ url: '/pages/classify/classify' });
+    }
+  },
+  //点击跳转公众号文章
+  goToArticle(e){
+    console.log(e)
+    let url=encodeURIComponent(e.currentTarget.dataset.src)
+  wx.navigateTo({ url: `/pages/article/article?src=${url}` });
   },
   //点击热搜关键字跳转分类页
   goToClassify_three() {
@@ -181,6 +225,20 @@ Page({
     })
     //请求首页数据
     Request('xcx/page/index/').then(res => {
+      for(let i = 0; i < res.data.show_img.length; i++){
+        res.data.show_img[i].img =  res.data.show_img[i].img+"?"+Math.random()    
+      }
+      for(let j = 0; j < res.data.category.length; j++){
+        res.data.category[j].img =  res.data.category[j].img+"?"+Math.random()    
+      }
+      for(let a = 0; a < res.data.authors.length; a++){
+        res.data.authors[a].default_image_url =  res.data.authors[a].default_image_url+"?"+Math.random()    
+      }
+      for(let n = 0; n < res.data.recommend.length; n++){
+        res.data.recommend[n].goods.default_image_url =  res.data.recommend[n].goods.default_image_url+"?"+Math.random()    
+      }
+      //给视频遮罩图片添加上随机数
+      res.data.video[0].img = res.data.video[0].img+"?"+Math.random()    
       wx.hideLoading();
       wx.showToast({
         title: '刷新成功', //提示的内容,
@@ -204,8 +262,8 @@ Page({
     let that = this
     that.setData({
       isShowCearchCover: false,
-      keyword:'',//清空搜索框的值
-      keywordList:'',//清空请求回来的关键字列表
+      keyword: '',//清空搜索框的值
+      keywordList: '',//清空请求回来的关键字列表
     })
   }
 })

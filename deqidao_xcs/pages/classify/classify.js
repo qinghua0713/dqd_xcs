@@ -32,7 +32,7 @@ Page({
         artworkId: e.id,
         currentClass: e.value
       })
-      //判断如果跳转没有传值默认显示第一条
+      //判断如果跳转没有传值默认显示第一条  
       if (e.value == undefined && e.id == undefined) {
         //请求分类的列表数据
         Request('xcx/category/').then(res => {
@@ -121,7 +121,20 @@ Page({
     }
     console.log(that.data.artistId)
   },
-
+  //输入的最小金额比最大金额大的话就调用
+ priceChange(){
+   let that = this
+        //如果输入的最小值大于最大值则把两个值调换过来再请求
+        if (parseFloat(that.data.filtratePirce.lowest) > parseFloat(that.data.filtratePirce.tallest)) {
+          let lowest = 'filtratePirce.lowest'
+          let tallest = 'filtratePirce.tallest'
+          that.setData({
+            [lowest]: that.data.filtratePirce.tallest,
+            [tallest]: that.data.filtratePirce.lowest
+          })
+       
+        }
+ },
   //手动输入金额筛选按钮
   filtrateClassify() {
     let that = this
@@ -134,20 +147,12 @@ Page({
         //如果分类id不等于undefined
         if (that.data.artworkId != undefined) {
           //如果作者是选中状态
-          //如果输入的最小值大于最大值则把两个值调换过来再请求
-          if (parseFloat(that.data.filtratePirce.lowest) > parseFloat(that.data.filtratePirce.tallest)) {
-            let lowest = 'filtratePirce.lowest'
-            let tallest = 'filtratePirce.tallest'
-            that.setData({
-              [lowest]: that.data.filtratePirce.tallest,
-              [tallest]: that.data.filtratePirce.lowest
-            })
-         
-          }
           //有分类id 且 选中了艺术家
           if (that.data.artistId == that.data.artistId_two) {
+     
            // 点击了从高到低或低到高
             if (that.data.isLowOrTall != 0) {
+              that.priceChange()
               Request(`xcx/category/${that.data.artworkId}?author=${that.data.artistId_two}&ordering=${that.data.isLowOrTall == 1 ? 'price' : '-price'}`, {
                 min: that.data.filtratePirce.lowest,
                 max: that.data.filtratePirce.tallest
@@ -160,6 +165,7 @@ Page({
               })
 
             } else {
+              that.priceChange()
               //没有点击从高到低或低到高
               Request(`xcx/category/${that.data.artworkId}?author=${that.data.artistId_two}`, {
                 min: that.data.filtratePirce.lowest,
@@ -175,6 +181,7 @@ Page({
           } else {//else走的是有分类id 且 没选中艺术家
             //点击了从高到低或低到高
             if(that.data.isLowOrTall != 0){
+              that.priceChange()
               Request(`xcx/category/${that.data.artworkId}?ordering=${that.data.isLowOrTall == 1 ? 'price' : '-price'}`, {
                 min: that.data.filtratePirce.lowest,
                 max: that.data.filtratePirce.tallest
@@ -186,6 +193,7 @@ Page({
                 })
               })
             }else{
+              that.priceChange()
                 //只传了分类id
               Request(`xcx/category/${that.data.artworkId}`, {
                 min: that.data.filtratePirce.lowest,
@@ -201,19 +209,12 @@ Page({
       
           }
         } else {//else走的是没有分类Id
+          that.priceChange()
           //没有分类Id 且 点击了艺术家
           if (that.data.artistId == that.data.artistId_two) {
-            //如果输入的最小值大于最大值则把两个值调换过来再请求
-            if (parseFloat(that.data.filtratePirce.lowest) > parseFloat(that.data.filtratePirce.tallest)) {
-              let lowest = 'filtratePirce.lowest'
-              let tallest = 'filtratePirce.tallest'
-              that.setData({
-                [lowest]: that.data.filtratePirce.tallest,
-                [tallest]: that.data.filtratePirce.lowest
-              })
-            }
              //点击了从高到低或低到高
             if (that.data.isLowOrTall != 0 ) {
+              that.priceChange()
               Request(`xcx/category/?author=${that.data.artistId_two}&ordering=${that.data.isLowOrTall == 1 ? 'price' : '-price'}`, {
                 min: that.data.filtratePirce.lowest,
                 max: that.data.filtratePirce.tallest
@@ -226,6 +227,7 @@ Page({
               })
 
             }else{
+              that.priceChange()
               //只传了艺术家id
               Request(`xcx/category/?author=${that.data.artistId_two}`, {
                 min: that.data.filtratePirce.lowest,
@@ -241,6 +243,7 @@ Page({
           }else{// 这里是 没有分类Id 且 没有点击艺术家
             //输入了金额 且 点击了从高到低或低到高
             if(that.data.isLowOrTall != 0){
+              that.priceChange()
               Request(`xcx/category/?ordering=${that.data.isLowOrTall == 1 ? 'price' : '-price'}`, {
                 min: that.data.filtratePirce.lowest,
                 max: that.data.filtratePirce.tallest
@@ -252,6 +255,7 @@ Page({
                 })
               }) 
             }else{
+              that.priceChange()
               //只输入了金额筛选
               Request(`xcx/category/`, {
                 min: that.data.filtratePirce.lowest,
@@ -360,7 +364,8 @@ Page({
       this.setData({
         showValue: false,
         value: e.target.dataset.item,
-        classifyList: res.data
+        classifyList: res.data,
+        artworkId:e.target.dataset.id
       })
     })
   },
@@ -421,12 +426,11 @@ Page({
           })
         })
       } else {
-        that.setData({
-          value: e.value,
-        })
+        console.log(that.data.artworkId)
         //请求分类的列表数据
         Request('xcx/category/' + that.data.artworkId).then(res => {
           wx.hideLoading();
+          console.log(res)
           wx.showToast({
             title: '刷新成功', //提示的内容,
             icon: 'success', //图标,

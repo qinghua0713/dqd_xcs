@@ -4,7 +4,6 @@ const app = getApp()
 Page({
   data: {
     property: '',//用户的总资产
-    userInfo: '',//用户信息
     artworkDataList:'',//藏品数据列表
   },
   goToAddress(e) {
@@ -26,8 +25,10 @@ Page({
     wx.getStorage({
       key: 'resultUserInfo',
       success: (res) => {
+        console.log(res.data)
+        res.data.profile =  res.data.profile+"?"+Math.random() //用户头像
         that.setData({
-          userInfo: res.data
+          userInfo: res.data.profile
         })
          //获取用户的总资产
         Request('user/ear', '', 'GET', {
@@ -41,6 +42,9 @@ Page({
         Request(`user/good/ear`,'','GET',{
           openid: res.data.openid
         }).then(res=>{
+           for(let n = 0; n < res.data.length; n++){
+            res.data[n].good.default_image_url =  res.data[n].good.default_image_url+"?"+Math.random()    
+           }
           console.log(res.data)
           that.setData({
             artworkDataList:res.data
@@ -65,7 +69,7 @@ Page({
         if (res.result) {
           //获取二维码的携带的链接信息
           let qrUrl = decodeURIComponent(res.result)
-          wx.navigateTo({ url: `/pages/binding/binding?id=${that.getQueryString(qrUrl, 'id')}` });
+          wx.navigateTo({ url: `/pages/binding/binding?q=${encodeURIComponent(qrUrl)}` });
         }
         
       }
@@ -210,8 +214,9 @@ Page({
     wx.getStorage({
       key: 'resultUserInfo',
       success: (res) => {
+        res.data.profile =  res.data.profile+"?"+Math.random()  //用户头像
         that.setData({
-          userInfo: res.data
+          userInfo: res.data.profile 
         })
          //获取用户的总资产
         Request('user/ear', '', 'GET', {
@@ -231,6 +236,9 @@ Page({
         Request(`user/good/ear`,'','GET',{
           openid: res.data.openid
         }).then(res=>{
+          for(let n = 0; n < res.data.length; n++){
+            res.data[n].good.default_image_url =  res.data[n].good.default_image_url+"?"+Math.random()    
+           }
           that.setData({
             artworkDataList:res.data
           })

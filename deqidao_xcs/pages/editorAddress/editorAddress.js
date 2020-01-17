@@ -117,10 +117,10 @@ Page({
                                     duration: 2000, //延迟时间,
                                   });
                             }
-                            setTimeout(() => {
-                                wx.navigateTo({ url: '/pages/address/address' });
-                            }, 1000);
                         },
+                        complete: () => {
+                            wx.navigateTo({ url: '/pages/address/address' });
+                        }
                     });
 
                 },
@@ -140,6 +140,10 @@ Page({
     || that.data.editedSpecificAddress != that.data.specificAddress
     || that.data.editedSwitchChecked != that.data.switchChecked) {
         console.log('PUT')
+        console.log( that.data.checkedProvincesId,
+        that.data.checkedCitysId,
+           that.data.checkedAreasId,
+           that.data.specificAddress)
             wx.getStorage({
                 key: 'resultUserInfo',
                 success: (res) => {
@@ -160,8 +164,11 @@ Page({
                             openid: res.data.openid
                         },
                         success: res => {
-                            wx.navigateTo({ url: '/pages/address/address' });
+                          
                         },
+                        complete: () => {
+                            wx.navigateTo({ url: '/pages/address/address' });
+                        }
                     });
                 },
             })

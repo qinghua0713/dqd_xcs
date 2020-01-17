@@ -10,31 +10,42 @@ Page({
     second: 5,//倒计时的秒数
     time: null//声明一个定时器
   },
+  //轮播图，图片点击全屏展示
+  previewimgs: function (e) {
+    var imgList = []
+    console.log(this.data.dataList.imgs)
+    for (var i = 0; i < this.data.dataList.imgs.length; i++) {
+      if (this.data.dataList.imgs[i] != null) {
+        imgList.push(this.data.dataList.imgs[i].image)
+      }
+    }
+    wx.previewImage({
+      current: e.currentTarget.dataset.src, // 当前显示图片的http链接 String
+      urls: imgList // 需要预览的图片http链接列表 Array
+    })
+  },
+  /**
+    * 生命周期函数--监听页面加载
+    */
   onLoad(e) {
+
     let that = this
     //请求绑定数据
+    let qrUrl = decodeURIComponent(e.q)
+    wx.setStorageSync('artworkId_one',that.getQueryString(qrUrl, 'id'))
     if (e.q) {
       //获取二维码的携带的链接信息
-      let qrUrl = decodeURIComponent(e.q)
-      that.getQueryString(qrUrl, 'id')
-      this.setData({
-        //获取链接中的参数信息
-        actId: that.getQueryString(qrUrl, 'id')//用户商品id
-      })
       //请求用户从外面扫码进来的数据
       Request(`xcx/bind/${that.getQueryString(qrUrl, 'id')}`).then(res => {
+        for(let i = 0; i < res.data.imgs.length; i++){
+          res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
+        }
+        console.log(res.data)
         that.setData({
-          dataList: res.data
+          dataList: res.data,
         })
       })
-    }else{
-       //请求用户从小程序里面扫码进来的数据
-      Request(`xcx/bind/${e.id}`).then(res => {
-        that.setData({
-          dataList: res.data
-        })
-      })
-    }
+    } 
 
 
   },
@@ -135,7 +146,29 @@ Page({
   },
 
   onUnload() {
-
-
+  },
+  onPullDownRefresh: function () {
+    wx.showLoading({title: '加载中',})
+    let that = this
+    //请求绑定数据
+    let artworkId_one =  wx.getStorageSync('artworkId_one');
+    if ( artworkId_one) {
+      //请求用户从外面扫码进来的数据
+      Request(`xcx/bind/${artworkId_one}`).then(res => {
+        wx.hideLoading();
+        wx.showToast({
+          title: '刷新成功', //提示的内容,
+          icon: 'success', //图标,
+          duration: 2000, //延迟时间,
+        });
+        for(let i = 0; i < res.data.imgs.length; i++){
+          res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
+        }
+        console.log(res.data)
+        that.setData({
+          dataList: res.data
+        })
+      })
+    } 
   }
 })

@@ -73,6 +73,7 @@ Page {
   left: 50%;
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
+  
 }
 .dind_succeed{
   height: 100%;
@@ -100,22 +101,4 @@ Page {
 	font-weight: normal;
 	color: #686868;
   padding-bottom: 24rpx ;
-}
-.bottom_btn{
-  width: 100%;
-  height: 81rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  bottom: 0;
-  background: #fbfbfb;
-  font-size: 29rpx;
-	color: #e51419;
-}
-.bottom_btn image{
-  width: 44rpx;
-  height: 46rpx;
-  margin-right: 21rpx;
-
 }

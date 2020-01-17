@@ -36,6 +36,7 @@
                 <image class="filtrate_img" src="/assets/image/filtrate.png" />
             </view>
         </view>
+        <!-- 藏品列表 -->
         <view class="zp_list">
             <view class="tj_item" wx:for="{{classifyList.results}}" bind:tap="goToDateils"
             data-id='{{item.id}}' wx:key="index">

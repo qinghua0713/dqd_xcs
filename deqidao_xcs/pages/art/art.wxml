@@ -3,7 +3,7 @@
   <view class="swiper_Container">
     <swiper bindchange="swiperChange" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
       <swiper-item wx:for="{{dataList.show_img}}"  bind:tap="goToArticle"
-       wx:key="index" data-id="{{item.id}}">
+       wx:key="index" data-id="{{item.id}}" data-src='{{item.addr}}'>
         <image src="{{item.img}}" class="swiper-item"></image>
       </swiper-item>
     </swiper>
@@ -20,6 +20,7 @@
   </view>
   <!-- 选项卡的内容 -->
   <view class="tab_content">
+  <!-- 第一个选项卡内容 -->
     <view class="content_item" wx:if="{{currentId == 1}}" wx:for="{{dataList.page_serializer}}" wx:key="index">
       <view class="video_container">
         <video id="myVideo" src="{{item.video}}" show-center-play-btn="{{false}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls="{{false}}"></video>
@@ -38,6 +39,7 @@
         </view>
       </view>
     </view>
+     <!-- 第二个选项卡内容 -->
     <view class="content_item qy_Artis" wx:if="{{currentId != 1}}">
       <image wx:for="{{dataList.page_serializer}}" wx:key="index" class="img_cont" src="{{item.details}}" />
       <view class="lj_classify" bind:tap="goTo">了解签约详情...</view>

@@ -4,7 +4,7 @@
         <swiper indicator-dots="{{false}}" autoplay="{{false}}" interval="{{5000}}" duration="{{500}}" current="{{current}}" circular="{{false}}" bindchange="swiperChange">
             <swiper-item wx:for="{{dataList.img_data}}" wx:key="index" data-id='{{item.id}}' data-author='{{item.author}}'>
             <video id="myVideo" src="{{item}}" danmu-list="{{danmuList}}" wx:if="{{index < 1}}" enable-danmu danmu-btn controls></video>
-                <image class="swiper-image" src="{{item.image}}"  wx:if="{{index > 0}}" />
+                <image class="swiper-image" mode="aspectFill" bind:tap="previewimgs" src="{{item.image}}" data-src='{{item.image}}'  wx:if="{{index > 0}}" />
             </swiper-item>
         </swiper>
         <view class="tab_option">
@@ -41,6 +41,7 @@
                 </view>
             </view>
         </view>
+        <!-- 艺术家作品 -->
         <view class="hisWorks_container">
             <text class="Works_title">他的作品</text>
             <view class="Works_info">
@@ -68,6 +69,7 @@
               <view class="No-message" wx:if="{{dataList.aut_data.consult.length < 1}}">该艺术家暂无资讯~</view>
         </view>
     </view>
+    <!-- 购买与收藏按钮 -->
     <view class="buy_of_like">
         <button class="like_btn" open-type="getUserInfo" bindgetuserinfo="Collect">
             <image src="/assets/image/collect.png" />
@@ -75,6 +77,7 @@
         </button>
         <button class="buy_btn {{dataList.good_data.order_status_num != 1 ? 'ordered_bg':''}}"  open-type="getUserInfo" bindgetuserinfo="promptlyOrder">{{buyStatus}}</button>
     </view>
+    <!-- 订单遮罩 -->
     <view class="cover_container" bindtap="hiddenCover" wx:if="{{order}}" catchtouchmove='doNotMove'>
         <scroll-view scroll-y="{{true}}" class="pay_container" catchtap="showCover" catchtouchmove='true'>
             <view class="shop_info">

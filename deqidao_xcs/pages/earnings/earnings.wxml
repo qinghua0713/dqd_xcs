@@ -1,4 +1,5 @@
 <view class="earnings-page">
+<!-- 藏品介绍 -->
   <view class="quarter_container">
     <view class="artist_info" data-id="{{dataList.goods.author.id}}">
       <image src="{{dataList.goods.author.default_image_url}}" />
@@ -13,8 +14,10 @@
       </view>
     </view>
   </view>
+  <!-- 藏品阶段 -->
   <view class="jd_container">
     <view class="jd_title">{{dataList.msg}}</view>
+    <!-- 第一阶段 -->
     <view class="jd_item">
       <view class="left_jd right">
         <image src="{{quarterSrc_one}}" />
@@ -30,6 +33,7 @@
         </view>
       </view>
     </view>
+        <!-- 第二阶段 -->
         <view class="jd_item">
       <view class="left_jd right">
         <image src="{{quarterSrc_two}}" />
@@ -45,6 +49,7 @@
         </view>
       </view>
     </view>
+        <!-- 第三阶段 -->
         <view class="jd_item">
       <view class="left_jd right">
         <image src="{{quarterSrc_three}}" />
@@ -60,6 +65,7 @@
         </view>
       </view>
     </view>
+        <!-- 第四阶段 -->
         <view class="jd_item">
       <view class="left_jd right">
         <image src="{{quarterSrc_four}}" />

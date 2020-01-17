@@ -256,11 +256,10 @@ Page {
     width: 208rpx;
     height: 69rpx;
     border-radius: 7rpx;
-    border: solid 1rpx #e51419;
+    border: solid 2rpx #e51419;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 1rpx 1rpx 10px #f6f6f6 inset;
     box-shadow: 1rpx 1rpx 10px #f6f6f6;
 }
 

@@ -8,7 +8,7 @@
 		<image class="search-image_one" src="/assets/image/search.png" alt=""></image>
 	</view>
 	<!-- 搜索遮罩 -->
-	<view class="keywordCover" hidden="{{!isShowCearchCover}}" catchtouchmove="catchTouchmove">
+	<view class="keywordCover" hidden="{{!isShowCearchCover}}" catchtouchmove="catchTouchmove" catch:tap="cancelSearch">
 
 	<view class="keywordList" catch:tap="true">
 				 <view class="search-container">
@@ -17,25 +17,26 @@
 		   <view class="cancel" bind:tap="cancelSearch">取消</view>
 		</view>
 		<view class="keyword-container">
-			<view class="search_list" wx:if="{{keywordList.length > 0}}">
-	           <view  class="keywordItem" wx:for="{{keywordList}}" wx:key="index" bind:tap="goToclassify_two">
+			<view class="search_list" >
+	           <view  class="keywordItem" wx:for="{{keywordList}}" wx:key="index" bind:tap="goToclassify_two" data-item='{{item}}'>
 				  <text wx:for="{{item.keyword}}" wx:key="index" class="{{item == keyword ? 'searchHigh' : '' }}">{{item}}</text>
 			  </view>
 			</view>
 		
-			<view class="top_search_container" wx:elif="{{keywordList.length < 1}}">
+			<!-- <view class="top_search_container" wx:elif="{{keywordList.length < 1}}">
 			   <view class="top_search_item" wx:for="{{keywordSearchList}}"
 			   bind:tap="goToClassify_three"  wx:key="index">
 				 <text >{{item.keyword}}</text>
 			  </view> 
-			</view>
+			</view> -->
 		</view>
 	</view>
 	</view>
 	<!-- 首页主图 -->
 	<view class="banner">
 		<swiper autoplay="{{true}}" bindchange="swiperChange_one" interval="{{5000}}" duration="{{500}}" circular='{{true}}'>
-			<swiper-item bindtap="goToArtDetails" wx:for="{{dataList.show_img}}" wx:key="index" data-id="{{item.id}}">
+			<swiper-item bindtap="goToArticle" wx:for="{{dataList.show_img}}" data-src='{{item.addr}}'
+			 wx:key="index" data-id="{{item.id}}">
 				<view class="swiper-item main-swiper-item">
 					<image src="{{item.img}}" alt></image>
 				</view>
@@ -90,6 +91,7 @@
 		</view>
 
 	</view>
+	<!-- 作者轮播图 -->
 	<view class="swiper_container" >
 		<view class="video_info_item bg_white" wx:for="{{dataList.articles}}" wx:key="index">
 			<view class="info_item" data-id="{{item.id}}">
@@ -100,7 +102,10 @@
 				<view class="wz_content">{{item.content}}</view>
 			</view>
 		</view>
+			<!-- <view class="swier_cover"></view> -->
+			<!-- <image class="swier_cover" src="{{dataList.authors[swiperIndex].default_image_url}}" /> -->
 		<swiper class="swiperChange_two"  display-multiple-items="{{5}}" bindchange="swiperChange_two" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
+		
 				<swiper-item wx:for="{{dataList.authors}}" wx:key="index" wx:key="index" data-id="{{item.id}}"
 				 class="slide-item slide-item-five" bind:tap="goToArtistDateils">
 					<view class="swiper-item {{swiperIndex == index ? 'active_two':''}}" data-id="{{item.id}}">

@@ -17,15 +17,11 @@ Page({
   //用户点击收藏发送数据给后台
   Collect(e) {
     let that = this
-    console.log(1)
     if (e.detail.userInfo) {
       let nickName = e.detail.userInfo.nickName
       let avatarUrl = e.detail.userInfo.avatarUrl
       //用户登陆
       Login(nickName, avatarUrl)
-      that.setData({
-        collectNum: "已收藏"
-      })
       wx.getStorage({
         key: 'resultUserInfo',
         success: (res) => {
@@ -35,12 +31,17 @@ Page({
           }, 'POST', {
             'openid': res.data.openid
           }).then(res => {
-            wx.setStorageSync('status', res.data.status)
-            if (res.data.status != 1) {
+            console.log(res.data)
+            wx.setStorageSync('status',res.data.status)//把请求回来的状态存起来
+            //判断请求回来的状态是0的话就是没有收藏
+            if (res.data.status == 0) {
+              console.log('等于0')
+            
               that.setData({
                 collectNum: res.data.collect + "人收藏"
               })
             } else {
+              //否则就是收藏了
               that.setData({
                 collectNum: "已收藏"
               })
@@ -59,9 +60,19 @@ Page({
 
     }
   },
-  //用户点击分享
-  shareGood(e) {
-
+  //轮播图，图片点击全屏展示
+  previewimgs: function(e) {
+    var imgList = []
+    for(var i = 0; i < this.data.dataList.img_data.length;i++){
+      if(this.data.dataList.img_data[i] != null){
+        imgList.push(this.data.dataList.img_data[i].image)
+      }   
+    }
+    console.log(imgList);
+    wx.previewImage({
+      current: e.currentTarget.dataset.src, // 当前显示图片的http链接 String
+      urls: imgList // 需要预览的图片http链接列表 Array
+    })
   },
   //页面分享事件
   onShareAppMessage(res) {
@@ -73,8 +84,9 @@ Page({
     }
 
   },
-  goToArticle(e){
-    wx.navigateTo({ url: `/pages/article/article?src=${e.currentTarget.dataset.src}` });
+  goToArticle(e) {
+    let url = encodeURIComponent(e.currentTarget.dataset.src)
+    wx.navigateTo({ url: `/pages/article/article?src=${url}` });
   },
   //点击跳转艺术家详情页
   goToArtistDateils(e) {
@@ -84,8 +96,15 @@ Page({
   onLoad(e) {
     let that = this
     //请求商品详情页数据
-    console.log(e)
     Request(`goods/details/${e.id}`).then(res => {
+         //循环给图片路径添加上随机数(因为有缓存机制导致部分ios机型图片不显示)
+         for(let i = 0; i < res.data.img_data.length; i++){
+           if(res.data.img_data[i] != null){
+            res.data.img_data[i].image =  res.data.img_data[i].image +"?"+Math.random()  
+           }
+            
+        }
+      res.data.aut_data.aut.default_image_url = res.data.aut_data.aut.default_image_url+"?"+Math.random() 
       console.log(res.data)
       that.setData({
         dataList: res.data,
@@ -95,19 +114,19 @@ Page({
       wx.getStorage({
         key: 'status',
         success: (res) => {
-          //如果是未收藏
-          if (res.data != 1) {
+          //如果是存储取出来的状态等于0的话就是未收藏
+          if (res.data == 0) {
             that.setData({
               collectNum: that.data.dataList.good_data.collect + "人收藏"
             })
-          } else {
+          } else {//否则就是收藏了
             that.setData({
               collectNum: "已收藏"
             })
           }
         },
-        fail: (err) => {
-          //如果本地存储没有这个字段证明用户没有点击过收藏
+         //如果本地存储没有这个字段证明用户没有点击过收藏
+        fail: (err) => {  
           that.setData({
             collectNum: res.data.good_data.collect + "人收藏"
           })

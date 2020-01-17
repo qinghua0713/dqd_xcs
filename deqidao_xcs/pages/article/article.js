@@ -13,8 +13,9 @@ Page({
    */
   onLoad: function (e) {
     let that = this
+    console.log(e)
     that.setData({
-      src: e.src,//穿过来的公众号文章链接
+      src: decodeURIComponent(e.src) ,//穿过来的公众号文章链接
     })
   },
 

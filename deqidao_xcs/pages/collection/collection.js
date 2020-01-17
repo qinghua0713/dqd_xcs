@@ -34,6 +34,10 @@ Page({
         Request('goods/collect','','GET',{
           'openid': res.data.openid
         }).then(res=>{
+          for(let i = 0; i < res.data.length; i++){
+            res.data[i].good.default_image_url = res.data[i].good.default_image_url+"?"+Math.random()    
+          }
+          console.log(res.data)
           that.setData({
             dataList:res.data
           })
@@ -77,6 +81,9 @@ Page({
         Request('goods/collect','','GET',{
           'openid': res.data.openid
         }).then(res=>{
+          for(let i = 0; i < res.data.length; i++){
+            res.data[i].good.default_image_url = res.data[i].good.default_image_url+"?"+Math.random()    
+          }
           wx.hideLoading();
           wx.showToast({
             title: '刷新成功', //提示的内容,

@@ -15,8 +15,7 @@
     <view class="option_content">
         <!-- tab第一部分内容 -->
         <view class="content_item" wx:if="{{showCurrent == 1}}">
-            <!-- 判断tab是否有数据 -->
-            <view class="item_info" wx:for="{{deadline_one}}"  wx:key="index" data-id='{{item.good.id}}'>
+            <view class="item_info" wx:for="{{deadline_one}}" wx:key="index" data-id='{{item.good.id}}'>
                 <image src="{{item.good.default_image_url}}" />
                 <view class="right_info">
                     <view class="cp_title">
@@ -32,54 +31,59 @@
                     </view>
                 </view>
             </view>
+            <!-- 如果阶段没有藏品信息 -->
             <view class="empty" wx:if="{{deadline_one.length < 1}}">
-            <view class="empty_point">
-                <image src="/assets/image/empty.png" />
-                <view class="point_font">
-                    <text>宝箱现在还是空的呢~</text>
-                    <text>艺术，也是一种有效的投资手段</text>
+                <view class="empty_point">
+                    <image src="/assets/image/empty.png" />
+                    <view class="point_font">
+                        <text>宝箱现在还是空的呢~</text>
+                        <text>艺术，也是一种有效的投资手段</text>
+                    </view>
+                    <view class="goFind" bindtap="goToClassify">去发现</view>
                 </view>
-                <view class="goFind" bindtap="goToClassify">去发现</view>
             </view>
         </view>
-        </view>
-
         <!-- tab第二部分内容 -->
         <view class="content_item" wx:elif="{{showCurrent == 2}}">
-            <view class="item_info" wx:for="{{deadline_two}}" wx:key="index" >
-              <image src="{{item.good.default_image_url}}" />
+            <view class="item_info" wx:for="{{deadline_two}}" wx:key="index">
+                <image src="{{item.good.default_image_url}}" />
                 <view class="right_info">
                     <view class="cp_title">
                         <text>{{item.good.name}}</text>
                     </view>
                     <view class="cp_weight">
                         <text decode="{{true}}">
-                             长&nbsp;{{item.good.length}}cm&nbsp;&nbsp;&nbsp;宽&nbsp;{{item.good.wide}}cm&nbsp;&nbsp;&nbsp;高{{item.good.height}}cm
+                            长&nbsp;{{item.good.length}}cm&nbsp;&nbsp;&nbsp;宽&nbsp;{{item.good.wide}}cm&nbsp;&nbsp;&nbsp;高{{item.good.height}}cm
                         </text>
                     </view>
                     <view class="cp_describe">
                         <text>{{item.good.synopsis}}</text>
                     </view>
-                    <view class="btn_cont" >
-                        <button class="withdraw" data-id='{{item.good.id}}' open-type="getUserInfo" bindgetuserinfo="goToReturnCash">退还变现</button>
-                        <button class="earnings" data-id='{{item.good.id}}' open-type="getUserInfo" bindgetuserinfo="goToEarnings">查看收益</button>
+                    <view class="btn_cont">
+                        <button class="withdraw" data-id='{{item.good.id}}' open-type="getUserInfo" bindgetuserinfo="goToReturnCash">
+                            退还变现
+                        </button>
+                        <button class="earnings" data-id='{{item.good.id}}' open-type="getUserInfo" bindgetuserinfo="goToEarnings">
+                            查看收益
+                        </button>
                     </view>
                 </view>
             </view>
-                 <view class="empty" wx:if="{{deadline_two.length < 1}}">
-            <view class="empty_point">
-                <image src="/assets/image/empty.png" />
-                <view class="point_font">
-                    <text>宝箱现在还是空的呢~</text>
-                    <text>艺术，也是一种有效的投资手段</text>
+            <!-- 如果阶段没有藏品信息 -->
+            <view class="empty" wx:if="{{deadline_two.length < 1}}">
+                <view class="empty_point">
+                    <image src="/assets/image/empty.png" />
+                    <view class="point_font">
+                        <text>宝箱现在还是空的呢~</text>
+                        <text>艺术，也是一种有效的投资手段</text>
+                    </view>
+                    <view class="goFind" bindtap="goToClassify">去发现</view>
                 </view>
-                <view class="goFind" bindtap="goToClassify">去发现</view>
             </view>
-        </view>
         </view>
         <!-- tab第三部分内容 -->
         <view class="content_item" wx:elif="{{showCurrent == 3}}">
-            <view class="item_info" wx:for="{{deadline_three}}" wx:key="index" >
+            <view class="item_info" wx:for="{{deadline_three}}" wx:key="index">
                 <image src="{{item.good.default_image_url}}" />
                 <view class="right_info">
                     <view class="cp_title">
@@ -87,31 +91,34 @@
                     </view>
                     <view class="cp_weight" decode="{{true}}">
                         <text decode="{{true}}">
-                              长&nbsp;{{item.good.length}}cm&nbsp;&nbsp;&nbsp;宽&nbsp;{{item.good.wide}}cm&nbsp;&nbsp;&nbsp;高{{item.good.height}}cm
+                            长&nbsp;{{item.good.length}}cm&nbsp;&nbsp;&nbsp;宽&nbsp;{{item.good.wide}}cm&nbsp;&nbsp;&nbsp;高{{item.good.height}}cm
                         </text>
                     </view>
                     <view class="cp_describe">
-                         <text>{{item.good.synopsis}}</text>
+                        <text>{{item.good.synopsis}}</text>
                     </view>
                     <view class="btn_cont" data-id='{{item.good.id}}'>
-                        <button class="earnings" data-id='{{item.good.id}}' open-type="getUserInfo" bindgetuserinfo="goToReturnCash">提取收益</button>
+                        <button class="earnings" data-id='{{item.good.id}}' open-type="getUserInfo" bindgetuserinfo="goToReturnCash">
+                            提取收益
+                        </button>
                     </view>
                 </view>
             </view>
-                 <view class="empty" wx:if="{{deadline_three.length < 1}}">
-            <view class="empty_point">
-                <image src="/assets/image/empty.png" />
-                <view class="point_font">
-                    <text>宝箱现在还是空的呢~</text>
-                    <text>艺术，也是一种有效的投资手段</text>
+            <!-- 如果阶段没有藏品信息 -->
+            <view class="empty" wx:if="{{deadline_three.length < 1}}">
+                <view class="empty_point">
+                    <image src="/assets/image/empty.png" />
+                    <view class="point_font">
+                        <text>宝箱现在还是空的呢~</text>
+                        <text>艺术，也是一种有效的投资手段</text>
+                    </view>
+                    <view class="goFind" bindtap="goToClassify">去发现</view>
                 </view>
-                <view class="goFind" bindtap="goToClassify">去发现</view>
             </view>
-        </view>
         </view>
     </view>
     <!-- 点击返回个人中心 -->
-    <view class="bottom_btn" bindtap="returnMy">
+    <view class="return_my_btn" bindtap="returnMy">
         <image src="/assets/image/my_red.png" />
         <text>返回个人中心</text>
     </view>

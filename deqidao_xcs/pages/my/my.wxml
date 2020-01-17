@@ -1,7 +1,7 @@
 <view class="my-page">
   <!-- 用户头像 -->
   <view class="my_info">
-    <image class="my_portrait" src="{{userInfo.profile}}" />
+    <image class="my_portrait" src="{{userInfo}}" />
   </view>
   <!-- 用户详情 -->
   <view class="list_cont">
@@ -38,6 +38,7 @@
             <text class="price">价值:{{item.good.price}}</text>
           </view>
         </view>
+        <!-- 艺术品进展期 -->
         <view class="right_progress">
           <view class="progress_title">各阶段进展{{item.day}}天</view>
           <view class="jd_progress">
@@ -62,6 +63,7 @@
           <button class="view_dateils" open-type="getUserInfo" data-id="{{item.good.id}}" hover-class='none'  bindgetuserinfo="goToEarnings">查看详情</button>
         </view>
       </view>
+      <!-- 没有藏品的时候显示 -->
       <view class="No-ysp" wx:if="{{artworkDataList.length < 1}}">
         <image src="/assets/image/empty.png" />
         <view class="ts_title">您的宝箱还没有艺术品呢~</view>

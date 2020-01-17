@@ -2,7 +2,7 @@
 	<!-- 轮播图 -->
 	<swiper class="swiper-block" previous-margin="60rpx" next-margin="60rpx" current="0" bindchange="swiperChange" circular="{{true}}">
 		<block wx:for="{{dataList.show_image}}" wx:key="index">
-			<swiper-item class="swiper-item" data-id='{{item.id}}'>
+			<swiper-item class="swiper-item" data-id='{{item.id}}' bind:tap="goToArticle" data-src='{{item.url}}'>
 				  <image mode="aspectFill" src="{{item.img}}" class="slide-image {{swiperIndex == index ? 'active' : ''}}" />
 				<!-- <view>清朝的另类鉴赏</view> -->
 			</swiper-item>

@@ -2,6 +2,7 @@
   <view class="redact_title">
     <text>编辑收货地址</text>
   </view>
+  <!-- 输入地址区 -->
   <view class="redact_input">
     <input class="redact_user_name" type="text" bindblur="inputName" value="{{userName}}" placeholder="请输入姓名"></input>
     <input class="redace_user_tel" type="number" maxlength="11" value="{{iPhone}}" bindblur="inputShowed" placeholder="请输入电话"></input>

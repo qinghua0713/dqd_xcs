@@ -6,7 +6,8 @@
       <swiper bindchange="swiperChange" autoplay="{{true}}" duration="{{500}}" circular style='height: 625rpx;'>
         <block wx:for="{{dataList.imgs}}" wx:key="index">
           <swiper-item wx:key="index" data-id="{{item.id}}">
-            <image src="{{item.image}}" class="slide-image" class='img' />
+            <image src="{{item.image}}" mode="aspectFill" bind:tap="previewimgs"
+            data-src='{{item.image}}' class="slide-image" class='img' />
           </swiper-item>
         </block>
       </swiper>
@@ -39,6 +40,7 @@
       </view>
     </view>
   </block>
+
   <!-- 绑定成功后显示 -->
   <block wx:if="{{isSuccee}}">
     <view class="dind_succeed">
@@ -47,7 +49,7 @@
         <text>绑定成功，赶快去看看您的宝贝~</text>
         <text>{{second}}秒后自动跳转至首页</text>
       </view>
-      <view class="bottom_btn" bindtap="returnMy">
+      <view class="return_my_btn" bindtap="returnMy">
         <image src="/assets/image/my_red.png" />
         <text>返回个人中心</text>
       </view>

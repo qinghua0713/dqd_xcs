@@ -25,7 +25,6 @@ export default {
     currentIndex(index) {
       this.currentIdx = (this.$store.state.num = index);
       sessionStorage.setItem("num", this.currentIdx);
-      console.log(this.$store.state.num)
     }
   },
 

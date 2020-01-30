@@ -9,14 +9,14 @@
             <div class="search-district">
               <div class="main-seach">
                 <input type="text" placeholder="请输入艺术品名称/艺术品编号/艺术品合同" />
-                <button class="main-search-btn">搜索</button>
+                 <el-button class="main-search-btn" type="info">搜索</el-button>
               </div>
-              <button class="add_art">添加艺术品</button>
+              <el-button class="add_art"  @click="goToDateils" type="info">添加艺术品</el-button>
             </div>
             <div class="bg333"></div>
             <div class="data-container">
               <ul>
-                <li class="data-item" @click="goToDateils">
+                <li class="data-item" >
                   <i class="data-index">01</i>
                   <img src="../assets/image/ysp_img.png" alt />
                   <span class="art_name">艺术品名称</span>

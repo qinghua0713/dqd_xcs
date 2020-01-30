@@ -17,18 +17,20 @@ export default {
   data() {
     return {
       tabList: ["艺术品基本详情", "购买设置", "ACS服务合同"],
-
+      current: 0,
       currentIdx:0
     };
   },
   methods: {
     currentIndex(index) {
       this.currentIdx = (this.$store.state.num = index);
-      sessionStorage.setItem("num", this.currentIdx);
-      console.log(this.$store.state.num)
+      localStorage.setItem("num", this.currentIdx);
     }
   },
-
+  destroyed() {
+     this.currentIdx = 0
+     console.log(this.currentIdx)
+  },
 };
 </script>
 

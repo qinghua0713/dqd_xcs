@@ -139,9 +139,8 @@ export default {
     },
     //点击注销
     cancellationClick() {
-      sessionStorage.setItem('toke',1)
         this.$router.push({
-          path:'/'
+          path:'/login'
         })
     }
   },

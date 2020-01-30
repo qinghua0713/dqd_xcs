@@ -1,0 +1,44 @@
+.dateils-main{
+    padding: 20px 200px 20px 20px ;
+    min-height: 600px;
+    height: 100%;
+    background: #f6f6f6;
+    position: relative;
+    border: 1px solid #aaa;
+    overflow: hidden;
+}
+.return_btn{
+    padding: 10px 20px ;
+    background: #aaa;
+    float: right;
+    color: #fff;
+    margin-left: 10px;
+}
+.btn-hz{
+    float: right;
+}
+.btn-hz .add_art{
+    float: left;
+}
+.tab-container {
+    margin-top: 30px;
+    overflow: hidden;
+  }
+  .right-content {
+    width: 88%;
+    min-height: 300px;
+    border: 1px solid #333;
+   float: right;
+    background: #fff;
+    padding: 20px;
+  }
+  .save-btn{
+    padding: 10px 20px ;
+    background: #333;
+    color: #fff;
+    float: right;
+    margin-top: 20px;
+  }
+  .save-btn:hover{
+      cursor: pointer;
+  }

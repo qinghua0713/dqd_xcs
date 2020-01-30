@@ -1,33 +1,33 @@
 <template>
   <div class="right-content" v-if="$store.state.num == 0">
     <div class="top-input-list">
-      <ul class="clearfix">
-        <li class="list-item clearfix">
+      <ul>
+        <li class="list-item">
           <div class="item-font">
             <label>排序</label>
           </div>
           <input class="input-sr" type="text" placeholder="数字越大,排名越靠前,如果为空,默认排序方式为创建时间" />
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>艺术品名称</label>
           </div>
 
           <input class="input-sr" type="text" placeholder="艺术品名称" />
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>短标题</label>
           </div>
           <input class="input-sr" type="text" placeholder="显示于艺术品简单描述" />
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>详细文字描述</label>
           </div>
           <textarea class="dateils_ms" type="text" placeholder="显示于艺术品的详情文字描述" />
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>艺术品分类</label>
           </div>
@@ -36,28 +36,16 @@
             <span>{{item}}</span>
           </div>
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>艺术品年份</label>
           </div>
-          <input
-            class="input-sr"
-            type="text"
-            :value="artYear"
-            placeholder="XXXXXXXXXXXXXXXXXXXXXXXXX"
-          />
+          <input class="input-sr" type="text" placeholder="XXXXXXXXXXXXXXXXXXXXXXXXX" />
           <div class="xiala_btn" @click="showRiLi">
             <i class="iconfont icon-xiala"></i>
           </div>
-          <Calendar
-          class="position"
-            v-if="isShowRl"
-            v-on:choseDay="clickDay"
-            v-on:changeMonth="changeDate"
-          ></Calendar>
-          <!-- <el-date-picker v-model="value1" type="date" placeholder="选择日期"></el-date-picker> -->
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>艺术品作者</label>
           </div>
@@ -66,20 +54,20 @@
             <i class="iconfont icon-xiala"></i>
           </div>
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>艺术品价格</label>
           </div>
           <input class="input-sr" type="text" placeholder="精确到0.01" />
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>艺术品封面</label>
           </div>
           <input class="input-sr img-input" type="text" placeholder="正方形尺寸为:xxx" />
           <div class="select-img">选择图片</div>
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>详细页banner</label>
           </div>
@@ -100,7 +88,7 @@
             </div>
           </div>
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>商品视频</label>
           </div>
@@ -115,7 +103,7 @@
           />
           <div class="select-img">选择视频</div>
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>前端显示</label>
           </div>
@@ -131,7 +119,7 @@
             <span>确认选择后会在相应的页面显示该艺术品</span>
           </div>
         </li>
-        <li class="list-item clearfix">
+        <li class="list-item">
           <div class="item-font">
             <label>艺术品特写</label>
           </div>
@@ -152,65 +140,25 @@
 </template>
 
 <script>
-import Calendar from "vue-calendar-component";
 export default {
   name: "dateilsModule",
   data() {
     return {
       classifyList: ["字画", "瓷器", "紫砂"],
       isShowRl: false,
-      updataSrc: [],
-      artYear: "", //艺术品年份
-      pickerOptions: {
-        disabledDate(time) {
-          return time.getTime() > Date.now();
-        },
-        shortcuts: [
-          {
-            text: "今天",
-            onClick(picker) {
-              picker.$emit("pick", new Date());
-            }
-          },
-          {
-            text: "昨天",
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24);
-              picker.$emit("pick", date);
-            }
-          },
-          {
-            text: "一周前",
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit("pick", date);
-            }
-          }
-        ]
-      },
-      value1: ""
+      updataSrc: []
     };
   },
   methods: {
-    clickDay(data) {
-      this.isShowRl = !this.isShowRl;
-      this.artYear = data;
-    },
-    changeDate(data) {
-      console.log(data); //左右点击切换月份
-    },
-    clickToday(data) {
-      console.log(data); // 跳到了本月
-    },
     showRiLi() {
       this.isShowRl = !this.isShowRl;
     },
     handleFileChange(event) {
       var url = "";
+      console.log(event);
+      
       for (var i = 0; i < event.target.files.length; i++) {
-        //  console.log(event.target.files[i])
+      //  console.log(event.target.files[i])
         if (window.createObjectURL != undefined) {
           // basic
           url = window.createObjectURL(event.target.files[i]);
@@ -221,49 +169,32 @@ export default {
           // webkit or chrome
           url = window.webkitURL.createObjectURL(event.target.files[i]);
         }
-        this.updataSrc.push(url);
-      }
-      console.log(this.updataSrc);
+         this.updataSrc.push(url)
 
+      }
+         console.log(this.updataSrc)
+     
       console.log(this.updataSrc.length);
     }
-  },
-  components: {
-    Calendar
   }
 };
 </script>
 
 <style scoped>
-.position{
-  position: absolute;
-  z-index: 100;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.clearfix:after {
-  content: ""; /* 内容为小点， 尽量加不要空， 否则旧版本浏览器有空隙 */
-  display: block; /* 转换为块级元素 */
-  height: 0; /* 高度为0 */
-  visibility: hidden; /* 隐藏盒子 */
-  clear: both; /* 清除浮动 */
-}
-
 .list-item {
   color: #333;
+  overflow: hidden;
   margin-bottom: 20px;
   font-size: 14px;
   position: relative;
+  z-index: 100;
 }
 .list-item .input-sr {
   height: 40px;
   float: right;
   border: 1px solid rgb(169, 169, 169);
-  width: 83%;
+  width: 84%;
   padding-left: 4px;
-  z-index: 0;
 }
 .item-font {
   height: 40px;
@@ -274,7 +205,7 @@ export default {
   float: left;
 }
 .list-item .dateils_ms {
-  width: 83%;
+  width: 84%;
   height: 180px;
   float: right;
   resize: none;

@@ -1,160 +1,110 @@
-<view class="details-page " wx:if="{{!showAddress}}" >
+<view class="details-page " wx:if="{{!showAddress}}">
     <!-- 轮播图 -->
     <view class="banner">
-        <swiper indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" current circular="{{true}}" bindchange="swiperChange">
-            <block wx:for="{{imageUrl}}" wx:key="{{index}}">
-                <swiper-item>
-                    <image class="swiper-image" src="{{item}}" />
-                </swiper-item>
-            </block>
+        <swiper indicator-dots="{{false}}" autoplay="{{false}}" interval="{{5000}}" duration="{{500}}" current="{{current}}" circular="{{false}}" bindchange="swiperChange">
+            <swiper-item wx:for="{{dataList.img_data}}" wx:key="index" data-id='{{item.id}}' data-author='{{item.author}}'>
+            <video id="myVideo" src="{{item}}" danmu-list="{{danmuList}}" wx:if="{{index < 1}}" enable-danmu danmu-btn controls></video>
+                <image class="swiper-image" mode="aspectFill" bind:tap="previewimgs" src="{{item.image}}" data-src='{{item.image}}'  wx:if="{{index > 0}}" />
+            </swiper-item>
         </swiper>
         <view class="tab_option">
-            <view class="image_btn">视 频</view>
-            <view class="video_btn">图 片</view>
+            <view class="image_btn {{current < 1 ? 'current_index':''}}" bind:tap="swiperVideo">视 频</view>
+            <view class="video_btn {{current > 0 ? 'current_index':''}}" bind:tap="siwperImage">图 片</view>
         </view>
-        <view class="image_num">{{current+1}} / {{imageUrl.length}}</view>
+        <view class="image_num">{{current+1}} / {{dataList.img_data.length}}</view>
     </view>
     <!-- 藏品详细信息 -->
     <view class="zp_container">
-        <view class="cp_info">
-            <text class="cp_title">藏品名称</text>
+        <view class="cp_info" >
+            <text class="cp_title">{{dataList.good_data.name}}</text>
             <text class="cp_weight" decode="{{true}}">
-                长&nbsp;20cm&nbsp;&nbsp;&nbsp;宽&nbsp;40cm&nbsp;&nbsp;&nbsp;高60cm
+                长&nbsp;{{dataList.good_data.length}}cm&nbsp;&nbsp;&nbsp;宽&nbsp;{{dataList.good_data.wide}}cm&nbsp;&nbsp;&nbsp;高{{dataList.good_data.height}}cm
             </text>
             <view class="cp_describe">
-                藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述藏品描述
+               {{dataList.details.synopsis}}
             </view>
         </view>
-        <view class="share_btn">
+        <button class="share_btn" open-type="share" bindgetuserinfo='shareGood'>
             <image src="/assets/image/share.png" />
             <text>分享</text>
-        </view>
+        </button>
     </view>
-    <!-- 评论区 -->
-    <!-- <view class="art_remark">
-        <text class="remark_title">艺术品点评（1234）</text>
-        <view class="comment_list">
-            <view class="user_info">
-                <image src="/assets/image/touxiang.png" />
-                <text class="user_name">用户1234567</text>
-            </view>
-            <view class="comment  {{isShow ? 'flag' :''}}">
-                点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点 评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评 内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容 点评内容点评内容点评内容点评内容点评内容点评内容点评内
-            </view>
-            <view class="view_arr" bindtap="viewArr">
-                <text>查看全部</text>
-                <image class="{{isShow == true ? 'rotate':''}}" src="/assets/image/arrows_bottom.png" />
-            </view>
-        </view>
-        <view class="comment_list">
-            <view class="user_info">
-                <image src="/assets/image/touxiang.png" />
-                <text class="user_name">用户1234567</text>
-            </view>
-            <view class="comment ">
-                点评内容点评内容点评内容点评内容点评内容点评内容 点评内容点评内容点评内容点评内容点评内容点评内容点评 内容点评内容点评内容 内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容点评内容
-            </view>
-            <view class="view_arr ">
-                <text>查看全部</text>
-                <image src="/assets/image/arrows_bottom.png" />
-            </view>
-        </view>
-    </view> -->
     <view class="art_container">
-        <!-- <view class="art_dateils">
-            <view class="art_title">
-                <view class="heixian_h heixian_q">艺术品详情</view>
-            </view>
-            <view class="dateils_img">
-                <image src="/assets/image/ysp_img.png" />
-            </view>
-        </view> -->
         <view class="artist_container">
-            <!-- <view class="art_title">
-                <view class="heixian_h heixian_q">艺术品详情</view>
-            </view> -->
-            <view class="artist_info">
-                <image src="/assets/image/cp_img.png" />
+            <view class="artist_info" wx:key="index" data-id="{{dataList.aut_data.aut.id}}" bind:tap="goToArtistDateils">
+                <image src="{{dataList.aut_data.aut.default_image_url}}" />
                 <view class="right_js">
-                    <text class="right_title">艺术家名字</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
-                   <text >艺术家称号</text>
+                    <text class="right_title">{{dataList.aut_data.aut.name}}</text>
+                    <!-- <text class="artistIntroduce">{{dataList.aut.intro}}</text> -->
+                    <text  >{{dataList.aut_data.aut.works == null ? '该艺术家暂无称号~':dataList.aut_data.aut.works}}</text>
+                    
                 </view>
             </view>
         </view>
+        <!-- 艺术家作品 -->
         <view class="hisWorks_container">
             <text class="Works_title">他的作品</text>
             <view class="Works_info">
-                <view class="works_item">
-                    <image src="/assets/image/ysp_img.png" />
+                <view class="works_item" wx:for="{{dataList.aut_data.goods}}" bind:tap="goToDetails"
+                 wx:key="index" data-id='{{item.id}}'>
+                    <image src="{{item.default_image_url}}" />
                     <view class="bottom_content">
-                        <view class="art_name">艺术品名称</view>
+                        <view class="art_name">{{item.name}}</view>
                         <view class="price_info">
-                            <text>价值</text>
-                            <text>待订购</text>
+                            <text>价值:{{item.price}}</text>
+                            <text class="{{item.order_status_num == 0 ?'ordered':'not_order'}}">{{item.order_status}}</text>  
                         </view>
                     </view>
                 </view>
-                <view class="works_item">
-                    <image src="/assets/image/ysp_img.png" />
-                    <view class="bottom_content">
-                        <view class="art_name">艺术品名称</view>
-                        <view class="price_info">
-                            <text>价值</text>
-                            <text>待订购</text>
-                        </view>
-                    </view>
-                </view>
+                <view class="no-production" wx:if="{{dataList.aut_data.goods.length < 1}}">该艺术家暂无作品~</view>
             </view>
         </view>
         <view class="information">
             <text class="information_title">他的资讯</text>
-            <view class="information_item"></view>
-            <view class="information_item"></view>
-            <view class="information_item"></view>
+            <view class="information_item" wx:for="{{dataList.aut_data.consult}}" bind:tap="goToArticle"
+             wx:key="index" data-src='{{item.url}}'
+             data-id="{{item.id}}">
+                 <image src="{{item.imgs}}" />
+            </view>
+              <view class="No-message" wx:if="{{dataList.aut_data.consult.length < 1}}">该艺术家暂无资讯~</view>
         </view>
     </view>
+    <!-- 购买与收藏按钮 -->
     <view class="buy_of_like">
-        <view class="like_btn">
+        <button class="like_btn" open-type="getUserInfo" bindgetuserinfo="Collect">
             <image src="/assets/image/collect.png" />
-            <text>962人收藏</text>
-        </view>
-        <view class="buy_btn"  bindtap="promptlyOrder">立即订购</view>
+            <text>{{collectNum}}</text>
+        </button>
+        <button class="buy_btn {{dataList.good_data.order_status_num != 1 ? 'ordered_bg':''}}"  open-type="getUserInfo" bindgetuserinfo="promptlyOrder">{{buyStatus}}</button>
     </view>
-    <view class="cover_container" bindtap="hiddenCover"   wx:if="{{order}}">
-        <view class="pay_container" catchtap="showCover">
+    <!-- 订单遮罩 -->
+    <view class="cover_container" bindtap="hiddenCover" wx:if="{{order}}" catchtouchmove='doNotMove'>
+        <scroll-view scroll-y="{{true}}" class="pay_container" catchtap="showCover" catchtouchmove='true'>
             <view class="shop_info">
-                <view class="shop_content">
-                    <image src="/assets/image/cp_img.png" />
+                <view class="shop_content" data-id='{{orderDataList.good.id}}'>
+                    <image src="{{orderDataList.good.default_image_url}}" />
                     <view class="right_shop_js">
-                        <text class="shop_title">艺术品名称</text>
-                        <text>艺术品基本信息艺术品基本信息艺术品基本   信息艺术品基本信息艺术品基本信息</text>
+                        <text class="shop_title">{{orderDataList.good.name}}</text>
+                        <text>{{orderDataList.good.synopsis}}</text>
                     </view>
                 </view>
                 <view class="shop_price">
                     <text>签约价</text>
-                    <text>￥9999</text>
+                    <text>￥{{orderDataList.good.price}}</text>
                 </view>
             </view>
             <image catchtap="closeShop" class="gb_btn" src="/assets/image/chacha.png" />
             <view class="cq_fs">
                 <text class="cq_title">存取方式</text>
                 <view class="fs_cont">
-                    <text class="fs_item current_fs">自 提</text>
-                    <text class="fs_item" bindtap="addAddress">寄 存</text>
-                    <text class="fs_item">寄 卖</text>
+                    <text class="fs_item {{currentWay == index ? 'current_fs':''}}" bind:tap="storageWay" data-index='{{index}}' wx:for="{{orderDataList.way}}" wx:key="index">{{item}}</text>
                 </view>
                 <view class="xy_ts">
                     <image src="/assets/image/gantanhao.png" />
                     <text>请仔细阅读协议</text>
                 </view>
                 <view class="my_yyd">
-                    <checkbox class="checkbox"  />
+                    <checkbox class="checkbox" />
                     <text>我已经详细阅读并同意</text>
                     <text class="xy_link xy_bor">XXXXXX协议</text>
                 </view>
@@ -165,7 +115,7 @@
                     <text class="pay_fs_item">微 信</text>
                 </text>
             </view>
-            <view class="qr_pay_btn">确认付款</view>
-        </view>
+            <button class="qr_pay_btn" open-type="getUserInfo" bindgetuserinfo="payment">确认付款</button>
+        </scroll-view>
     </view>
 </view>

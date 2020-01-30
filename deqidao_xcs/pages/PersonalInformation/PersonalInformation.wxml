@@ -1,0 +1,6 @@
+<view class="container">
+ <view class="j_shou_container">
+     <image src="/assets/image/bukaixin.png" />
+     <text >该功能暂时未开放</text>
+ </view>
+</view>

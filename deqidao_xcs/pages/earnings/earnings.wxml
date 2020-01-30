@@ -1,125 +1,83 @@
 <view class="earnings-page">
+<!-- 藏品介绍 -->
   <view class="quarter_container">
-    <view class="artist_info">
-      <image src="/assets/image/cp_img.png" />
+    <view class="artist_info" data-id="{{dataList.goods.author.id}}">
+      <image src="{{dataList.goods.author.default_image_url}}" />
       <view class="right_js">
         <view class="ysj_js">
-          <text class="right_title">艺术家名字</text>
-          <text>艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述</text>
+          <text class="right_title">{{dataList.goods.author.name}}</text>
+          <text>{{dataList.goods.synopsis}}</text>
         </view>
         <view class="yjz_cont">
-          <text>原价值：￥ 99999</text>
+          <text>原价值：￥ {{dataList.goods.price}}</text>
         </view>
       </view>
     </view>
   </view>
+  <!-- 藏品阶段 -->
   <view class="jd_container">
-    <view class="jd_title">2019年第二阶段</view>
+    <view class="jd_title">{{dataList.msg}}</view>
+    <!-- 第一阶段 -->
     <view class="jd_item">
       <view class="left_jd right">
-        <image src="/assets/image/jidu_1.png" />
+        <image src="{{quarterSrc_one}}" />
         <view class="jd_price">
           <text >第一阶段:</text>
-          <text >￥9999</text>
+          <text >￥{{dataList.sum_year.one}}</text>
         </view>
       </view>
-      <view class="right_info">
-        <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
+      <view class="right_info"  >
+        <view class="xm_item" wx:for="{{dataList.stage.one}}" data-id='{{item.project_name.id}}'  wx:key="index">
+          <text >{{item.project_name.project_name}}</text>
+          <text >创收：￥ {{item.ear}}</text>  
         </view>
       </view>
     </view>
+        <!-- 第二阶段 -->
         <view class="jd_item">
       <view class="left_jd right">
-        <image src="/assets/image/jidu_2_red.png" />
+        <image src="{{quarterSrc_two}}" />
         <view class="jd_price">
-          <text >第一阶段:</text>
-          <text >￥9999</text>
+          <text >第二阶段:</text>
+          <text >￥{{dataList.sum_year.two}}</text>
         </view>
       </view>
       <view class="right_info">
-        <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
+          <view class="xm_item" wx:for="{{dataList.stage.two}}" data-id='{{item.project_name.id}}'  wx:key="index">
+          <text >{{item.project_name.project_name}}</text>
+          <text >创收：￥ {{item.ear}}</text>  
         </view>
       </view>
     </view>
+        <!-- 第三阶段 -->
         <view class="jd_item">
       <view class="left_jd right">
-        <image src="/assets/image/jidu_3.png" />
+        <image src="{{quarterSrc_three}}" />
         <view class="jd_price">
-          <text >第一阶段:</text>
-          <text >￥9999</text>
+          <text >第三阶段:</text>
+          <text >￥{{dataList.sum_year.three}}</text>
         </view>
       </view>
       <view class="right_info">
-        <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
+        <view class="xm_item" wx:for="{{dataList.stage.three}}" data-id='{{item.project_name.id}}'  wx:key="index">
+          <text >{{item.project_name.project_name}}</text>
+          <text >创收：￥ {{item.ear}}</text>  
         </view>
       </view>
     </view>
+        <!-- 第四阶段 -->
         <view class="jd_item">
       <view class="left_jd right">
-        <image src="/assets/image/jidu_4.png" />
+        <image src="{{quarterSrc_four}}" />
         <view class="jd_price">
-          <text >第一阶段:</text>
-          <text >￥9999</text>
+          <text >第四阶段:</text>
+          <text >￥{{dataList.sum_year.four}}</text>
         </view>
       </view>
       <view class="right_info">
-        <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
-        </view>
-         <view class="xm_item">
-          <text >创投项目名称</text>
-          <text >创收：￥ 9999</text>
+           <view class="xm_item" wx:for="{{dataList.stage.four}}" data-id='{{item.project_name.id}}' wx:key="index">
+          <text >{{item.project_name.project_name}}</text>
+          <text >创收：￥ {{item.ear}}</text>  
         </view>
       </view>
     </view>

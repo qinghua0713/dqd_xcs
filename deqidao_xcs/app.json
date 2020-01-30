@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/authorization/authorization",
     "pages/index/index",
     "pages/tunnel/tunnel",
     "pages/art/art",
@@ -15,7 +16,10 @@
     "pages/returnCash/returnCash",
     "pages/collection/collection",
     "pages/footprint/footprint",
-    "pages/consignment/consignment"
+    "pages/consignment/consignment",
+    "pages/PersonalInformation/PersonalInformation",
+    "pages/allOrders/allOrders",
+    "pages/article/article"
   ],
   "permission": {
     "scope.userLocation": {
@@ -45,7 +49,7 @@
       },
       {
         "pagePath": "pages/art/art",
-        "text": "艺术",
+        "text": "ACS服务",
         "iconPath": "assets/image/ACS.png",
         "selectedIconPath": "assets/image/acstz_red.png"
       },

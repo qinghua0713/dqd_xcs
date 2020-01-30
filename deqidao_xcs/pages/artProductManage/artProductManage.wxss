@@ -55,7 +55,7 @@ Page {
     width: calc(100% - 208rpx);
     display: flex;
     flex-direction: column;
-
+  
 }
 
 .cp_title {
@@ -68,6 +68,7 @@ Page {
     font-size: 17rpx;
     color: #686868;
     padding-bottom: 15rpx;
+    line-height: 1;
 }
 
 .cp_describe {
@@ -83,15 +84,16 @@ Page {
 
 .withdraw,
 .earnings {
-    border-radius: 50rpx;
-    border: solid 1rpx #fe8c5a;
-    padding: 9rpx 17rpx;
-    margin-left: 20rpx;
+    border-radius: 50rpx !important;
+    border: solid 1rpx #fe8c5a !important;
+    padding: 9rpx 17rpx !important;
+    margin-left: 20rpx !important;
+    margin-right: 0 !important;
 }
 
 .withdraw {
-    font-size: 17rpx;
-    color: #686868;
+    font-size: 17rpx !important;
+    color: #686868 !important;
 }
 
 .earnings {
@@ -159,22 +161,3 @@ Page {
     justify-content: center;
 }
 
-.bottom_btn {
-    width: 100%;
-    height: 81rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    bottom: 0;
-    background: #fbfbfb;
-    font-size: 29rpx;
-    color: #e51419;
-}
-
-.bottom_btn image {
-    width: 44rpx;
-    height: 46rpx;
-    margin-right: 21rpx;
-
-}

@@ -1,27 +1,27 @@
 <view class="my-page">
   <!-- 用户头像 -->
   <view class="my_info">
-    <image class="my_portrait" src="/assets/image/logo.png" />
+    <image class="my_portrait" src="{{userInfo}}" />
   </view>
   <!-- 用户详情 -->
   <view class="list_cont">
     <view class="list_item">
       <text>用户昵称</text>
-      <text>ID：12345678</text>
+      <text>ID: {{userInfo.username}}</text>
     </view>
     <view class="list_item balance_info">
       <image class="balance" src="/assets/image/balance.png" />
-      <text>余  额</text>
-      <text>￥ 9999</text>
+      <text>总资产</text>
+      <text>￥:{{property}}</text>
     </view>
-    <view class="list_item" bindtap="goToCollection">
+    <button class="list_item" open-type="getUserInfo" bindgetuserinfo="goToCollection">
       <image class="collect" src="/assets/image/collect.png" />
       <text>收藏</text>
-    </view>
-    <view class="list_item" bindtap="goToFootprint">
+    </button>
+    <button open-type="getUserInfo" class="list_item" bindgetuserinfo="goToFootprint">
       <image class="footprint" src="/assets/image/footprint.png" />
       <text>足迹</text>
-    </view>
+    </button>
   </view>
   <!-- 艺术品列表 -->
   <view class="ysp_earnings">
@@ -29,38 +29,42 @@
       <text>艺术品收益</text>
     </view>
     <view class="ysp_container">
-      <view class="ys_item" wx:if="{{!yspIsNo}}">
+      <view class="ys_item" wx:if="{{artworkDataList.length > 0}}" wx:for="{{artworkDataList}}"  wx:key="index">
         <view class="left_info">
-          <image src="/assets/image/earnings2.png" />
+          <image src="{{item.good.default_image_url}}" />
           <view class="shop_ms">
-            <text class="ysp_name">青花瓷圆口瓶</text>
-            <text class="cp_maoshu">景德镇</text>
-            <text class="price">价值</text>
+            <text class="ysp_name">{{item.good.name}}</text>
+            <text class="cp_maoshu">{{item.good.synopsis}}</text>
+            <text class="price">价值:{{item.good.price}}</text>
           </view>
         </view>
+        <!-- 艺术品进展期 -->
         <view class="right_progress">
-          <view class="progress_title">各阶段进展</view>
+          <view class="progress_title">各阶段进展{{item.day}}天</view>
           <view class="jd_progress">
-            <view class="jd_item" bind:tap="goToManAgeShowOne">
-              <view class="circle circleDot gq_dot"></view>
+            <button class="jd_item" open-type="getUserInfo"   bindgetuserinfo="goToManAgeShowOne">
+                 <image wx:if="{{item.deadline == 1}}" src="/assets/image/hongqi.png" />
+              <view class="circle circleDot {{item.deadline == 1 ?'current_dot':'gq_dot' }}"></view>
               <text>锁定期</text>
-            </view>
-            <view class="progress pgs_1 current_pro"></view>
-            <view class="jd_item" bind:tap="goToManAgeShowTwo">
-              <image src="/assets/image/hongqi.png" />
-              <text class="circle circleDot current_dot"></text>
+            </button>
+            <view class="progress pgs_1 current_pro }}"></view>
+            <button class="jd_item" open-type="getUserInfo"  bindgetuserinfo="goToManAgeShowTwo">
+              <image wx:if="{{item.deadline == 2}}" src="/assets/image/hongqi.png" />
+              <text class="circle circleDot {{item.deadline == 2 ?'current_dot':item.deadline > 2 ?'gq_dot':'' }}"></text>
               <text>收益期</text>
-            </view>
-            <view class="progress pgs_2"></view>
-            <view class="jd_item" bind:tap="goToManAgeShowThree">
-              <text class="circle circleDot"></text>
+            </button>
+            <view class="progress pgs_2 {{item.deadline > 2 ? 'current_pro' :'' }}"></view>
+            <button class="jd_item" open-type="getUserInfo"  bindgetuserinfo="goToManAgeShowThree">
+                 <image wx:if="{{item.deadline == 3}}" src="/assets/image/hongqi.png" />
+              <text class="circle circleDot {{item.deadline == 3 ?'current_dot':'' }}"></text>
               <text>兑现期</text>
-            </view>
+            </button>
           </view>
-          <view class="view_dateils" bind:tap="goToEarnings">查看详情</view>
+          <button class="view_dateils" open-type="getUserInfo" data-id="{{item.good.id}}" hover-class='none'  bindgetuserinfo="goToEarnings">查看详情</button>
         </view>
       </view>
-      <view class="No-ysp" wx:if="{{yspIsNo}}">
+      <!-- 没有藏品的时候显示 -->
+      <view class="No-ysp" wx:if="{{artworkDataList.length < 1}}">
         <image src="/assets/image/empty.png" />
         <view class="ts_title">您的宝箱还没有艺术品呢~</view>
         <text class="biaoyu-text">艺术，也是一种有效的投资手段</text>
@@ -76,22 +80,21 @@
         </view>
       </view>
     </view>
-    <view class="more">更多藏品收益...</view>
   </view>
   <!-- 订单信息 -->
   <view class="order_cont">
-    <view class="order_title">
-      <text>全部订单</text>
+    <view class="order_title "  >
+      <button open-type="getUserInfo" bindgetuserinfo="goToallOrders">全部订单</button>
     </view>
     <view class="order_list">
-      <view class="order_item" bind:tap="goToManAgeShowOne">
+      <button class="order_item"  open-type="getUserInfo" bindgetuserinfo="goToManAgeShowOne">
         <image class="guanli" src="/assets/image/guanli.png" />
         <text>艺术品管理</text>
-      </view>
-      <view class="order_item" bindtap="goToConsignment">
+      </button>
+      <button class="order_item"  open-type="getUserInfo" bindgetuserinfo="goToConsignment">
         <image class="mail" src="/assets/image/mail.png" />
         <text>艺术品寄售</text>
-      </view>
+      </button>
       <button class="order_item kf_btn" open-type="contact" >
         <image class="service" src="/assets/image/service.png" />
         <text>客服中心</text>
@@ -100,8 +103,8 @@
   </view>
   <!-- 基本信息 -->
   <view class="message_manage">
-    <view class="message_item">基本信息</view>
-    <view class="message_item">地址管理</view>
-    <view class="message_item">ACS合同条约</view>
+    <button class="message_item" open-type="getUserInfo" bindgetuserinfo="goToPersonalInformation">基本信息</button>
+    <button open-type="getUserInfo" class="message_item" bindgetuserinfo="goToAddress">地址管理</button>
+    <button class="message_item" open-type="getUserInfo" bindgetuserinfo="goToArt">ACS合同条约</button>
   </view>
 </view>

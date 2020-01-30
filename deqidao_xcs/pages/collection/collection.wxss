@@ -13,8 +13,13 @@ Page{
     padding: 35rpx 22rpx 35rpx 14rpx;
     background: #fff;
     border-radius: 14rpx;
+    box-sizing: border-box;
 }
-.cp_item image{
+.cp_item_info{
+    width: 100%;
+    display: flex;
+}
+.cp_item_info image{
     width: 208rpx;
     height: 278rpx;
     margin-right: 14rpx;
@@ -23,6 +28,7 @@ Page{
     width: calc( 100% - 208rpx);
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .cp_title{
 	font-size: 35rpx;
@@ -37,8 +43,12 @@ Page{
     margin-bottom: 20rpx;
 }
 .price_info{
+    width: 100%;
+    position: absolute;
     display: flex;
     align-items: center;
+    bottom: 0;
+
 } 
 .dg_jg{
 	font-size: 29rpx;

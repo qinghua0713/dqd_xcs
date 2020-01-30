@@ -1,18 +1,23 @@
 <view class="container">
+<!-- 藏品列表 -->
     <view class="cp_container">
-        <view class="cp_item" wx:for="{{4}}">
-            <image src="/assets/image/cp_img.png" />
+        <view class="cp_item" wx:for="{{dataList}}" bind:tap="goToDetails"
+         data-id="{{item.good.id}}" wx:key="index">
+        <view class="cp_item_info">
+            <image src="{{item.good.default_image_url}}" />
             <view class="right_info">
-                <text class="cp_title">藏品名称</text>
+                <text class="cp_title">{{item.good.name}}</text>
                 <view class="cp_ms">
-                    艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述
+                   这里是描述
                 </view>
                 <view class="price_info">
                   <text class="dg_jg">订购价格：</text>
-         
-                  <text class="price"><text >￥ </text>99999</text>
+                  <text class="price"><text >￥ </text>{{item.good.price}}</text>
                 </view>
             </view>
         </view>
-    </view>
+        
+        </view>
+        <view wx:if="{{dataList.length < 1 }}" class="No-message">您还没有收藏的艺术品哦,快去收藏吧~</view>
+    </view> 
 </view>

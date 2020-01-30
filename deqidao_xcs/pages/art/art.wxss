@@ -1,8 +1,8 @@
-image {
-  width: 100%;
-  height: 100%;
-}
 
+.swiper_Container{
+  height: 347rpx;
+  position: relative;
+}
 .tab_title {
   width: 100%;
   height: 104rpx;
@@ -85,7 +85,6 @@ image {
 .img_cont {
   width: 100%;
   height: 417rpx;
-  background-color: #e51419;
 }
 
 .lj_classify {
@@ -102,8 +101,12 @@ image {
   height: 69rpx;
 }
 
-.sign_btn view {
+.sign_btn .ljContract {
   width: 100%;
+  height:70rpx ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -111,4 +114,6 @@ image {
   letter-spacing: 4rpx;
   color: #fff;
   text-align: center;
+  background-image: linear-gradient(80deg, #e51419 ,#fe8c5a ) ;
+  border-radius: 50rpx;
 }

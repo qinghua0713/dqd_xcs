@@ -1,0 +1,22 @@
+Page{
+    background: #f6f6f6;
+}
+.j_shou_container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+   transform: translate(-50%,-50%);
+}
+.j_shou_container image{
+    width: 278rpx;
+    height: 278rpx;
+    margin-bottom: 80rpx;
+}
+.j_shou_container text{
+    font-size: 35rpx;
+	letter-spacing: 1rpx;
+	color: #010101;
+}

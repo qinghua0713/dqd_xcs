@@ -8,6 +8,6 @@ App({
   },
   globalData: {
     userInfo: null,
-
+    BaseUrl:'https://www.artmore.top/'
   }
 })

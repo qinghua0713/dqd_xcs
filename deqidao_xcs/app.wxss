@@ -3,6 +3,15 @@
     color: #e51419 !important;
     /* border-bottom: 1rpx solid #e51419; */
 }
+view{
+  box-sizing: border-box;
+}
+.ordered{
+  color: #e51419 !important;
+}
+.not_order{
+  color: #37e514 !important;
+}
 .current::after {
   content: '';
   height: 1rpx;
@@ -62,7 +71,9 @@ Page{
 .swiperContainer {
   position: relative;
 }
-
+swiper{
+  height: 100%;
+}
 image{
   width: 100%;
   height: 100%;
@@ -95,12 +106,12 @@ image{
   margin: 0 6rpx;
   width: 30rpx;
   height: 3rpx;
-  background-color: #fff;
+  background-color: #898989;
   /* transition: all 0.6s; */
 }
 
 .dots .dot.active {
-  background: #aaa;
+  background: #dcdcdc;
 }
 .return_container{
   position: fixed;
@@ -125,4 +136,58 @@ height: 47rpx;
 .return_top image{
   width: 42rpx;
 height: 54rpx;
+}
+button{
+  width: auto !important;
+  line-height: normal !important;
+  border-radius: 0 !important;
+font-weight: normal !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+background: none;
+overflow:visible !important;
+
+}
+button::after{
+  border:none !important;
+}
+.no-production{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#b4b2b3;
+}
+.No-message{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#b4b2b3;
+}
+.information {
+  min-height: 473rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 0 30rpx 130rpx 30rpx;
+}
+/* 返回个人中心按钮 */
+.return_my_btn {
+  width: 100%;
+  height: 81rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  background: #fbfbfb;
+  font-size: 29rpx;
+  color: #e51419;
+}
+
+.return_my_btn image {
+  width: 44rpx;
+  height: 46rpx;
+  margin-right: 21rpx;
+
 }

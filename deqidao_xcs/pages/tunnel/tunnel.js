@@ -1,59 +1,35 @@
 import { Request } from "../../utils/request";
 Page({
   data: {
-  
-    imageUrl2: [
-      {
-        text: "文明的起源——石器诞生",
-        src: "/assets/image/sqdysjs.png"
-      },
-      {
-        text: "早期制造工艺",
-        src: "/assets/image/zqzzgy.png",
-      },
-      {
-        text: "石器时代遗迹",
-        src: "/assets/image/sqsdyj.png",
-      },
-      {
-        text: "石器的艺术鉴赏",
-        src: "/assets/image/sqdysjs.png"
-      }
-    ],
-    imageUrl3:[
-      {
-        text:"称号——陈冰",
-        src:"/assets/image/bg_black.png",
-      },
-      {
-        text:"意与古会 守正出新——常勇钢",
-        src:"/assets/image/bg_black.png",
-      },
-      {
-        text:"称号——名字",
-        src:"/assets/image/bg_black.png",
-      },
-      {
-        text:"称号——名称",
-        src:"/assets/image/bg_black.png",
-      },
-    ],
     swiperIndex: 0,//轮播图的当前下标
-    erjiMenuIsShow: false,//用来判断二级菜单是否显示
-    dataList:null,//数据列表
-    showClassifyIndex:0//默认显示第一个分类
+    dataList: null,//数据列表
+    defaultValue_one: '',//默认渲染的分类选项数据
+    defaultValue_two: '',//默认渲染的分类选项数据
+    showClassifyIndex: 0,//默认显示第一个选项卡的内容
+    current_menu_one:0,//默认菜单第一个下标
+    current_menu_two:0,//默认菜单第一个下标
   },
   onLoad(e) {
     var that = this
-       Request('xcx/page/art/').then(res=>{
-  
+    //请求艺术馆默认列表数据
+    Request('xcx/page/art/').then(res => {
       console.log(res.data)
-           that.setData({
-             dataList:res.data
-           })
-       }) 
+      for(let i = 0; i < res.data.show_image.length; i++){
+        res.data.show_image[i].img =  res.data.show_image[i].img+"?"+Math.random()    
+      }
+      for(let j = 0; j < res.data.two_category_article.length; j++){
+        res.data.two_category_article[j].img =  res.data.two_category_article[j].img+"?"+Math.random()    
+      }
+      that.setData({
+        dataList: res.data,
+        defaultValue_one: {
+          two_category: res.data.two_category,
+          two_category_article: res.data.two_category_article
+        }
+      })
+    })
   },
-// 轮播图改变触发
+  // 轮播图改变触发
   swiperChange(e) {
     const that = this;
     that.setData({
@@ -61,21 +37,90 @@ Page({
     })
   },
   //  点击显示二级菜单
-  showMenu() {
-    this.setData({
-      erjiMenuIsShow: !this.data.erjiMenuIsShow
-    })
-  },
-
-    // 点击显示第n个tab的内容
-    showClassify(e){
-      console.log(e.target.dataset.id)
-      Request('xcx/page/art/one/'+e.target.dataset.id).then(res=>{
-        console.log(res)
+  showMenuContent_one(e) {
+    let that = this
+     //请求艺术家选项下的菜单以及内容
+    Request('xcx/page/art/two/' + e.currentTarget.dataset.id).then(res => {
+      for(let i = 0; i < res.data.length; i++){
+        res.data[i].img =  res.data[i].img+"?"+Math.random()    
+      }
+      console.log(res.data)
+      let two_category_article = 'defaultValue_one.two_category_article'
+      that.setData({
+        current_menu_one:e.currentTarget.dataset.index,
+        [two_category_article]: res.data,
       })
-    this.setData({
-      showClassifyIndex: (e.target.dataset.id -1)
     })
   },
-
+    //  点击显示二级菜单
+    showMenuContent_two(e) {
+      let that = this
+      //请求艺术圈选项下的菜单以及内容
+      Request('xcx/page/art/two/' + e.currentTarget.dataset.id).then(res => {
+        for(let i = 0; i < res.data.length; i++){
+          res.data[i].img =  res.data[i].img+"?"+Math.random()    
+        }
+        let two_category_article = 'defaultValue_two.two_category_article'
+        that.setData({
+          current_menu_two:e.currentTarget.dataset.index,
+          [two_category_article]: res.data,
+        })
+      })
+    },
+  //点击跳转公众号文章页
+  goToArticle(e){
+    let url = encodeURIComponent(e.currentTarget.dataset.src)
+  wx.navigateTo({ url:`/pages/article/article?src=${url}`});
+  },
+  // 点击显示第n个tab的内容
+  showClassify(e) {
+    var that = this
+          //请求艺术圈选项下的菜单以及内容数据
+    Request('xcx/page/art/one/' + e.currentTarget.dataset.id).then(res => {
+      for(let i = 0; i < res.data.article_data.length; i++){
+        res.data.article_data[i].img =  res.data.article_data[i].img+"?"+Math.random()    
+      }
+      console.log(res.data)
+      that.setData({
+        defaultValue_two: {
+          two_category: res.data.two_category_data,
+          two_category_article: res.data.article_data,
+        }
+      })
+    })
+    //分开写是因为有异步问题
+    that.setData({
+      showClassifyIndex: e.currentTarget.dataset.index
+    })
+  },
+  //下拉刷新
+  onPullDownRefresh() {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    //请求艺术馆默认列表数据
+    Request('xcx/page/art/').then(res => {
+      for(let i = 0; i < res.data.show_image.length; i++){
+        res.data.show_image[i].img =  res.data.show_image[i].img+"?"+Math.random()    
+      }
+      for(let j = 0; j < res.data.two_category_article.length; j++){
+        res.data.two_category_article[j].img =  res.data.two_category_article[j].img+"?"+Math.random()    
+      }
+      console.log(res.data)
+      wx.hideLoading();
+      wx.showToast({
+        title: '刷新成功', //提示的内容,
+        icon: 'success', //图标,
+        duration: 2000, //延迟时间,
+      });
+      that.setData({
+        dataList: res.data,
+        defaultValue_one: {
+          two_category: res.data.two_category,
+          two_category_article: res.data.two_category_article
+        }
+      })
+    })
+  },
 })

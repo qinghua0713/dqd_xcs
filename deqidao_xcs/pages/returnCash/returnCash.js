@@ -1,14 +1,10 @@
+import { Request } from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrl: [
-      "/assets/image/cp_banner.png",
-      "/assets/image/cp_banner.png",
-      "/assets/image/cp_banner.png"
-    ],//banner图片数据
     current: 0,//当前图片的位置
     markers: [{
       iconPath: "/assets/image/hongqi.png",
@@ -18,8 +14,9 @@ Page({
       width: 50,
       height: 50
     }],
-    isTsShow: false,//默认归还提示不显示
-    isCtShow: false//默认创投提示不显示
+    isShowCtTs:false,//默认不显示提示
+    isTsShow:false,//默认不显示提示
+    dataList:'',//数据列表
   },
   //轮播图内容位置改变触发
   swiperChange(e) {
@@ -31,36 +28,53 @@ Page({
   },
   //点击显示归还须知提示
   showReturn() {
-
     this.setData({
-      isTsShow: !this.data.isTsShow,
+      isTsShow: !this.data.isCtShow,
     })
   },
+  //点击页面隐藏提示
+  hiddenReturn(){
+    this.setData({
+      isTsShow: false,
+      isShowCtTs:false
+    })
+  },
+  //点击显示藏品提示
   showCtTs() {
     this.setData({
-      isCtShow:!this.data.isCtShow,
-
+      isShowCtTs:!this.data.isShowCtTs,
     })
   },
-  
-  //Page点击隐藏提示框（一切为了用户体验 T_T）
-  // hiddenTs(){
-  //   this.setData({
-  //     isTsShow:false
-  //   })
-  // },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (e) {
     var that = this
+  wx.getStorage({
+    key: 'resultUserInfo',
+    success: (res) => {
+      Request(`xcx/return/${e.id}`,'','GET',{
+        openid: res.data.openid
+      }).then(res=>{
+        for(let i = 0; i < res.data.imgs.length; i++){
+          res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
+        }
+        console.log(res.data)
+        that.setData({
+          dataList:res.data,
+          artworkId:e.id
+        })
+      })
+    },
+  })
 
+  //获取用户当前位置
     wx.getLocation({ //没有特别说明的都是固定写法
       type: 'wgs84',
       success: function (res) {
         var locationString = res.latitude + "," + res.longitude;
         wx.request({
-          url: 'http://apis.map.qq.com/ws/geocoder/v1/',
+          url: 'https://apis.map.qq.com/ws/geocoder/v1/',
           data: {
             "key": "GEOBZ-TIOWG-KNMQN-IKQEY-JTI7Q-O2FXR",
             "location": locationString
@@ -79,7 +93,6 @@ Page({
             try {
               wx.setStorageSync('locationInfo', r.data.result.address)
             } catch (e) {
-              console.log(e)
             }
           }
         });
@@ -121,6 +134,31 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    var that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+  wx.getStorage({
+    key: 'resultUserInfo',
+    success: (res) => {
+      Request(`xcx/return/${artworkId}`,'','GET',{
+        openid: res.data.openid
+      }).then(res=>{
+        for(let i = 0; i < res.data.imgs.length; i++){
+          res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
+        }
+        wx.hideLoading();
+        wx.showToast({
+          title: '刷新成功', //提示的内容,
+          icon: 'success', //图标,
+          duration: 2000, //延迟时间,
+        });
+        that.setData({
+          dataList:res.data
+        })
+      })
+    },
+  })
 
   },
 

@@ -1,5 +1,5 @@
 
-export const baseUrl = 'http://imcare.top:8000/'
+export const baseUrl = 'https://www.artmore.top/'
 
 /**
  * 统一的请求封装
@@ -8,7 +8,7 @@ export const baseUrl = 'http://imcare.top:8000/'
  * @param {String} methods 请求方式，默认GET
  * @param {boolean} [loading=true] 是否显示loading，默认true
  */
-export const Request = (api, data, method = 'GET', loading = true) => {
+export const Request = (api, data, method = 'GET',header,loading = true) => {
   return new Promise((resovle, reject) => {
     if (loading) {
       wx.showLoading({
@@ -19,6 +19,7 @@ export const Request = (api, data, method = 'GET', loading = true) => {
       url: baseUrl + api,
       data: data,
       method: method,
+      header:header,
       dataType: "json",
       success: res => {
         if (res.statusCode == 200) {

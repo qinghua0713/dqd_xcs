@@ -216,3 +216,6 @@ position: relative;
     border-radius: 14rpx;
     margin-top: 10rpx;
 }
+#myMap{
+    height:100%;
+}

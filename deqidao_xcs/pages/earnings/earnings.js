@@ -1,42 +1,131 @@
 //index.js
 //获取应用实例
+import { Request } from '../../utils/request'
 var app = getApp()
 Page({
   data: {
     showTop: false,//用来判断是否显示返回顶部
+    dataList: '',//数据列表
+    quarterSrc_one:'',//第一阶段的图标
+    quarterSrc_two:'',//第二阶段的图标
+    quarterSrc_three:'',//第三阶段的图标
+    quarterSrc_four:'',//第四阶段的图标
   },
-  // //点击返回首页
-  // returnHome() {
-  //   console.log(1)
-  //   wx.switchTab({
-  //     url: "/pages/index/index",
-  //   })
-  // },
-  // //判断返回按钮是否显示
-  // onPageScroll(e) {
-  //   console.log(e.scrollTop)
-  //   if (e.scrollTop > 100) {
-  //     this.setData({
-  //       showTop: true
-  //     })
-  //   } else {
-  //     this.setData({
-  //       showTop: false
-  //     })
-  //   }
-  // },
-  // // 点击回到顶部
-  // goTop() {
-  //   wx.pageScrollTo({
-  //     scrollTop: 0,
-  //     duration: 300
-  //   })
-  // },
-  onLoad(option) {
+  onLoad(e) {
     var that = this;
+    wx.getStorage({
+      key: 'resultUserInfo',
+      success: (res) => {
+        Request(`xcx/ear/${e.id}`, '', 'GET', {
+          openid: res.data.openid
+        }).then(res => {
+          that.setData({
+            dataList: res.data,
+            artworkId:e.id
+          })
+          //循环判断阶段改变图片
+          switch (res.data.rate) {
+            case 1:
+              that.setData({
+                quarterSrc_one:'../../assets/image/jd_1_red.png',
+                quarterSrc_two:  '../../assets/image/jd_2_gray.png',
+                quarterSrc_three:'../../assets/image/jd_3_gray.png',
+                quarterSrc_four: '../../assets/image/jd_4_gray.png',
+              })
+              break;
+            case 2:
+              that.setData({
+                quarterSrc_one:'../../assets/image/jd_1_black.png',
+                quarterSrc_two:  '../../assets/image/jd_2_red.png',
+                quarterSrc_three:'../../assets/image/jd_3_gray.png',
+                quarterSrc_four: '../../assets/image/jd_4_gray.png',
+              })
+              break;
+            case 3:
+              that.setData({
+                quarterSrc_one:'../../assets/image/jd_1_black.png',
+                quarterSrc_two:  '../../assets/image/jd_2_black.png',
+                quarterSrc_three:'../../assets/image/jd_3_red.png',
+                quarterSrc_four: '../../assets/image/jd_4_gray.png',
+              })
+              break;
+            case 4:
+              that.setData({
+                quarterSrc_one:'../../assets/image/jd_1_black.png',
+                quarterSrc_two:  '../../assets/image/jd_2_black.png',
+                quarterSrc_three:'../../assets/image/jd_3_black.png',
+                quarterSrc_four: '../../assets/image/jd_4_red.png',
+              })
+              break;
+            default:
+          }
+        })
+      },
+    })
+  },
+    /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.getStorage({
+      key: 'resultUserInfo',
+      success: (res) => {
+        Request(`xcx/ear/${that.data.artworkId}`, '', 'GET', {
+          openid: res.data.openid
+        }).then(res => {
+          wx.hideLoading();
+          wx.showToast({
+            title: '刷新成功', //提示的内容,
+            icon: 'success', //图标,
+            duration: 2000, //延迟时间,
+          });
+          that.setData({
+            dataList: res.data
+          })
+          //循环判断阶段改变图片
+          switch (res.data.rate) {
+            case 1:
+              that.setData({
+                quarterSrc_one:'../../assets/image/jd_1_red.png',
+                quarterSrc_two:  '../../assets/image/jd_2_gray.png',
+                quarterSrc_three:'../../assets/image/jd_3_gray.png',
+                quarterSrc_four: '../../assets/image/jd_4_gray.png',
+              })
+              break;
+            case 2:
+              that.setData({
+                quarterSrc_one:'../../assets/image/jd_1_black.png',
+                quarterSrc_two:  '../../assets/image/jd_2_red.png',
+                quarterSrc_three:'../../assets/image/jd_3_gray.png',
+                quarterSrc_four: '../../assets/image/jd_4_gray.png',
+              })
+              break;
+            case 3:
+              that.setData({
+                quarterSrc_one:'../../assets/image/jd_1_black.png',
+                quarterSrc_two:  '../../assets/image/jd_2_black.png',
+                quarterSrc_three:'../../assets/image/jd_3_red.png',
+                quarterSrc_four: '../../assets/image/jd_4_gray.png',
+              })
+              break;
+            case 4:
+              that.setData({
+                quarterSrc_one:'../../assets/image/jd_1_black.png',
+                quarterSrc_two:  '../../assets/image/jd_2_black.png',
+                quarterSrc_three:'../../assets/image/jd_3_black.png',
+                quarterSrc_four: '../../assets/image/jd_4_red.png',
+              })
+              break;
+            default:
+          }
+        })
+      },
+    })
+  },
 
-  },
-  onShow: function (e) {
-  },
-  
+
 })

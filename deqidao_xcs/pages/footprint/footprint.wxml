@@ -1,35 +1,47 @@
 <view class="container">
+    <!-- 历史记录模块 -->
     <view class="cp_container">
-        <view class="cp_item" wx:for="{{2}}">
-            <image src="/assets/image/cp_img.png" />
-            <view class="right_info">
-                <text class="cp_title">藏品名称</text>
-                <view class="cp_ms">
-                    艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述艺术品描述
-                </view>
-                <view class="price_info">
-                    <text class="dg_jg">订购价格：</text>
-                    <view class="price">
-                        <text>￥</text>
-                        99999
+        <block wx:for="{{dataList.history}}"  wx:key="index">
+            <view class="history_time">{{item.create_time}}</view>
+            <view class="cp_item" wx:for="{{item.history}}"  bind:tap="goToDetails"
+             wx:for-item="itm" wx:for-index="idx" wx:key="idx" 
+             data-id='{{itm.good.id}}'  data-createTime='{{item.create_time}}'>
+                <view class="cp_item_info"   >
+                    <image src="{{itm.good.default_image_url}}" />
+                    <view class="right_info">
+                        <text class="cp_title">{{itm.good.name}}</text>
+                        <view class="cp_weigth">
+                            <text decode="{{true}}">长&nbsp;20cm&nbsp;&nbsp;&nbsp;宽&nbsp;40cm&nbsp;&nbsp;&nbsp;高60cm</text>
+                        </view>
+                        <view class="cp_ms">{{itm.good.synopsis}}</view>
+                        <view class="price_info">
+                            <text class="dg_jg">订购价格:</text>
+                            <view class="price">
+                                <text>￥</text>
+                                {{itm.good.price}}
+                            </view>
+                        </view>
                     </view>
                 </view>
             </view>
-        </view>
+        </block>
+        <view class="No-message" wx:if="{{dataList.history.length < 1}}">您该没有浏览任何藏品哦~</view>
     </view>
+    <!-- 推荐模块 -->
     <view class="tj_container">
         <view class="tj_title">
             <image src="/assets/image/dz_red.png" />
             <text>精 选 推 荐</text>
         </view>
         <view class="tj_list">
-            <view class="tj_item" wx:for="{{4}}">
-                <image src="/assets/image/ysp_img.png" />
+            <view class="tj_item" wx:for="{{dataList.handpick}}" bind:tap="goToDetails"
+            data-id="{{item.good.id}}" wx:key="index">
+                <image src="{{item.good.default_image_url}}" />
                 <view class="tj_info">
-                    <text class="ysp_name">艺术品名称</text>
+                    <text class="ysp_name">{{item.good.name}}</text>
                     <view class="price_info">
-                        <text class="tj_price">价值</text>
-                        <text class="d_d_g">待订购</text>
+                        <text class="tj_price">价值:{{item.good.price}}</text>
+                        <text class="d_d_g {{item.order_status_num == 0 ?'ordered':'not_order'}}">{{item.good.order_status}}</text>
                     </view>
                 </view>
             </view>

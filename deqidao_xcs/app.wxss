@@ -1,17 +1,20 @@
-
-.current_tab{
-    color: #e51419 !important;
-    /* border-bottom: 1rpx solid #e51419; */
+.current_tab {
+  color: #e51419 !important;
+  /* border-bottom: 1rpx solid #e51419; */
 }
-view{
+
+view {
   box-sizing: border-box;
 }
-.ordered{
+
+.ordered {
   color: #e51419 !important;
 }
-.not_order{
+
+.not_order {
   color: #37e514 !important;
 }
+
 .current::after {
   content: '';
   height: 1rpx;
@@ -23,7 +26,8 @@ view{
   margin: auto;
   background-color: #e51419;
 }
-.cover_container{
+
+.cover_container {
   height: 100%;
   position: fixed;
   top: 0;
@@ -37,44 +41,50 @@ view{
 }
 
 
-.video_container{
+.video_container {
   width: 100%;
   height: 417rpx;
   position: relative;
 
 }
+
 #myVideo {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
 }
-.cover_img{
- position: absolute;
- width: 100%;
- height: 100%;
- top: 0rpx;
- box-sizing: border-box;
-}
-.play_btn{
-  width: 126rpx;
-	height: 126rpx;
+
+.cover_img {
   position: absolute;
-  top:50% ;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  width: 100%;
+  height: 100%;
+  top: 0rpx;
+  box-sizing: border-box;
 }
 
-Page{
+.play_btn {
+  width: 126rpx;
+  height: 126rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+Page {
   box-sizing: border-box;
 
 }
+
 .swiperContainer {
   position: relative;
 }
-swiper{
+
+swiper {
   height: 100%;
 }
-image{
+
+image {
   width: 100%;
   height: 100%;
 }
@@ -113,14 +123,17 @@ image{
 .dots .dot.active {
   background: #dcdcdc;
 }
-.return_container{
+
+.return_container {
   position: fixed;
   bottom: 120rpx;
   right: 35rpx;
 }
-.return_home,.return_top{
+
+.return_home,
+.return_top {
   width: 83rpx;
-height: 83rpx;
+  height: 83rpx;
   background-color: #ffffff;
   border-radius: 100%;
   display: flex;
@@ -129,48 +142,56 @@ height: 83rpx;
   box-shadow: 0rpx 1rpx 10rpx;
   margin-bottom: 20rpx;
 }
-.return_home image{
+
+.return_home image {
   width: 45rpx;
-height: 47rpx;
+  height: 47rpx;
 }
-.return_top image{
+
+.return_top image {
   width: 42rpx;
-height: 54rpx;
+  height: 54rpx;
 }
-button{
+
+button {
   width: auto !important;
   line-height: normal !important;
   border-radius: 0 !important;
-font-weight: normal !important;
+  font-weight: normal !important;
   padding: 0 !important;
   min-height: 0 !important;
-background: none;
-overflow:visible !important;
+  background: none;
+  overflow: visible !important;
 
 }
-button::after{
-  border:none !important;
+
+button::after {
+  border: none !important;
 }
-.no-production{
+
+.no-production {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color:#b4b2b3;
+  color: #b4b2b3;
 }
-.No-message{
+
+.No-message {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color:#b4b2b3;
+  color: #b4b2b3;
 }
+
 .information {
   min-height: 473rpx;
   display: flex;
   flex-direction: column;
   padding: 0 30rpx 130rpx 30rpx;
 }
+
 /* 返回个人中心按钮 */
 .return_my_btn {
   width: 100%;
@@ -189,5 +210,19 @@ button::after{
   width: 44rpx;
   height: 46rpx;
   margin-right: 21rpx;
+
+}
+
+/* 广播提示样式 */
+.broadcast {
+  background: rgb(199, 199, 67);
+  position: fixed;
+  top: 20rpx;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  min-height: 40rpx;
+  padding: 6rpx;
+  font-size: 22rpx;
 
 }

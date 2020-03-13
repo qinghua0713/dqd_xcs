@@ -24,7 +24,6 @@ Page({
       focus: true,//遮罩层的搜素框获取焦点
     })
   },
-
   //点击隐藏遮罩
   cancelSearch() {
     this.setData({
@@ -74,21 +73,21 @@ Page({
     //请求首页数据
     Request('xcx/page/index/').then(res => {
       console.log(res.data)
-      //循环给图片路径添加上随机数(因为有缓存机制导致部分ios机型图片不显示)
-      for(let i = 0; i < res.data.show_img.length; i++){
-        res.data.show_img[i].img =  res.data.show_img[i].img+"?"+Math.random()    
-      }
-      for(let j = 0; j < res.data.category.length; j++){
-        res.data.category[j].img =  res.data.category[j].img+"?"+Math.random()    
-      }
-      for(let a = 0; a < res.data.authors.length; a++){
-        res.data.authors[a].default_image_url =  res.data.authors[a].default_image_url+"?"+Math.random()    
-      }
-      for(let n = 0; n < res.data.recommend.length; n++){
-        res.data.recommend[n].goods.default_image_url =  res.data.recommend[n].goods.default_image_url+"?"+Math.random()    
-      }
-      //给视频遮罩图片添加上随机数
-      res.data.video[0].img = res.data.video[0].img+"?"+Math.random()    
+      // //循环给图片路径添加上随机数(因为有缓存机制导致部分ios机型图片不显示)
+      // for(let i = 0; i < res.data.show_img.length; i++){
+      //   res.data.show_img[i].img =  res.data.show_img[i].img+"?"+Math.random()    
+      // }
+      // for(let j = 0; j < res.data.category.length; j++){
+      //   res.data.category[j].img =  res.data.category[j].img+"?"+Math.random()    
+      // }
+      // for(let a = 0; a < res.data.authors.length; a++){
+      //   res.data.authors[a].default_image_url =  res.data.authors[a].default_image_url+"?"+Math.random()    
+      // }
+      // for(let n = 0; n < res.data.recommend.length; n++){
+      //   res.data.recommend[n].goods.default_image_url =  res.data.recommend[n].goods.default_image_url+"?"+Math.random()    
+      // }
+      // //给视频遮罩图片添加上随机数
+      // res.data.video[0].img = res.data.video[0].img+"?"+Math.random()    
       console.log(res.data)
       that.setData({
         dataList: res.data
@@ -225,20 +224,20 @@ Page({
     })
     //请求首页数据
     Request('xcx/page/index/').then(res => {
-      for(let i = 0; i < res.data.show_img.length; i++){
-        res.data.show_img[i].img =  res.data.show_img[i].img+"?"+Math.random()    
-      }
-      for(let j = 0; j < res.data.category.length; j++){
-        res.data.category[j].img =  res.data.category[j].img+"?"+Math.random()    
-      }
-      for(let a = 0; a < res.data.authors.length; a++){
-        res.data.authors[a].default_image_url =  res.data.authors[a].default_image_url+"?"+Math.random()    
-      }
-      for(let n = 0; n < res.data.recommend.length; n++){
-        res.data.recommend[n].goods.default_image_url =  res.data.recommend[n].goods.default_image_url+"?"+Math.random()    
-      }
-      //给视频遮罩图片添加上随机数
-      res.data.video[0].img = res.data.video[0].img+"?"+Math.random()    
+      // for(let i = 0; i < res.data.show_img.length; i++){
+      //   res.data.show_img[i].img =  res.data.show_img[i].img+"?"+Math.random()    
+      // }
+      // for(let j = 0; j < res.data.category.length; j++){
+      //   res.data.category[j].img =  res.data.category[j].img+"?"+Math.random()    
+      // }
+      // for(let a = 0; a < res.data.authors.length; a++){
+      //   res.data.authors[a].default_image_url =  res.data.authors[a].default_image_url+"?"+Math.random()    
+      // }
+      // for(let n = 0; n < res.data.recommend.length; n++){
+      //   res.data.recommend[n].goods.default_image_url =  res.data.recommend[n].goods.default_image_url+"?"+Math.random()    
+      // }
+      // //给视频遮罩图片添加上随机数
+      // res.data.video[0].img = res.data.video[0].img+"?"+Math.random()    
       wx.hideLoading();
       wx.showToast({
         title: '刷新成功', //提示的内容,

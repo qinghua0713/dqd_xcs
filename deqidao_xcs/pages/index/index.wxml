@@ -106,9 +106,9 @@
 			<!-- <image class="swier_cover" src="{{dataList.authors[swiperIndex].default_image_url}}" /> -->
 		<swiper class="swiperChange_two"  display-multiple-items="{{5}}" bindchange="swiperChange_two" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
 		
-				<swiper-item wx:for="{{dataList.authors}}" wx:key="index" wx:key="index" data-id="{{item.id}}"
+				<swiper-item wx:for="{{dataList.authors}}"  wx:key="index" wx:key="index" data-id="{{item.id}}" data-index="{{index}}"
 				 class="slide-item slide-item-five" bind:tap="goToArtistDateils">
-					<view class="swiper-item {{swiperIndex == index ? 'active_two':''}}" data-id="{{item.id}}">
+					<view class="swiper-item {{swiperIndex == index ? 'active_two':''}}" data-id="{{item.id}}" >
 						<image src="{{item.default_image_url}}" class="slide-image  " />
 						<text class="art_name">{{item.name}}</text>
 					</view>

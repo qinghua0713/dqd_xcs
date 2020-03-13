@@ -65,6 +65,8 @@ Page({
     //保存按钮事件
     goToAddress() {
         let that = this
+        var pages = getCurrentPages(); //当前页面
+        var beforePage = pages[pages.length - 2]; //前一页
         var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/
         if (that.data.userName == '' || that.data.iPhone == '' || that.data.specificAddress == '' || that.data.checkedAddress == '') {
             wx.showToast({
@@ -119,7 +121,11 @@ Page({
                             }
                         },
                         complete: () => {
-                            wx.navigateTo({ url: '/pages/address/address' });
+                            wx.navigateBack({
+                                success: function () {
+                                  beforePage.onLoad(); // 执行前一个页面的onLoad方法
+                                }
+                              });
                         }
                     });
 
@@ -164,10 +170,16 @@ Page({
                             openid: res.data.openid
                         },
                         success: res => {
-                          
+                           console.log(res)
                         },
                         complete: () => {
-                            wx.navigateTo({ url: '/pages/address/address' });
+                            console.log('放我出去')
+                          
+                            wx.navigateBack({
+                              success: function () {
+                                beforePage.onLoad(); // 执行前一个页面的onLoad方法
+                              }
+                            });
                         }
                     });
                 },
@@ -175,12 +187,18 @@ Page({
 
         }else{
             console.log('没有执行请求')
-            wx.navigateTo({ url: '/pages/address/address' });
+            wx.navigateBack({
+                success: function () {
+                  beforePage.onLoad(); // 执行前一个页面的onLoad方法
+                }
+              });
         }
     },
     //删除地址请求
     deleteAddress() {
         let that = this
+        var pages = getCurrentPages(); //当前页面
+        var beforePage = pages[pages.length - 2]; //前一页
         wx.getStorage({
             key: 'resultUserInfo',
             success: (_res) => {
@@ -193,9 +211,12 @@ Page({
                             }, 'DELETE', {
                                 openid: _res.data.openid
                             }).then(res => {
-                                wx.navigateTo({ url: '/pages/address/address' });
+                                wx.navigateBack({
+                                    success: function () {
+                                      beforePage.onLoad(); // 执行前一个页面的onLoad方法
+                                    }
+                                  });
                             })
-                        } else if (res.cancel) {
                         }
                     }
                 })

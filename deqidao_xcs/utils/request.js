@@ -1,5 +1,5 @@
 
-export const baseUrl = 'https://www.artmore.top/'
+export const baseUrl = 'http://www.artmore.top:8000/'
 
 /**
  * 统一的请求封装
@@ -11,9 +11,9 @@ export const baseUrl = 'https://www.artmore.top/'
 export const Request = (api, data, method = 'GET',header,loading = true) => {
   return new Promise((resovle, reject) => {
     if (loading) {
-      wx.showLoading({
-        title: '加载中',
-      })
+      // wx.showLoading({
+      //   title: '加载中',
+      // })
     }
     wx.request({
       url: baseUrl + api,
@@ -26,12 +26,15 @@ export const Request = (api, data, method = 'GET',header,loading = true) => {
           wx.hideLoading()
           resovle(res)
         } else {
+ 
           wx.hideLoading()
           reject()
         }
       },
       error: err => {
+     
         wx.hideLoading()
+        
         reject(err)
       }
     })

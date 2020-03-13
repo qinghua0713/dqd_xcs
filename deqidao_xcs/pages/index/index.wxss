@@ -222,8 +222,6 @@
    z-index: 1000;
    opacity: 1 !important;
    transition: all 0.1s ease-in 0s;
-
-  /* transition: all 0.06s ease-in-out; */
   z-index: 20;  
 }
 .keywordCover{

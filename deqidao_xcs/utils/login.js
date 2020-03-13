@@ -9,6 +9,7 @@ export const Login = (nickName,avatarUrl) => {
       fail: () => { 
         wx.login({
             success: (res) => {
+              console.log(res.code)
                 Request('user/code/' + res.code, {
                     username: nickName,
                     profile: avatarUrl

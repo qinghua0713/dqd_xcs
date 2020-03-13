@@ -72,7 +72,7 @@
 					"id": 2,
 					"name": "pages/details/details",
 					"pathName": "pages/details/details",
-					"query": "id=9",
+					"query": "id=30",
 					"scene": null
 				},
 				{
@@ -179,6 +179,13 @@
 					"pathName": "pages/authorization/authorization",
 					"query": "",
 					"scene": 1011
+				},
+				{
+					"id": 18,
+					"name": "pages/allOrders/allOrders",
+					"pathName": "pages/allOrders/allOrders",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

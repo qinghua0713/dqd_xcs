@@ -6,15 +6,17 @@
   <view class="redact_input">
     <input class="redact_user_name" type="text" bindblur="inputName" value="{{userName}}" placeholder="请输入姓名"></input>
     <input class="redace_user_tel" type="number" maxlength="11" value="{{iPhone}}" bindblur="inputShowed" placeholder="请输入电话"></input>
-    <view class="address_container">
-       <input  placeholder="请选择地址" value="{{checkedAddress}}" disabled="{{true}}" placeholder-style="color:#020202;" />
-      <view class="right_select" bindtap='select'>
+    <view class="address_container" bindtap='select'>
+       <input  placeholder="请选择地址" value="{{checkedAddress}}" disabled="{{true}}" />
+       <!-- placeholder-style="color:#020202;"  -->
+      <view class="right_select" >
         <text>选择</text>
         <image  src="/assets/image/youjiantou.png" />
       </view>
     </view>
     <view class="dateils_address">
-      <input type="text" bindblur="specificAddress" value="{{specificAddress}}" placeholder="具体地址" placeholder-style="color:#020202;" />
+      <input type="text" bindblur="specificAddress" value="{{specificAddress}}" placeholder="具体地址"  />
+      <!-- placeholder-style="color:#020202;" -->
     </view>
     <view class="defaultAddress"  >
       <text >设为默认地址</text>

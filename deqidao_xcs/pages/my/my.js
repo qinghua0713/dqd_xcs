@@ -6,10 +6,13 @@ Page({
     property: '',//用户的总资产
     artworkDataList:'',//藏品数据列表
   },
+  //点击跳转地址页
   goToAddress(e) {
     if (e.detail.userInfo) {
       let nickName = e.detail.userInfo.nickName
       let avatarUrl = e.detail.userInfo.avatarUrl
+      console.log(nickName)
+      console.log(avatarUrl)
       //用户登陆
       Login(nickName, avatarUrl)
       wx.navigateTo({ url: '/pages/address/address' });
@@ -26,14 +29,15 @@ Page({
       key: 'resultUserInfo',
       success: (res) => {
         console.log(res.data)
-        res.data.profile =  res.data.profile+"?"+Math.random() //用户头像
+       // res.data.profile =  res.data.profile+"?"+Math.random() //用户头像
         that.setData({
-          userInfo: res.data.profile
+          userInfo: res.data
         })
          //获取用户的总资产
         Request('user/ear', '', 'GET', {
           openid: res.data.openid
         }).then(res => {
+          console.log(res)
           that.setData({
             property: res.data
           })
@@ -42,9 +46,9 @@ Page({
         Request(`user/good/ear`,'','GET',{
           openid: res.data.openid
         }).then(res=>{
-           for(let n = 0; n < res.data.length; n++){
-            res.data[n].good.default_image_url =  res.data[n].good.default_image_url+"?"+Math.random()    
-           }
+          //  for(let n = 0; n < res.data.length; n++){
+          //   res.data[n].good.default_image_url =  res.data[n].good.default_image_url+"?"+Math.random()    
+          //  }
           console.log(res.data)
           that.setData({
             artworkDataList:res.data
@@ -236,9 +240,9 @@ Page({
         Request(`user/good/ear`,'','GET',{
           openid: res.data.openid
         }).then(res=>{
-          for(let n = 0; n < res.data.length; n++){
-            res.data[n].good.default_image_url =  res.data[n].good.default_image_url+"?"+Math.random()    
-           }
+          // for(let n = 0; n < res.data.length; n++){
+          //   res.data[n].good.default_image_url =  res.data[n].good.default_image_url+"?"+Math.random()    
+          //  }
           that.setData({
             artworkDataList:res.data
           })

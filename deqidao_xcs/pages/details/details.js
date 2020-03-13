@@ -31,22 +31,17 @@ Page({
           }, 'POST', {
             'openid': res.data.openid
           }).then(res => {
-            console.log(res.data)
-            wx.setStorageSync('status',res.data.status)//把请求回来的状态存起来
             //判断请求回来的状态是0的话就是没有收藏
-            if (res.data.status == 0) {
-              console.log('等于0')
-            
-              that.setData({
-                collectNum: res.data.collect + "人收藏"
-              })
-            } else {
+            if (res.data.status) {
               //否则就是收藏了
               that.setData({
                 collectNum: "已收藏"
               })
+            } else {
+              that.setData({
+                collectNum: res.data.collect + "人收藏"
+              })
             }
-
           })
         },
         fail: () => {
@@ -61,12 +56,12 @@ Page({
     }
   },
   //轮播图，图片点击全屏展示
-  previewimgs: function(e) {
+  previewimgs: function (e) {
     var imgList = []
-    for(var i = 0; i < this.data.dataList.img_data.length;i++){
-      if(this.data.dataList.img_data[i] != null){
+    for (var i = 0; i < this.data.dataList.img_data.length; i++) {
+      if (this.data.dataList.img_data[i] != null) {
         imgList.push(this.data.dataList.img_data[i].image)
-      }   
+      }
     }
     console.log(imgList);
     wx.previewImage({
@@ -95,43 +90,22 @@ Page({
   //页面加载时触发
   onLoad(e) {
     let that = this
+
     //请求商品详情页数据
     Request(`goods/details/${e.id}`).then(res => {
-         //循环给图片路径添加上随机数(因为有缓存机制导致部分ios机型图片不显示)
-         for(let i = 0; i < res.data.img_data.length; i++){
-           if(res.data.img_data[i] != null){
-            res.data.img_data[i].image =  res.data.img_data[i].image +"?"+Math.random()  
-           }
-            
-        }
-      res.data.aut_data.aut.default_image_url = res.data.aut_data.aut.default_image_url+"?"+Math.random() 
+      //循环给图片路径添加上随机数(因为有缓存机制导致部分ios机型图片不显示)
+      // for (let i = 0; i < res.data.img_data.length; i++) {
+      //   if (res.data.img_data[i] != null) {
+      //     res.data.img_data[i].image = res.data.img_data[i].image + "?" + Math.random()
+      //   }
+      // }
+   //   res.data.aut_data.aut.default_image_url = res.data.aut_data.aut.default_image_url + "?" + Math.random()
       console.log(res.data)
       that.setData({
         dataList: res.data,
         artworkId: e.id,
       })
-      //判断本地存储的收藏状态是不是以已收藏
-      wx.getStorage({
-        key: 'status',
-        success: (res) => {
-          //如果是存储取出来的状态等于0的话就是未收藏
-          if (res.data == 0) {
-            that.setData({
-              collectNum: that.data.dataList.good_data.collect + "人收藏"
-            })
-          } else {//否则就是收藏了
-            that.setData({
-              collectNum: "已收藏"
-            })
-          }
-        },
-         //如果本地存储没有这个字段证明用户没有点击过收藏
-        fail: (err) => {  
-          that.setData({
-            collectNum: res.data.good_data.collect + "人收藏"
-          })
-        },
-      })
+
       //如果他已被订购
       if (that.data.dataList.good_data.order_status_num != 1) {
         that.setData({
@@ -139,6 +113,30 @@ Page({
         })
       }
     })
+    //请求用户是否收藏接口
+    wx.getStorage({
+      key: 'resultUserInfo',
+      success: (res) => {
+        Request(`goods/collect?good_id=${e.id}`, '', 'GET', {
+          openid: res.data.openid
+        }).then(res => {
+          console.log(res)
+          if (res.data.status) {
+            that.setData({
+              collectNum: "已收藏"
+            })
+          } else {
+            that.setData({
+              collectNum: that.data.dataList.good_data.collect + "人收藏"
+            })
+          }
+        })
+      },
+      fail: () => {
+          wx.navigateTo({ url: '/pages/authorization/authorization' });
+       },
+    })
+
     //发送用户足迹给后台
     wx.getStorage({
       key: 'resultUserInfo',
@@ -287,33 +285,35 @@ Page({
       that.setData({
         dataList: res.data,
       })
-      //判断本地存储的收藏状态是不是以已收藏
-      wx.getStorage({
-        key: 'status',
-        success: (res) => {
-          //如果是未收藏
-          if (res.data != 1) {
-            that.setData({
-              collectNum: that.data.dataList.good_data.collect + "人收藏"
-            })
-          } else {
-            that.setData({
-              collectNum: "已收藏"
-            })
-          }
-        },
-        fail: () => {
-          //如果本地存储没有这个字段证明用户没有点击过收藏
-          that.setData({
-            collectNum: res.data.good_data.collect + "人收藏"
-          })
-        },
-      })
+
       if (that.data.dataList.good_data.order_status != 1) {
         that.setData({
           buyStatus: '已订购'
         })
       }
+    })
+    //请求用户是否收藏接口
+    wx.getStorage({
+      key: 'resultUserInfo',
+      success: (res) => {
+        Request(`goods/collect?good_id=${that.data.artworkId}`, '', 'GET', {
+          openid: res.data.openid
+        }).then(res => {
+          console.log(res)
+          if (res.data.status) {
+            that.setData({
+              collectNum: "已收藏"
+            })
+          } else {
+            that.setData({
+              collectNum: that.data.dataList.good_data.collect + "人收藏"
+            })
+          }
+        })
+      },
+      fail: () => {
+        wx.navigateTo({ url: '/pages/authorization/authorization' });
+     },
     })
   },
 

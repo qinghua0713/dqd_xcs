@@ -37,9 +37,9 @@ Page({
       //获取二维码的携带的链接信息
       //请求用户从外面扫码进来的数据
       Request(`xcx/bind/${that.getQueryString(qrUrl, 'id')}`).then(res => {
-        for(let i = 0; i < res.data.imgs.length; i++){
-          res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
-        }
+        // for(let i = 0; i < res.data.imgs.length; i++){
+        //   res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
+        // }
         console.log(res.data)
         that.setData({
           dataList: res.data,
@@ -161,9 +161,9 @@ Page({
           icon: 'success', //图标,
           duration: 2000, //延迟时间,
         });
-        for(let i = 0; i < res.data.imgs.length; i++){
-          res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
-        }
+        // for(let i = 0; i < res.data.imgs.length; i++){
+        //   res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
+        // }
         console.log(res.data)
         that.setData({
           dataList: res.data

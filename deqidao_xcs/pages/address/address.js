@@ -8,33 +8,157 @@ Page({
   data: {
     dataList: '',//数据列表
     userTx: [],//展示用户名字最后一个字
+    delBtnWidth: 180
+  },
+  //删除收货地址
+  delItem(e){
+    
+    console.log(e.target.dataset.id)
+    let that = this
+    wx.getStorage({
+        key: 'resultUserInfo',
+        success: (_res) => {
+            wx.showModal({
+                content: '确定删除该地址吗?',
+                success(res) {
+                    if (res.confirm) {
+                        Request(`user/addr`, {
+                            addr_id: e.target.dataset.id
+                        }, 'DELETE', {
+                            openid: _res.data.openid
+                        }).then(res => {
+                          var userTx = []//用户切割后的头像
+                          for (let i = 0; i < res.data.length; i++) {
+                            res.data[i].txtStyle = ''
+                            userTx = userTx.concat({ userTx: res.data[i].receiver })
+                            userTx[i].userTx = userTx[i].userTx.substring(userTx[i].userTx.length - 1, userTx[i].userTx.length)
+                            res.data[i].userTx = userTx[i].userTx
+                          }
+                          that.setData({
+                            dataList:res.data
+                          })
+                            console.log(res)
+                        })
+                    }
+                }
+            })
+        },
+        fail: () => {
+            wx.showToast({
+                title: '用户未授权',
+                icon: 'none',
+                duration: 2000
+            })
+        },
+    })
+  },
+  //地址列表手指触摸开始
+  touchS: function (e) {
+    if (e.touches.length == 1) {
+      this.setData({
+        //设置触摸起始点水平方向位置
+        startX: e.touches[0].clientX
+      });
+    }
+  },
+ //地址列表手指移动开始
+  touchM: function (e) {
+    if (e.touches.length == 1) {
+      //手指移动时水平方向位置
+      var moveX = e.touches[0].clientX;
+      //手指起始点位置与移动期间的差值
+      var disX = this.data.startX - moveX;
+      var delBtnWidth = this.data.delBtnWidth;
+      var txtStyle = "";
+      if (disX == 0 || disX < 0) {//如果移动距离小于等于0，文本层位置不变
+        txtStyle = "left:0rpx";
+      } else if (disX > 0) {//移动距离大于0，文本层left值等于手指移动距离
+        txtStyle = "left:-" + disX + "rpx";
+        if (disX >= delBtnWidth) {
+          //控制手指移动距离最大值为删除按钮的宽度
+          txtStyle = "left:-" + delBtnWidth + "rpx";
+        }
+      }
+      //获取手指触摸的是哪一项
+      var index = e.currentTarget.dataset.index;
+      var list = this.data.dataList;
+      list[index]['txtStyle'] = txtStyle;
+      //更新列表的状态
+      this.setData({
+        dataList: list
+      });
+    }
+  },
+  //地址列表手指移动结束
+  touchE: function (e) {
+    if (e.changedTouches.length == 1) {
+      //手指移动结束后水平位置
+      var endX = e.changedTouches[0].clientX;
+      //触摸开始与结束，手指移动的距离
+      var disX = this.data.startX - endX;
+      var delBtnWidth = this.data.delBtnWidth;
+      //如果距离小于删除按钮的1/2，不显示删除按钮
+      var txtStyle = disX > delBtnWidth / 2 ? "left:-" + delBtnWidth + "rpx" : "left:0rpx";
+      //获取手指触摸的是哪一项
+      var index = e.currentTarget.dataset.index;
+      var list = this.data.dataList;
+      var del_index = '';
+      disX > delBtnWidth / 2 ? del_index = index : del_index = '';
+      list[index].txtStyle = txtStyle;
+      //更新列表的状态
+      this.setData({
+        dataList: list,
+        del_index: del_index
+      });
+    }
+  },
+  goToEditorAddress(e){
+     //进行中文转码
+     let id = e.currentTarget.dataset.id
+     let province = decodeURIComponent(e.currentTarget.dataset.province)
+     let city = decodeURIComponent(e.currentTarget.dataset.city)
+     let district = decodeURIComponent(e.currentTarget.dataset.district)
+     let place = decodeURIComponent(e.currentTarget.dataset.place)
+     let receiver = decodeURIComponent(e.currentTarget.dataset.receiver)
+     let mobile = decodeURIComponent(e.currentTarget.dataset.mobile)
+     let ischecked = e.currentTarget.dataset.ischecked
+     let provinceId = e.currentTarget.dataset.provinceid
+     let cityId = e.currentTarget.dataset.cityid
+     let districtId = e.currentTarget.dataset.districtid
+     wx.navigateTo({
+       url: `/pages/editorAddress/editorAddress?id=${
+         id}&province=${province}&city=${
+         city}&district=${district}&place=${place}&receiver=${receiver}&mobile=${mobile}&ischecked=${ischecked}&provinceId=${provinceId}&cityId=${
+         cityId}&districtId=${districtId}`
+     });
   },
   //点击编辑地址
   redactAddress(e) {
-    if (e.detail.userInfo) {
-      let nickName = e.detail.userInfo.nickName
-      let avatarUrl = e.detail.userInfo.avatarUrl
-      //用户登陆
-      Login(nickName, avatarUrl)
-      //进行中文转码
-      let id = e.target.dataset.id
-      let province = decodeURIComponent(e.target.dataset.province)
-      let city = decodeURIComponent(e.target.dataset.city)
-      let district = decodeURIComponent(e.target.dataset.district)
-      let place = decodeURIComponent(e.target.dataset.place)
-      let receiver = decodeURIComponent(e.target.dataset.receiver)
-      let mobile = decodeURIComponent(e.target.dataset.mobile)
-      let ischecked = e.target.dataset.ischecked
-      let provinceId = e.target.dataset.provinceid
-      let cityId = e.target.dataset.cityid
-      let districtId = e.target.dataset.districtid
-      wx.navigateTo({
-        url: `/pages/editorAddress/editorAddress?id=${
-          id}&province=${province}&city=${
-          city}&district=${district}&place=${place}&receiver=${receiver}&mobile=${mobile}&ischecked=${ischecked}&provinceId=${provinceId}&cityId=${
-          cityId}&districtId=${districtId}`
-      });
-    }
+    // console.log(e)
+    // if (e.detail.userInfo) {
+    //   let nickName = e.detail.userInfo.nickName
+    //   let avatarUrl = e.detail.userInfo.avatarUrl
+    //   //用户登陆
+    //   Login(nickName, avatarUrl)
+    //   //进行中文转码
+    //   let id = e.target.dataset.id
+    //   let province = decodeURIComponent(e.target.dataset.province)
+    //   let city = decodeURIComponent(e.target.dataset.city)
+    //   let district = decodeURIComponent(e.target.dataset.district)
+    //   let place = decodeURIComponent(e.target.dataset.place)
+    //   let receiver = decodeURIComponent(e.target.dataset.receiver)
+    //   let mobile = decodeURIComponent(e.target.dataset.mobile)
+    //   let ischecked = e.target.dataset.ischecked
+    //   let provinceId = e.target.dataset.provinceid
+    //   let cityId = e.target.dataset.cityid
+    //   let districtId = e.target.dataset.districtid
+    //   wx.navigateTo({
+    //     url: `/pages/editorAddress/editorAddress?id=${
+    //       id}&province=${province}&city=${
+    //       city}&district=${district}&place=${place}&receiver=${receiver}&mobile=${mobile}&ischecked=${ischecked}&provinceId=${provinceId}&cityId=${
+    //       cityId}&districtId=${districtId}`
+    //   });
+    // }
 
     
   },
@@ -61,7 +185,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     let that = this
     wx.getStorage({
       key: 'resultUserInfo',
@@ -72,13 +196,17 @@ Page({
         }).then(res => {
           var userTx = []//用户切割后的头像
           for (let i = 0; i < res.data.length; i++) {
+            res.data[i].txtStyle = ''
             userTx = userTx.concat({ userTx: res.data[i].receiver })
             userTx[i].userTx = userTx[i].userTx.substring(userTx[i].userTx.length - 1, userTx[i].userTx.length)
             res.data[i].userTx = userTx[i].userTx
           }
+          console.log(res)
           that.setData({
             dataList: res.data,
           })
+        },(err)=>{
+          console.log(err,11111111111111111111)
         })
 
       },

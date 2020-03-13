@@ -21,12 +21,13 @@ Page({
         Request('user/code/' + res.code, {
           username: e.detail.userInfo.nickName,
           profile: e.detail.userInfo.avatarUrl
-        }, 'POST').then(res => {
+        }, 'POST').then(res => {  
           wx.setStorageSync('resultUserInfo', res.data)
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
         })
-        wx.switchTab({
-          url: '/pages/index/index',
-        })
+    
       },
     })
     that.setData({
@@ -44,7 +45,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
- 
+  
     let that = this
     wx.getSetting({
       success: function (res) {

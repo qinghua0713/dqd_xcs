@@ -57,7 +57,7 @@ Page({
 
     })
   },
-  //滚动条触底函数
+  // //滚动条触底函数
   onReachBottom() {
     let that = this
     wx.request({
@@ -113,8 +113,10 @@ Page({
       Request(`xcx/category/`, {
         author: e.currentTarget.dataset.id
       }).then(res => {
+        console.log(res)
         that.setData({
           classifyList: res.data,
+          PageUrl: res.data.next,
           artistId: e.target.dataset.id,//用来判断加样式
         })
       })
@@ -160,6 +162,7 @@ Page({
                 console.log(res.data)
                 that.setData({
                   classifyList: res.data,
+                  PageUrl: res.data.next,
                   isShowCover: false,
                 })
               })
@@ -173,6 +176,7 @@ Page({
               }).then(res => {
                 console.log(res.data)
                 that.setData({
+                  PageUrl: res.data.next,
                   classifyList: res.data,
                   isShowCover: false,
                 })
@@ -189,6 +193,7 @@ Page({
                 console.log(res.data)
                 that.setData({
                   classifyList: res.data,
+                  PageUrl: res.data.next,
                   isShowCover: false,
                 })
               })
@@ -202,6 +207,7 @@ Page({
                 console.log(res.data)
                 that.setData({
                   classifyList: res.data,
+                  PageUrl: res.data.next,
                   isShowCover: false,
                 })
               })
@@ -222,6 +228,7 @@ Page({
                 console.log(res.data)
                 that.setData({
                   classifyList: res.data,
+                  PageUrl: res.data.next,
                   isShowCover: false,
                 })
               })
@@ -236,6 +243,7 @@ Page({
                 console.log(res.data)
                 that.setData({
                   classifyList: res.data,
+                  PageUrl: res.data.next,
                   isShowCover: false,
                 })
               })
@@ -251,6 +259,7 @@ Page({
                 console.log(res.data)
                 that.setData({
                   classifyList: res.data,
+                  PageUrl: res.data.next,
                   isShowCover: false,
                 })
               }) 
@@ -264,6 +273,7 @@ Page({
                 console.log(res.data)
                 that.setData({
                   classifyList: res.data,
+                  PageUrl: res.data.next,
                   isShowCover: false,
                 })
               }) 
@@ -302,6 +312,7 @@ Page({
     Request(`xcx/category/?ordering=price`).then(res => {
       that.setData({
         classifyList: res.data,
+        PageUrl: res.data.next,
         isLowOrTall: 1
       })
       console.log(that.data.isLowOrTall)
@@ -315,6 +326,7 @@ Page({
     Request(`xcx/category/?ordering=-price`).then(res => {
       that.setData({
         classifyList: res.data,
+        PageUrl: res.data.next,
         isLowOrTall: 2
       })
       console.log(that.data.isLowOrTall)
@@ -365,6 +377,7 @@ Page({
         showValue: false,
         value: e.target.dataset.item,
         classifyList: res.data,
+        PageUrl: res.data.next,
         artworkId:e.target.dataset.id
       })
     })

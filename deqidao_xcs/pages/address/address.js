@@ -1,14 +1,22 @@
 import { Request } from '../../utils/request'
 import { Login } from '../../utils/login'
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    broadcastMsg:'',//广播消息
+    isShowHint:true,
     dataList: '',//数据列表
     userTx: [],//展示用户名字最后一个字
     delBtnWidth: 180
+  },
+  closeHint(){
+     this.setData({
+       isShowHint:false
+     })
   },
   //删除收货地址
   delItem(e){
@@ -186,6 +194,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    console.log('执行了')
+    wx.connectSocket({
+      url: app.globalData.ws
+    })
+    wx.onSocketOpen(function(res) {
+     
+      console.log(res)
+    })
+    wx.onSocketMessage(res=>{
+      var data = JSON.parse(res.data)
+      console.log(data )
+      this.setData({
+        value:data.message
+      })
+    })
+
+
     let that = this
     wx.getStorage({
       key: 'resultUserInfo',
@@ -206,7 +231,7 @@ Page({
             dataList: res.data,
           })
         },(err)=>{
-          console.log(err,11111111111111111111)
+          console.log(err)
         })
 
       },

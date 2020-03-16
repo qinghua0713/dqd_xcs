@@ -10,6 +10,7 @@ Page({
     deadline_one: '',//锁定期数据列表
     deadline_two: '',//收益期数据列表
     deadline_three: '',//兑现期数据列表
+    statusMsg:"",//消息状态
   },
   /**
  * 生命周期函数--监听页面加载
@@ -32,7 +33,8 @@ Page({
           // }
           console.log(res.data)
           that.setData({
-            deadline_one: res.data
+            deadline_one: res.data.data,
+            statusMsg:res.data.status
           })
         })
         //请求收益其数据
@@ -44,7 +46,8 @@ Page({
           // }
           console.log(res.data)
           that.setData({
-            deadline_two: res.data
+            deadline_two: res.data.data,
+            statusMsg:res.data.status
           })
         })
         //请求兑现期的数据
@@ -56,7 +59,8 @@ Page({
           // }
           console.log(res.data)
           that.setData({
-            deadline_three: res.data
+            deadline_three: res.data.data,
+            statusMsg:res.data.status
           })
         })
       },
@@ -170,7 +174,8 @@ Page({
             duration: 2000, //延迟时间,
           });
           that.setData({
-            deadline_one: res.data
+            deadline_one: res.data.data,
+            statusMsg:res.data.status
           })
         })
         //请求收益其数据
@@ -181,7 +186,8 @@ Page({
           //   res.data[i].good.default_image_url = res.data[i].good.default_image_url+"?"+Math.random()    
           // }
           that.setData({
-            deadline_two: res.data
+            deadline_two: res.data.data,
+            statusMsg:res.data.status
           })
         })
         //请求兑现期的数据
@@ -192,7 +198,8 @@ Page({
           //   res.data[i].good.default_image_url = res.data[i].good.default_image_url+"?"+Math.random()    
           // }
           that.setData({
-            deadline_three: res.data
+            deadline_three: res.data.data,
+            statusMsg:res.data.status
           })
         })
       },

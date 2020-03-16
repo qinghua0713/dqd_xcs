@@ -59,8 +59,9 @@ Page({
   previewimgs: function (e) {
     var imgList = []
     for (var i = 0; i < this.data.dataList.img_data.length; i++) {
-      if (this.data.dataList.img_data[i] != null) {
-        imgList.push(this.data.dataList.img_data[i].image)
+      console.log(this.data.dataList.img_data[i])
+      if (this.data.dataList.img_data[i].img != undefined ) {
+        imgList.push(this.data.dataList.img_data[i].img)
       }
     }
     console.log(imgList);

@@ -6,8 +6,8 @@
       <swiper bindchange="swiperChange" autoplay="{{true}}" duration="{{500}}" circular style='height: 625rpx;'>
         <block wx:for="{{dataList.imgs}}" wx:key="index">
           <swiper-item wx:key="index" data-id="{{item.id}}">
-            <image src="{{item.image}}" mode="aspectFill" bind:tap="previewimgs"
-            data-src='{{item.image}}' class="slide-image" class='img' />
+            <image src="{{item.img}}" mode="aspectFill" bind:tap="previewimgs"
+            data-src='{{item.img}}' class="slide-image" class='img' />
           </swiper-item>
         </block>
       </swiper>

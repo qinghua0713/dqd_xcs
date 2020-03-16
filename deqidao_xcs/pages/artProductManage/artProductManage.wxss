@@ -55,7 +55,8 @@ Page {
     width: calc(100% - 208rpx);
     display: flex;
     flex-direction: column;
-  
+    position: relative;
+    overflow: hidden;
 }
 
 .cp_title {
@@ -72,14 +73,25 @@ Page {
 }
 
 .cp_describe {
+    overflow-wrap: break-word;
     font-size: 23rpx;
     color: #0b0b0b;
+    display: -webkit-box;
+-webkit-line-clamp: 4;
+-webkit-box-orient: vertical;
+overflow: hidden;
+margin-bottom: 40rpx;
+    
 }
 
 .btn_cont {
     display: flex;
     justify-content: flex-end;
     padding: 5rpx 5rpx 0 0;
+   position: absolute;
+   bottom: 0;
+   right: 0;
+
 }
 
 .withdraw,

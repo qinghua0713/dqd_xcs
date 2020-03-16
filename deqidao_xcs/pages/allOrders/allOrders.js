@@ -6,9 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    broadcastMsg:'',//广播消息
+    isShowHint:true,
   },
-
+  closeHint(){
+    this.setData({
+      isShowHint:false
+    })
+ },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -21,22 +26,7 @@ Page({
    */
   onReady: function () {
 
-    // SocketTask.onSocketOpen(res => {
-    //   socketOpen = true
-    //   console.log("监听 websocket 链接打开事件", res)
-    // })
-    // SocketTask.onSocketClose(onClose => {
-    //   socketOpen = false
-    //   console.log("监听 websocket 链接关闭事件", onClose)
-    //   this.websocket()
-    // })
-    // SocketTask.onSocketError(onError =>{
-    //   console.log("监听 websocket 错误。错误信息",onError)
-    //   socketOpen = false
-    // })
-    // SocketTask.onSocketMessage( onMessage =>{
-    //   console.log("监听 websocket 接收到服务器的消息，服务器返回的消息",JSON.parse(onMessage.data))
-    // })
+
   },
 
   /**

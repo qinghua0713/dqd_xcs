@@ -1,6 +1,10 @@
 <view class="container">
- <view class="j_shou_container">
-     <image src="/assets/image/bukaixin.png" />
-     <text >该功能暂时未开放</text>
- </view>
+	<view class="broadcast" wx:if="{{isShowHint}}">
+		<text>{{broadcastMsg || "暂时没有广播消息"}}</text>
+		<view bindtap="closeHint">X</view>
+	</view>
+	<view class="j_shou_container">
+		<image src="/assets/image/bukaixin.png" />
+		<text >该功能暂时未开放</text>
+	</view>
 </view>

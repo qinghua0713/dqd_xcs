@@ -220,9 +220,15 @@ button::after {
   top: 20rpx;
   left: 5%;
   right: 5%;
-  width: 90%;
+   height: 80rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   min-height: 40rpx;
-  padding: 6rpx;
+  padding: 10rpx 20rpx;
   font-size: 22rpx;
-
+z-index: 100;
+border-radius: 6rpx;
+font-size: 24rpx;
 }

@@ -72,7 +72,7 @@
 					"id": 2,
 					"name": "pages/details/details",
 					"pathName": "pages/details/details",
-					"query": "id=30",
+					"query": "id=121",
 					"scene": null
 				},
 				{
@@ -93,14 +93,14 @@
 					"id": 5,
 					"name": "pages/binding/binding",
 					"pathName": "pages/binding/binding",
-					"query": "id=9",
+					"query": "id=137",
 					"scene": 1011
 				},
 				{
 					"id": 6,
 					"name": "pages/artProductManage/artProductManage",
 					"pathName": "pages/artProductManage/artProductManage",
-					"query": "showCurrent=1",
+					"query": "showCurrent=2",
 					"scene": null
 				},
 				{

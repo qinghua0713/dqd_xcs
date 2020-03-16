@@ -1,4 +1,8 @@
 <view class="address_container">
+<view class="broadcast" wx:if="{{isShowHint}}" >
+  <text>{{broadcastMsg || "暂时没有广播消息"}}</text>
+  <view bindtap="closeHint">X</view>
+</view>
     <view class="addAddress">
         <button class="addAddress_btn" open-type="getUserInfo" bindgetuserinfo="addAddress">
             添加地址

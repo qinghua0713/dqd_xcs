@@ -1,5 +1,5 @@
 
-export const baseUrl = 'http://www.artmore.top:8000/'
+export const baseUrl = 'https://www.artmore.top/'
 
 /**
  * 统一的请求封装

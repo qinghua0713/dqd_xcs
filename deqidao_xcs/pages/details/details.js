@@ -106,14 +106,6 @@ Page({
         dataList: res.data,
         artworkId: e.id,
       })
-
-      //如果他已被订购
-      if (that.data.dataList.good_data.order_status_num != 1) {
-        that.setData({
-          buyStatus: '已订购'
-        })
-      }
-    })
     //请求用户是否收藏接口
     wx.getStorage({
       key: 'resultUserInfo',
@@ -137,6 +129,14 @@ Page({
           wx.navigateTo({ url: '/pages/authorization/authorization' });
        },
     })
+      //如果他已被订购
+      if (that.data.dataList.good_data.order_status_num != 1) {
+        that.setData({
+          buyStatus: '已订购'
+        })
+      }
+    })
+
 
     //发送用户足迹给后台
     wx.getStorage({

@@ -216,8 +216,13 @@ Page {
 }
 
 .cp_maoshu {
+    overflow-wrap: break-word;
     font-size: 17rpx;
     color: #a4a4a4;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .No-ysp {

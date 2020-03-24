@@ -10,7 +10,7 @@
     </view>
     <!-- 每一个地址 -->
     <view style='position: relative;' wx:for="{{dataList}}" wx:key="index" >
-        <view class="address_item" style='{{item.txtStyle}}' bindtap="goToEditorAddress"  bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index='{{index}}' data-id="{{item.id}}" data-province='{{item.province.name}}' data-provinceId='{{item.province.id}}' data-city='{{item.city.name}}' data-cityId='{{item.city.id}}' data-district='{{item.district.name}}' data-districtId='{{item.district.id}}' data-place='{{item.place}}' data-receiver='{{item.receiver}}' data-mobile='{{item.mobile}}' data-ischecked='{{item.is_default_address}}'  >
+        <view class="address_item" style='{{item.txtStyle}}'bindtouchstart="touchS" bindtouchmove="touchM"  bindtouchend="touchE" data-index='{{index}}' >
             <text class="user_tx">{{item.userTx}}</text>
             <view class="address_info">
                 <view class="top_name">
@@ -22,7 +22,7 @@
                     {{item.province.name}} {{item.city.name}} {{item.district.name}} {{item.place}}
                 </view>
             </view>
-            <button class="redact">编辑</button>
+            <button class="redact"  bindtap="goToEditorAddress"   data-id="{{item.id}}" data-province='{{item.province.name}}' data-provinceId='{{item.province.id}}' data-city='{{item.city.name}}' data-cityId='{{item.city.id}}' data-district='{{item.district.name}}' data-districtId='{{item.district.id}}' data-place='{{item.place}}' data-receiver='{{item.receiver}}' data-mobile='{{item.mobile}}' data-ischecked='{{item.is_default_address}}'>编辑</button>
         </view>
         <view class="delectAddress" data-id="{{item.id}}" bindtap="delItem">删除</view>
     </view>

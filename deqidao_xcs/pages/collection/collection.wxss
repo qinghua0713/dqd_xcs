@@ -22,13 +22,14 @@ Page{
 .cp_item_info image{
     width: 208rpx;
     height: 278rpx;
-    margin-right: 14rpx;
+   
 }
 .right_info{
     width: calc( 100% - 208rpx);
     display: flex;
     flex-direction: column;
     position: relative;
+    padding-left: 14rpx;
 }
 .cp_title{
 	font-size: 35rpx;
@@ -41,6 +42,11 @@ Page{
     font-size: 23rpx;
     color: #0b0b0b;
     margin-bottom: 20rpx;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 40rpx;
 }
 .price_info{
     width: 100%;

@@ -3,17 +3,23 @@
 
 <view class="index-page" >
 	<!-- 搜索 -->
-	<view class="search-container" hidden="{{isShowCearchCover}}">
-		<input class="search_one" bind:tap="searchFocus"  disabled="{{true}}"  type="text" placeholder="搜索艺术品" />
+	<view class="search-container">
+		<view class="search_one" bind:tap="searchFocus">
 		<image class="search-image_one" src="/assets/image/search.png" alt=""></image>
+		<text >搜索艺术品</text>
+		</view>
+		
 	</view>
 	<!-- 搜索遮罩 -->
-	<view class="keywordCover" hidden="{{!isShowCearchCover}}" catchtouchmove="catchTouchmove" catch:tap="cancelSearch">
+	<view class="keywordCover" hidden="{{isShowCearchCover}}" catchtouchmove="catchTouchmove" catch:tap="cancelSearch">
 
 	<view class="keywordList" catch:tap="true">
-				 <view class="search-container">
-		    <input class="search"  bindinput="searchShop"  focus="{{focus}}" value="{{keyword}}"  type="text" placeholder="搜索艺术品" />
-		   <image class="search-image" src="/assets/image/search.png" alt=""></image>
+		<view class="search-container">
+			<view class="pd_l_66">
+				 <image class="search-image" src="/assets/image/search.png" alt=""></image>
+ <input class="search"  bindinput="searchShop"  focus="{{focus}}" value="{{keyword}}"  type="text" placeholder="搜索艺术品"></input>
+		  
+			</view>	   
 		   <view class="cancel" bind:tap="cancelSearch">取消</view>
 		</view>
 		<view class="keyword-container">
@@ -22,13 +28,6 @@
 				  <text wx:for="{{item.keyword}}" wx:key="index" class="{{item == keyword ? 'searchHigh' : '' }}">{{item}}</text>
 			  </view>
 			</view>
-		
-			<!-- <view class="top_search_container" wx:elif="{{keywordList.length < 1}}">
-			   <view class="top_search_item" wx:for="{{keywordSearchList}}"
-			   bind:tap="goToClassify_three"  wx:key="index">
-				 <text >{{item.keyword}}</text>
-			  </view> 
-			</view> -->
 		</view>
 	</view>
 	</view>

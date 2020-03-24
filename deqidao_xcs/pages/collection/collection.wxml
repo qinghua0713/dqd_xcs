@@ -8,7 +8,7 @@
             <view class="right_info">
                 <text class="cp_title">{{item.good.name}}</text>
                 <view class="cp_ms">
-                   这里是描述
+                   {{item.good.synopsis}}
                 </view>
                 <view class="price_info">
                   <text class="dg_jg">订购价格：</text>

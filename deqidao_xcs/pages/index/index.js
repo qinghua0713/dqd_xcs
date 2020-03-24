@@ -16,18 +16,20 @@ Page({
     keywordList: [],//关键字列表
     keywordSearchList: '',//请求回来的关键字
     objectList:'',//这里存放搜索请求回来的对象列表
+    isShowCearchCover: true,//显示搜索框的遮罩
   },
   //搜索框获取焦点
   searchFocus() {
     this.setData({
-      isShowCearchCover: true,//显示搜索框的遮罩
       focus: true,//遮罩层的搜素框获取焦点
+      isShowCearchCover: !this.data.isShowCearchCover,//显示搜索框的遮罩
+     
     })
   },
   //点击隐藏遮罩
   cancelSearch() {
     this.setData({
-      isShowCearchCover: false
+      isShowCearchCover: true
     })
   },
   //手机键盘输入实时请求数据

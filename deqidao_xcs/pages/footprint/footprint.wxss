@@ -66,6 +66,12 @@ Page {
     font-size: 23rpx;
     color: #0b0b0b;
     margin-bottom: 20rpx;
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 40rpx;
 }
 
 .price_info {

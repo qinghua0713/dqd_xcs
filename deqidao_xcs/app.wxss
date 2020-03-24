@@ -5,7 +5,8 @@
 
 view {
   box-sizing: border-box;
-}
+  overflow-wrap: break-word;
+} 
 
 .ordered {
   color: #e51419 !important;

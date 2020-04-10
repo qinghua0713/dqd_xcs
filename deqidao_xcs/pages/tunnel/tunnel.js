@@ -14,12 +14,6 @@ Page({
     //请求艺术馆默认列表数据
     Request('xcx/page/art/').then(res => {
       console.log(res.data)
-      // for(let i = 0; i < res.data.show_image.length; i++){
-      //   res.data.show_image[i].img =  res.data.show_image[i].img+"?"+Math.random()    
-      // }
-      // for(let j = 0; j < res.data.two_category_article.length; j++){
-      //   res.data.two_category_article[j].img =  res.data.two_category_article[j].img+"?"+Math.random()    
-      // }
       that.setData({
         dataList: res.data,
         defaultValue_one: {
@@ -41,9 +35,6 @@ Page({
     let that = this
      //请求艺术家选项下的菜单以及内容
     Request('xcx/page/art/two/' + e.currentTarget.dataset.id).then(res => {
-      // for(let i = 0; i < res.data.length; i++){
-      //   res.data[i].img =  res.data[i].img+"?"+Math.random()    
-      // }
       console.log(res.data)
       let two_category_article = 'defaultValue_one.two_category_article'
       that.setData({
@@ -57,9 +48,6 @@ Page({
       let that = this
       //请求艺术圈选项下的菜单以及内容
       Request('xcx/page/art/two/' + e.currentTarget.dataset.id).then(res => {
-        // for(let i = 0; i < res.data.length; i++){
-        //   res.data[i].img =  res.data[i].img+"?"+Math.random()    
-        // }
         let two_category_article = 'defaultValue_two.two_category_article'
         that.setData({
           current_menu_two:e.currentTarget.dataset.index,
@@ -77,9 +65,6 @@ Page({
     var that = this
           //请求艺术圈选项下的菜单以及内容数据
     Request('xcx/page/art/one/' + e.currentTarget.dataset.id).then(res => {
-      // for(let i = 0; i < res.data.article_data.length; i++){
-      //   res.data.article_data[i].img =  res.data.article_data[i].img+"?"+Math.random()    
-      // }
       console.log(res.data)
       that.setData({
         defaultValue_two: {

@@ -56,9 +56,6 @@ Page({
       Request(`xcx/return/${e.id}`,'','GET',{
         openid: res.data.openid
       }).then(res=>{
-        // for(let i = 0; i < res.data.imgs.length; i++){
-        //   res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
-        // }
         console.log(res.data)
         that.setData({
           dataList:res.data,
@@ -144,9 +141,6 @@ Page({
       Request(`xcx/return/${artworkId}`,'','GET',{
         openid: res.data.openid
       }).then(res=>{
-        // for(let i = 0; i < res.data.imgs.length; i++){
-        //   res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
-        // }
         wx.hideLoading();
         wx.showToast({
           title: '刷新成功', //提示的内容,

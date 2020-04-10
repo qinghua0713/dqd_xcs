@@ -24,15 +24,6 @@ Page({
           'content-type': 'application/json',
           'openid': res.data.openid
         }).then(res => {
-          // for(let i = 0; i < res.data.handpick.length; i++){
-          //   res.data.handpick[i].good.default_image_url =  res.data.handpick[i].good.default_image_url+"?"+Math.random()    
-          // }
-          // for(let j = 0; j < res.data.history.length; j++){
-          //   for(let b = 0; b < res.data.history[j].history.length; b++){
-          //     res.data.history[j].history[b].good.default_image_url =  res.data.history[j].history[b].good.default_image_url+"?"+Math.random()  
-          //   }
-              
-          // }
           console.log(res.data)
           that.setData({
             dataList: res.data
@@ -85,15 +76,6 @@ Page({
           'content-type': 'application/json',
           'openid': res.data.openid
         }).then(res => {
-          // for(let i = 0; i < res.data.handpick.length; i++){
-          //   res.data.handpick[i].good.default_image_url =  res.data.handpick[i].good.default_image_url+"?"+Math.random()    
-          // }
-          // for(let j = 0; j < res.data.history.length; j++){
-          //   for(let b = 0; b < res.data.history[j].history.length; b++){
-          //     res.data.history[j].history[b].good.default_image_url =  res.data.history[j].history[b].good.default_image_url+"?"+Math.random()  
-          //   }
-              
-          // }
           wx.hideLoading();
           wx.showToast({
             title: '刷新成功', //提示的内容,

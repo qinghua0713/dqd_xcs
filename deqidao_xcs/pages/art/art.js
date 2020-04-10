@@ -12,14 +12,6 @@ Page({
     let that = this
     //请求ACS合同数据
     Request('xcx/asc/').then(res=>{
-      for(let i = 0; i < res.data.img.length; i++){
-        res.data.img[i].no_img =  res.data.img[i].no_img+"?"+Math.random()    
-        res.data.img[i].yes_img =  res.data.img[i].yes_img+"?"+Math.random()    
-      }
-      res.data.page_serializer[0].video_img = res.data.page_serializer[0].video_img+"?"+Math.random()  
-      for(let i = 0; i < res.data.show_img.length; i++){
-        res.data.show_img[i].img =  res.data.show_img[i].img+"?"+Math.random()    
-      }
       console.log(res.data)
        that.setData({
          dataList:res.data
@@ -62,14 +54,6 @@ Page({
     })
   //请求ACS合同数据
     Request('xcx/asc/').then(res=>{
-      for(let i = 0; i < res.data.img.length; i++){
-        res.data.img[i].no_img =  res.data.img[i].no_img+"?"+Math.random()    
-        res.data.img[i].yes_img =  res.data.img[i].yes_img+"?"+Math.random()    
-      }
-      res.data.page_serializer[0].video_img = res.data.page_serializer[0].video_img+"?"+Math.random()  
-      for(let j = 0; j < res.data.show_img.length; j++){
-        res.data.show_img[j].img =  res.data.show_img[j].img+"?"+Math.random()    
-      }
       wx.hideLoading();
       wx.showToast({
         title: '刷新成功', //提示的内容,

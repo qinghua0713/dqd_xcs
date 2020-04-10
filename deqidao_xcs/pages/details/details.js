@@ -94,13 +94,6 @@ Page({
 
     //请求商品详情页数据
     Request(`goods/details/${e.id}`).then(res => {
-      //循环给图片路径添加上随机数(因为有缓存机制导致部分ios机型图片不显示)
-      // for (let i = 0; i < res.data.img_data.length; i++) {
-      //   if (res.data.img_data[i] != null) {
-      //     res.data.img_data[i].image = res.data.img_data[i].image + "?" + Math.random()
-      //   }
-      // }
-   //   res.data.aut_data.aut.default_image_url = res.data.aut_data.aut.default_image_url + "?" + Math.random()
       console.log(res.data)
       that.setData({
         dataList: res.data,

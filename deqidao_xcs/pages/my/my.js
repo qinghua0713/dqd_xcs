@@ -29,7 +29,6 @@ Page({
       key: 'resultUserInfo',
       success: (res) => {
         console.log(res.data)
-       // res.data.profile =  res.data.profile+"?"+Math.random() //用户头像
         that.setData({
           userInfo: res.data
         })
@@ -46,9 +45,6 @@ Page({
         Request(`user/good/ear`,'','GET',{
           openid: res.data.openid
         }).then(res=>{
-          //  for(let n = 0; n < res.data.length; n++){
-          //   res.data[n].good.default_image_url =  res.data[n].good.default_image_url+"?"+Math.random()    
-          //  }
           console.log(res.data)
           that.setData({
             artworkDataList:res.data
@@ -118,6 +114,7 @@ Page({
       })
     }
   },
+
   //点击跳转ACS合同页
   goToArt(e){
     if (e.detail.userInfo) {
@@ -177,14 +174,8 @@ Page({
 
   },
   //点击跳转全部订单页
-  goToallOrders(e){
-    if (e.detail.userInfo) {
-      let nickName = e.detail.userInfo.nickName
-      let avatarUrl = e.detail.userInfo.avatarUrl
-      //用户登陆
-      Login(nickName, avatarUrl)
-      wx.navigateTo({ url: '/pages/allOrders/allOrders' });
-    }
+  goToallOrders(){
+    wx.navigateTo({ url: '/pages/allOrders/allOrders' });
   },
   //点击跳转艺术品管理页显示第三个tab的内容
   goToManAgeShowThree(e) {
@@ -218,9 +209,8 @@ Page({
     wx.getStorage({
       key: 'resultUserInfo',
       success: (res) => {
-        res.data.profile =  res.data.profile+"?"+Math.random()  //用户头像
         that.setData({
-          userInfo: res.data.profile 
+          userInfo: res.data 
         })
          //获取用户的总资产
         Request('user/ear', '', 'GET', {
@@ -240,9 +230,6 @@ Page({
         Request(`user/good/ear`,'','GET',{
           openid: res.data.openid
         }).then(res=>{
-          // for(let n = 0; n < res.data.length; n++){
-          //   res.data[n].good.default_image_url =  res.data[n].good.default_image_url+"?"+Math.random()    
-          //  }
           that.setData({
             artworkDataList:res.data
           })

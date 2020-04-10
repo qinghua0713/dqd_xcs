@@ -19,14 +19,6 @@ Page({
     let that = this
     //请求艺术家数据
            Request(`xcx/details/${e.id}`).then(res=>{
-                  //循环给图片路径添加上随机数(因为有缓存机制导致部分ios机型图片不显示)
-      // for(let i = 0; i < res.data.consult.length; i++){
-      //   res.data.consult[i].imgs =  res.data.consult[i].imgs+"?"+Math.random()    
-      // }
-      // for(let i = 0; i < res.data.goods.length; i++){
-      //   res.data.goods[i].default_image_url =  res.data.goods[i].default_image_url+"?"+Math.random()    
-      // }
-      //        res.data.aut.default_image_url = res.data.aut.default_image_url+"?"+Math.random()  
              console.log(res.data)
              that.setData({
                dataList:res.data,
@@ -74,13 +66,7 @@ goToDdetails(e){
     })
      //请求艺术家数据
      Request(`xcx/details/${that.data.artistId}`).then(res=>{
-                       //循环给图片路径添加上随机数(因为有缓存机制导致部分ios机型图片不显示)
-      // for(let i = 0; i < res.data.consult.length; i++){
-      //   res.data.consult[i].imgs =  res.data.consult[i].imgs+"?"+Math.random()    
-      // }
-      // for(let j = 0; j < res.data.goods.length; j++){
-      //   res.data.goods[j].default_image_url =  res.data.goods[j].default_image_url+"?"+Math.random()    
-      // }
+            
       wx.hideLoading();
       wx.showToast({
         title: '刷新成功', //提示的内容,

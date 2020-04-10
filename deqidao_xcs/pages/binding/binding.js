@@ -28,10 +28,7 @@ Page({
     * 生命周期函数--监听页面加载
     */
   onLoad(e) {
- console.log(e,'我是打印的值')
-
     let that = this
-  
     //请求绑定数据
     let qrUrl = decodeURIComponent(e.q)
       console.log(that.getQueryString(qrUrl, 'id'),'我是打印的值二')
@@ -40,10 +37,6 @@ Page({
       //获取二维码的携带的链接信息
       //请求用户从外面扫码进来的数据
       Request(`xcx/bind/${that.getQueryString(qrUrl, 'id')}`).then(res => {
-        // for(let i = 0; i < res.data.imgs.length; i++){
-        //   res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
-        // }
-        console.log(res.data,'我是打印的值三')
         that.setData({
           dataList: res.data,
         })
@@ -164,9 +157,6 @@ Page({
           icon: 'success', //图标,
           duration: 2000, //延迟时间,
         });
-        // for(let i = 0; i < res.data.imgs.length; i++){
-        //   res.data.imgs[i].image =res.data.imgs[i].image+"?"+Math.random()    
-        // }
         console.log(res.data)
         that.setData({
           dataList: res.data

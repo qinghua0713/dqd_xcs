@@ -84,7 +84,7 @@
   <!-- 订单信息 -->
   <view class="order_cont">
     <view class="order_title "  >
-      <button open-type="getUserInfo" bindgetuserinfo="goToallOrders">全部订单</button>
+      <view  bind:tap="goToallOrders">全部订单</view>
     </view>
     <view class="order_list">
       <button class="order_item"  open-type="getUserInfo" bindgetuserinfo="goToManAgeShowOne">

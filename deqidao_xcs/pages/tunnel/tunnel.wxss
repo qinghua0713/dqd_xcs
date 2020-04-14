@@ -1,5 +1,5 @@
-Page {
-  box-sizing: border-box;
+.tunnerl-page{
+  height: 100%;
 }
 
 image {
@@ -64,6 +64,7 @@ z-index: 100;
 .menu_container {
   display: flex;
   transition: all 1s;
+  height: calc(100% - 406rpx);
 }
 
 .left_menu {

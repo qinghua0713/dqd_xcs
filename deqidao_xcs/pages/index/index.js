@@ -53,13 +53,15 @@ Page({
           //拼接对象
           keywordList = keywordList.concat({ keyword: res.data[i].name })
         }
-      }
-      //循环拼接好的数组
-      for (var i = 0; i < keywordList.length; i++) {
-        //检索输入框的值
+           //检索输入框的值
         keywordList[i].keyword = getInf(keywordList[i].keyword, that.data.keyword);
-        
+        keywordList[i].keyword.forEach((item,index)=>{
+          if(item == ''){
+            keywordList[i].keyword.splice(index,1)
+          }
+        })
       }
+   
       console.log(keywordList)
       that.setData({
         keywordList: keywordList,//数组列表
@@ -111,10 +113,16 @@ Page({
   },
   //点击跳转详情
   goToClassify(e) {
-    var value = decodeURIComponent(e.currentTarget.dataset.value);
-    wx.navigateTo({
-      url: `/pages/classify/classify?id=${e.currentTarget.dataset.id}&value=${value}`,
-    })
+
+    if(e.currentTarget.dataset.id != ''){
+      var value = decodeURIComponent(e.currentTarget.dataset.value);
+      wx.navigateTo({
+        url: `/pages/classify/classify?id=${e.currentTarget.dataset.id}&value=${value}`,
+      })
+    }else{
+      wx.switchTab({ url: '/pages/tunnel/tunnel' });
+    }
+   
   },
   //点击搜索出来的关键字跳转详情页
   goToclassify_two(e) {
@@ -151,12 +159,7 @@ Page({
   goToClassify_three() {
     wx.navigateTo({ url: '/pages/classify/classify' });
   },
-  //点击跳转tunnel页面
-  goToTunnel() {
-    wx.switchTab({
-      url: '/pages/tunnel/tunnel'
-    });
-  },
+
   // 点击回到顶部
   goTop() {
     wx.pageScrollTo({

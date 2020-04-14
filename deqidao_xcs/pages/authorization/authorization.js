@@ -18,6 +18,7 @@ Page({
     wx.setStorageSync('userInfo', e.detail.userInfo)
     wx.login({
       success: (res) => {
+        console.log(res.code)
         Request('user/code/' + res.code, {
           username: e.detail.userInfo.nickName,
           profile: e.detail.userInfo.avatarUrl

@@ -7,7 +7,6 @@ Page({
     defaultValue_two: '',//默认渲染的分类选项数据
     showClassifyIndex: 0,//默认显示第一个选项卡的内容
     current_menu_one:0,//默认菜单第一个下标
-    current_menu_two:0,//默认菜单第一个下标
   },
   onLoad(e) {
     var that = this
@@ -36,25 +35,16 @@ Page({
      //请求艺术家选项下的菜单以及内容
     Request('xcx/page/art/two/' + e.currentTarget.dataset.id).then(res => {
       console.log(res.data)
-      let two_category_article = 'defaultValue_one.two_category_article'
+      let defaultValue_one = 'defaultValue_one.two_category_article'
+      let defaultValue_two = 'defaultValue_two.two_category_article'
       that.setData({
         current_menu_one:e.currentTarget.dataset.index,
-        [two_category_article]: res.data,
+        [defaultValue_one]: res.data,
+        [defaultValue_two]: res.data,
       })
     })
   },
-    //  点击显示二级菜单
-    showMenuContent_two(e) {
-      let that = this
-      //请求艺术圈选项下的菜单以及内容
-      Request('xcx/page/art/two/' + e.currentTarget.dataset.id).then(res => {
-        let two_category_article = 'defaultValue_two.two_category_article'
-        that.setData({
-          current_menu_two:e.currentTarget.dataset.index,
-          [two_category_article]: res.data,
-        })
-      })
-    },
+
   //点击跳转公众号文章页
   goToArticle(e){
     let url = encodeURIComponent(e.currentTarget.dataset.src)

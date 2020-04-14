@@ -38,16 +38,9 @@
   box-sizing: border-box;
   padding: 50rpx 35rpx 0 35rpx;
 }
-.goToArtist{
-  width: 25%;
-}
-.goToArtist .list_item{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 .classify_options{
-  width: 75%;
+  width: 100%;
   display: flex;
 }
 .main-swiper-item{

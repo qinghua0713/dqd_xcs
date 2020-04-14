@@ -47,18 +47,12 @@
 	</view>
 	<!-- 艺术品分类项 -->
 	<view class="class_list">
-		<view class="goToArtist">
-			<view class="list_item" bind:tap="goToTunnel"  wx:for="{{dataList.category}}" 
-			 wx:key='index' bindtap="goToTunnel" data-id='{{item.catergory.id}}' wx:if="{{item.catergory == null}}">
-				<image src="{{item.img}}" mode="scaleToFill" lazy-load="false"></image>
-				<text>艺术家</text>
-			</view>
-		</view>
+	
 		<view class="classify_options">
 			<view class="list_item" wx:for="{{dataList.category}}"  wx:key='index' bindtap="goToClassify"
-			 data-id='{{item.catergory.id}}' data-value="{{item.catergory.name}}"wx:if="{{item.catergory != null}}">
+			 data-id='{{item.catergory != null ? item.catergory.id :""}}' data-value="{{item.catergory.name}}">
 				<image src="{{item.img}}" mode="scaleToFill" lazy-load="false"></image>
-				<text>{{item.catergory.name}}</text>
+				<text>{{item.catergory ? item.catergory.name : "艺术家"}}</text>
 			</view>
 		</view>
 	</view>
@@ -103,7 +97,7 @@
 		</view>
 			<!-- <view class="swier_cover"></view> -->
 			<!-- <image class="swier_cover" src="{{dataList.authors[swiperIndex].default_image_url}}" /> -->
-		<swiper class="swiperChange_two"  display-multiple-items="{{5}}" bindchange="swiperChange_two" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
+		<swiper class="swiperChange_two"  display-multiple-items="{{5}}" bindchange="swiperChange_two" autoplay="{{false}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
 		
 				<swiper-item wx:for="{{dataList.authors}}"  wx:key="index" wx:key="index" data-id="{{item.id}}" data-index="{{index}}"
 				 class="slide-item slide-item-five" bind:tap="goToArtistDateils">
